@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<module>
+    <name>Slideshow</name>
+    <version>1.4.0</version>
+    <requirements>
+        <minimum_version>3.7.0</minimum_version>
+    </requirements>
+    <description>
+        <![CDATA[This module manages responsive slideshows. It makes use of Flexslider, an awesome fully responsive jQuery slider toolkit. Enjoy!]]>
+    </description>
+    <events>
+        <event application="backend" name="after_add"><![CDATA[Triggered when a slideshow is added.]]></event>
+        <event application="backend" name="after_delete"><![CDATA[Triggered when a slideshow is deleted.]]></event>
+        <event application="backend" name="after_edit"><![CDATA[Triggered when a slideshow is edited.]]></event>
+        <event application="backend" name="after_add_image"><![CDATA[Triggered when an image is added.]]></event>
+        <event application="backend" name="after_delete_image"><![CDATA[Triggered when an image is deleted.]]></event>
+        <event application="backend" name="after_edit_image"><![CDATA[Triggered when an image is edited.]]></event>
+        <event application="backend" name="after_add_category"><![CDATA[Triggered when a category is added.]]></event>
+        <event application="backend" name="after_delete_category"><![CDATA[Triggered when a category is deleted.]]></event>
+        <event application="backend" name="after_edit_category"><![CDATA[Triggered when a category is edited.]]></event>
+    </events>
+    <authors>
+        <author>
+            <name><![CDATA[Koen Vinken]]></name>
+            <url><![CDATA[http://www.tagz.be]]></url>
+        </author>       
+    </authors>  
+</module>

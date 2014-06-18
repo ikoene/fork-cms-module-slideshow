@@ -1,0 +1,89 @@
+<?php
+
+namespace Backend\Modules\Slideshow\Actions;
+
+/**
+ * This is the configuration-object for the slideshow module
+ *
+ * @package     backend
+ * @subpackage  slideshow
+ *
+ * @author      Koen Vinken <koen@tagz.be> 
+ * @since       1.0
+ */
+
+use Backend\Core\Engine\Base\ActionIndex as BackendBaseActionIndex;
+use Backend\Core\Engine\Authentication as BackendAuthentication;
+use Backend\Core\Engine\DataGridDB as BackendDataGridDB;
+use Backend\Core\Engine\DataGridFunctions as BackendDataGridFunctions;
+use Backend\Core\Engine\Language as BL;
+use Backend\Core\Engine\Model as BackendModel;
+use Backend\Modules\Slideshow\Engine\Model as BackendSlideshowModel;
+
+class Categories extends BackendBaseActionIndex
+{
+    /**
+     * Execute the action
+     *
+     * @return  void
+     */
+    public function execute()
+    {
+        // call parent, this will probably add some general CSS/JS or other required files
+        parent::execute();
+
+        // load datagrids
+        $this->loadDataGrid();
+
+        // parse page
+        $this->parse();
+
+        // display the page
+        $this->display();
+    }
+
+
+    /**
+     * Loads the datagrid
+     *
+     * @return  void
+     */
+    private function loadDataGrid()
+    {
+        // create datagrid
+        $this->dataGrid = new BackendDataGridDB(BackendSlideshowModel::QRY_DATAGRID_BROWSE_CATEGORIES, BL::getWorkingLanguage());
+
+        // disable paging
+        $this->dataGrid->setPaging(false);
+
+        // set column URLs
+        $this->dataGrid->setColumnURL('title', BackendModel::createURLForAction('edit_category') . '&amp;id=[id]');
+
+        // create a column #galleries       
+        $this->dataGrid->addColumn('galleries', BL::lbl('Galleries'));
+        $this->dataGrid->setColumnFunction(array('Backend\Modules\Slideshow\Engine\Model', 'getGalleriesByCategory'),'[id]', 'galleries', true);    
+        
+        // enable drag and drop
+        $this->dataGrid->enableSequenceByDragAndDrop();
+        
+        // our JS needs to know an id, so we can send the new order
+        $this->dataGrid->setRowAttributes(array('id' => '[id]'));
+        $this->dataGrid->setAttributes(array('data-action' => "category_sequence"));        
+
+        // add edit column
+        $this->dataGrid->addColumn('edit', null, BL::lbl('Edit'), BackendModel::createURLForAction('edit_category') . '&amp;id=[id]', BL::lbl('Edit'));
+    }
+
+
+    /**
+     * Parse & display the page
+     *
+     * @return  void
+     */
+    protected function parse()
+    {
+        $this->tpl->assign('dataGrid', ($this->dataGrid->getNumResults() != 0) ? $this->dataGrid->getContent() : false);
+    }
+}
+
+?>
