@@ -78,26 +78,26 @@ class Detail extends FrontendBaseBlock
         // set meta
         $this->header->setPageTitle($this->record['meta_title'], ($this->record['title_overwrite'] == 'Y'));
         $this->header->addMetaDescription($this->record['meta_description'], ($this->record['description_overwrite'] == 'Y'));
-        $this->header->addMetaKeywords($this->record['meta_keywords'], ($this->record['keywords_overwrite'] == 'Y'));   
+        $this->header->addMetaKeywords($this->record['meta_keywords'], ($this->record['keywords_overwrite'] == 'Y'));
         
         // assign
         $this->tpl->assign('slideshow', $this->slides); 
         $this->tpl->assign('gallery', $this->gallery);
         
         // assign navigation
-        $this->tpl->assign('navigation', FrontendSlideshowModel::getNavigation($this->record['gallery_id']));       
+        $this->tpl->assign('navigation', FrontendSlideshowModel::getNavigation($this->record['gallery_id']));
 
         // get module settings
-        $this->settings = FrontendModel::getModuleSettings('slideshow');
+        $this->settings = FrontendModel::getModuleSettings('Slideshow');
         
         // should we use the settings per slide or the module settings
         if ($this->settings['settings_per_slide']==='true')
             {               
                 // load slideshow settings
-                $this->tpl->assign('slideshowSettings', FrontendSlideshowModel::getGallerySettings($this->record['gallery_id']));   
+                $this->tpl->assign('slideshowSettings', FrontendSlideshowModel::getGallerySettings($this->record['gallery_id']));
             }else{
                 // load module settings
-                $this->tpl->assign('slideshowSettings', FrontendModel::getModuleSettings('slideshow'));
+                $this->tpl->assign('slideshowSettings', FrontendModel::getModuleSettings('Slideshow'));
             }       
 
     }
