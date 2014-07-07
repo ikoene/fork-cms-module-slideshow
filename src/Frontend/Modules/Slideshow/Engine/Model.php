@@ -25,15 +25,16 @@ class Model
      */
     public static function getGalleries()
     {
-        return (array) FrontendModel::getContainer()->get('database')->getRecords('SELECT DISTINCT i.*, m.url, m2.url as category_url, c.title as category_title
-                                                            FROM slideshow_galleries AS i
-                                                            INNER JOIN slideshow_images as p ON i.id = p.gallery_id
-                                                            INNER JOIN slideshow_categories AS c ON i.category_id = c.id
-                                                            INNER JOIN meta as m ON i.meta_id = m.id
-                                                            INNER JOIN meta AS m2 ON c.meta_id = m2.id
-                                                            WHERE i.language = ? AND i.hidden = ? AND i.publish_on <= ? AND p.hidden = ?
-                                                            ORDER BY i.publish_on',
-                                                            array(FRONTEND_LANGUAGE, 'N', FrontendModel::getUTCDate('Y-m-d H:i') . ':00','N'));
+        return (array) FrontendModel::getContainer()->get('database')->getRecords(
+            'SELECT DISTINCT i.*, m.url, m2.url as category_url, c.title as category_title
+            FROM slideshow_galleries AS i
+            INNER JOIN slideshow_images as p ON i.id = p.gallery_id
+            INNER JOIN slideshow_categories AS c ON i.category_id = c.id
+            INNER JOIN meta as m ON i.meta_id = m.id
+            INNER JOIN meta AS m2 ON c.meta_id = m2.id
+            WHERE i.language = ? AND i.hidden = ? AND i.publish_on <= ? AND p.hidden = ?
+            ORDER BY i.publish_on',
+            array(FRONTEND_LANGUAGE, 'N', FrontendModel::getUTCDate('Y-m-d H:i') . ':00','N'));
     }
 
     /**
@@ -67,21 +68,22 @@ class Model
     {
         $db = FrontendModel::getContainer()->get('database');
 
-        return (array) $db->getRecords('SELECT DISTINCT i.*, m.url as category_url, m2.url as category_meta_url, m2.keywords as category_meta_keywords,
-                                                            m2.title as category_meta_title, m2.description as category_meta_description,
-                                                            m2.title_overwrite as category_title_overwrite, m2.description_overwrite as category_description_overwrite,
-                                                            m2.keywords_overwrite as category_keywords_overwrite,
-                                                            m.url as meta_url, m.keywords AS meta_keywords,
-                                                            m.id AS meta_id, m.title AS meta_title, m.description AS meta_description,
-                                                            c.title as category_title
-                                                            FROM slideshow_galleries AS i
-                                                            INNER JOIN slideshow_images as p ON i.id = p.gallery_id
-                                                            INNER JOIN slideshow_categories AS c ON i.category_id = c.id
-                                                            INNER JOIN meta as m ON i.meta_id = m.id
-                                                            INNER JOIN meta AS m2 ON c.meta_id = m2.id
-                                                            WHERE m2.url = ? AND i.language = ? AND i.hidden = ? AND i.publish_on <= ? AND p.hidden = ?
-                                                            ORDER BY i.sequence',
-                                                            array($URL, FRONTEND_LANGUAGE, 'N', FrontendModel::getUTCDate('Y-m-d H:i') . ':00','N'));
+        return (array) $db->getRecords(
+            'SELECT DISTINCT i.*, m.url as category_url, m2.url as category_meta_url, m2.keywords as category_meta_keywords,
+            m2.title as category_meta_title, m2.description as category_meta_description,
+            m2.title_overwrite as category_title_overwrite, m2.description_overwrite as category_description_overwrite,
+            m2.keywords_overwrite as category_keywords_overwrite,
+            m.url as meta_url, m.keywords AS meta_keywords,
+            m.id AS meta_id, m.title AS meta_title, m.description AS meta_description,
+            c.title as category_title
+            FROM slideshow_galleries AS i
+            INNER JOIN slideshow_images as p ON i.id = p.gallery_id
+            INNER JOIN slideshow_categories AS c ON i.category_id = c.id
+            INNER JOIN meta as m ON i.meta_id = m.id
+            INNER JOIN meta AS m2 ON c.meta_id = m2.id
+            WHERE m2.url = ? AND i.language = ? AND i.hidden = ? AND i.publish_on <= ? AND p.hidden = ?
+            ORDER BY i.sequence',
+            array($URL, FRONTEND_LANGUAGE, 'N', FrontendModel::getUTCDate('Y-m-d H:i') . ':00','N'));
     }
 
     /**
@@ -92,11 +94,12 @@ class Model
      */
     public static function getImages($id)
     {
-        return (array) FrontendModel::getContainer()->get('database')->getRecords('SELECT i.*
-                                                            FROM slideshow_images AS i
-                                                            WHERE i.gallery_id = ? AND hidden = ? AND i.language = ?
-                                                            ORDER BY i.sequence',
-                                                            array((int) $id, 'N', FRONTEND_LANGUAGE));
+        return (array) FrontendModel::getContainer()->get('database')->getRecords(
+            'SELECT i.*
+            FROM slideshow_images AS i
+            WHERE i.gallery_id = ? AND hidden = ? AND i.language = ?
+            ORDER BY i.sequence',
+            array((int) $id, 'N', FRONTEND_LANGUAGE));
     }
 
 
@@ -108,14 +111,13 @@ class Model
      */
     public static function getGallery($id)
     {
-        return (array) FrontendModel::getContainer()->get('database')->getRecord('SELECT i.*, UNIX_TIMESTAMP(i.publish_on) AS publish_on
-                                                            FROM slideshow_galleries AS i
-                                                            INNER JOIN slideshow_images as p ON i.id = p.gallery_id
-                                                            WHERE i.id = ? AND i.language = ? AND i.hidden = ? AND i.publish_on <= ? AND p.hidden = ?
-                                                            ORDER BY i.sequence',
-                                                            array((int) $id, FRONTEND_LANGUAGE, 'N', FrontendModel::getUTCDate('Y-m-d H:i') . ':00', 'N'));
-
-
+        return (array) FrontendModel::getContainer()->get('database')->getRecord(
+            'SELECT i.*, UNIX_TIMESTAMP(i.publish_on) AS publish_on
+            FROM slideshow_galleries AS i
+            INNER JOIN slideshow_images as p ON i.id = p.gallery_id
+            WHERE i.id = ? AND i.language = ? AND i.hidden = ? AND i.publish_on <= ? AND p.hidden = ?
+            ORDER BY i.sequence',
+            array((int) $id, FRONTEND_LANGUAGE, 'N', FrontendModel::getUTCDate('Y-m-d H:i') . ':00', 'N'));
     }
 
     /**
@@ -126,10 +128,11 @@ class Model
      */
     public static function getGallerySettings($id)
     {
-        return (array) FrontendModel::getContainer()->get('database')->getRecord('SELECT i.*
-                                                            FROM slideshow_settings AS i
-                                                            WHERE i.gallery_id = ?',
-                                                            array((int) $id));
+        return (array) FrontendModel::getContainer()->get('database')->getRecord(
+            'SELECT i.*
+            FROM slideshow_settings AS i
+            WHERE i.gallery_id = ?',
+            array((int) $id));
     }
 
     /**
