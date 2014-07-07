@@ -51,10 +51,10 @@ class Category extends FrontendBaseBlock
 
         // get the gallery meta based on the url
         $this->record = FrontendSlideshowModel::getGalleriesByURL($this->URL->getParameter(1));
-        
-        // full url asset       
+
+        // full url asset
         $this->full_url = FrontendNavigation::getURLForBlock('slideshow', 'detail');
-        $this->full_url_category = FrontendNavigation::getURLForBlock('slideshow', 'category');     
+        $this->full_url_category = FrontendNavigation::getURLForBlock('slideshow', 'category');
     }
 
     /**
@@ -63,16 +63,16 @@ class Category extends FrontendBaseBlock
      * @return  void
      */
     private function parse()
-    {                   
+    {
         // assign
         $this->tpl->assign('full_url', $this->full_url);
-        $this->tpl->assign('full_url_category', $this->full_url_category);                                      
-        $this->tpl->assign('galleries', $this->record);     
-        
+        $this->tpl->assign('full_url_category', $this->full_url_category);
+        $this->tpl->assign('galleries', $this->record);
+
         // set meta
         $this->header->setPageTitle($this->record[0]['category_meta_title'], ($this->record[0]['category_title_overwrite'] == 'Y'));
         $this->header->addMetaDescription($this->record[0]['category_meta_description'], ($this->record[0]['category_description_overwrite'] == 'Y'));
-        $this->header->addMetaKeywords($this->record[0]['category_meta_keywords'], ($this->record[0]['category_keywords_overwrite'] == 'Y'));                                       
+        $this->header->addMetaKeywords($this->record[0]['category_meta_keywords'], ($this->record[0]['category_keywords_overwrite'] == 'Y'));
     }
 }
 
