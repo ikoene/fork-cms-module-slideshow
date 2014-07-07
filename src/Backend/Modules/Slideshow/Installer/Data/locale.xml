@@ -9,11 +9,11 @@
       <item type="label" name="AddGallery">
        <translation language="nl"><![CDATA[Gallerij toevoegen]]></translation>
        <translation language="en"><![CDATA[Add gallery]]></translation>
-      </item>     
+      </item>
       <item type="label" name="AddImages">
        <translation language="nl"><![CDATA[Afbeeldingen toevoegen]]></translation>
        <translation language="en"><![CDATA[Add images]]></translation>
-      </item>  
+      </item>
      <item type="label" name="AddCategory">
         <translation language="nl"><![CDATA[Categorie toevoegen]]></translation>
         <translation language="en"><![CDATA[Add Category]]></translation>
@@ -31,26 +31,26 @@
         <translation language="en"><![CDATA[Previous Slideshow]]></translation>
       </item>
       <item type="label" name="No">
-        <translation language="nl"><![CDATA[nee]]></translation>      
+        <translation language="nl"><![CDATA[nee]]></translation>
         <translation language="en"><![CDATA[no]]></translation>
       </item>
       <item type="label" name="Yes">
-        <translation language="nl"><![CDATA[ja]]></translation>   
+        <translation language="nl"><![CDATA[ja]]></translation>
         <translation language="en"><![CDATA[yes]]></translation>
       </item>
       <item type="label" name="ImageHidden">
-        <translation language="nl"><![CDATA[verborgen]]></translation>    
+        <translation language="nl"><![CDATA[verborgen]]></translation>
         <translation language="en"><![CDATA[hidden]]></translation>
       </item>
       <item type="label" name="Hide">
-        <translation language="nl"><![CDATA[verberg]]></translation>      
+        <translation language="nl"><![CDATA[verberg]]></translation>
         <translation language="en"><![CDATA[hide]]></translation>
       </item>
-      
+
       <!--settings labels-->
       <item type="label" name="GeneralSlideshowSettings">
         <translation language="en"><![CDATA[General settings]]></translation>
-        <translation language="nl"><![CDATA[Algemene instellingen]]></translation>      
+        <translation language="nl"><![CDATA[Algemene instellingen]]></translation>
       </item>
       <item type="label" name="AnimationType">
         <translation language="en"><![CDATA[Animation type]]></translation>
@@ -58,126 +58,126 @@
       </item>
       <item type="label" name="SlideshowSlide">
         <translation language="en"><![CDATA[slide]]></translation>
-        <translation language="nl"><![CDATA[schuiven]]></translation>       
+        <translation language="nl"><![CDATA[schuiven]]></translation>
       </item>
       <item type="label" name="SlideshowFade">
         <translation language="en"><![CDATA[fade]]></translation>
-        <translation language="nl"><![CDATA[vervagen]]></translation>               
+        <translation language="nl"><![CDATA[vervagen]]></translation>
       </item>
       <item type="label" name="SlideDirection">
         <translation language="en"><![CDATA[Slide direction]]></translation>
-        <translation language="nl"><![CDATA[Schuifrichting]]></translation>     
+        <translation language="nl"><![CDATA[Schuifrichting]]></translation>
       </item>
       <item type="label" name="SlideshowHorizontal">
         <translation language="en"><![CDATA[horizontal]]></translation>
-        <translation language="nl"><![CDATA[horizontaal]]></translation>                
+        <translation language="nl"><![CDATA[horizontaal]]></translation>
       </item>
       <item type="label" name="SlideshowVertical">
         <translation language="en"><![CDATA[vertical]]></translation>
-        <translation language="nl"><![CDATA[verticaal]]></translation>                      
-      </item>     
+        <translation language="nl"><![CDATA[verticaal]]></translation>
+      </item>
       <item type="label" name="SlideshowSpeed">
         <translation language="en"><![CDATA[Slideshow speed]]></translation>
-        <translation language="nl"><![CDATA[slideshow snelheid]]></translation>                             
+        <translation language="nl"><![CDATA[slideshow snelheid]]></translation>
       </item>
       <item type="label" name="AnimationDuration">
         <translation language="en"><![CDATA[Animation time]]></translation>
-        <translation language="nl"><![CDATA[Animatieduur]]></translation>                                       
-      </item>   
+        <translation language="nl"><![CDATA[Animatieduur]]></translation>
+      </item>
       <item type="label" name="NavigationSlideshowSettings">
         <translation language="en"><![CDATA[Navigation settings]]></translation>
-        <translation language="nl"><![CDATA[Navigatie instellingen]]></translation>                                             
-      </item>     
+        <translation language="nl"><![CDATA[Navigatie instellingen]]></translation>
+      </item>
       <item type="label" name="DirectNavigation">
         <translation language="en"><![CDATA[Direct navigation]]></translation>
-        <translation language="nl"><![CDATA[Directe navigatie]]></translation>                                                      
-      </item>     
+        <translation language="nl"><![CDATA[Directe navigatie]]></translation>
+      </item>
       <item type="label" name="ControlNavigation">
         <translation language="en"><![CDATA[Control navigation]]></translation>
-        <translation language="nl"><![CDATA[Controle navigatie]]></translation>                                                             
-      </item>       
+        <translation language="nl"><![CDATA[Controle navigatie]]></translation>
+      </item>
       <item type="label" name="KeyboardNavigation">
         <translation language="en"><![CDATA[Keyboard navigation]]></translation>
-        <translation language="nl"><![CDATA[Keyboard navigatie]]></translation>                                                                     
+        <translation language="nl"><![CDATA[Keyboard navigatie]]></translation>
       </item>
       <item type="label" name="MousewheelNavigation">
         <translation language="en"><![CDATA[Mousewheel navigation]]></translation>
-        <translation language="nl"><![CDATA[Muiswiel navigatie]]></translation>                                                                             
-      </item>         
+        <translation language="nl"><![CDATA[Muiswiel navigatie]]></translation>
+      </item>
       <item type="label" name="OptionalSlideshowSettings">
         <translation language="en"><![CDATA[Optional settings]]></translation>
-        <translation language="nl"><![CDATA[Optionele instellingen]]></translation>                                                                                     
-      </item>   
+        <translation language="nl"><![CDATA[Optionele instellingen]]></translation>
+      </item>
       <item type="label" name="RandomOrder">
         <translation language="en"><![CDATA[Random order]]></translation>
-        <translation language="nl"><![CDATA[Willekeurige volgorde]]></translation>                                                                                              
-      </item>         
+        <translation language="nl"><![CDATA[Willekeurige volgorde]]></translation>
+      </item>
       <item type="label" name="AutoAnimate">
         <translation language="en"><![CDATA[Auto animate]]></translation>
-        <translation language="nl"><![CDATA[Automatische animatie]]></translation>                                                                                                      
-      </item>     
+        <translation language="nl"><![CDATA[Automatische animatie]]></translation>
+      </item>
       <item type="label" name="AnimationLoop">
         <translation language="en"><![CDATA[Animation loop]]></translation>
-        <translation language="nl"><![CDATA[Animatie loop]]></translation>                                                                                                              
+        <translation language="nl"><![CDATA[Animatie loop]]></translation>
       </item>
       <item type="label" name="ModeSlideshowSettings">
         <translation language="en"><![CDATA[Mode]]></translation>
-        <translation language="nl"><![CDATA[Modus]]></translation>                                                                                                              
-      </item>           
+        <translation language="nl"><![CDATA[Modus]]></translation>
+      </item>
       <item type="label" name="SettingsPerSlide">
         <translation language="en"><![CDATA[Settings per slideshow]]></translation>
-        <translation language="nl"><![CDATA[Instellingen per slideshow]]></translation>                                                                                                             
+        <translation language="nl"><![CDATA[Instellingen per slideshow]]></translation>
       </item>
 
-      <!--settings messages-->  
+      <!--settings messages-->
       <item type="message" name="HelpSlideshowSpeed">
         <translation language="en"><![CDATA[Set the speed of the slideshow cycling, in seconds]]></translation>
-        <translation language="nl"><![CDATA[De snelheid waarmee de slideshow afspeelt, in seconden]]></translation>     
+        <translation language="nl"><![CDATA[De snelheid waarmee de slideshow afspeelt, in seconden]]></translation>
       </item>
       <item type="message" name="HelpAnimationDuration">
         <translation language="en"><![CDATA[Set the speed of animations, in seconds]]></translation>
-        <translation language="nl"><![CDATA[De snelheid van de animaties, in seconden]]></translation>              
+        <translation language="nl"><![CDATA[De snelheid van de animaties, in seconden]]></translation>
       </item>
       <item type="message" name="HelpDirectNavigation">
         <translation language="en"><![CDATA[Create navigation for previous/next navigation?]]></translation>
-        <translation language="nl"><![CDATA[Creëer vorige/volgende navigatie?]]></translation>      
+        <translation language="nl"><![CDATA[Creëer vorige/volgende navigatie?]]></translation>
       </item>
       <item type="message" name="HelpControlNavigation">
         <translation language="en"><![CDATA[Create navigation for paging control of each clide?]]></translation>
-        <translation language="nl"><![CDATA[Creëer directe navigatie voor elke slide?]]></translation>              
+        <translation language="nl"><![CDATA[Creëer directe navigatie voor elke slide?]]></translation>
       </item>
       <item type="message" name="HelpKeyboardNavigation">
         <translation language="en"><![CDATA[Allow slider navigation via keyboard left/right keys]]></translation>
-        <translation language="nl"><![CDATA[Mogelijkheid om te navigeren met de links/rechts toetsen van een toetsenbord]]></translation>                       
+        <translation language="nl"><![CDATA[Mogelijkheid om te navigeren met de links/rechts toetsen van een toetsenbord]]></translation>
       </item>
       <item type="message" name="HelpMousewheelNavigation">
         <translation language="en"><![CDATA[Allow slider navigating via mousewheel]]></translation>
-        <translation language="nl"><![CDATA[Mogelijkheid om te navigeren met de muiswiel]]></translation>       
-      </item>     
+        <translation language="nl"><![CDATA[Mogelijkheid om te navigeren met de muiswiel]]></translation>
+      </item>
       <item type="message" name="HelpRandomOrder">
         <translation language="en"><![CDATA[Randomize slide order]]></translation>
-        <translation language="nl"><![CDATA[Willekeurige slide volgorde]]></translation>        
-      </item>     
+        <translation language="nl"><![CDATA[Willekeurige slide volgorde]]></translation>
+      </item>
       <item type="message" name="HelpAutoAnimate">
         <translation language="en"><![CDATA[Animate slider automatically]]></translation>
-        <translation language="nl"><![CDATA[Slideshow automatisch afspelen]]></translation>             
-      </item>         
+        <translation language="nl"><![CDATA[Slideshow automatisch afspelen]]></translation>
+      </item>
       <item type="message" name="HelpAnimationLoop">
         <translation language="en"><![CDATA[Should the animation loop?]]></translation>
-        <translation language="nl"><![CDATA[Slideshow laten loopen?]]></translation>        
+        <translation language="nl"><![CDATA[Slideshow laten loopen?]]></translation>
       </item>
       <item type="message" name="HelpSettingsPerSlide">
         <translation language="en"><![CDATA[Allow settings per slideshow that overwrite the module settings below?]]></translation>
-        <translation language="nl"><![CDATA[Laat specifieke instellingen per slideshow toe. Deze instellingen overschrijven onderstaande module instellingen.]]></translation>      
-      </item>     
-      
+        <translation language="nl"><![CDATA[Laat specifieke instellingen per slideshow toe. Deze instellingen overschrijven onderstaande module instellingen.]]></translation>
+      </item>
+
     </Core>
-    
+
     <Slideshow>
       <item type="label" name="Add">
         <translation language="nl"><![CDATA[Toevoegen]]></translation>
         <translation language="en"><![CDATA[Add]]></translation>
-      </item>     
+      </item>
       <item type="label" name="Title">
         <translation language="nl"><![CDATA[Titel]]></translation>
         <translation language="en"><![CDATA[Title]]></translation>
@@ -185,15 +185,15 @@
       <item type="label" name="Link">
         <translation language="nl"><![CDATA[Link]]></translation>
         <translation language="en"><![CDATA[Link]]></translation>
-      </item>         
+      </item>
       <item type="label" name="Category">
         <translation language="nl"><![CDATA[Categorie]]></translation>
         <translation language="en"><![CDATA[Category]]></translation>
-      </item>         
+      </item>
       <item type="label" name="Categories">
         <translation language="nl"><![CDATA[Categorieën]]></translation>
         <translation language="en"><![CDATA[Categories]]></translation>
-      </item>         
+      </item>
       <item type="label" name="Slideshow">
         <translation language="nl"><![CDATA[Slideshow]]></translation>
         <translation language="en"><![CDATA[Slideshow]]></translation>
@@ -201,11 +201,11 @@
       <item type="label" name="Status">
         <translation language="nl"><![CDATA[Status]]></translation>
         <translation language="en"><![CDATA[State]]></translation>
-      </item>     
+      </item>
       <item type="label" name="Name">
         <translation language="nl"><![CDATA[Naam]]></translation>
         <translation language="en"><![CDATA[Name]]></translation>
-      </item>         
+      </item>
       <item type="label" name="Description">
         <translation language="nl"><![CDATA[Omschrijving]]></translation>
         <translation language="en"><![CDATA[Description]]></translation>
@@ -213,7 +213,7 @@
       <item type="label" name="Picture">
         <translation language="nl"><![CDATA[Afbeelding]]></translation>
         <translation language="en"><![CDATA[Picture]]></translation>
-      </item>   
+      </item>
       <item type="label" name="Dimensions">
         <translation language="nl"><![CDATA[Afmetingen]]></translation>
         <translation language="en"><![CDATA[Dimensions]]></translation>
@@ -233,7 +233,7 @@
       <item type="label" name="Height">
         <translation language="nl"><![CDATA[Hoogte]]></translation>
         <translation language="en"><![CDATA[Height]]></translation>
-      </item>             
+      </item>
       <item type="label" name="Galleries">
          <translation language="nl"><![CDATA[Gallerijen]]></translation>
          <translation language="en"><![CDATA[Galleries]]></translation>
@@ -241,11 +241,11 @@
       <item type="label" name="Gallery">
          <translation language="nl"><![CDATA[Gallerij]]></translation>
          <translation language="en"><![CDATA[Gallery]]></translation>
-      </item>     
+      </item>
       <item type="error" name="DescriptionIsRequired">
         <translation language="nl"><![CDATA[Omschrijving is verplicht.]]></translation>
         <translation language="en"><![CDATA[The description is required.]]></translation>
-      </item>     
+      </item>
       <item type="error" name="SlideshowIsRequired">
         <translation language="nl"><![CDATA[Slideshow is verplicht.]]></translation>
         <translation language="en"><![CDATA[The Slideshow is required.]]></translation>
@@ -253,7 +253,7 @@
       <item type="error" name="PictureIsRequired">
         <translation language="nl"><![CDATA[Afbeelding is verplicht.]]></translation>
         <translation language="en"><![CDATA[The picture is required.]]></translation>
-      </item>         
+      </item>
       <item type="error" name="CategoryIsRequired">
         <translation language="nl"><![CDATA[Gelieve een categorie te selecteren.]]></translation>
         <translation language="en"><![CDATA[Please select a category.]]></translation>
@@ -261,7 +261,7 @@
       <item type="error" name="WidthIsRequired">
         <translation language="nl"><![CDATA[Breedte is verplicht.]]></translation>
         <translation language="en"><![CDATA[Width is required.]]></translation>
-      </item>     
+      </item>
       <item type="error" name="HeightIsRequired">
         <translation language="nl"><![CDATA[Hoogte is verplicht.]]></translation>
         <translation language="en"><![CDATA[Height is required.]]></translation>
@@ -277,8 +277,8 @@
       <item type="message" name="NoCategories">
         <translation language="nl"><![CDATA[Er zijn nog geen categorieën.]]></translation>
         <translation language="en"><![CDATA[There are no categories yet.]]></translation>
-      </item> 
-      
+      </item>
+
     </Slideshow>
   </Backend>
   <Frontend>
@@ -294,7 +294,7 @@
       <item type="label" name="PreviousSlideshow">
         <translation language="nl"><![CDATA[Vorige slideshow]]></translation>
         <translation language="en"><![CDATA[Previous Slideshow]]></translation>
-      </item>  
+      </item>
     </core>
   </Frontend>
 </locale>
