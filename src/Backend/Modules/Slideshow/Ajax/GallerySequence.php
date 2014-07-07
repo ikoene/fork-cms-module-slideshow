@@ -1,5 +1,10 @@
 <?php
 
+namespace Backend\Modules\Slideshow\Ajax;
+
+use Backend\Core\Engine\Base\AjaxAction as BackendBaseAJAXAction;
+use Backend\Modules\Slideshow\Engine\Model as BackendSlideshowModel;
+
 /**
  * This is the configuration-object for the slideshow module
  *
@@ -9,7 +14,7 @@
  * @author      Koen Vinken <koen@tagz.be>
  * @since       1.0
  */
-class BackendSlideshowAjaxGallerySequence extends BackendBaseAJAXAction
+class GallerySequence extends BackendBaseAJAXAction
 {
     /**
      * Execute the action
