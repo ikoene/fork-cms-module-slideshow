@@ -28,7 +28,7 @@ class Model
         return (array) FrontendModel::getContainer()->get('database')->getRecords('SELECT DISTINCT i.*, m.url, m2.url as category_url, c.title as category_title
                                                             FROM slideshow_galleries AS i
                                                             INNER JOIN slideshow_images as p ON i.id = p.gallery_id
-                                                            INNER JOIN slideshow_categories AS c ON i.category_id = c.id                                                            
+                                                            INNER JOIN slideshow_categories AS c ON i.category_id = c.id
                                                             INNER JOIN meta as m ON i.meta_id = m.id
                                                             INNER JOIN meta AS m2 ON c.meta_id = m2.id
                                                             WHERE i.language = ? AND i.hidden = ? AND i.publish_on <= ? AND p.hidden = ?
@@ -45,9 +45,9 @@ class Model
     public static function getGalleryByURL($URL)
     {
         $db = FrontendModel::getContainer()->get('database');
-        
+
         return (array) $db->getRecord(
-            'SELECT i.*, m.*, i.id AS gallery_id, UNIX_TIMESTAMP(i.publish_on) AS publish_on, m.id AS meta_id, m.keywords AS meta_keywords, 
+            'SELECT i.*, m.*, i.id AS gallery_id, UNIX_TIMESTAMP(i.publish_on) AS publish_on, m.id AS meta_id, m.keywords AS meta_keywords,
             m.title AS meta_title, m.description AS meta_description
             FROM slideshow_galleries AS i
             INNER JOIN meta AS m ON i.meta_id = m.id
@@ -66,17 +66,17 @@ class Model
     public static function getGalleriesByURL($URL)
     {
         $db = FrontendModel::getContainer()->get('database');
-        
+
         return (array) $db->getRecords('SELECT DISTINCT i.*, m.url as category_url, m2.url as category_meta_url, m2.keywords as category_meta_keywords,
                                                             m2.title as category_meta_title, m2.description as category_meta_description,
                                                             m2.title_overwrite as category_title_overwrite, m2.description_overwrite as category_description_overwrite,
                                                             m2.keywords_overwrite as category_keywords_overwrite,
-                                                            m.url as meta_url, m.keywords AS meta_keywords, 
+                                                            m.url as meta_url, m.keywords AS meta_keywords,
                                                             m.id AS meta_id, m.title AS meta_title, m.description AS meta_description,
                                                             c.title as category_title
                                                             FROM slideshow_galleries AS i
                                                             INNER JOIN slideshow_images as p ON i.id = p.gallery_id
-                                                            INNER JOIN slideshow_categories AS c ON i.category_id = c.id                                                            
+                                                            INNER JOIN slideshow_categories AS c ON i.category_id = c.id
                                                             INNER JOIN meta as m ON i.meta_id = m.id
                                                             INNER JOIN meta AS m2 ON c.meta_id = m2.id
                                                             WHERE m2.url = ? AND i.language = ? AND i.hidden = ? AND i.publish_on <= ? AND p.hidden = ?
@@ -183,8 +183,6 @@ class Model
              LIMIT 1',
             array($id, 'N', FRONTEND_LANGUAGE, $date, 'N')
         );
-            //spoon::dump($navigation['next']);
-
         return $navigation;
     }
 
