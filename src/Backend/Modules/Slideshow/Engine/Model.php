@@ -125,10 +125,10 @@ class Model
 
         // build extra
         $extra = array( 'id' => NULL,
-                        'module' => 'slideshow',
+                        'module' => 'Slideshow',
                         'type' => 'widget',
                         'label' => 'Slideshow',
-                        'action' => 'slideshow',
+                        'action' => 'Slideshow',
                         'data' =>serialize(
                                         array(
                                             'extra_label' => $item['title'],
