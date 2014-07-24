@@ -53,16 +53,16 @@ class Detail extends FrontendBaseBlock
     {
         // check for errors
         if($this->URL->getParameter(1) === null) $this->redirect(FrontendNavigation::getURL(404));
-        
+
         // get the gallery meta based on the url
         $this->record = FrontendSlideshowModel::getGalleryByURL($this->URL->getParameter(1));
-        
+
         // get image data
         $this->slides = FrontendSlideshowModel::getImages($this->record['gallery_id']);
-                
+
         // get gallery data
         $this->gallery = FrontendSlideshowModel::getGallery($this->record['gallery_id']);
-        
+
     }
 
     /**
@@ -73,32 +73,32 @@ class Detail extends FrontendBaseBlock
     private function parse()
     {
         // add CSS and JS
-        $this->header->addCSS('/src/frontend/modules/' . $this->getModule() . '/layout/css/slideshow.css');
-        
+        $this->header->addCSS('/src/Frontend/Modules/' . $this->getModule() . '/Layout/Css/slideshow.css');
+
         // set meta
         $this->header->setPageTitle($this->record['meta_title'], ($this->record['title_overwrite'] == 'Y'));
         $this->header->addMetaDescription($this->record['meta_description'], ($this->record['description_overwrite'] == 'Y'));
         $this->header->addMetaKeywords($this->record['meta_keywords'], ($this->record['keywords_overwrite'] == 'Y'));
-        
+
         // assign
-        $this->tpl->assign('slideshow', $this->slides); 
+        $this->tpl->assign('slideshow', $this->slides);
         $this->tpl->assign('gallery', $this->gallery);
-        
+
         // assign navigation
         $this->tpl->assign('navigation', FrontendSlideshowModel::getNavigation($this->record['gallery_id']));
 
         // get module settings
         $this->settings = FrontendModel::getModuleSettings('Slideshow');
-        
+
         // should we use the settings per slide or the module settings
         if ($this->settings['settings_per_slide']==='true')
-            {               
+            {
                 // load slideshow settings
                 $this->tpl->assign('slideshowSettings', FrontendSlideshowModel::getGallerySettings($this->record['gallery_id']));
             }else{
                 // load module settings
                 $this->tpl->assign('slideshowSettings', FrontendModel::getModuleSettings('Slideshow'));
-            }       
+            }
 
     }
 }
