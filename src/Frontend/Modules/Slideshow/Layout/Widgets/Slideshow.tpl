@@ -4,7 +4,6 @@
     - {$slideshow}: contains an array with the images of the gallery, each element contains data about the image.
 *}
 
-
     {option:widgetGallery}
         {* Title *}
             <h3>
@@ -44,7 +43,6 @@
                 }
             }
         }
-
 
         // set custom slideshow options
         function flex{$widgetGallery.id}() {

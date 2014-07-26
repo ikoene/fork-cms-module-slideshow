@@ -10,7 +10,7 @@
  */
 
 ;(function ($) {
-  
+
   //FlexSlider: Object Instance
   $.flexslider = function(el, options) {
     var slider = el;
@@ -32,11 +32,11 @@
       slider.vertical = (slider.vars.slideDirection == "vertical");
       slider.prop = (slider.vertical) ? "top" : "marginLeft";
       slider.args = {};
-      
+
       //Test for webbkit CSS3 Animations
       slider.transitions = "webkitTransition" in document.body.style;
       if (slider.transitions) slider.prop = "-webkit-transform";
-      
+
       //Test for controlsContainer
       if (slider.vars.controlsContainer != "") {
         slider.controlsContainer = $(slider.vars.controlsContainer).eq($('.slides').index(slider.container));
@@ -47,7 +47,7 @@
         slider.manualControls = $(slider.vars.manualControls, ((slider.containerExists) ? slider.controlsContainer : slider));
         slider.manualExists = slider.manualControls.length > 0;
       }
-      
+
       ///////////////////////////////////////////////////////////////////
       // FlexSlider: Randomize Slides
       if (slider.vars.randomize) {
@@ -55,7 +55,7 @@
         slider.container.empty().append(slider.slides);
       }
       ///////////////////////////////////////////////////////////////////
-      
+
       ///////////////////////////////////////////////////////////////////
       // FlexSlider: Slider Animation Initialize
       if (slider.vars.animation.toLowerCase() == "slide") {
@@ -89,14 +89,14 @@
             slider.newSlides.width(slider.width()).css({"float": "left", "display": "block"});
           }, 100);
         }
-        
+
       } else { //Default to fade
         //Not supporting fade CSS3 transitions right now
         slider.transitions = false;
-        slider.slides.css({"width": "100%", "float": "left", "marginRight": "-100%"}).eq(slider.currentSlide).fadeIn(slider.vars.animationDuration); 
+        slider.slides.css({"width": "100%", "float": "left", "marginRight": "-100%"}).eq(slider.currentSlide).fadeIn(slider.vars.animationDuration);
       }
       ///////////////////////////////////////////////////////////////////
-      
+
       ///////////////////////////////////////////////////////////////////
       // FlexSlider: Control Nav
       if (slider.vars.controlNav) {
@@ -130,12 +130,12 @@
         });
       }
       ///////////////////////////////////////////////////////////////////
-      
+
       //////////////////////////////////////////////////////////////////
       //FlexSlider: Direction Nav
       if (slider.vars.directionNav) {
         var directionNavScaffold = $('<ul class="flex-direction-nav"><li><a class="prev" href="#">' + slider.vars.prevText + '</a></li><li><a class="next" href="#">' + slider.vars.nextText + '</a></li></ul>');
-        
+
         if (slider.containerExists) {
           $(slider.controlsContainer).append(directionNavScaffold);
           slider.directionNav = $('.flex-direction-nav li a', slider.controlsContainer);
@@ -143,7 +143,7 @@
           slider.append(directionNavScaffold);
           slider.directionNav = $('.flex-direction-nav li a', slider);
         }
-        
+
         //Set initial disable styles if necessary
         if (!slider.vars.animationLoop) {
           if (slider.currentSlide == 0) {
@@ -152,18 +152,18 @@
             slider.directionNav.filter('.next').addClass('disabled');
           }
         }
-        
+
         slider.directionNav.bind(slider.eventType, function(event) {
           event.preventDefault();
           var target = ($(this).hasClass('next')) ? slider.getTarget('next') : slider.getTarget('prev');
-          
+
           if (slider.canAdvance(target)) {
             slider.flexAnimate(target, slider.vars.pauseOnAction);
           }
         });
       }
       //////////////////////////////////////////////////////////////////
-      
+
       //////////////////////////////////////////////////////////////////
       //FlexSlider: Keyboard Nav
       if (slider.vars.keyboardNav && $('ul.slides').length == 1) {
@@ -178,7 +178,7 @@
             } else if (event.keyCode == 37){
               var target = slider.getTarget('prev');
             }
-        
+
             if (slider.canAdvance(target)) {
               slider.flexAnimate(target, slider.vars.pauseOnAction);
             }
@@ -187,7 +187,7 @@
         $(document).bind('keyup', keyboardMove);
       }
       //////////////////////////////////////////////////////////////////
-      
+
       ///////////////////////////////////////////////////////////////////
       // FlexSlider: Mousewheel interaction
       if (slider.vars.mousewheel) {
@@ -197,14 +197,14 @@
           e = e ? e : window.event;
           var wheelData = e.detail ? e.detail * -1 : e.wheelDelta / 40,
               target = (wheelData < 0) ? slider.getTarget('next') : slider.getTarget('prev');
-          
+
           if (slider.canAdvance(target)) {
             slider.flexAnimate(target, slider.vars.pauseOnAction);
           }
         });
       }
       ///////////////////////////////////////////////////////////////////
-      
+
       //////////////////////////////////////////////////////////////////
       //FlexSlider: Slideshow Setup
       if (slider.vars.slideshow) {
@@ -223,12 +223,12 @@
         slider.animatedSlides = setInterval(slider.animateSlides, slider.vars.slideshowSpeed);
       }
       //////////////////////////////////////////////////////////////////
-      
+
       //////////////////////////////////////////////////////////////////
       //FlexSlider: Pause/Play
       if (slider.vars.pausePlay) {
         var pausePlayScaffold = $('<div class="flex-pauseplay"><span></span></div>');
-      
+
         if (slider.containerExists) {
           slider.controlsContainer.append(pausePlayScaffold);
           slider.pausePlay = $('.flex-pauseplay span', slider.controlsContainer);
@@ -236,10 +236,10 @@
           slider.append(pausePlayScaffold);
           slider.pausePlay = $('.flex-pauseplay span', slider);
         }
-        
+
         var pausePlayState = (slider.vars.slideshow) ? 'pause' : 'play';
         slider.pausePlay.addClass(pausePlayState).text((pausePlayState == 'pause') ? slider.vars.pauseText : slider.vars.playText);
-        
+
         slider.pausePlay.bind(slider.eventType, function(event) {
           event.preventDefault();
           if ($(this).hasClass('pause')) {
@@ -252,7 +252,7 @@
         });
       }
       //////////////////////////////////////////////////////////////////
-      
+
       //////////////////////////////////////////////////////////////////
       //FlexSlider:Touch Swip Gestures
       //Some brilliant concepts adapted from the following sources
@@ -270,13 +270,13 @@
           dx,
           startT,
           scrolling = false;
-              
+
         slider.each(function() {
           if ('ontouchstart' in document.documentElement) {
             this.addEventListener('touchstart', onTouchStart, false);
           }
         });
-        
+
         function onTouchStart(e) {
           if (slider.animating) {
             e.preventDefault();
@@ -309,7 +309,7 @@
             }
           }
         }
-        
+
         function onTouchEnd(e) {
           slider.animating = false;
           if (slider.animatingTo == slider.currentSlide && !scrolling && !(dx == null)) {
@@ -320,7 +320,7 @@
               slider.flexAnimate(slider.currentSlide, slider.vars.pauseOnAction);
             }
           }
-          
+
           //Finish the touch by undoing the touch session
           this.removeEventListener('touchmove', onTouchMove, false);
           this.removeEventListener('touchend', onTouchEnd, false);
@@ -331,7 +331,7 @@
         }
       }
       //////////////////////////////////////////////////////////////////
-      
+
       //////////////////////////////////////////////////////////////////
       //FlexSlider: Resize Functions (If necessary)
       if (slider.vars.animation.toLowerCase() == "slide") {
@@ -358,7 +358,7 @@
         });
       }
       //////////////////////////////////////////////////////////////////
-      
+
       //////////////////////////////////////////////////////////////////
       //FlexSlider: Destroy the slider entity
       //Destory is not included in the minified version right now, but this is a working function for anyone who wants to include it.
@@ -379,31 +379,31 @@
       }
       */
       //////////////////////////////////////////////////////////////////
-      
+
       //FlexSlider: start() Callback
       slider.vars.start(slider);
     }
-    
+
     //FlexSlider: Animation Actions
     slider.flexAnimate = function(target, pause) {
       if (!slider.animating) {
         //Animating flag
         slider.animating = true;
-        
+
         //FlexSlider: before() animation Callback
         slider.animatingTo = target;
         slider.vars.before(slider);
-        
+
         //Optional paramter to pause slider when making an anmiation call
         if (pause) {
           slider.pause();
         }
-        
-        //Update controlNav   
+
+        //Update controlNav
         if (slider.vars.controlNav) {
           slider.controlNav.removeClass('active').eq(target).addClass('active');
         }
-        
+
         //Is the slider at either end
         slider.atEnd = (target == 0 || target == slider.count - 1) ? true : false;
         if (!slider.vars.animationLoop && slider.vars.directionNav) {
@@ -415,16 +415,16 @@
             slider.directionNav.removeClass('disabled');
           }
         }
-        
+
         if (!slider.vars.animationLoop && target == slider.count - 1) {
           slider.pause();
           //FlexSlider: end() of cycle Callback
           slider.vars.end(slider);
         }
-        
+
         if (slider.vars.animation.toLowerCase() == "slide") {
           var dimension = (slider.vertical) ? slider.slides.filter(':first').height() : slider.slides.filter(':first').width();
-          
+
           if (slider.currentSlide == 0 && target == slider.count - 1 && slider.vars.animationLoop && slider.direction != "next") {
             slider.slideString = "0px";
           } else if (slider.currentSlide == slider.count - 1 && target == 0 && slider.vars.animationLoop && slider.direction != "prev") {
@@ -435,11 +435,11 @@
           slider.args[slider.prop] = slider.slideString;
 
           if (slider.transitions) {
-              slider.setTransition(slider.vars.animationDuration); 
+              slider.setTransition(slider.vars.animationDuration);
               slider.args[slider.prop] = (slider.vertical) ? "translate3d(0," + slider.slideString + ",0)" : "translate3d(" + slider.slideString + ",0,0)";
               slider.container.css(slider.args).one("webkitTransitionEnd transitionend", function(){
                 slider.wrapup(dimension);
-              });   
+              });
           } else {
             slider.container.animate(slider.args, slider.vars.animationDuration, function(){
               slider.wrapup(dimension);
@@ -453,7 +453,7 @@
         }
       }
     }
-    
+
     //FlexSlider: Function to minify redundant animation actions
     slider.wrapup = function(dimension) {
       if (slider.vars.animation == "slide") {
@@ -479,14 +479,14 @@
       //FlexSlider: after() animation Callback
       slider.vars.after(slider);
     }
-    
+
     //FlexSlider: Automatic Slideshow
     slider.animateSlides = function() {
       if (!slider.animating) {
         slider.flexAnimate(slider.getTarget("next"));
       }
     }
-    
+
     //FlexSlider: Automatic Slideshow Pause
     slider.pause = function() {
       clearInterval(slider.animatedSlides);
@@ -494,7 +494,7 @@
         slider.pausePlay.removeClass('pause').addClass('play').text(slider.vars.playText);
       }
     }
-    
+
     //FlexSlider: Automatic Slideshow Start/Resume
     slider.resume = function() {
       slider.animatedSlides = setInterval(slider.animateSlides, slider.vars.slideshowSpeed);
@@ -502,7 +502,7 @@
         slider.pausePlay.removeClass('play').addClass('pause').text(slider.vars.pauseText);
       }
     }
-    
+
     //FlexSlider: Helper function for non-looping sliders
     slider.canAdvance = function(target) {
       if (!slider.vars.animationLoop && slider.atEnd) {
@@ -515,9 +515,9 @@
         }
       } else {
         return true;
-      }  
+      }
     }
-    
+
     //FlexSlider: Helper function to determine animation target
     slider.getTarget = function(dir) {
       slider.direction = dir;
@@ -527,7 +527,7 @@
         return (slider.currentSlide == 0) ? slider.count - 1 : slider.currentSlide - 1;
       }
     }
-    
+
     //FlexSlider: Helper function to set CSS3 transitions
     slider.setTransition = function(dur) {
       slider.container.css({'-webkit-transition-duration': (dur/1000) + "s"});
@@ -536,7 +536,7 @@
     //FlexSlider: Initialize
     slider.init();
   }
-  
+
   //FlexSlider: Default Settings
   $.flexslider.defaults = {
     animation: "fade",              //String: Select your animation type, "fade" or "slide"
@@ -565,7 +565,7 @@
     after: function(){},            //Callback: function(slider) - Fires after each slider animation completes
     end: function(){}               //Callback: function(slider) - Fires when the slider reaches the last slide (asynchronous)
   }
-  
+
   //FlexSlider: Plugin Function
   $.fn.flexslider = function(options) {
     return this.each(function() {
@@ -576,6 +576,6 @@
         new $.flexslider($(this), options);
       }
     });
-  }  
+  }
 
 })(jQuery);

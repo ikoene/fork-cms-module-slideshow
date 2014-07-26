@@ -95,7 +95,7 @@ class Detail extends FrontendBaseBlock
             {
                 // load slideshow settings
                 $this->tpl->assign('slideshowSettings', FrontendSlideshowModel::getGallerySettings($this->record['gallery_id']));
-            }else{
+            } else {
                 // load module settings
                 $this->tpl->assign('slideshowSettings', FrontendModel::getModuleSettings('Slideshow'));
             }
