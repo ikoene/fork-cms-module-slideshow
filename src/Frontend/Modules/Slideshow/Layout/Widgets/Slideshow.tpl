@@ -10,16 +10,16 @@
             <h3>
                 {$widgetGallery.title}
             </h3>
-            
+
         {* Slideshow *}
             <div class="flex-container" id="flex{$widgetGallery.id}" style="max-width:{$widgetGallery.width}px">
                 <div class="flexslider">
                     <div class="flexsliderwrap{$widgetGallery.id}">
                         <ul class="slides">
-                        {iteration:widgetSlideshow}                 
+                        {iteration:widgetSlideshow}
                             <li>
                             {option:widgetSlideshow.link}<a href="{$widgetSlideshow.link}">{/option:widgetSlideshow.link}
-                            <img src="/src/frontend/files/userfiles/images/slideshow/{$widgetSlideshow.filename}" alt="{$widgetSlideshow.title}" />
+                            <img src="/src/Frontend/Files/userfiles/images/slideshow/{$widgetSlideshow.filename}" alt="{$widgetSlideshow.title}" />
                             {option:widgetSlideshow.link}</a>{/option:widgetSlideshow.link}
                             {option:widgetSlideshow.title}<p class="flex-caption">{$widgetSlideshow.title}</p>{/option:widgetSlideshow.title}
                             </li>
@@ -28,7 +28,7 @@
                     </div>
                 </div>
             </div>
-                      
+
         <script type="text/javascript">
         // loading multiple onload functions when using multiple widgets on one page
         function addLoadEvent(func) {
@@ -45,8 +45,8 @@
             }
         }
 
-    
-        // set custom slideshow options      
+
+        // set custom slideshow options
         function flex{$widgetGallery.id}() {
             $('.flexsliderwrap{$widgetGallery.id}').flexslider({
                 controlsContainer: "#flex{$widgetGallery.id}",
@@ -63,7 +63,7 @@
                 animationLoop:{$widgetSlideshowSettings.animation_loop}
             });
         };
-    
+
         addLoadEvent(flex{$widgetGallery.id});
     </script>
 

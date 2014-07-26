@@ -6,16 +6,16 @@
 *}
 
 {option:gallery}
-    
-        {* Title *}         
+
+        {* Title *}
             <h3>
                 {$gallery.title}
             </h3>
 
         {* Meta *}
             <ul>
-                <li>            
-                {$gallery.publish_on|date:{$dateFormatLong}:{$LANGUAGE}}    
+                <li>
+                {$gallery.publish_on|date:{$dateFormatLong}:{$LANGUAGE}}
                 {option:gallery.description}{$gallery.description}{/option:gallery.description}
                 </li>
             </ul>
@@ -25,10 +25,10 @@
                 <div class="flexslider">
                     <div class="flexsliderwrap{$gallery.id}">
                         <ul class="slides">
-                            {iteration:slideshow}                   
+                            {iteration:slideshow}
                             <li>
                             {option:slideshow.link}<a href="{$slideshow.link}">{/option:slideshow.link}
-                            <img src="/src/frontend/files/userfiles/images/slideshow/{$slideshow.filename}" alt="{$slideshow.title}" />
+                            <img src="/src/Frontend/Files/userfiles/images/slideshow/{$slideshow.filename}" alt="{$slideshow.title}" />
                             {option:slideshow.link}</a>{/option:slideshow.link}
                             {option:slideshow.title}<p class="flex-caption">{$slideshow.title}</p>{/option:slideshow.title}
                             </li>
@@ -37,7 +37,7 @@
                     </div>
                 </div>
             </div>
-         
+
         {* Navigation *}
             <ul class="slideshowPageNavigation">
                 {option:navigation.previous}
@@ -68,11 +68,11 @@
                 }
             }
         }
-    
-        // set custom slideshow options      
-        function flex{$gallery.id}() {                   
+
+        // set custom slideshow options
+        function flex{$gallery.id}() {
             $('.flexsliderwrap{$gallery.id}').flexslider({
-                controlsContainer: ".flex-container",           
+                controlsContainer: ".flex-container",
                 animation: "{$slideshowSettings.animation_type}",
                 slideDirection: "{$slideshowSettings.slide_direction}",
                 slideshowSpeed: {$slideshowSettings.slideshow_speed}000,
@@ -86,8 +86,8 @@
                 animationLoop:{$slideshowSettings.animation_loop}
             });
         };
-    
+
         addLoadEvent(flex{$gallery.id});
         </script>
-            
+
 {/option:gallery}

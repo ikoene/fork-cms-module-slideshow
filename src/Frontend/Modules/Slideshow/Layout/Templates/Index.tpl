@@ -4,33 +4,33 @@
 *}
 
 {option:galleries}
-    
+
     {iteration:galleries}
-        
-        {* Title *}         
+
+        {* Title *}
             <h3>
                 <a href="{$full_url}/{$galleries.url}">{$galleries.title}</a>
             </h3>
 
             <ul>
                 <li>
-                {* Meta *}                          
+                {* Meta *}
                 {$galleries.publish_on|date:{$dateFormatLong}:{$LANGUAGE}}
-                
+
                 {* Category*}
                 {$lblIn} {$lblThe} {$lblCategory} <a href="{$full_url_category}/{$galleries.category_url}" title="{$galleries.category_title}">{$galleries.category_title}</a>
-                
-                {* Description *}                          
+
+                {* Description *}
                 {option:galleries.description}{$galleries.description}{/option:galleries.description}
                 </li>
             </ul>
-            
-            {option:galleries.filename}     
+
+            {option:galleries.filename}
                 <a href="{$full_url}/{$galleries.url}">
-                    <img src="{$FRONTEND_FILES_URL}/userfiles/images/slideshow/thumbnails/{$galleries.filename}" alt="{$galleries.title}" />
+                    <img src="/src/Frontend/Files/userfiles/images/slideshow/thumbnails/{$galleries.filename}" alt="{$galleries.title}" />
                 </a>
             {/option:galleries.filename}
-        
+
     {/iteration:galleries}
-        
+
 {/option:galleries}
