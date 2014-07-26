@@ -67,7 +67,7 @@ class Model
      * @return  array
      */ public static function getPreview($filename)
     {
-        $path = FRONTEND_FILES_URL . '/userfiles/images/slideshow/thumbnails/' . $filename;
+        $path = '/src/Frontend/Files/userfiles/images/slideshow/thumbnails/' . $filename;
         return '<img src="' . $path . '" width="50" height="50" />';
     }
 
@@ -80,7 +80,7 @@ class Model
         // the url allready exists
         if($filename != null)
         {
-            $path = FRONTEND_FILES_URL . '/userfiles/images/slideshow/thumbnails/' . $filename;
+            $path = '/src/Frontend/Files/userfiles/images/slideshow/thumbnails/' . $filename;
             return '<img src="' . $path . '" width="50" height="50" />';
         }
     }

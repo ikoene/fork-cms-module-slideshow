@@ -13,14 +13,14 @@
     <p>
             {$lblLink|ucfirst}<br/>
             {$txtLink} {$txtLinkError}
-    </p>    
+    </p>
     <div class="ui-tabs">
         <div class="ui-tabs-panel">
             <div class="options">
                 <table border="0" cellspacing="0" cellpadding="0" width="100%">
                     <tr>
-                        <td id="leftColumn">         
-                            
+                        <td id="leftColumn">
+
                             <div class="box">
                                 <div class="heading">
                                     <h3>{$lblDescription|ucfirst}<abbr title="{$lblRequiredField}"></abbr></h3>
@@ -31,18 +31,18 @@
                             </div>
                             <p>
                                 {option:item.filename}
-                                    <img src="{$FRONTEND_FILES_URL}/userfiles/images/slideshow/thumbnails/{$item.filename}" alt="" />
+                                    <img src="/src/Frontend/Files/userfiles/images/slideshow/thumbnails/{$item.filename}" alt="" />
                                 {/option:item.filename}
                                 <label for="filename">Afbeelding</label>
                                 {$fileFilename} {$fileFilenameError}
                             </p>
                         </td>
-                        
+
                         <td id="sidebar">
-                            <div id="publishOptions" class="box"> 
+                            <div id="publishOptions" class="box">
                                 <div class="heading">
                                     <h3>{$lblStatus|ucfirst}</h3>
-                                </div>                                                   
+                                </div>
                                 <div class="options">
                                     <ul class="inputList">
                                         {iteration:hidden}
