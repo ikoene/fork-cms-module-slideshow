@@ -8,7 +8,7 @@ namespace Backend\Modules\Slideshow\Actions;
  * @package     backend
  * @subpackage  slideshow
  *
- * @author      Koen Vinken <koen@tagz.be> 
+ * @author      Koen Vinken <koen@tagz.be>
  * @since       1.0
  */
 
@@ -59,7 +59,7 @@ class Edit extends BackendBaseActionEdit
             $this->getData();
 
             // load the form
-            $this->loadForm();      
+            $this->loadForm();
 
             // load datagrids
             $this->loadDataGrid();
@@ -89,7 +89,7 @@ class Edit extends BackendBaseActionEdit
         // get the record
         $this->record = BackendSlideshowModel::getGallery($this->id);
         $this->settings = BackendSlideshowModel::getSettings($this->id);
-        
+
         // get categories
         $this->categories = BackendSlideshowModel::getCategoriesForDropdown();
     }
@@ -115,19 +115,19 @@ class Edit extends BackendBaseActionEdit
         $this->frm->addImage('filename');
         $this->frm->addCheckbox('delete_image');
         $this->frm->addText('width', $this->record['width']);
-        $this->frm->addText('height', $this->record['height']);     
+        $this->frm->addText('height', $this->record['height']);
         $this->frm->addEditor('description', $this->record['description']);
         $this->frm->addDropdown('categories', $this->categories, $this->record['category_id']);
         $this->frm->addRadiobutton('hidden', $rbtHiddenValues, $this->record['hidden']);
         $this->frm->addDate('publish_on_date', $this->record['publish_on']);
         $this->frm->addTime('publish_on_time',  date('H:i', $this->record['publish_on']));
         $this->frm->addCheckbox('id');
-                
+
         // create settingsform elements
         $this->frm->addDropdown('animation_type', array('slide' => BL::lbl('SlideshowSlide', $this->getModule()), 'fade' => BL::lbl('SlideshowFade', $this->getModule())), $this->settings['animation_type']);
         $this->frm->addDropdown('slide_direction', array('horizontal' => BL::lbl('SlideshowHorizontal', $this->getModule()), 'vertical' => BL::lbl('SlideshowVertical', $this->getModule())), $this->settings['slide_direction']);
-        $this->frm->addDropdown('slideshow_speed', array_combine(range(1, 30), range(1, 30)), $this->settings['slideshow_speed']);      
-        $this->frm->addDropdown('animation_duration', array_combine(range(1, 5), range(1, 5)), $this->settings['animation_duration']);  
+        $this->frm->addDropdown('slideshow_speed', array_combine(range(1, 30), range(1, 30)), $this->settings['slideshow_speed']);
+        $this->frm->addDropdown('animation_duration', array_combine(range(1, 5), range(1, 5)), $this->settings['animation_duration']);
         $this->frm->addCheckbox('direct_navigation', ($this->settings['direct_navigation'] === 'true' ? true : false));
         $this->frm->addCheckbox('control_navigation', ($this->settings['control_navigation'] === 'true' ? true : false));
         $this->frm->addCheckbox('keyboard_navigation', ($this->settings['keyboard_navigation'] === 'true' ? true : false));
@@ -135,13 +135,13 @@ class Edit extends BackendBaseActionEdit
         $this->frm->addCheckbox('random_order', ($this->settings['random_order'] === 'true' ? true : false));
         $this->frm->addCheckbox('auto_animate', ($this->settings['auto_animate'] === 'true' ? true : false));
         $this->frm->addCheckbox('animation_loop', ($this->settings['animation_loop'] === 'true' ? true : false));
-        
+
         // meta object
         $this->meta = new BackendMeta($this->frm, $this->record['meta_id'], 'title', true);
 
         // set callback for generating a unique URL
-        $this->meta->setURLCallback('Backend\Modules\Slideshow\Engine\Model', 'getURLForGallery', array($this->record['id']));      
-        
+        $this->meta->setURLCallback('Backend\Modules\Slideshow\Engine\Model', 'getURLForGallery', array($this->record['id']));
+
     }
 
     /**
@@ -160,20 +160,20 @@ class Edit extends BackendBaseActionEdit
 
         // disable paging
         $this->dataGrid->setPaging(false);
-        
-        // create a thumbnail preview       
+
+        // create a thumbnail preview
         $this->dataGrid->addColumn('preview', 'Preview');
-        $this->dataGrid->setColumnFunction(array('Backend\Modules\Slideshow\Engine\Model', 'getPreview'),'[filename]', 'preview', true);                    
-    
+        $this->dataGrid->setColumnFunction(array('Backend\Modules\Slideshow\Engine\Model', 'getPreview'),'[filename]', 'preview', true);
+
         // enable drag and drop
         $this->dataGrid->enableSequenceByDragAndDrop();
-        
+
         // our JS needs to know an id, so we can send the new order
         $this->dataGrid->setRowAttributes(array('id' => '[id]'));
-        $this->dataGrid->setAttributes(array('data-action' => "image_sequence"));       
-        
+        $this->dataGrid->setAttributes(array('data-action' => "image_sequence"));
+
         // hide
-        $this->dataGrid->setColumnHidden('filename');               
+        $this->dataGrid->setColumnHidden('filename');
 
         // add edit column
         $this->dataGrid->addColumn('edit', null, BL::lbl('Edit'), BackendModel::createURLForAction('edit_image') . '&amp;id=[id]&amp;galleryid='. $this->id, BL::lbl('Edit'));
@@ -198,29 +198,29 @@ class Edit extends BackendBaseActionEdit
     {
         // call parent
         parent::parse();
-        
+
         $url = BackendModel::getURLForBlock($this->URL->getModule(), 'detail');
         $url404 = BackendModel::getURL(404);
 
         // parse additional variables
-        if($url404 != $url) $this->tpl->assign('detailURL', SITE_URL . $url);       
-        
+        if($url404 != $url) $this->tpl->assign('detailURL', SITE_URL . $url);
+
         // assign the active record and additional variables
         $this->tpl->assign('item', $this->record);
-        
+
         $this->tpl->assign('dataGrid', ($this->dataGrid->getNumResults() != 0) ? $this->dataGrid->getContent() : false);
 
         // assign categories
         $this->tpl->assign('categories', $this->categories);
-        
+
         // get module settings
         $this->settings = BackendModel::getModuleSettings('Slideshow');
         /*
         if ($this->settings['settings_per_slide']==='true')
         {
-            $this->tpl->assign('settingsPerSlideshow', true);   
+            $this->tpl->assign('settingsPerSlideshow', true);
         }
-        */      
+        */
     }
 
     /**
@@ -238,12 +238,12 @@ class Edit extends BackendBaseActionEdit
 
             // validate fields
             $this->frm->getField('title')->isFilled(BL::err('TitleIsRequired'));
-            
+
             $this->frm->getField('width')->isFilled(BL::err('WidthIsRequired'));
-            
+
             $this->frm->getField('publish_on_date')->isValid(BL::err('DateIsInvalid'));
             $this->frm->getField('publish_on_time')->isValid(BL::err('TimeIsInvalid'));
-                        
+
                 if($this->frm->getField('filename')->isFilled())
                 {
                     // correct extension
@@ -255,7 +255,7 @@ class Edit extends BackendBaseActionEdit
                 }
 
             $this->frm->getField('categories')->isFilled(BL::err('CategoryIsRequired'));
-            $this->meta->validate();        
+            $this->meta->validate();
 
             // no errors?
             if($this->frm->isCorrect())
@@ -275,11 +275,11 @@ class Edit extends BackendBaseActionEdit
                 $settings['animation_loop'] = $this->frm->getField('animation_loop')->getChecked() ? 'true' : 'false';
 
                 // update gallery values in database
-                BackendSlideshowModel::updateGallerySettings($settings);                
-            
+                BackendSlideshowModel::updateGallerySettings($settings);
+
                 // build item
                 $item['id'] = $this->id;
-                $item['meta_id'] = $this->meta->save(true);             
+                $item['meta_id'] = $this->meta->save(true);
                 $item['language'] = $this->record['language'];
                 $item['category_id'] = $this->frm->getField('categories')->getValue();
                 $item['title'] = $this->frm->getField('title')->getValue();
@@ -287,7 +287,7 @@ class Edit extends BackendBaseActionEdit
                 $item['width'] = $this->frm->getField('width')->getValue();
                 $item['height'] = $this->frm->getField('height')->getValue();
                 $item['publish_on'] = BackendModel::getUTCDate(null, BackendModel::getUTCTimestamp($this->frm->getField('publish_on_date'), $this->frm->getField('publish_on_time')));
-                $item['edited_on'] = BackendModel::getUTCDate();                                
+                $item['edited_on'] = BackendModel::getUTCDate();
                 $item['hidden'] = $this->frm->getField('hidden')->getValue();
 
                 // check if the category was changed
@@ -296,19 +296,19 @@ class Edit extends BackendBaseActionEdit
                     // if so, adjust the sequence to the new category
                     $item['sequence'] = BackendSlideshowModel::getMaximumSlideshowGallerySequence($this->frm->getField('categories')->getValue()) + 1;
                 }
-                
+
                 // if the image should be deleted
                 if($this->frm->getField('delete_image')->isChecked())
                 {
                     $fs = new Filesystem();
-                    
+
                     // delete the image
                     $fs->remove(FRONTEND_FILES_PATH . '/userfiles/images/slideshow/thumbnails/' . $this->record['filename']);
 
                     // reset the name
                     $item['filename'] = null;
-                }               
-                
+                }
+
                 if($this->frm->getField('filename')->isFilled())
                 {
                     // only delete the picture when there is one allready
@@ -318,57 +318,57 @@ class Edit extends BackendBaseActionEdit
 
                         $fs->remove(FRONTEND_FILES_PATH . '/userfiles/images/slideshow/thumbnails/' . $this->record['filename']);
                     }
-                    
+
                     // create new filename
                     $filename = rand(0,100000).".".$this->frm->getField('filename')->getExtension();
 
                     // add filename to item
                     $item['filename'] = $filename;
-                    
+
                     // upload the image
                     $this->frm->getField('filename')->moveFile(FRONTEND_FILES_PATH . '/userfiles/images/slideshow/thumbnails/' . $filename);
                 }
-                
+
                 // update gallery values in database
                 BackendSlideshowModel::updateGallery($item);
-                
+
                 $item['extra_id'] = BackendSlideshowModel::getGalleryExtraId($this->id);
-                
+
                 // update the extra
                 BackendSlideshowModel::updateWidgetExtras($item);
 
                 // trigger event
                 BackendModel::triggerEvent($this->getModule(), 'after_edit', array('item' => $item));
-                            
+
                 // get the gallery data
                 $item = BackendSlideshowModel::getGallery($this->id);
-                
+
                 // trace the action and get the ids
                 $action = $this->frm->getField('action')->getValue();
                 $ids = (array) $_POST['id'];
-                                
+
                 // Mass image delete action
                 if($action == 'delete')
                 {
                     foreach($ids as $id)
-                    {   
-                        // double check if the image exists                                     
+                    {
+                        // double check if the image exists
                         if($id !== null && BackendSlideshowModel::existsImage($id))
                         {
                             // get item
                             $this->record = BackendSlideshowModel::getImage($id);
-                            
+
                             $fs = new Filesystem();
 
                             // delete the image and thumbnail
                             $fs->remove(FRONTEND_FILES_PATH . '/userfiles/images/slideshow/thumbnails/' . $this->record['filename']);
-                            $fs->remove(FRONTEND_FILES_PATH . '/userfiles/images/slideshow/' . $this->record['filename']);          
+                            $fs->remove(FRONTEND_FILES_PATH . '/userfiles/images/slideshow/' . $this->record['filename']);
 
                             // delete item
                             BackendSlideshowModel::deleteImage($this->record['id']);
                         }
                     }
-                    // redirect to edit, tab "images                
+                    // redirect to edit, tab "images
                     $this->redirect(BackendModel::createURLForAction('edit') . '&report=deleted&id=' . $this->id . '#images');
                 }
                 elseif($action == 'publish')
@@ -376,7 +376,7 @@ class Edit extends BackendBaseActionEdit
                     // set new status
                     BackendSlideshowModel::updatePublishedImage($ids);
 
-                    // redirect to edit, tab #images                                        
+                    // redirect to edit, tab #images
                     $this->redirect(BackendModel::createURLForAction('edit') . '&report=saved&id=' . $this->id . '#images');
                 }
                 elseif($action == 'hide')
@@ -384,13 +384,13 @@ class Edit extends BackendBaseActionEdit
                     // set new status
                     BackendSlideshowModel::updateHiddenImage($ids);
 
-                    // redirect to edit, tab #images                                        
+                    // redirect to edit, tab #images
                     $this->redirect(BackendModel::createURLForAction('edit') . '&report=saved&id=' . $this->id . '#images');
                 }
 
                 // everything is saved, so redirect to the overview
                 $this->redirect(BackendModel::createURLForAction('index') . '&report=saved&var=' . urlencode($item['title']) . '&highlight=row-' . $item['id']);
-                
+
             }
         }
     }

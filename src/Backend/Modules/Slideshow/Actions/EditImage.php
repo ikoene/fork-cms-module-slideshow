@@ -98,11 +98,11 @@ class EditImage extends BackendBaseActionEdit
         // create elements
         $this->frm->addText('title', $this->record['title'])->setAttribute('id', 'title');
         $this->frm->getField('title')->setAttribute('class', 'title ' . $this->frm->getField('title')->getAttribute('class'));
-        $this->frm->addText('link', $this->record['link'])->setAttribute('id', 'link');     
-        $this->frm->getField('link')->setAttribute('class', 'title ' . $this->frm->getField('link')->getAttribute('class'));        
+        $this->frm->addText('link', $this->record['link'])->setAttribute('id', 'link');
+        $this->frm->getField('link')->setAttribute('class', 'title ' . $this->frm->getField('link')->getAttribute('class'));
         $this->frm->addImage('filename');
         $this->frm->addEditor('description', $this->record['description']);
-        $this->frm->addRadiobutton('hidden', $rbtHiddenValues, $this->record['hidden']);        
+        $this->frm->addRadiobutton('hidden', $rbtHiddenValues, $this->record['hidden']);
     }
 
 
@@ -153,37 +153,38 @@ class EditImage extends BackendBaseActionEdit
                 $item['id'] = $this->id;
                 $item['language'] = $this->record['language'];
                 $item['title'] = $this->frm->getField('title')->getValue();
-                $item['link'] = $this->frm->getField('link')->getValue();               
+                $item['link'] = $this->frm->getField('link')->getValue();
                 $item['description'] = $this->frm->getField('description')->getValue(true);
-                $item['hidden'] = $this->frm->getField('hidden')->getValue();               
-                
+                $item['hidden'] = $this->frm->getField('hidden')->getValue();
+
                 //get module settings
-                $dimensions = BackendModel::getModuleSettings('slideshow');             
-                
+                $dimensions = BackendModel::getModuleSettings('slideshow');
+
                 if($this->frm->getField('filename')->isFilled())
                 {
                     // only delete the picture when there is one allready
                     if(!empty($this->record['filename']))
                     {
                         $fs = new Filesystem();
-                        
+
                         $fs->remove(FRONTEND_FILES_PATH . '/userfiles/images/slideshow/thumbnails/' . $this->record['filename']);
                         $fs->remove(FRONTEND_FILES_PATH . '/userfiles/images/slideshow/' . $this->record['filename']);
                     }
-                    
+
                     // create new filename
                     $filename = rand(0,100000).".".$this->frm->getField('filename')->getExtension();
 
                     // add filename to item
                     $item['filename'] = $filename;
-                    
+
                     // If height is not set, scale the image proportionally to the given width
                     if($this->record2['height']<>0){
-                    // upload image width gallery dimensions (thumbnail always 100 x 100... for now)
-                    $this->frm->getField('filename')->createThumbnail(FRONTEND_FILES_PATH . '/userfiles/images/slideshow/' . $filename, $this->record2['width'], $this->record2['height'], true, false, 100);
-                    }else{
-                    $this->frm->getField('filename')->createThumbnail(FRONTEND_FILES_PATH . '/userfiles/images/slideshow/' . $filename, $this->record2['width'], null, true, true, 100);
+                        // upload image width gallery dimensions (thumbnail always 100 x 100... for now)
+                        $this->frm->getField('filename')->createThumbnail(FRONTEND_FILES_PATH . '/userfiles/images/slideshow/' . $filename, $this->record2['width'], $this->record2['height'], true, false, 100);
+                    } else {
+                        $this->frm->getField('filename')->createThumbnail(FRONTEND_FILES_PATH . '/userfiles/images/slideshow/' . $filename, $this->record2['width'], null, true, true, 100);
                     }
+
                     // create thumbnail
                     $this->frm->getField('filename')->createThumbnail(FRONTEND_FILES_PATH . '/userfiles/images/slideshow/thumbnails/' . $filename, null, 100, false, true, 100);
                 }

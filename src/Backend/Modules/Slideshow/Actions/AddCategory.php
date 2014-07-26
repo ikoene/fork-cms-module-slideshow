@@ -8,7 +8,7 @@ namespace Backend\Modules\Slideshow\Actions;
  * @package     backend
  * @subpackage  slideshow
  *
- * @author      Koen Vinken <koen@tagz.be> 
+ * @author      Koen Vinken <koen@tagz.be>
  * @since       1.0
  */
 
@@ -60,10 +60,9 @@ class AddCategory extends BackendBaseActionAdd
 
         // meta object
         $this->meta = new BackendMeta($this->frm, null, 'title', true);
-        
+
         // set callback for generating a unique URL
-        $this->meta->setURLCallback('Backend\Modules\Slideshow\Engine\Model', 'getURLForCategory');     
-                
+        $this->meta->setURLCallback('Backend\Modules\Slideshow\Engine\Model', 'getURLForCategory');
     }
 
 
@@ -105,7 +104,7 @@ class AddCategory extends BackendBaseActionAdd
                 $this->redirect(BackendModel::createURLForAction('categories') . '&report=added-category&var=' . urlencode($item['title']) . '&highlight=row-' . $item['id']);
             }
         }
-    }   
+    }
 }
 
 ?>

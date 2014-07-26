@@ -8,7 +8,7 @@ namespace Backend\Modules\Slideshow\Actions;
  * @package     backend
  * @subpackage  slideshow
  *
- * @author      Koen Vinken <koen@tagz.be>  
+ * @author      Koen Vinken <koen@tagz.be>
  * @since       1.0
  */
 
@@ -83,12 +83,12 @@ class EditCategory extends BackendBaseActionEdit
 
         // create elements
         $this->frm->addText('title', $this->record['title']);
-        
+
         // meta object
         $this->meta = new BackendMeta($this->frm, $this->record['meta_id'], 'title', true);
 
         // set callback for generating a unique URL
-        $this->meta->setURLCallback('Backend\Modules\Slideshow\Engine\Model', 'getURLForCategory', array($this->record['id'])); 
+        $this->meta->setURLCallback('Backend\Modules\Slideshow\Engine\Model', 'getURLForCategory', array($this->record['id']));
     }
 
 
@@ -134,7 +134,7 @@ class EditCategory extends BackendBaseActionEdit
             {
                 // build item
                 $item['id'] = $this->id;
-                $item['meta_id'] = $this->meta->save(true);             
+                $item['meta_id'] = $this->meta->save(true);
                 $item['title'] = $this->frm->getField('title')->getValue();
                 $item['language'] = BL::getWorkingLanguage();
 

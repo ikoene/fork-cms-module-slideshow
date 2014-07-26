@@ -69,7 +69,7 @@ class AddImage extends BackendBaseActionAdd
     private function getData()
     {
         // get the record
-        $this->record = BackendSlideshowModel::getGallery($this->id);   
+        $this->record = BackendSlideshowModel::getGallery($this->id);
     }
 
 
@@ -91,7 +91,7 @@ class AddImage extends BackendBaseActionAdd
         {
             $this->ImageInput[]['formElements']['Image'] = $this->frm->addImage('image' . $i);
         }
-        
+
     }
 
     /**
@@ -108,7 +108,7 @@ class AddImage extends BackendBaseActionAdd
         $this->tpl->assign('item', $this->record);
 
         // assign image input fields
-        $this->tpl->assign('imageInput', $this->ImageInput);    
+        $this->tpl->assign('imageInput', $this->ImageInput);
     }
 
     /**
@@ -123,7 +123,7 @@ class AddImage extends BackendBaseActionAdd
         {
             // cleanup the submitted fields, ignore fields that were added by hackers
             $this->frm->cleanupFields();
-            
+
             // validate all images
             for($i = 0; $i < $this->imageUploadFields; $i++){
                 // validate fields
@@ -137,34 +137,33 @@ class AddImage extends BackendBaseActionAdd
                     }
                 }
             }
-                
+
             // no errors?
             if($this->frm->isCorrect())
             {
                 // build item
                 $item['language'] = $this->record['language'];
                 $item['gallery_id'] = $this->id;
-                
+
                 for($i = 0; $i < $this->imageUploadFields; $i++){
-                
+
                     if($this->frm->getField('image'. $i)->isFilled())
                     {
                         // get the sequence everytime
                         $item['sequence'] = BackendSlideshowModel::getMaximumSlideshowImageSequence($this->id) + 1;
-                    
+
                         // create new filename
                         $filename = rand(0,100000).".".$this->frm->getField('image'. $i)->getExtension();
 
                         // add filename to item
                         $item['filename'] = $filename;
 
-                        // If height is not set, scale the image proportionally to the given width                  
+                        // If height is not set, scale the image proportionally to the given width
                         if($this->record['height']<>0){
-                        
-                        // upload image width gallery dimensions (thumbnail 100 x 100)
-                        $this->frm->getField('image'. $i)->createThumbnail(FRONTEND_FILES_PATH . '/userfiles/images/slideshow/' . $filename, $this->record['width'], $this->record['height'], true, false, 100);
-                        }else{
-                        $this->frm->getField('image'. $i)->createThumbnail(FRONTEND_FILES_PATH . '/userfiles/images/slideshow/' . $filename, $this->record['width'], null, true, true, 100);
+                            // upload image width gallery dimensions (thumbnail 100 x 100)
+                            $this->frm->getField('image'. $i)->createThumbnail(FRONTEND_FILES_PATH . '/userfiles/images/slideshow/' . $filename, $this->record['width'], $this->record['height'], true, false, 100);
+                        } else {
+                            $this->frm->getField('image'. $i)->createThumbnail(FRONTEND_FILES_PATH . '/userfiles/images/slideshow/' . $filename, $this->record['width'], null, true, true, 100);
                         }
                         // create thumbnail for later use
                         $this->frm->getField('image'. $i)->createThumbnail(FRONTEND_FILES_PATH . '/userfiles/images/slideshow/thumbnails/' . $filename, null, 100, false, true, 100);

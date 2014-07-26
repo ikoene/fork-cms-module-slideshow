@@ -61,7 +61,7 @@ class Index extends BackendBaseActionIndex
     {
         // load all categories that are in use
         $categories = BackendSlideshowModel::getActiveCategories(true);
-        
+
         // run over categories and create datagrid for each one
         foreach($categories as $categoryId => $categoryTitle)
         {
@@ -76,32 +76,32 @@ class Index extends BackendBaseActionIndex
 
             // enable drag and drop
             $dataGrid->enableSequenceByDragAndDrop();
-        
+
             // our JS needs to know an id, so we can send the new order
             $dataGrid->setRowAttributes(array('id' => '[id]'));
             $dataGrid->setAttributes(array('data-action' => "gallery_sequence"));
-            
+
             // create a column #images
             $dataGrid->addColumn('images', BL::lbl('Images'));
             $dataGrid->setColumnFunction(array('Backend\Modules\Slideshow\Engine\Model', 'getImagesByGallery'),'[id]', 'images', true);
-            
-            // create a thumbnail preview (if it exists)    
+
+            // create a thumbnail preview (if it exists)
             $dataGrid->addColumn('preview', BL::lbl('Preview'));
-            $dataGrid->setColumnFunction(array('Backend\Modules\Slideshow\Engine\Model', 'getGalleryPreview'),'[filename]', 'preview', true);                                   
+            $dataGrid->setColumnFunction(array('Backend\Modules\Slideshow\Engine\Model', 'getGalleryPreview'),'[filename]', 'preview', true);
 
             // set colums hidden
-            $dataGrid->setColumnsHidden(array('category_id', 'sequence','filename'));           
+            $dataGrid->setColumnsHidden(array('category_id', 'sequence','filename'));
 
             // add edit column
             $dataGrid->addColumn('edit', null, BL::lbl('Edit'), BackendModel::createURLForAction('edit') . '&amp;id=[id]', BL::lbl('Edit'));
 
             // set column order
-            $dataGrid->setColumnsSequence('dragAndDropHandle','title', 'preview', 'width', 'images', 'height','publish_on','edit');         
+            $dataGrid->setColumnsSequence('dragAndDropHandle','title', 'preview', 'width', 'images', 'height','publish_on','edit');
 
             // add dataGrid to list
             $this->dataGrids[] = array('id' => $categoryId,
                                        'title' => $categoryTitle,
-                                       'content' => $dataGrid->getContent());                                      
+                                       'content' => $dataGrid->getContent());
         }
     }
 

@@ -8,7 +8,7 @@ namespace Backend\Modules\Slideshow\Actions;
  * @package     backend
  * @subpackage  slideshow
  *
- * @author      Koen Vinken <koen@tagz.be> 
+ * @author      Koen Vinken <koen@tagz.be>
  * @since       1.0
  */
 
@@ -40,13 +40,13 @@ class Delete extends BackendBaseActionDelete
             $this->record = BackendSlideshowModel::getGallery($this->id);
 
             // delete widget from modules_extra
-            BackendSlideshowModel::deleteWidget($this->id); 
+            BackendSlideshowModel::deleteWidget($this->id);
 
             // delete item
             BackendSlideshowModel::deleteGallery($this->id);
 
             // delete settings
-            BackendSlideshowModel::deleteGallerySettings($this->id);            
+            BackendSlideshowModel::deleteGallerySettings($this->id);
 
             // trigger event
             BackendModel::triggerEvent($this->getModule(), 'after_delete', array('id' => $this->id));

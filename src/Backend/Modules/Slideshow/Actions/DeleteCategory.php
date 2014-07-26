@@ -8,7 +8,7 @@ namespace Backend\Modules\Slideshow\Actions;
  * @package     backend
  * @subpackage  slideshow
  *
- * @author      Koen Vinken <koen@tagz.be>  
+ * @author      Koen Vinken <koen@tagz.be>
  * @since       1.0
  */
 

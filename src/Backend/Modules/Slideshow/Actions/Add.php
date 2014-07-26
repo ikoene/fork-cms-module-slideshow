@@ -8,7 +8,7 @@ namespace Backend\Modules\Slideshow\Actions;
  * @package     backend
  * @subpackage  slideshow
  *
- * @author      Koen Vinken <koen@tagz.be> 
+ * @author      Koen Vinken <koen@tagz.be>
  * @since       1.0
  */
 
@@ -67,14 +67,14 @@ class Add extends BackendBaseActionAdd
      * @return  void
      */
     private function getData()
-    {   
+    {
         // get categories
         $this->categories = BackendSlideshowModel::getCategoriesForDropdown();
-        
+
         if(empty($this->categories))
         {
             $this->redirect(BackendModel::createURLForAction('add_category'));
-        }       
+        }
     }
 
     /**
@@ -97,13 +97,13 @@ class Add extends BackendBaseActionAdd
         $this->frm->addDropdown('categories', $this->categories);
         $this->frm->addRadiobutton('hidden', $rbtHiddenValues, 'N');
         $this->frm->addDate('publish_on_date');
-        $this->frm->addTime('publish_on_time');     
+        $this->frm->addTime('publish_on_time');
         $this->frm->addText('width');
         $this->frm->addText('height');
-        
+
         // meta object
         $this->meta = new BackendMeta($this->frm, null, 'title', true);
-        
+
         // set callback for generating a unique URL
         $this->meta->setURLCallback('Backend\Modules\Slideshow\Engine\Model', 'getURLForGallery');
 
@@ -151,10 +151,10 @@ class Add extends BackendBaseActionAdd
             $this->frm->getField('categories')->isFilled(BL::err('CategoryIsRequired'));
 
             $this->frm->getField('width')->isFilled(BL::err('WidthIsRequired'));
-            
+
             $this->frm->getField('publish_on_date')->isValid(BL::getError('DateIsInvalid'));
             $this->frm->getField('publish_on_time')->isValid(BL::getError('TimeIsInvalid'));
-            
+
                 if($this->frm->getField('filename')->isFilled())
                 {
                     // correct extension
@@ -164,7 +164,7 @@ class Add extends BackendBaseActionAdd
                         $this->frm->getField('filename')->isAllowedMimeType(array('image/gif', 'image/jpg', 'image/jpeg', 'image/png'), BL::err('JPGGIFAndPNGOnly'));
                     }
                 }
-            
+
             // validate meta
             $this->meta->validate();
 
@@ -178,23 +178,23 @@ class Add extends BackendBaseActionAdd
                 $item['language'] = BL::getWorkingLanguage();
                 $item['title'] = $this->frm->getField('title')->getValue();
                 $item['width'] = $this->frm->getField('width')->getValue();
-                $item['height'] = $this->frm->getField('height')->getValue();                                           
+                $item['height'] = $this->frm->getField('height')->getValue();
                 $item['description'] = $this->frm->getField('description')->getValue(true);
-                
+
                 if($this->frm->getField('filename')->isFilled())
                 {
                     // create new filename
                     $filename = rand(0,100000) . $this->frm->getField('filename')->getExtension();
                     $item['filename'] = $filename;
-                    
+
                     // upload the image
-                    $this->frm->getField('filename')->moveFile(FRONTEND_FILES_PATH . '/userfiles/images/slideshow/thumbnails/' . $filename);                        
+                    $this->frm->getField('filename')->moveFile(FRONTEND_FILES_PATH . '/userfiles/images/slideshow/thumbnails/' . $filename);
                 }
 
                 $item['hidden'] = $this->frm->getField('hidden')->getValue();
                 $item['sequence'] = BackendSlideshowModel::getMaximumSlideshowGallerySequence($this->frm->getField('categories')->getValue()) + 1;
                 $item['created_on'] = BackendModel::getUTCDate();
-                $item['publish_on'] = BackendModel::getUTCDate(null, BackendModel::getUTCTimestamp($this->frm->getField('publish_on_date'), $this->frm->getField('publish_on_time')));              
+                $item['publish_on'] = BackendModel::getUTCDate(null, BackendModel::getUTCTimestamp($this->frm->getField('publish_on_date'), $this->frm->getField('publish_on_time')));
 
                 // insert the item
                 $item['id'] = BackendSlideshowModel::insertGallery($item);
@@ -202,7 +202,7 @@ class Add extends BackendBaseActionAdd
                 // add gallery_id to item
                 $item['gallery_id'] = $item['id'];
 
-                // insert widget in modules_extras  
+                // insert widget in modules_extras
                 $item['extra_id'] = BackendSlideshowModel::insertWidgetExtras($item);
 
                 // delete gallery_id from array
@@ -210,16 +210,16 @@ class Add extends BackendBaseActionAdd
 
                 // update the gallery to insert extra_id
                 BackendSlideshowModel::updateGallery($item);
-                                
+
                 // get default settings
                 $settings = BackendModel::getModuleSettings('Slideshow');
 
                 // remove settings_per_slide from array
                 $settings = array_slice($settings, 0,11);
-                                
+
                 // add gallery_id to settings
-                $settings['gallery_id'] = $item['id'];      
-                
+                $settings['gallery_id'] = $item['id'];
+
                 // insert settings
                 BackendSlideshowModel::insertGallerySettings($settings);
 
