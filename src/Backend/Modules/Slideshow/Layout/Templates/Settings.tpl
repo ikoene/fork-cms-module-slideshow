@@ -9,7 +9,7 @@
 <div class="box">
         <div class="heading">
             <h3>{$lblModeSlideshowSettings|ucfirst}</h3>
-        </div>    
+        </div>
         <div class="options">
             <ul class="inputList">
                 <li><label for="direct_navigation">{$chkSettingsPerSlide} {$lblSettingsPerSlide|ucfirst}</label>
@@ -24,13 +24,13 @@
     <div class="box horizontal">
         <div class="heading">
             <h3>{$lblGeneralSlideshowSettings|ucfirst}</h3>
-        </div>       
+        </div>
         <div class="options">
             <p>
                 <label for="animation_type">{$lblAnimationType|ucfirst}</label>
                 {$ddmAnimationType} {$ddmAnimationTypeError}
             </p>
-        </div>        
+        </div>
         <div class="options">
             <p>
                 <label for="slide_direction">{$lblSlideDirection|ucfirst}</label>
@@ -52,7 +52,7 @@
                 {$ddmAnimationDuration} {$ddmAnimationDurationError}
                 <span class="helpTxt">
                 {$msgHelpAnimationDuration}
-                </span>                
+                </span>
             </p>
         </div>
     </div>
@@ -60,7 +60,7 @@
     <div class="box">
         <div class="heading">
             <h3>{$lblNavigationSlideshowSettings|ucfirst}</h3>
-        </div>    
+        </div>
         <div class="options">
             <ul class="inputList">
                 <li><label for="direct_navigation">{$chkDirectNavigation} {$lblDirectNavigation|ucfirst}</label>
@@ -71,44 +71,44 @@
                 <li><label for="control_navigation">{$chkControlNavigation} {$lblControlNavigation|ucfirst}</label>
                     <span class="helpTxt">
                     {$msgHelpControlNavigation}
-                    </span>                
+                    </span>
                 </li>
                 <li><label for="keyboard_navigation">{$chkKeyboardNavigation} {$lblKeyboardNavigation|ucfirst}</label>
                     <span class="helpTxt">
                     {$msgHelpKeyboardNavigation}
-                    </span>                
+                    </span>
                 </li>
                 <li><label for="mousewheel_navigation">{$chkMousewheelNavigation} {$lblMousewheelNavigation|ucfirst}</label>
                     <span class="helpTxt">
                     {$msgHelpMousewheelNavigation}
-                    </span>                
-                </li>             
+                    </span>
+                </li>
             </ul>
-        </div>         
+        </div>
     </div>
 
     <div class="box">
         <div class="heading">
             <h3>{$lblOptionalSlideshowSettings|ucfirst}</h3>
-        </div>        
+        </div>
         <div class="options">
             <ul class="inputList">
                 <li><label for="random_order">{$chkRandomOrder} {$lblRandomOrder|ucfirst}</label>
                     <span class="helpTxt">
                     {$msgHelpRandomOrder}
-                    </span>                
-                </li>                               
+                    </span>
+                </li>
                 <li><label for="auto_animate">{$chkAutoAnimate} {$lblAutoAnimate|ucfirst}</label>
                     <span class="helpTxt">
                     {$msgHelpAutoAnimate}
-                    </span>                
-                </li>                  
+                    </span>
+                </li>
                 <li><label for="animation_loop">{$chkAnimationLoop} {$lblAnimationLoop|ucfirst}</label>
                     <span class="helpTxt">
                     {$msgHelpAnimationLoop}
-                    </span>                
-                </li>                                
-            </ul>        
+                    </span>
+                </li>
+            </ul>
         </div>
     </div>
 

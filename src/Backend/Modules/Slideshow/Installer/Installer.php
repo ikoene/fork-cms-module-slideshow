@@ -8,7 +8,7 @@ namespace Backend\Modules\Slideshow\Installer;
  * @package     backend
  * @subpackage  slideshow
  *
- * @author      Koen Vinken <koen@tagz.be> 
+ * @author      Koen Vinken <koen@tagz.be>
  * @since       1.0
  */
 
@@ -22,7 +22,7 @@ class Installer extends ModuleInstaller
      * @return  void
      */
     public function install()
-    {   
+    {
         // load install.sql
         $this->importSQL(dirname(__FILE__) . '/Data/install.sql');
 
@@ -48,7 +48,7 @@ class Installer extends ModuleInstaller
         $this->setActionRights(1, 'Slideshow', 'AddImage');
         $this->setActionRights(1, 'Slideshow', 'EditImage');
         $this->setActionRights(1, 'Slideshow', 'DeleteImage');
-        
+
         // Slideshow settings
         $this->setSetting('Slideshow', 'animation_type', 'slide');
         $this->setSetting('Slideshow', 'slide_direction', 'horizontal');
@@ -58,21 +58,21 @@ class Installer extends ModuleInstaller
         $this->setSetting('Slideshow', 'control_navigation', 'true');
         $this->setSetting('Slideshow', 'keyboard_navigation', 'true');
         $this->setSetting('Slideshow', 'mousewheel_navigation', 'false');
-        $this->setSetting('Slideshow', 'random_order', 'false');    
+        $this->setSetting('Slideshow', 'random_order', 'false');
         $this->setSetting('Slideshow', 'auto_animate', 'true');
         $this->setSetting('Slideshow', 'animation_loop', 'true');
-        $this->setSetting('Slideshow', 'settings_per_slide', 'true');               
-        
+        $this->setSetting('Slideshow', 'settings_per_slide', 'true');
+
         // connect to database
         $db = $this->getDB();
-        
+
         // insert default category for every language
         foreach($this->getLanguages() as $language)
         {
         $metaId = $db->insert('meta', array('keywords' => 'default', 'description' => 'default', 'title' => 'default', 'url' => 'default'));
         $db->insert('slideshow_categories', array('meta_id' => $metaId, 'language'=> $language, 'title' => 'default', 'sequence' => 1));
         }
-        
+
         // module extra
         $extraBlockId = $this->insertExtra('Slideshow', 'block', 'Slideshow', null, null);
 
@@ -80,13 +80,13 @@ class Installer extends ModuleInstaller
         $navigationSettingsId = $this->setNavigation(null, 'Settings');
         $navigationModulesId = $this->setNavigation($navigationSettingsId, 'Modules');
         $this->setNavigation($navigationModulesId, 'Slideshow', 'slideshow/settings');
-        
+
         // set navigation
         $navigationModulesId = $this->setNavigation(null, 'Modules');
         $navigationBlogId = $this->setNavigation($navigationModulesId, 'Slideshow');
         $this->setNavigation($navigationBlogId, 'Galleries', 'slideshow/index', array('slideshow/add',  'slideshow/edit', 'slideshow/edit_image', 'slideshow/add_image'));
         $this->setNavigation($navigationBlogId, 'Categories', 'slideshow/categories', array('slideshow/add_category', 'slideshow/edit_category'));
-        
+
     }
 }
 

@@ -23,11 +23,11 @@
         <ul>
             <li><a href="#tabContent">{$lblContent|ucfirst}</a></li>
             <li><a href="#tabSEO">{$lblSEO|ucfirst}</a></li>
-        </ul>        
-        
+        </ul>
+
         <div class="ui-tabs">
             <div class="ui-tabs-panel">
-                   
+
                 <div id="tabContent">
                 <div class="options">
                     <table border="0" cellspacing="0" cellpadding="0" width="100%">
@@ -100,23 +100,23 @@
                                     </p>
                                 </div>
                             </div>
-                        </div>                              
-                                
+                        </div>
+
                                 <div id="publishOptions" class="box">
                                     <div class="heading">
                                         <h3>{$lblDimensions|ucfirst}</h3>
                                     </div>
                                     <div class="options">
                                         {$lblWidth|ucfirst}
-                                        <p>                                        
+                                        <p>
                                         {$txtWidth} {$txtWidthError}
                                         </p>
                                         {$lblHeight|ucfirst}
                                         <p>
-                                        {$txtHeight} {$txtHeightError}                                        
+                                        {$txtHeight} {$txtHeightError}
                                         </p>
                                     </div>
-                                </div>                                
+                                </div>
 
                             </td>
                         </tr>
@@ -124,11 +124,11 @@
                 </div>
             </div>
             </div>
-            
+
         <div id="tabSEO">
             {include:{$BACKEND_CORE_PATH}/layout/templates/seo.tpl}
-        </div>    
-  
+        </div>
+
         </div>
         <div class="fullwidthOptions">
             <div class="buttonHolderRight">

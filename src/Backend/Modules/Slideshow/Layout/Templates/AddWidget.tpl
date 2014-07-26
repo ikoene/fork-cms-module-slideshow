@@ -21,7 +21,7 @@
                 <label for="name">{$lblSlideshows|ucfirst}<abbr title="{$lblRequiredField}">*</abbr></label>
                 {$ddmSlideshows} {$ddmSlideshowsError}
             </p>
-        </div>        
+        </div>
     </div>
 
     <div class="fullwidthOptions">

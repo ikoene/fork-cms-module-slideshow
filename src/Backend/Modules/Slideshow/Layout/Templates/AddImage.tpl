@@ -18,7 +18,7 @@
                                     <p>
                                     {$imageInput.Image} {$imageInput.ImageError}
                                     </p>
-                                    {/iteration:imageInput}                                                
+                                    {/iteration:imageInput}
                         </td>
                         </td>
                     </tr>
