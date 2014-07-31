@@ -132,7 +132,8 @@ class Model
                         'data' =>serialize(
                                         array(
                                             'extra_label' => $item['title'],
-                                            'gallery_id' => $item['gallery_id']
+                                            'gallery_id' => $item['gallery_id'],
+                                            'language' => BL::getWorkingLanguage()
                                         )),
                         'hidden' =>'N',
                         'sequence' =>10000);
@@ -271,7 +272,8 @@ class Model
                         'data' =>serialize(
                                         array(
                                             'extra_label' => $item['title'],
-                                            'gallery_id' => $item['id']
+                                            'gallery_id' => $item['id'],
+                                            'language' => BL::getWorkingLanguage()
                                         )),
                         'hidden' =>'N',
                         'sequence' =>10000);
