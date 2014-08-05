@@ -68,7 +68,7 @@ class Categories extends BackendBaseActionIndex
 
         // our JS needs to know an id, so we can send the new order
         $this->dataGrid->setRowAttributes(array('id' => '[id]'));
-        $this->dataGrid->setAttributes(array('data-action' => "category_sequence"));
+        $this->dataGrid->setAttributes(array('data-action' => "CategorySequence"));
 
         // add edit column
         $this->dataGrid->addColumn('edit', null, BL::lbl('Edit'), BackendModel::createURLForAction('edit_category') . '&amp;id=[id]', BL::lbl('Edit'));

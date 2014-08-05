@@ -79,7 +79,7 @@ class Index extends BackendBaseActionIndex
 
             // our JS needs to know an id, so we can send the new order
             $dataGrid->setRowAttributes(array('id' => '[id]'));
-            $dataGrid->setAttributes(array('data-action' => "gallery_sequence"));
+            $dataGrid->setAttributes(array('data-action' => "GallerySequence"));
 
             // create a column #images
             $dataGrid->addColumn('images', BL::lbl('Images'));

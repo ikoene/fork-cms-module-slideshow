@@ -170,7 +170,7 @@ class Edit extends BackendBaseActionEdit
 
         // our JS needs to know an id, so we can send the new order
         $this->dataGrid->setRowAttributes(array('id' => '[id]'));
-        $this->dataGrid->setAttributes(array('data-action' => "image_sequence"));
+        $this->dataGrid->setAttributes(array('data-action' => "ImageSequence"));
 
         // hide
         $this->dataGrid->setColumnHidden('filename');
