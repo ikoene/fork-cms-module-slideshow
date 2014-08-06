@@ -215,12 +215,10 @@ class Edit extends BackendBaseActionEdit
 
         // get module settings
         $this->settings = BackendModel::getModuleSettings('Slideshow');
-        /*
-        if ($this->settings['settings_per_slide']==='true')
-        {
+
+        if ($this->settings['settings_per_slide']==='true') {
             $this->tpl->assign('settingsPerSlideshow', true);
         }
-        */
     }
 
     /**
