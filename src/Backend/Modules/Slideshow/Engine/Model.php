@@ -265,7 +265,7 @@ class Model
 
         // build extra
         $extra = array('id' => $item['extra_id'],
-                        'module' => 'slideshow',
+                        'module' => 'Slideshow',
                         'type' => 'widget',
                         'label' => 'Slideshow',
                         'action' => 'slideshow',
