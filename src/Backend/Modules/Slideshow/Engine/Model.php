@@ -101,7 +101,7 @@ class Model
 
         // build extra
         $extra = array('id' => $item['extra_id'],
-                        'module' => 'slideshow',
+                        'module' => 'Slideshow',
                         'type' => 'block',
                         'action' => 'category');
 
@@ -360,7 +360,7 @@ class Model
         $item = self::getGallery($id);
 
         // build extra
-        $extra = array( 'module' => 'slideshow',
+        $extra = array( 'module' => 'Slideshow',
                         'type' => 'widget',
                         'id' => $item['extra_id']
                         );
