@@ -588,7 +588,7 @@ class Model
      * @return  int
      * @param   int $id The category id.
      */
-    public static function getMaximumSlideshowCategorySequence()
+    public static function getMaximumCategorySequence()
     {
         return (int) BackendModel::getContainer()->get('database')->getVar(
             'SELECT MAX(i.sequence)
@@ -618,7 +618,7 @@ class Model
      * @return  int
      * @param   int $id The gallery id.
      */
-    public static function getMaximumSlideshowGallerySequence($id)
+    public static function getMaximumGallerySequence($id)
     {
         return (int) BackendModel::getContainer()->get('database')->getVar(
             'SELECT MAX(i.sequence)

@@ -155,7 +155,7 @@ class Add extends BackendBaseActionAdd
                         ->isAllowedMimeType(
                             array('image/gif', 'image/jpg', 'image/jpeg', 'image/png'),
                             BL::err('JPGGIFAndPNGOnly')
-                        )
+                        );
                 }
             }
 
