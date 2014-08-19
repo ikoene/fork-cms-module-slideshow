@@ -9,7 +9,7 @@ use Backend\Core\Engine\Base\Config as BackendBaseConfig;
  *
  * @author Koen Vinken <koen@tagz.be>
  */
-Class Config extends BackendBaseConfig
+class Config extends BackendBaseConfig
 {
     /**
      * The default action
