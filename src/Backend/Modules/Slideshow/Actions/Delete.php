@@ -26,8 +26,7 @@ class Delete extends BackendBaseActionDelete
         $this->id = $this->getParameter('id', 'int');
 
         // does the item exist
-        if($this->id !== null && BackendSlideshowModel::existsGallery($this->id))
-        {
+        if ($this->id !== null && BackendSlideshowModel::existsGallery($this->id)) {
             // call parent, this will probably add some general CSS/JS or other required files
             parent::execute();
 
@@ -48,9 +47,9 @@ class Delete extends BackendBaseActionDelete
 
             // item was deleted, so redirect
             $this->redirect(BackendModel::createURLForAction('index') . '&report=deleted');
+        } else {
+            // something went wrong
+            $this->redirect(BackendModel::createURLForAction('index') . '&error=non-existing');
         }
-
-        // something went wrong
-        else $this->redirect(BackendModel::createURLForAction('index') . '&error=non-existing');
     }
 }
