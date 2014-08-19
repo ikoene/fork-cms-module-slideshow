@@ -24,8 +24,7 @@ class DeleteCategory extends BackendBaseActionDelete
         $this->id = $this->getParameter('id', 'int');
 
         // does the item exist
-        if($this->id !== null && BackendSlideshowModel::existsCategory($this->id))
-        {
+        if ($this->id !== null && BackendSlideshowModel::existsCategory($this->id)) {
             // call parent, this will probably add some general CSS/JS or other required files
             parent::execute();
 
@@ -39,10 +38,14 @@ class DeleteCategory extends BackendBaseActionDelete
             BackendModel::triggerEvent($this->getModule(), 'after_delete_category', array('id' => $this->id));
 
             // item was deleted, so redirect
-            $this->redirect(BackendModel::createURLForAction('categories') . '&report=deleted&var=' . urlencode($this->record['name']));
+            $this->redirect(
+                BackendModel::createURLForAction('categories') .
+                '&report=deleted&var=' .
+                urlencode($this->record['name'])
+            );
+        } else {
+            // something went wrong
+            $this->redirect(BackendModel::createURLForAction('categories') . '&error=non-existing');
         }
-
-        // something went wrong
-        else $this->redirect(BackendModel::createURLForAction('categories') . '&error=non-existing');
     }
 }
