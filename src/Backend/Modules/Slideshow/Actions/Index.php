@@ -58,16 +58,21 @@ class Index extends BackendBaseActionIndex
         $categories = BackendSlideshowModel::getActiveCategories(true);
 
         // run over categories and create datagrid for each one
-        foreach($categories as $categoryId => $categoryTitle)
-        {
+        foreach ($categories as $categoryId => $categoryTitle) {
             // create datagrid
-            $dataGrid = new BackendDataGridDB(BackendSlideshowModel::QRY_DATAGRID_BROWSE, array(BL::getWorkingLanguage(), $categoryId));
+            $dataGrid = new BackendDataGridDB(
+                BackendSlideshowModel::QRY_DATAGRID_BROWSE,
+                array(BL::getWorkingLanguage(), $categoryId)
+            );
 
             // disable paging
             $dataGrid->setPaging(false);
 
             // set colum URLs
-            $dataGrid->setColumnURL('title', BackendModel::createURLForAction('edit') . '&amp;id=[id]');
+            $dataGrid->setColumnURL(
+                'title',
+                BackendModel::createURLForAction('edit') . '&amp;id=[id]'
+            );
 
             // enable drag and drop
             $dataGrid->enableSequenceByDragAndDrop();
@@ -78,25 +83,52 @@ class Index extends BackendBaseActionIndex
 
             // create a column #images
             $dataGrid->addColumn('images', BL::lbl('Images'));
-            $dataGrid->setColumnFunction(array('Backend\Modules\Slideshow\Engine\Model', 'getImagesByGallery'),'[id]', 'images', true);
+            $dataGrid->setColumnFunction(
+                array('Backend\Modules\Slideshow\Engine\Model', 'getImagesByGallery'),
+                '[id]',
+                'images',
+                true
+            );
 
             // create a thumbnail preview (if it exists)
             $dataGrid->addColumn('preview', BL::lbl('Preview'));
-            $dataGrid->setColumnFunction(array('Backend\Modules\Slideshow\Engine\Model', 'getGalleryPreview'),'[filename]', 'preview', true);
+            $dataGrid->setColumnFunction(
+                array('Backend\Modules\Slideshow\Engine\Model', 'getGalleryPreview'),
+                '[filename]',
+                'preview',
+                true
+            );
 
             // set colums hidden
             $dataGrid->setColumnsHidden(array('category_id', 'sequence','filename'));
 
             // add edit column
-            $dataGrid->addColumn('edit', null, BL::lbl('Edit'), BackendModel::createURLForAction('edit') . '&amp;id=[id]', BL::lbl('Edit'));
+            $dataGrid->addColumn(
+                'edit',
+                null,
+                BL::lbl('Edit'),
+                BackendModel::createURLForAction('edit') . '&amp;id=[id]',
+                BL::lbl('Edit')
+            );
 
             // set column order
-            $dataGrid->setColumnsSequence('dragAndDropHandle','title', 'preview', 'width', 'images', 'height','publish_on','edit');
+            $dataGrid->setColumnsSequence(
+                'dragAndDropHandle',
+                'title',
+                'preview',
+                'width',
+                'images',
+                'height',
+                'publish_on',
+                'edit'
+            );
 
             // add dataGrid to list
-            $this->dataGrids[] = array('id' => $categoryId,
-                                       'title' => $categoryTitle,
-                                       'content' => $dataGrid->getContent());
+            $this->dataGrids[] = array(
+                'id' => $categoryId,
+                'title' => $categoryTitle,
+                'content' => $dataGrid->getContent()
+            );
         }
     }
 
@@ -108,6 +140,8 @@ class Index extends BackendBaseActionIndex
     protected function parse()
     {
         // parse datagrids
-        if(!empty($this->dataGrids)) $this->tpl->assign('dataGrids', $this->dataGrids);
+        if (!empty($this->dataGrids)) {
+            $this->tpl->assign('dataGrids', $this->dataGrids);
+        }
     }
 }
