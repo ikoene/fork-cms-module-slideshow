@@ -25,7 +25,6 @@ use Backend\Modules\Users\Engine\Model as BackendUsersModel;
  */
 class EditImage extends BackendBaseActionEdit
 {
-
     /**
      * Execute the action
      *
@@ -38,8 +37,7 @@ class EditImage extends BackendBaseActionEdit
         $this->galleryId = $this->getParameter('galleryid', 'int');
 
         // does the item exists
-        if($this->id !== null && BackendSlideshowModel::existsImage($this->id))
-        {
+        if ($this->id !== null && BackendSlideshowModel::existsImage($this->id)) {
             // call parent, this will probably add some general CSS/JS or other required files
             parent::execute();
 
@@ -57,10 +55,13 @@ class EditImage extends BackendBaseActionEdit
 
             // display the page
             $this->display();
+        } else {
+            // no item found, throw an exception, because somebody is fucking with our URL
+            $this->redirect(
+                BackendModel::createURLForAction('index') .
+                '&error=non-existing'
+            );
         }
-
-        // no item found, throw an exception, because somebody is fucking with our URL
-        else $this->redirect(BackendModel::createURLForAction('index') . '&error=non-existing');
     }
 
 
@@ -92,9 +93,18 @@ class EditImage extends BackendBaseActionEdit
 
         // create elements
         $this->frm->addText('title', $this->record['title'])->setAttribute('id', 'title');
-        $this->frm->getField('title')->setAttribute('class', 'title ' . $this->frm->getField('title')->getAttribute('class'));
-        $this->frm->addText('link', $this->record['link'])->setAttribute('id', 'link');
-        $this->frm->getField('link')->setAttribute('class', 'title ' . $this->frm->getField('link')->getAttribute('class'));
+        $this->frm->getField('title')->setAttribute(
+            'class',
+            'title ' . $this->frm->getField('title')->getAttribute('class')
+        );
+        $this->frm->addText('link', $this->record['link'])->setAttribute(
+            'id',
+            'link'
+        );
+        $this->frm->getField('link')->setAttribute(
+            'class',
+            'title ' . $this->frm->getField('link')->getAttribute('class')
+        );
         $this->frm->addImage('filename');
         $this->frm->addEditor('description', $this->record['description']);
         $this->frm->addRadiobutton('hidden', $rbtHiddenValues, $this->record['hidden']);
@@ -125,25 +135,30 @@ class EditImage extends BackendBaseActionEdit
     private function validateForm()
     {
         // is the form submitted?
-        if($this->frm->isSubmitted())
-        {
+        if ($this->frm->isSubmitted()) {
             // cleanup the submitted fields, ignore fields that were added by hackers
             $this->frm->cleanupFields();
 
             // validate fields
-                if($this->frm->getField('filename')->isFilled())
-                {
-                    // correct extension
-                    if($this->frm->getField('filename')->isAllowedExtension(array('jpg', 'jpeg', 'gif', 'png'), BL::err('JPGGIFAndPNGOnly')))
-                    {
-                        // correct mimetype?
-                        $this->frm->getField('filename')->isAllowedMimeType(array('image/gif', 'image/jpg', 'image/jpeg', 'image/png'), BL::err('JPGGIFAndPNGOnly'));
-                    }
+            if ($this->frm->getField('filename')->isFilled(BL::err('FieldIsRequired'))) {
+                // correct extension?
+                if ($this->frm->getField('filename')
+                    ->isAllowedExtension(
+                        array('jpg', 'jpeg', 'gif', 'png'),
+                        BL::err('JPGGIFAndPNGOnly')
+                    )
+                ) {
+                    // correct mimetype?
+                    $this->frm->getField('filename')
+                        ->isAllowedMimeType(
+                            array('image/gif', 'image/jpg', 'image/jpeg', 'image/png'),
+                            BL::err('JPGGIFAndPNGOnly')
+                        )
                 }
+            }
 
             // no errors?
-            if($this->frm->isCorrect())
-            {
+            if ($this->frm->isCorrect()) {
                 // build item
                 $item['id'] = $this->id;
                 $item['language'] = $this->record['language'];
@@ -155,43 +170,79 @@ class EditImage extends BackendBaseActionEdit
                 //get module settings
                 $dimensions = BackendModel::getModuleSettings('slideshow');
 
-                if($this->frm->getField('filename')->isFilled())
-                {
+                if ($this->frm->getField('filename')->isFilled()) {
                     // only delete the picture when there is one allready
-                    if(!empty($this->record['filename']))
-                    {
+                    if (!empty($this->record['filename'])) {
                         $fs = new Filesystem();
 
-                        $fs->remove(FRONTEND_FILES_PATH . '/userfiles/images/slideshow/thumbnails/' . $this->record['filename']);
-                        $fs->remove(FRONTEND_FILES_PATH . '/userfiles/images/slideshow/' . $this->record['filename']);
+                        $fs->remove(
+                            FRONTEND_FILES_PATH .
+                            '/userfiles/images/slideshow/thumbnails/' .
+                            $this->record['filename']
+                        );
+                        $fs->remove(
+                            FRONTEND_FILES_PATH .
+                            '/userfiles/images/slideshow/' .
+                            $this->record['filename']
+                        );
                     }
 
                     // create new filename
-                    $filename = rand(0,100000).".".$this->frm->getField('filename')->getExtension();
+                    $filename = time() . "." . $this->frm->getField('filename')->getExtension();
 
                     // add filename to item
                     $item['filename'] = $filename;
 
                     // If height is not set, scale the image proportionally to the given width
-                    if($this->record2['height']<>0){
+                    if ($this->record2['height'] <> 0) {
                         // upload image width gallery dimensions (thumbnail always 100 x 100... for now)
-                        $this->frm->getField('filename')->createThumbnail(FRONTEND_FILES_PATH . '/userfiles/images/slideshow/' . $filename, $this->record2['width'], $this->record2['height'], true, false, 100);
+                        $this->frm->getField('filename')->createThumbnail(
+                            FRONTEND_FILES_PATH . '/userfiles/images/slideshow/' . $filename,
+                            $this->record2['width'],
+                            $this->record2['height'],
+                            true,
+                            false,
+                            100
+                        );
                     } else {
-                        $this->frm->getField('filename')->createThumbnail(FRONTEND_FILES_PATH . '/userfiles/images/slideshow/' . $filename, $this->record2['width'], null, true, true, 100);
+                        $this->frm->getField('filename')->createThumbnail(
+                            FRONTEND_FILES_PATH . '/userfiles/images/slideshow/' . $filename,
+                            $this->record2['width'],
+                            null,
+                            true,
+                            true,
+                            100
+                        );
                     }
 
                     // create thumbnail
-                    $this->frm->getField('filename')->createThumbnail(FRONTEND_FILES_PATH . '/userfiles/images/slideshow/thumbnails/' . $filename, null, 100, false, true, 100);
+                    $this->frm->getField('filename')->createThumbnail(
+                        FRONTEND_FILES_PATH . '/userfiles/images/slideshow/thumbnails/' . $filename,
+                        null,
+                        100,
+                        false,
+                        true,
+                        100
+                    );
                 }
 
                 // update image values in database
                 BackendSlideshowModel::updateImage($item);
 
                 // trigger event
-                BackendModel::triggerEvent($this->getModule(), 'after_edit', array('item' => $item));
+                BackendModel::triggerEvent(
+                    $this->getModule(),
+                    'after_edit',
+                    array('item' => $item)
+                );
 
                 // everything is saved, so redirect to the overview
-                $this->redirect(BackendModel::createURLForAction('edit') . '&report=Saved&id=' . $this->galleryId. '#images');
+                $this->redirect(
+                    BackendModel::createURLForAction('edit') .
+                    '&report=Saved&id=' .
+                    $this->galleryId .
+                    '#images'
+                );
             }
         }
     }
