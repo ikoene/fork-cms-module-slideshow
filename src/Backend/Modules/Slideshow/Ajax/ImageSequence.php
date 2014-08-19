@@ -6,13 +6,9 @@ use Backend\Core\Engine\Base\AjaxAction as BackendBaseAJAXAction;
 use Backend\Modules\Slideshow\Engine\Model as BackendSlideshowModel;
 
 /**
- * This is the configuration-object for the slideshow module
+ * Reorder images
  *
- * @package     backend
- * @subpackage  slideshow
- *
- * @author      Koen Vinken <koen@tagz.be>
- * @since       1.0
+ * @author Koen Vinken <koen@tagz.be>
  */
 class ImageSequence extends BackendBaseAJAXAction
 {
@@ -49,5 +45,3 @@ class ImageSequence extends BackendBaseAJAXAction
         $this->output(self::OK, null, 'sequence updated');
     }
 }
-
-?>

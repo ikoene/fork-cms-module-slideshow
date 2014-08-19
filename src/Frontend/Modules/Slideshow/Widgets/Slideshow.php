@@ -2,23 +2,17 @@
 
 namespace Frontend\Modules\Slideshow\Widgets;
 
-
-/**
- * This is the configuration-object
- *
- * @package     frontend
- * @subpackage  slideshow
- *
- * @author      Koen Vinken <koen@tagz.be>
- * @since       1.0
- */
-
 use Frontend\Core\Engine\Base\Widget as FrontendBaseWidget;
 use Frontend\Core\Engine\Language as FL;
 use Frontend\Core\Engine\Model as FrontendModel;
 use Frontend\Core\Engine\Navigation as FrontendNavigation;
 use Frontend\Modules\Slideshow\Engine\Model as FrontendSlideshowModel;
 
+/**
+ * This is a widget with a specific slideshow
+ *
+ * @author Koen Vinken <koen@tagz.be>
+ */
 class Slideshow extends FrontendBaseWidget
 {
     /**
@@ -84,5 +78,3 @@ class Slideshow extends FrontendBaseWidget
             }
     }
 }
-
-?>

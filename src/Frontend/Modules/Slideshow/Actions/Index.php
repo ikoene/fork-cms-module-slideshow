@@ -2,21 +2,16 @@
 
 namespace Frontend\Modules\Slideshow\Actions;
 
-/**
- * This is the configuration-object
- *
- * @package     frontend
- * @subpackage  slideshow
- *
- * @author      Koen Vinken <koen@tagz.be>
- * @since       1.0
- */
-
 use Frontend\Core\Engine\Base\Block as FrontendBaseBlock;
 use Frontend\Core\Engine\Model as FrontendModel;
 use Frontend\Core\Engine\Navigation as FrontendNavigation;
 use Frontend\Modules\Slideshow\Engine\Model as FrontendSlideshowModel;
 
+/**
+ * This is the index-action
+ *
+ * @author Koen Vinken <koen@tagz.be>
+ */
 class Index extends FrontendBaseBlock
 {
     /**
@@ -68,5 +63,3 @@ class Index extends FrontendBaseBlock
         $this->tpl->assign('galleries', $this->item);
     }
 }
-
-?>

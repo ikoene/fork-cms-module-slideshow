@@ -2,18 +2,13 @@
 
 namespace Backend\Modules\Slideshow;
 
+use Backend\Core\Engine\Base\Config as BackendBaseConfig;
+
 /**
  * This is the configuration-object for the slideshow module
  *
- * @package     backend
- * @subpackage  slideshow
- *
- * @author      Koen Vinken <koen@tagz.be>
- * @since       1.0
+ * @author Koen Vinken <koen@tagz.be>
  */
-
-use Backend\Core\Engine\Base\Config as BackendBaseConfig;
-
 Class Config extends BackendBaseConfig
 {
     /**
@@ -39,5 +34,3 @@ Class Config extends BackendBaseConfig
      */
     protected $disabledAJAXActions = array();
 }
-
-?>

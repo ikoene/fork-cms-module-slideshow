@@ -2,16 +2,6 @@
 
 namespace Backend\Modules\Slideshow\Actions;
 
-/**
- * This is the configuration-object for the slideshow module
- *
- * @package     backend
- * @subpackage  slideshow
- *
- * @author      Koen Vinken <koen@tagz.be>
- * @since       1.0
- */
-
 use Backend\Core\Engine\Base\ActionEdit as BackendBaseActionEdit;
 use Backend\Core\Engine\Authentication as BackendAuthentication;
 use Backend\Core\Engine\Form as BackendForm;
@@ -22,6 +12,11 @@ use Backend\Modules\Slideshow\Engine\Model as BackendSlideshowModel;
 use Backend\Modules\Search\Engine\Model as BackendSearchModel;
 use Backend\Modules\Tags\Engine\Model as BackendTagsModel;
 
+/**
+ * This is the edit-action, it will display a form to edit an existing category.
+ *
+ * @author Koen Vinken <koen@tagz.be>
+ */
 class EditCategory extends BackendBaseActionEdit
 {
     /**
@@ -150,5 +145,3 @@ class EditCategory extends BackendBaseActionEdit
         }
     }
 }
-
-?>

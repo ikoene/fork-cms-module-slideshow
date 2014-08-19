@@ -2,20 +2,15 @@
 
 namespace Frontend\Modules\Slideshow\Actions;
 
-/**
- * This is the configuration-object
- *
- * @package     frontend
- * @subpackage  slideshow
- *
- * @author      Koen Vinken <koen@tagz.be>
- * @since       1.0
- */
-
 use Frontend\Core\Engine\Base\Block as FrontendBaseBlock;
 use Frontend\Core\Engine\Navigation as FrontendNavigation;
 use Frontend\Modules\Slideshow\Engine\Model as FrontendSlideshowModel;
 
+/**
+ * This is the category-action
+ *
+ * @author Koen Vinken <koen@tagz.be>
+ */
 class Category extends FrontendBaseBlock
 {
     /**
@@ -75,5 +70,3 @@ class Category extends FrontendBaseBlock
         $this->header->addMetaKeywords($this->record[0]['category_meta_keywords'], ($this->record[0]['category_keywords_overwrite'] == 'Y'));
     }
 }
-
-?>

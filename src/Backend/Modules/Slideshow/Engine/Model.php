@@ -2,20 +2,15 @@
 
 namespace Backend\Modules\Slideshow\Engine;
 
-/**
- * In this file we store all generic functions that we will be using in the slideshow module
- *
- * @package     backend
- * @subpackage  slideshow
- *
- * @author      Koen Vinken <koen@tagz.be>
- * @since       1.0
- */
-
 use Common\Uri as CommonUri;
 use Backend\Core\Engine\Model as BackendModel;
 use Backend\Core\Engine\Language as BL;
 
+/**
+ * In this file we store all generic functions that we will be using in the slideshow module
+ *
+ * @author Koen Vinken <koen@tagz.be>
+ */
 class Model
 {
     /**

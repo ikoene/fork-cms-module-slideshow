@@ -2,19 +2,13 @@
 
 namespace Frontend\Modules\Slideshow;
 
+use Frontend\Core\Engine\Base\Config as FrontendBaseConfig;
+
 /**
  * This is the configuration-object
  *
- * @package     frontend
- * @subpackage  slideshow
- *
- * @author      Koen Vinken <koen@tagz.be>
- * @since       1.0
+ * @author Koen Vinken <koen@tagz.be>
  */
-
-use Frontend\Core\Engine\Base\Config as FrontendBaseConfig;
-
-
 final class Config extends FrontendBaseConfig
 {
     /**
@@ -24,13 +18,10 @@ final class Config extends FrontendBaseConfig
      */
     protected $defaultAction = 'index';
 
-
     /**
      * The disabled actions
      *
      * @var array
      */
-    //protected $disabledActions = array();
+    protected $disabledActions = array();
 }
-
-?>

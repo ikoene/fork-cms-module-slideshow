@@ -2,19 +2,14 @@
 
 namespace Frontend\Modules\Slideshow\Engine;
 
-/**
- * This is the configuration-object
- *
- * @package     frontend
- * @subpackage  slideshow
- *
- * @author      Koen Vinken <koen@tagz.be>
- * @since       1.0
- */
-
 use Frontend\Core\Engine\Model as FrontendModel;
 use Frontend\Core\Engine\Navigation as FrontendNavigation;
 
+/**
+ * In this file we store all generic functions that we will be using in the slideshow module
+ *
+ * @author Koen Vinken <koen@tagz.be>
+ */
 class Model
 {
 

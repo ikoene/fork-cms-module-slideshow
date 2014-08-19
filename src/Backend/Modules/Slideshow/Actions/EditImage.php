@@ -2,19 +2,9 @@
 
 namespace Backend\Modules\Slideshow\Actions;
 
-/**
- * This is the configuration-object for the slideshow module
- *
- * @package     backend
- * @subpackage  slideshow
- *
- * @author      Koen Vinken <koen@tagz.be>
- * @since       1.0
- */
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Filesystem\Exception\IOException;
 use Symfony\Component\HttpFoundation\File\File;
-
 use Backend\Core\Engine\Base\ActionEdit as BackendBaseActionEdit;
 use Backend\Core\Engine\Authentication as BackendAuthentication;
 use Backend\Core\Engine\Model as BackendModel;
@@ -28,6 +18,11 @@ use Backend\Modules\Search\Engine\Model as BackendSearchModel;
 use Backend\Modules\Tags\Engine\Model as BackendTagsModel;
 use Backend\Modules\Users\Engine\Model as BackendUsersModel;
 
+/**
+ * This is the edit-action, it will display a form to edit an existing image.
+ *
+ * @author Koen Vinken <koen@tagz.be>
+ */
 class EditImage extends BackendBaseActionEdit
 {
 
@@ -201,5 +196,3 @@ class EditImage extends BackendBaseActionEdit
         }
     }
 }
-
-?>

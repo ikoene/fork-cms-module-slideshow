@@ -2,18 +2,13 @@
 
 namespace Backend\Modules\Slideshow\Installer;
 
-/**
- * This is the configuration-object for the slideshow module
- *
- * @package     backend
- * @subpackage  slideshow
- *
- * @author      Koen Vinken <koen@tagz.be>
- * @since       1.0
- */
-
 use Backend\Core\Installer\ModuleInstaller;
 
+/**
+ * Installer for the slideshow module
+ *
+ * @author Koen Vinken <koen@tagz.be>
+ */
 class Installer extends ModuleInstaller
 {
     /**
@@ -89,5 +84,3 @@ class Installer extends ModuleInstaller
 
     }
 }
-
-?>

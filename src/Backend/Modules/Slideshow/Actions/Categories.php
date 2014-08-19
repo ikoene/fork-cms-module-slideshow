@@ -2,16 +2,6 @@
 
 namespace Backend\Modules\Slideshow\Actions;
 
-/**
- * This is the configuration-object for the slideshow module
- *
- * @package     backend
- * @subpackage  slideshow
- *
- * @author      Koen Vinken <koen@tagz.be>
- * @since       1.0
- */
-
 use Backend\Core\Engine\Base\ActionIndex as BackendBaseActionIndex;
 use Backend\Core\Engine\Authentication as BackendAuthentication;
 use Backend\Core\Engine\DataGridDB as BackendDataGridDB;
@@ -20,6 +10,11 @@ use Backend\Core\Engine\Language as BL;
 use Backend\Core\Engine\Model as BackendModel;
 use Backend\Modules\Slideshow\Engine\Model as BackendSlideshowModel;
 
+/**
+ * This is the categories-action, it will display the overview of slideshow categories
+ *
+ * @author Koen Vinken <koen@tagz.be>
+ */
 class Categories extends BackendBaseActionIndex
 {
     /**
@@ -85,5 +80,3 @@ class Categories extends BackendBaseActionIndex
         $this->tpl->assign('dataGrid', ($this->dataGrid->getNumResults() != 0) ? $this->dataGrid->getContent() : false);
     }
 }
-
-?>

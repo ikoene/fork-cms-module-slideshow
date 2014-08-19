@@ -2,16 +2,6 @@
 
 namespace Backend\Modules\Slideshow\Actions;
 
-/**
- * This is the configuration-object for the slideshow module
- *
- * @package     backend
- * @subpackage  slideshow
- *
- * @author      Koen Vinken <koen@tagz.be>
- * @since       1.0
- */
-
 use Backend\Core\Engine\Base\ActionAdd as BackendBaseActionAdd;
 use Backend\Core\Engine\Form as BackendForm;
 use Backend\Core\Engine\Language as BL;
@@ -19,6 +9,11 @@ use Backend\Core\Engine\Meta as BackendMeta;
 use Backend\Core\Engine\Model as BackendModel;
 use Backend\Modules\Slideshow\Engine\Model as BackendSlideshowModel;
 
+/**
+ * This is the add-action, it will display a form to create a new category
+ *
+ * @author Koen Vinken <koen@tagz.be>
+ */
 class AddCategory extends BackendBaseActionAdd
 {
     /**
@@ -106,5 +101,3 @@ class AddCategory extends BackendBaseActionAdd
         }
     }
 }
-
-?>

@@ -2,19 +2,8 @@
 
 namespace Backend\Modules\Slideshow\Actions;
 
-/**
- * This is the configuration-object for the slideshow module
- *
- * @package     backend
- * @subpackage  slideshow
- *
- * @author      Koen Vinken <koen@tagz.be>
- * @since       1.0
- */
-
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Filesystem\Exception\IOException;
-
 use Backend\Core\Engine\Base\ActionAdd as BackendBaseActionAdd;
 use Backend\Core\Engine\Authentication as BackendAuthentication;
 use Backend\Core\Engine\Form as BackendForm;
@@ -26,6 +15,11 @@ use Backend\Modules\Search\Engine\Model as BackendSearchModel;
 use Backend\Modules\Tags\Engine\Model as BackendTagsModel;
 use Backend\Modules\Users\Engine\Model as BackendUsersModel;
 
+/**
+ * This is the add-action, it will display a form to create a new item
+ *
+ * @author Koen Vinken <koen@tagz.be>
+ */
 class Add extends BackendBaseActionAdd
 {
     /**
@@ -232,5 +226,3 @@ class Add extends BackendBaseActionAdd
         }
     }
 }
-
-?>
