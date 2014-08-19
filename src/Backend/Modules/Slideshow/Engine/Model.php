@@ -60,7 +60,8 @@ class Model
      * Generate html for preview
      *
      * @return  array
-     */ public static function getPreview($filename)
+     */
+    public static function getPreview($filename)
     {
         $path = '/src/Frontend/Files/userfiles/images/slideshow/thumbnails/' . $filename;
         return '<img src="' . $path . '" width="50" height="50" />';
@@ -69,12 +70,12 @@ class Model
     /**
      * Generate html for gallerypreview
      *
-     * @return  array
-     */ public static function getGalleryPreview($filename)
+     * @return array
+     */
+    public static function getGalleryPreview($filename)
     {
         // the url allready exists
-        if($filename != null)
-        {
+        if ($filename != null) {
             $path = '/src/Frontend/Files/userfiles/images/slideshow/thumbnails/' . $filename;
             return '<img src="' . $path . '" width="50" height="50" />';
         }
@@ -84,7 +85,7 @@ class Model
      * Delete a specific category
      *
      * @return  void
-     * @param   int $id     The id of the category to be deleted.
+     * @param   int $id The id of the category to be deleted.
      */
     public static function deleteCategory($id)
     {
@@ -101,7 +102,11 @@ class Model
                         'action' => 'category');
 
         // delete extra
-        $db->delete('modules_extras', 'id = ? AND module = ? AND type = ? AND action = ?', array($extra['id'], $extra['module'], $extra['type'], $extra['action']));
+        $db->delete(
+            'modules_extras',
+            'id = ? AND module = ? AND type = ? AND action = ?',
+            array($extra['id'], $extra['module'], $extra['type'], $extra['action'])
+        );
 
         // delete the record
         $db->delete('slideshow_categories', 'id = ?', array((int) $id));
@@ -111,7 +116,7 @@ class Model
      * Create a widget
      *
      * @return  void
-     * @param   int $item   The details of the category to be deleted.
+     * @param   int $item The details of the category to be deleted.
      */
     public static function insertWidgetExtras($item)
     {
@@ -119,19 +124,21 @@ class Model
         $db = BackendModel::getContainer()->get('database');
 
         // build extra
-        $extra = array( 'id' => NULL,
+        $extra = array( 'id' => null,
                         'module' => 'Slideshow',
                         'type' => 'widget',
                         'label' => 'Slideshow',
                         'action' => 'Slideshow',
                         'data' =>serialize(
-                                        array(
-                                            'extra_label' => $item['title'],
-                                            'gallery_id' => $item['gallery_id'],
-                                            'language' => BL::getWorkingLanguage()
-                                        )),
+                            array(
+                                'extra_label' => $item['title'],
+                                'gallery_id' => $item['gallery_id'],
+                                'language' => BL::getWorkingLanguage()
+                            )
+                        ),
                         'hidden' =>'N',
                         'sequence' =>10000);
+
 
         // insert and return the new id
         $item['id'] = $db->insert('modules_extras', $extra);
@@ -156,19 +163,18 @@ class Model
         $db = BackendModel::getContainer()->get('database');
 
         // a new gallery is added
-        if($id === null)
-        {
+        if ($id === null) {
             // check if there's allready a gallery with the suggested url
             $number = (int) $db->getVar(
                 'SELECT COUNT(i.id)
                 FROM slideshow_galleries AS i
                 INNER JOIN meta AS m ON i.meta_id = m.id
                 WHERE i.language = ? AND m.url = ?',
-                array(BL::getWorkingLanguage(), $URL));
+                array(BL::getWorkingLanguage(), $URL)
+            );
 
             // the url allready exists
-            if($number != 0)
-            {
+            if ($number != 0) {
                 // add a number to the url
                 $URL = BackendModel::addNumber($URL);
 
@@ -177,18 +183,18 @@ class Model
             }
 
         // a gallery is edited
-        }else{
+        } else {
             // check if there's allready a gallery with the suggested url, expect the gallery itself
             $number = (int) $db->getVar(
                 'SELECT COUNT(i.id)
                 FROM slideshow_galleries AS i
                 INNER JOIN meta AS m ON i.meta_id = m.id
                 WHERE i.language = ? AND i.id <> ? AND m.url = ?',
-                array(BL::getWorkingLanguage(), $id, $URL));
+                array(BL::getWorkingLanguage(), $id, $URL)
+            );
 
             // the url allready exists
-            if($number != 0)
-            {
+            if ($number != 0) {
                 // add a number to the url
                 $URL = BackendModel::addNumber($URL);
 
@@ -214,32 +220,33 @@ class Model
         $db = BackendModel::getContainer()->get('database');
 
         // new category
-        if($id === null)
-        {
-            if((bool) $db->getVar(
+        if ($id === null) {
+            if ((bool) $db->getVar(
                 'SELECT 1
                  FROM slideshow_categories AS i
                  INNER JOIN meta AS m ON i.meta_id = m.id
                  WHERE i.language = ? AND m.url = ?
                  LIMIT 1',
-                array(BL::getWorkingLanguage(), $url)))
-            {
+                array(BL::getWorkingLanguage(), $url)
+            )
+        ) {
                 $url = BackendModel::addNumber($url);
+
                 return self::getURLForCategory($url);
             }
-        }
-        // current category should be excluded
-        else
-        {
-            if((bool) $db->getVar(
+        } else {
+            // current category should be excluded
+            if ((bool) $db->getVar(
                 'SELECT 1
                  FROM slideshow_categories AS i
                  INNER JOIN meta AS m ON i.meta_id = m.id
                  WHERE i.language = ? AND m.url = ? AND i.id != ?
                  LIMIT 1',
-                array(BL::getWorkingLanguage(), $url, $id)))
-            {
+                array(BL::getWorkingLanguage(), $url, $id)
+            )
+        ) {
                 $url = BackendModel::addNumber($url);
+
                 return self::getURLForCategory($url, $id);
             }
         }
@@ -251,7 +258,7 @@ class Model
      * Update a widget
      *
      * @return  void
-     * @param   int $item   The details of the category to be deleted.
+     * @param   int $item The details of the category to be deleted.
      */
     public static function updateWidgetExtras($item)
     {
@@ -265,16 +272,27 @@ class Model
                         'label' => 'Slideshow',
                         'action' => 'slideshow',
                         'data' =>serialize(
-                                        array(
-                                            'extra_label' => $item['title'],
-                                            'gallery_id' => $item['id'],
-                                            'language' => BL::getWorkingLanguage()
-                                        )),
+                            array(
+                                'extra_label' => $item['title'],
+                                'gallery_id' => $item['id'],
+                                'language' => BL::getWorkingLanguage()
+                            )
+                        ),
                         'hidden' =>'N',
                         'sequence' =>10000);
 
         // update extra
-        return $item['id'] = $db->update('modules_extras', $extra, 'id = ? AND module = ? AND type = ? AND action = ?', array($extra['id'], $extra['module'], $extra['type'], $extra['action']));
+        return $item['id'] = $db->update(
+            'modules_extras',
+            $extra,
+            'id = ? AND module = ? AND type = ? AND action = ?',
+            array(
+                $extra['id'],
+                $extra['module'],
+                $extra['type'],
+                $extra['action']
+            )
+        );
 
         // return the new id
         return $item['id'];
@@ -285,7 +303,7 @@ class Model
      * Delete a specific gallery
      *
      * @return  void
-     * @param   int $id     The id of the gallery to be deleted.
+     * @param   int $id The id of the gallery to be deleted.
      */
     public static function deleteGallery($id)
     {
@@ -301,7 +319,9 @@ class Model
         );
 
         // delete meta
-        if(!empty($metaId)) $db->delete('meta', 'id = ?', (int) $metaId);
+        if (!empty($metaId)) {
+            $db->delete('meta', 'id = ?', (int) $metaId);
+        }
 
         // delete the record
         $db->delete('slideshow_galleries', 'id = ?', array((int) $id));
@@ -314,7 +334,7 @@ class Model
      * Delete the settings of a gallery
      *
      * @return  void
-     * @param   int $id     The id of the gallery to be deleted.
+     * @param   int $id The id of the gallery to be deleted.
      */
     public static function deleteGallerySettings($id)
     {
@@ -329,7 +349,7 @@ class Model
      * Delete a specific image
      *
      * @return  void
-     * @param   int $id     The id of the image to be deleted.
+     * @param   int $id The id of the image to be deleted.
      */
     public static function deleteImage($id)
     {
@@ -344,7 +364,7 @@ class Model
      * Delete a widget
      *
      * @return  void
-     * @param   int $id     The id of the widget to be deleted.
+     * @param   int $id The id of the widget to be deleted.
      */
     public static function deleteWidget($id)
     {
@@ -361,14 +381,22 @@ class Model
                         );
 
         // delete extra
-        $db->delete('modules_extras', 'module = ? AND type = ? AND id = ?', array($extra['module'], $extra['type'], $extra['id']));
+        $db->delete(
+            'modules_extras',
+            'module = ? AND type = ? AND id = ?',
+            array(
+                $extra['module'],
+                $extra['type'],
+                $extra['id']
+            )
+        );
     }
 
     /**
      * Checks if a category exists
      *
      * @return  bool
-     * @param   int $id             The id of the category to check for existence.
+     * @param   int $id The id of the category to check for existence.
      */
     public static function existsCategory($id)
     {
@@ -376,14 +404,15 @@ class Model
             'SELECT COUNT(i.id)
             FROM slideshow_categories AS i
             WHERE i.id = ? AND i.language = ?',
-            array((int) $id, BL::getWorkingLanguage()));
+            array((int) $id, BL::getWorkingLanguage())
+        );
     }
 
     /**
      * Checks if a widget exists
      *
      * @return  bool
-     * @param   int $id             The id of the widget to check for existence.
+     * @param   int $id The id of the widget to check for existence.
      */
     public static function existsWidget($id)
     {
@@ -391,14 +420,15 @@ class Model
             'SELECT COUNT(i.id)
             FROM slideshow_widgets AS i
             WHERE i.id = ? AND i.language = ?',
-            array((int) $id, BL::getWorkingLanguage()));
+            array((int) $id, BL::getWorkingLanguage())
+        );
     }
 
     /**
      * Checks if a gallery exists
      *
      * @return  bool
-     * @param   int $id             The id of the gallery to check for existence.
+     * @param   int $id The id of the gallery to check for existence.
      */
     public static function existsGallery($id)
     {
@@ -406,14 +436,15 @@ class Model
             'SELECT COUNT(i.id)
             FROM slideshow_galleries AS i
             WHERE i.id = ? AND i.language = ?',
-            array((int) $id, BL::getWorkingLanguage()));
+            array((int) $id, BL::getWorkingLanguage())
+        );
     }
 
     /**
      * Get the number of images per gallery
      *
      * @return  bool
-     * @param   int $id             The id of the category to check for existence.
+     * @param   int $id The id of the category to check for existence.
      */
     public static function getImagesByGallery($id)
     {
@@ -421,14 +452,15 @@ class Model
             'SELECT COUNT(i.id)
             FROM slideshow_images AS i
             WHERE i.gallery_id = ? AND i.language = ?',
-            array((int) $id, BL::getWorkingLanguage()));
+            array((int) $id, BL::getWorkingLanguage())
+        );
     }
 
     /**
      * Get the number of galleries per category
      *
      * @return  bool
-     * @param   int $id             The id of the category to check for existence.
+     * @param   int $id The id of the category to check for existence.
      */
     public static function getGalleriesByCategory($id)
     {
@@ -436,14 +468,15 @@ class Model
             'SELECT COUNT(i.id)
             FROM slideshow_galleries AS i
             WHERE i.category_id = ? AND i.language = ?',
-            array((int) $id, BL::getWorkingLanguage()));
+            array((int) $id, BL::getWorkingLanguage())
+        );
     }
 
     /**
      * Checks if an image exists
      *
      * @return  bool
-     * @param   int $id             The id of the image to check for existence.
+     * @param   int $id The id of the image to check for existence.
      */
     public static function existsImage($id)
     {
@@ -451,7 +484,8 @@ class Model
             'SELECT COUNT(i.id)
             FROM slideshow_images AS i
             WHERE i.id = ? AND i.language = ?',
-            array((int) $id, BL::getWorkingLanguage()));
+            array((int) $id, BL::getWorkingLanguage())
+        );
     }
 
     /**
@@ -466,7 +500,8 @@ class Model
             FROM slideshow_categories AS i
             WHERE i.language = ?
             ORDER BY i.sequence ASC',
-            array(BL::getWorkingLanguage()));
+            array(BL::getWorkingLanguage())
+        );
     }
 
     /**
@@ -478,23 +513,25 @@ class Model
     {
         $db = BackendModel::getContainer()->get('database');
 
-        if($includeCount)
-        {
+        if ($includeCount) {
             return (array) $db->getPairs(
                 'SELECT DISTINCT i.id, CONCAT(i.title, " (",  COUNT(p.category_id) ,")") AS title
-                 FROM slideshow_categories AS i
-                 INNER JOIN slideshow_galleries AS p ON i.id = p.category_id AND i.language = p.language
-                 WHERE i.language = ?
-                 GROUP BY i.id
-                 ORDER BY i.sequence',
-                 array(BL::getWorkingLanguage()));
+                FROM slideshow_categories AS i
+                INNER JOIN slideshow_galleries AS p ON i.id = p.category_id AND i.language = p.language
+                WHERE i.language = ?
+                GROUP BY i.id
+                ORDER BY i.sequence',
+                array(BL::getWorkingLanguage())
+            );
         }
 
         return (array) $db->getPairs(
             'SELECT i.id as caste i.title
-             FROM slideshow_categories AS i
-             WHERE i.language = ?',
-             array(BL::getWorkingLanguage()));
+            FROM slideshow_categories AS i
+            WHERE i.language = ?',
+            array(BL::getWorkingLanguage()
+            )
+        );
     }
 
     /**
@@ -509,7 +546,8 @@ class Model
             FROM slideshow_galleries AS i
             WHERE i.language = ?
             ORDER BY i.sequence ASC',
-            array(BL::getWorkingLanguage()));
+            array(BL::getWorkingLanguage())
+        );
     }
 
     /**
@@ -524,7 +562,8 @@ class Model
             FROM slideshow_categories AS i
             WHERE i.language = ?
             ORDER BY i.sequence ASC',
-            array(BL::getWorkingLanguage()));
+            array(BL::getWorkingLanguage())
+        );
     }
 
     /**
@@ -539,27 +578,29 @@ class Model
             FROM slideshow_galleries AS i
             WHERE i.language = ?
             ORDER BY i.sequence ASC',
-            array(BL::getWorkingLanguage()));
+            array(BL::getWorkingLanguage())
+        );
     }
 
     /**
      * Get the max sequence id for category
      *
      * @return  int
-     * @param   int $id     The category id.
+     * @param   int $id The category id.
      */
     public static function getMaximumSlideshowCategorySequence()
     {
         return (int) BackendModel::getContainer()->get('database')->getVar(
             'SELECT MAX(i.sequence)
-            FROM slideshow_categories AS i');
+            FROM slideshow_categories AS i'
+        );
     }
 
     /**
      * Get the max sequence id for image
      *
      * @return  int
-     * @param   int $id     The image id.
+     * @param   int $id The image id.
      */
     public static function getMaximumImageSequence($id)
     {
@@ -567,14 +608,15 @@ class Model
             'SELECT MAX(i.sequence)
             FROM slideshow_images AS i
             WHERE i.gallery_id = ?',
-            array((int) $id));
+            array((int) $id)
+        );
     }
 
     /**
      * Get the max sequence id for gallery
      *
      * @return  int
-     * @param   int $id     The gallery id.
+     * @param   int $id The gallery id.
      */
     public static function getMaximumSlideshowGallerySequence($id)
     {
@@ -582,29 +624,31 @@ class Model
             'SELECT MAX(i.sequence)
             FROM slideshow_galleries AS i
             WHERE i.category_id = ?',
-            array((int) $id));
+            array((int) $id)
+        );
     }
 
     /**
      * Check if the category of a gallery was changed
      *
      * @return  int
-     * @param   int $id     The gallery id.
+     * @param   int $id The gallery id.
      */
-    public static function getChangeCategory($id,$categoryId)
+    public static function getChangeCategory($id, $categoryId)
     {
         return (bool) BackendModel::getContainer()->get('database')->getVar(
             'SELECT i.category_id
             FROM slideshow_galleries AS i
             WHERE i.id = ? AND i.category_id = ?',
-            array((int) $id, (int) $categoryId));
+            array((int) $id, (int) $categoryId)
+        );
     }
 
     /**
      * Get a Gallery by id
      *
      * @return  array
-     * @param   int $id     The gallery id.
+     * @param   int $id The gallery id.
      */
     public static function getGallery($id)
     {
@@ -613,14 +657,15 @@ class Model
             UNIX_TIMESTAMP(i.edited_on) AS edited_on
             FROM slideshow_galleries AS i
             WHERE i.id = ?',
-            array((int) $id));
+            array((int) $id)
+        );
     }
 
     /**
      * Get a Settings by id
      *
      * @return  array
-     * @param   int $id     The gallery id.
+     * @param   int $id The gallery id.
      */
     public static function getSettings($id)
     {
@@ -628,14 +673,15 @@ class Model
             'SELECT i.*
             FROM slideshow_settings AS i
             WHERE i.gallery_id = ?',
-            array((int) $id));
+            array((int) $id)
+        );
     }
 
     /**
      * Get a Image by id
      *
      * @return  array
-     * @param   int $id     The image id.
+     * @param   int $id The image id.
      */
     public static function getImage($id)
     {
@@ -643,14 +689,15 @@ class Model
             'SELECT i.*
             FROM slideshow_images AS i
             WHERE i.id = ?',
-            array((int) $id));
+            array((int) $id)
+        );
     }
 
     /**
      * Get category by id
      *
      * @return  array
-     * @param   int $id     The id of the category.
+     * @param   int $id The id of the category.
      */
     public static function getCategory($id)
     {
@@ -658,14 +705,15 @@ class Model
             'SELECT i.*
             FROM slideshow_categories AS i
             WHERE i.id = ?',
-            array((int) $id));
+            array((int) $id)
+        );
     }
 
     /**
      * Get a Widget by id
      *
      * @return  array
-     * @param   int $id     The widget id.
+     * @param   int $id The widget id.
      */
     public static function getWidget($id)
     {
@@ -673,14 +721,15 @@ class Model
             'SELECT i.*
             FROM slideshow_widgets AS i
             WHERE i.id = ?',
-            array((int) $id));
+            array((int) $id)
+        );
     }
 
     /**
      * Get the last added widget
      *
      * @return  array
-     * @param   int $id     The widget id.
+     * @param   int $id The widget id.
      */
     public static function getLastWidget()
     {
@@ -688,14 +737,15 @@ class Model
             'SELECT i.*
             FROM modules_extras AS i
             ORDER BY id DESC
-            LIMIT 1');
+            LIMIT 1'
+        );
     }
 
     /**
      * Get the last added gallery
      *
      * @return  array
-     * @param   int $id     The widget id.
+     * @param   int $id The widget id.
      */
     public static function getLastGallery()
     {
@@ -703,14 +753,15 @@ class Model
             'SELECT i.*
             FROM slideshow_galleries AS i
             ORDER BY id DESC
-            LIMIT 1');
+            LIMIT 1'
+        );
     }
 
     /**
      * Add a new gallery.
      *
      * @return  int
-     * @param   array $item     The data to insert.
+     * @param   array $item The data to insert.
      */
     public static function insertGallery(array $item)
     {
@@ -721,7 +772,7 @@ class Model
      * Add default settings of a new gallery.
      *
      * @return  int
-     * @param   array $item     The data to insert.
+     * @param   array $item The data to insert.
      */
     public static function insertGallerySettings(array $item)
     {
@@ -732,7 +783,7 @@ class Model
      * Add a new category.
      *
      * @return  int
-     * @param   array $item     The data to insert.
+     * @param   array $item The data to insert.
      */
     public static function insertCategory(array $item)
     {
@@ -750,7 +801,7 @@ class Model
      * Create an image item
      *
      * @return  int
-     * @param   array $item     The data to insert.
+     * @param   array $item The data to insert.
      */
     public static function insertImage(array $item)
     {
@@ -761,7 +812,7 @@ class Model
      * Add a new widget.
      *
      * @return  int
-     * @param   array $item     The data to insert.
+     * @param   array $item The data to insert.
      */
     public static function insertWidget(array $item)
     {
@@ -779,7 +830,7 @@ class Model
      * Is this category allowed to be deleted?
      *
      * @return  bool
-     * @param   int $id     The category id to check.
+     * @param   int $id The category id to check.
      */
     public static function isCategoryAllowedToBeDeleted($id)
     {
@@ -787,7 +838,8 @@ class Model
             'SELECT COUNT(i.id)
             FROM slideshow_galleries AS i
             WHERE i.category_id = ?',
-            array((int) $id));
+            array((int) $id)
+        );
     }
 
     /**
@@ -802,29 +854,49 @@ class Model
         $db = BackendModel::getContainer()->get('database');
 
         // update category
-        return $db->update('slideshow_categories', $item, 'id = ? AND language = ?', array($item['id'], $item['language']));
+        return $db->update(
+            'slideshow_categories',
+            $item,
+            'id = ? AND language = ?',
+            array($item['id'], $item['language'])
+        );
     }
 
     public static function updateCategorySequence(array $item)
     {
-        BackendModel::getContainer()->get('database')->update('slideshow_categories', $item, 'id = ?', array($item['id']));
+        BackendModel::getContainer()->get('database')->update(
+            'slideshow_categories',
+            $item,
+            'id = ?',
+            array($item['id'])
+        );
     }
 
     public static function updateImageSequence(array $item)
     {
-        BackendModel::getContainer()->get('database')->update('slideshow_images', $item, 'id = ?', array($item['id']));
+        BackendModel::getContainer()->get('database')->update(
+            'slideshow_images',
+            $item,
+            'id = ?',
+            array($item['id'])
+        );
     }
 
     public static function updateGallerySequence(array $item)
     {
-        BackendModel::getContainer()->get('database')->update('slideshow_galleries', $item, 'id = ?', array($item['id']));
+        BackendModel::getContainer()->get('database')->update(
+            'slideshow_galleries',
+            $item,
+            'id = ?',
+            array($item['id'])
+        );
     }
 
     /**
      * Update a gallery item
      *
      * @return  int
-     * @param   array $item     The updated item.
+     * @param   array $item The updated item.
      */
     public static function updateGallery(array $item)
     {
@@ -832,14 +904,19 @@ class Model
         $db = BackendModel::getContainer()->get('database');
 
         // insert and return the extra_id
-        return $db->update('slideshow_galleries', $item, 'id = ?', array((int) $item['id']));
+        return $db->update(
+            'slideshow_galleries',
+            $item,
+            'id = ?',
+            array((int) $item['id'])
+        );
     }
 
     /**
      * Update a gallery item
      *
      * @return  int
-     * @param   array $item     The updated item.
+     * @param   array $item The updated item.
      */
     public static function updateGallerySettings(array $item)
     {
@@ -847,14 +924,19 @@ class Model
         $db = BackendModel::getContainer()->get('database');
 
         // insert and return the extra_id
-        return $db->update('slideshow_settings', $item, 'gallery_id = ?', array((int) $item['gallery_id']));
+        return $db->update(
+            'slideshow_settings',
+            $item,
+            'gallery_id = ?',
+            array((int) $item['gallery_id'])
+        );
     }
 
     /**
      * Get a galleries extra
      *
      * @return  int
-     * @param   array $extra        The gallery id.
+     * @param   array $extra The gallery id.
      */
     public static function getGalleryExtraId($id)
     {
@@ -868,40 +950,51 @@ class Model
              WHERE i.id = ?',
             array((int) $id)
         );
-
     }
 
     /**
      * Update an image item
      *
      * @return  int
-     * @param   array $item     The updated item.
+     * @param   array $item The updated item.
      */
     public static function updateImage(array $item)
     {
-        return BackendModel::getContainer()->get('database')->update('slideshow_images', $item, 'id = ?', array((int) $item['id']));
+        return BackendModel::getContainer()->get('database')->update(
+            'slideshow_images',
+            $item,
+            'id = ?',
+            array((int) $item['id'])
+        );
     }
 
     /**
      * Update an image item
      *
-     * @param  array $ids       The ids to update
+     * @param  array $ids The ids to update
      */
     public static function updateHiddenImage($ids)
     {
-        BackendModel::getContainer()->get('database')->update('slideshow_images', array('hidden' => 'Y'), 'id IN(' . implode(',', $ids) . ')');
+        BackendModel::getContainer()->get('database')->update(
+            'slideshow_images',
+            array('hidden' => 'Y'),
+            'id IN(' . implode(',', $ids) . ')'
+        );
         return $ids;
     }
 
     /**
      * Update an image item
      *
-     * @param  array $ids       The ids to update
+     * @param  array $ids The ids to update
      */
     public static function updatePublishedImage($ids)
     {
-        BackendModel::getContainer()->get('database')->update('slideshow_images', array('hidden' => 'N'), 'id IN(' . implode(',', $ids) . ')');
+        BackendModel::getContainer()->get('database')->update(
+            'slideshow_images',
+            array('hidden' => 'N'),
+            'id IN(' . implode(',', $ids) . ')'
+        );
         return $ids;
     }
-
 }
