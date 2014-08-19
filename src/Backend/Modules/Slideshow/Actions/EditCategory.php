@@ -30,8 +30,7 @@ class EditCategory extends BackendBaseActionEdit
         $this->id = $this->getParameter('id', 'int');
 
         // does the item exists?
-        if($this->id !== null && BackendSlideshowModel::existsCategory($this->id))
-        {
+        if ($this->id !== null && BackendSlideshowModel::existsCategory($this->id)) {
             // call parent, this will probably add some general CSS/JS or other required files
             parent::execute();
 
@@ -49,10 +48,13 @@ class EditCategory extends BackendBaseActionEdit
 
             // display the page
             $this->display();
+        } else {
+            // no item found, throw an exceptions, because somebody is fucking with our URL
+            $this->redirect(
+                BackendModel::createURLForAction('categories') .
+                '&error=non-existing'
+            );
         }
-
-        // no item found, throw an exceptions, because somebody is fucking with our URL
-        else $this->redirect(BackendModel::createURLForAction('categories') . '&error=non-existing');
     }
 
 
@@ -83,7 +85,11 @@ class EditCategory extends BackendBaseActionEdit
         $this->meta = new BackendMeta($this->frm, $this->record['meta_id'], 'title', true);
 
         // set callback for generating a unique URL
-        $this->meta->setURLCallback('Backend\Modules\Slideshow\Engine\Model', 'getURLForCategory', array($this->record['id']));
+        $this->meta->setURLCallback(
+            'Backend\Modules\Slideshow\Engine\Model',
+            'getURLForCategory',
+            array($this->record['id'])
+        );
     }
 
 
@@ -102,7 +108,9 @@ class EditCategory extends BackendBaseActionEdit
         $this->tpl->assign('title', $this->record['title']);
 
         // can the category be deleted?
-        if(BackendSlideshowModel::isCategoryAllowedToBeDeleted($this->id)) $this->tpl->assign('showDelete', true);
+        if (BackendSlideshowModel::isCategoryAllowedToBeDeleted($this->id)) {
+            $this->tpl->assign('showDelete', true);
+        }
     }
 
 
@@ -114,8 +122,7 @@ class EditCategory extends BackendBaseActionEdit
     private function validateForm()
     {
         // is the form submitted?
-        if($this->frm->isSubmitted())
-        {
+        if ($this->frm->isSubmitted()) {
             // cleanup the submitted fields, ignore fields that were added by hackers
             $this->frm->cleanupFields();
 
@@ -125,8 +132,7 @@ class EditCategory extends BackendBaseActionEdit
             $this->meta->validate();
 
             // no errors?
-            if($this->frm->isCorrect())
-            {
+            if ($this->frm->isCorrect()) {
                 // build item
                 $item['id'] = $this->id;
                 $item['meta_id'] = $this->meta->save(true);
@@ -137,10 +143,20 @@ class EditCategory extends BackendBaseActionEdit
                 BackendSlideshowModel::updateCategory($item);
 
                 // trigger event
-                BackendModel::triggerEvent($this->getModule(), 'after_edite_category', array('item' => $item));
+                BackendModel::triggerEvent(
+                    $this->getModule(),
+                    'after_edite_category',
+                    array('item' => $item)
+                );
 
                 // everything is saved, so redirect to the overview
-                $this->redirect(BackendModel::createURLForAction('categories') . '&report=edited-category&var=' . urlencode($item['title']) . '&highlight=row-' . $item['id']);
+                $this->redirect(
+                    BackendModel::createURLForAction('categories') .
+                    '&report=edited-category&var=' .
+                    urlencode($item['title']) .
+                    '&highlight=row-' .
+                    $item['id']
+                );
             }
         }
     }
