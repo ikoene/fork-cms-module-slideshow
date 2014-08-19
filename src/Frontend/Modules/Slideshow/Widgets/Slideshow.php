@@ -55,7 +55,11 @@ class Slideshow extends FrontendBaseWidget
     private function parse()
     {
         // add CSS
-        $this->header->addCSS('/src/Frontend/Modules/' . $this->getModule() . '/Layout/Css/slideshow.css');
+        $this->header->addCSS(
+            '/src/Frontend/Modules/' .
+            $this->getModule() .
+            '/Layout/Css/slideshow.css'
+        );
 
         // assign
         $this->tpl->assign('widgetSlideshow', $this->slides);
@@ -67,10 +71,16 @@ class Slideshow extends FrontendBaseWidget
         // should we use the settings per slide or the module settings
         if ($this->settings['settings_per_slide']==='true') {
                 // load slideshow settings
-                $this->tpl->assign('widgetSlideshowSettings', FrontendSlideshowModel::getGallerySettings($this->data['gallery_id']));
-            } else {
-                // load module settings
-                $this->tpl->assign('widgetSlideshowSettings', FrontendModel::getModuleSettings('Slideshow'));
-            }
+                $this->tpl->assign(
+                    'widgetSlideshowSettings',
+                    FrontendSlideshowModel::getGallerySettings($this->data['gallery_id'])
+                );
+        } else {
+            // load module settings
+            $this->tpl->assign(
+                'widgetSlideshowSettings',
+                FrontendModel::getModuleSettings('Slideshow')
+            );
+        }
     }
 }
