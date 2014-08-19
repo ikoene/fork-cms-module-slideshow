@@ -69,8 +69,7 @@ class AddCategory extends BackendBaseActionAdd
     private function validateForm()
     {
         // is the form submitted?
-        if($this->frm->isSubmitted())
-        {
+        if ($this->frm->isSubmitted()) {
             // cleanup the submitted fields, ignore fields that were added by hackers
             $this->frm->cleanupFields();
 
@@ -81,8 +80,7 @@ class AddCategory extends BackendBaseActionAdd
             $this->meta->validate();
 
             // no errors?
-            if($this->frm->isCorrect())
-            {
+            if ($this->frm->isCorrect()) {
                 // build item
                 $item['title'] = $this->frm->getField('title')->getValue();
                 $item['language'] = BL::getWorkingLanguage();
@@ -96,7 +94,13 @@ class AddCategory extends BackendBaseActionAdd
                 BackendModel::triggerEvent($this->getModule(), 'after_add_category', array('item' => $item));
 
                 // everything is saved, so redirect to the overview
-                $this->redirect(BackendModel::createURLForAction('categories') . '&report=added-category&var=' . urlencode($item['title']) . '&highlight=row-' . $item['id']);
+                $this->redirect(
+                    BackendModel::createURLForAction('categories') .
+                    '&report=added-category&var=' .
+                    urlencode($item['title']) .
+                    '&highlight=row-' .
+                    $item['id']
+                );
             }
         }
     }
