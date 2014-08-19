@@ -62,10 +62,25 @@ class Installer extends ModuleInstaller
         $db = $this->getDB();
 
         // insert default category for every language
-        foreach($this->getLanguages() as $language)
-        {
-        $metaId = $db->insert('meta', array('keywords' => 'default', 'description' => 'default', 'title' => 'default', 'url' => 'default'));
-        $db->insert('slideshow_categories', array('meta_id' => $metaId, 'language'=> $language, 'title' => 'default', 'sequence' => 1));
+        foreach ($this->getLanguages() as $language) {
+            $metaId = $db->insert(
+                'meta',
+                array(
+                    'keywords' => 'default',
+                    'description' => 'default',
+                    'title' => 'default',
+                    'url' => 'default'
+                )
+            );
+            $db->insert(
+                'slideshow_categories',
+                array(
+                    'meta_id' => $metaId,
+                    'language'=> $language,
+                    'title' => 'default',
+                    'sequence' => 1
+                )
+            );
         }
 
         // module extra
@@ -79,8 +94,25 @@ class Installer extends ModuleInstaller
         // set navigation
         $navigationModulesId = $this->setNavigation(null, 'Modules');
         $navigationBlogId = $this->setNavigation($navigationModulesId, 'Slideshow');
-        $this->setNavigation($navigationBlogId, 'Galleries', 'slideshow/index', array('slideshow/add',  'slideshow/edit', 'slideshow/edit_image', 'slideshow/add_image'));
-        $this->setNavigation($navigationBlogId, 'Categories', 'slideshow/categories', array('slideshow/add_category', 'slideshow/edit_category'));
-
+        $this->setNavigation(
+            $navigationBlogId,
+            'Galleries',
+            'slideshow/index',
+            array(
+                'slideshow/add',
+                'slideshow/edit',
+                'slideshow/edit_image',
+                'slideshow/add_image'
+            )
+        );
+        $this->setNavigation(
+            $navigationBlogId,
+            'Categories',
+            'slideshow/categories',
+            array(
+                'slideshow/add_category',
+                'slideshow/edit_category'
+            )
+        );
     }
 }
