@@ -55,12 +55,10 @@ class Settings extends BackendBaseActionEdit
      */
     private function validateForm()
     {
-        if($this->frm->isSubmitted())
-        {
+        if ($this->frm->isSubmitted()) {
             $this->frm->cleanupFields();
 
-            if($this->frm->isCorrect())
-            {
+            if ($this->frm->isCorrect()) {
                 // set mode setting
                 BackendModel::setModuleSetting($this->URL->getModule(), 'settings_per_slide', (string) ($this->frm->getField('settings_per_slide')->getChecked()) ? 'true' : 'false');
 
