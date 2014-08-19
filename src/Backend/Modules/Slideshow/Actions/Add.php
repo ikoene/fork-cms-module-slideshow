@@ -2,6 +2,8 @@
 
 namespace Backend\Modules\Slideshow\Actions;
 
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Filesystem\Exception\IOException;
 use Backend\Core\Engine\Base\ActionAdd as BackendBaseActionAdd;
 use Backend\Core\Engine\Authentication as BackendAuthentication;
 use Backend\Core\Engine\Form as BackendForm;
@@ -9,6 +11,9 @@ use Backend\Core\Engine\Language as BL;
 use Backend\Core\Engine\Model as BackendModel;
 use Backend\Core\Engine\Meta as BackendMeta;
 use Backend\Modules\Slideshow\Engine\Model as BackendSlideshowModel;
+use Backend\Modules\Search\Engine\Model as BackendSearchModel;
+use Backend\Modules\Tags\Engine\Model as BackendTagsModel;
+use Backend\Modules\Users\Engine\Model as BackendUsersModel;
 
 /**
  * This is the add-action, it will display a form to create a new item
@@ -27,7 +32,7 @@ class Add extends BackendBaseActionAdd
     /**
      * Execute the action
      *
-     * @return void
+     * @return  void
      */
     public function execute()
     {
@@ -53,14 +58,15 @@ class Add extends BackendBaseActionAdd
     /**
      * Get the data for a question
      *
-     * @return void
+     * @return  void
      */
     private function getData()
     {
         // get categories
         $this->categories = BackendSlideshowModel::getCategoriesForDropdown();
 
-        if (empty($this->categories)) {
+        if(empty($this->categories))
+        {
             $this->redirect(BackendModel::createURLForAction('add_category'));
         }
     }
@@ -68,7 +74,7 @@ class Add extends BackendBaseActionAdd
     /**
      * Load the form
      *
-     * @return void
+     * @return  void
      */
     private function loadForm()
     {
@@ -97,10 +103,11 @@ class Add extends BackendBaseActionAdd
 
     }
 
+
     /**
      * Parse the form
      *
-     * @return void
+     * @return  void
      */
     protected function parse()
     {
@@ -112,23 +119,23 @@ class Add extends BackendBaseActionAdd
         $url404 = BackendModel::getURL(404);
 
         // parse additional variables
-        if ($url404 != $url) {
-            $this->tpl->assign('detailURL', SITE_URL . $url);
-        }
+        if($url404 != $url) $this->tpl->assign('detailURL', SITE_URL . $url);
 
         // assign categories
         $this->tpl->assign('categories', $this->categories);
     }
 
+
     /**
      * Validate the form
      *
-     * @return void
+     * @return  void
      */
     private function validateForm()
     {
         // is the form submitted?
-        if ($this->frm->isSubmitted()) {
+        if($this->frm->isSubmitted())
+        {
             // cleanup the submitted fields, ignore fields that were added by hackers
             $this->frm->cleanupFields();
 
@@ -142,28 +149,22 @@ class Add extends BackendBaseActionAdd
             $this->frm->getField('publish_on_date')->isValid(BL::getError('DateIsInvalid'));
             $this->frm->getField('publish_on_time')->isValid(BL::getError('TimeIsInvalid'));
 
-            if ($this->frm->getField('filename')->isFilled(BL::err('FieldIsRequired'))) {
-                // correct extension?
-                if ($this->frm->getField('filename')
-                    ->isAllowedExtension(
-                        array('jpg', 'jpeg', 'gif', 'png'),
-                        BL::err('JPGGIFAndPNGOnly')
-                    )
-                ) {
-                    // correct mimetype?
-                    $this->frm->getField('filename')
-                        ->isAllowedMimeType(
-                            array('image/gif', 'image/jpg', 'image/jpeg', 'image/png'),
-                            BL::err('JPGGIFAndPNGOnly')
-                        )
+                if($this->frm->getField('filename')->isFilled())
+                {
+                    // correct extension
+                    if($this->frm->getField('filename')->isAllowedExtension(array('jpg', 'jpeg', 'gif', 'png'), BL::err('JPGGIFAndPNGOnly')))
+                    {
+                        // correct mimetype?
+                        $this->frm->getField('filename')->isAllowedMimeType(array('image/gif', 'image/jpg', 'image/jpeg', 'image/png'), BL::err('JPGGIFAndPNGOnly'));
+                    }
                 }
-            }
 
             // validate meta
             $this->meta->validate();
 
             // no errors?
-            if ($this->frm->isCorrect()) {
+            if($this->frm->isCorrect())
+            {
                 // build item
                 $item['user_id'] = BackendAuthentication::getUser()->getUserId();
                 $item['meta_id'] = $this->meta->save();
@@ -174,35 +175,20 @@ class Add extends BackendBaseActionAdd
                 $item['height'] = $this->frm->getField('height')->getValue();
                 $item['description'] = $this->frm->getField('description')->getValue(true);
 
-                if ($this->frm->getField('filename')->isFilled()) {
+                if($this->frm->getField('filename')->isFilled())
+                {
                     // create new filename
-                    $filename = $this->meta->getURL() . '-' .
-                    BL::getWorkingLanguage() . '.' .
-                    $this->frm->getField('filename')->getExtension();
-
+                    $filename = rand(0,100000) . $this->frm->getField('filename')->getExtension();
                     $item['filename'] = $filename;
 
                     // upload the image
-                    $this->frm->getField('filename')->moveFile(
-                        FRONTEND_FILES_PATH .
-                        '/userfiles/images/slideshow/thumbnails/' .
-                        $filename
-                    );
+                    $this->frm->getField('filename')->moveFile(FRONTEND_FILES_PATH . '/userfiles/images/slideshow/thumbnails/' . $filename);
                 }
 
                 $item['hidden'] = $this->frm->getField('hidden')->getValue();
-                $item['sequence'] = BackendSlideshowModel::getMaximumGallerySequence(
-                    $this->frm->getField('categories')
-                        ->getValue()
-                ) + 1;
+                $item['sequence'] = BackendSlideshowModel::getMaximumSlideshowGallerySequence($this->frm->getField('categories')->getValue()) + 1;
                 $item['created_on'] = BackendModel::getUTCDate();
-                $item['publish_on'] = BackendModel::getUTCDate(
-                    null,
-                    BackendModel::getUTCTimestamp(
-                        $this->frm->getField('publish_on_date'),
-                        $this->frm->getField('publish_on_time')
-                    )
-                );
+                $item['publish_on'] = BackendModel::getUTCDate(null, BackendModel::getUTCTimestamp($this->frm->getField('publish_on_date'), $this->frm->getField('publish_on_time')));
 
                 // insert the item
                 $item['id'] = BackendSlideshowModel::insertGallery($item);
@@ -223,7 +209,7 @@ class Add extends BackendBaseActionAdd
                 $settings = BackendModel::getModuleSettings('Slideshow');
 
                 // remove settings_per_slide from array
-                $settings = array_slice($settings, 0, 11);
+                $settings = array_slice($settings, 0,11);
 
                 // add gallery_id to settings
                 $settings['gallery_id'] = $item['id'];
