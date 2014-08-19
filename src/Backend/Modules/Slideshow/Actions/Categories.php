@@ -46,17 +46,30 @@ class Categories extends BackendBaseActionIndex
     private function loadDataGrid()
     {
         // create datagrid
-        $this->dataGrid = new BackendDataGridDB(BackendSlideshowModel::QRY_DATAGRID_BROWSE_CATEGORIES, BL::getWorkingLanguage());
+        $this->dataGrid = new BackendDataGridDB(
+            BackendSlideshowModel::QRY_DATAGRID_BROWSE_CATEGORIES,
+            BL::getWorkingLanguage()
+        );
 
         // disable paging
         $this->dataGrid->setPaging(false);
 
         // set column URLs
-        $this->dataGrid->setColumnURL('title', BackendModel::createURLForAction('edit_category') . '&amp;id=[id]');
+        $this->dataGrid->setColumnURL(
+            'title',
+            BackendModel::createURLForAction('edit_category') . '&amp;id=[id]'
+        );
 
         // create a column #galleries
         $this->dataGrid->addColumn('galleries', BL::lbl('Galleries'));
-        $this->dataGrid->setColumnFunction(array('Backend\Modules\Slideshow\Engine\Model', 'getGalleriesByCategory'),'[id]', 'galleries', true);
+        $this->dataGrid->setColumnFunction(
+            array(
+                'Backend\Modules\Slideshow\Engine\Model',
+                'getGalleriesByCategory'),
+            '[id]',
+            'galleries',
+            true
+        );
 
         // enable drag and drop
         $this->dataGrid->enableSequenceByDragAndDrop();
@@ -66,7 +79,13 @@ class Categories extends BackendBaseActionIndex
         $this->dataGrid->setAttributes(array('data-action' => "CategorySequence"));
 
         // add edit column
-        $this->dataGrid->addColumn('edit', null, BL::lbl('Edit'), BackendModel::createURLForAction('edit_category') . '&amp;id=[id]', BL::lbl('Edit'));
+        $this->dataGrid->addColumn(
+            'edit',
+            null,
+            BL::lbl('Edit'),
+            BackendModel::createURLForAction('edit_category') . '&amp;id=[id]',
+            BL::lbl('Edit')
+        );
     }
 
 
@@ -77,6 +96,9 @@ class Categories extends BackendBaseActionIndex
      */
     protected function parse()
     {
-        $this->tpl->assign('dataGrid', ($this->dataGrid->getNumResults() != 0) ? $this->dataGrid->getContent() : false);
+        $this->tpl->assign(
+            'dataGrid',
+            ($this->dataGrid->getNumResults() != 0) ? $this->dataGrid->getContent() : false
+        );
     }
 }
