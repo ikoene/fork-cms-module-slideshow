@@ -11,7 +11,6 @@ use Frontend\Core\Engine\Model as FrontendModel;
  */
 class Model
 {
-
     /**
      * Get all galleries
      *
@@ -28,7 +27,8 @@ class Model
             INNER JOIN meta AS m2 ON c.meta_id = m2.id
             WHERE i.language = ? AND i.hidden = ? AND i.publish_on <= ? AND p.hidden = ?
             ORDER BY i.publish_on',
-            array(FRONTEND_LANGUAGE, 'N', FrontendModel::getUTCDate('Y-m-d H:i') . ':00','N'));
+            array(FRONTEND_LANGUAGE, 'N', FrontendModel::getUTCDate('Y-m-d H:i') . ':00','N')
+        );
     }
 
     /**
@@ -42,13 +42,21 @@ class Model
         $db = FrontendModel::getContainer()->get('database');
 
         return (array) $db->getRecord(
-            'SELECT i.*, m.*, i.id AS gallery_id, UNIX_TIMESTAMP(i.publish_on) AS publish_on, m.id AS meta_id, m.keywords AS meta_keywords,
-            m.title AS meta_title, m.description AS meta_description
+            'SELECT
+            i.*,
+            m.*,
+            i.id AS gallery_id,
+            UNIX_TIMESTAMP(i.publish_on) AS publish_on,
+            m.id AS meta_id,
+            m.keywords AS meta_keywords,
+            m.title AS meta_title,
+            m.description AS meta_description
             FROM slideshow_galleries AS i
             INNER JOIN meta AS m ON i.meta_id = m.id
             WHERE m.url = ? AND i.language = ? AND hidden = ?
             GROUP BY i.id',
-            array((string) $URL, FRONTEND_LANGUAGE, 'N'));
+            array((string) $URL, FRONTEND_LANGUAGE, 'N')
+        );
     }
 
     /**
@@ -62,9 +70,11 @@ class Model
         $db = FrontendModel::getContainer()->get('database');
 
         return (array) $db->getRecords(
-            'SELECT DISTINCT i.*, m.url as category_url, m2.url as category_meta_url, m2.keywords as category_meta_keywords,
+            'SELECT DISTINCT i.*, m.url as category_url,
+            m2.url as category_meta_url, m2.keywords as category_meta_keywords,
             m2.title as category_meta_title, m2.description as category_meta_description,
-            m2.title_overwrite as category_title_overwrite, m2.description_overwrite as category_description_overwrite,
+            m2.title_overwrite as category_title_overwrite,
+            m2.description_overwrite as category_description_overwrite,
             m2.keywords_overwrite as category_keywords_overwrite,
             m.url as meta_url, m.keywords AS meta_keywords,
             m.id AS meta_id, m.title AS meta_title, m.description AS meta_description,
@@ -74,9 +84,11 @@ class Model
             INNER JOIN slideshow_categories AS c ON i.category_id = c.id
             INNER JOIN meta as m ON i.meta_id = m.id
             INNER JOIN meta AS m2 ON c.meta_id = m2.id
-            WHERE m2.url = ? AND i.language = ? AND i.hidden = ? AND i.publish_on <= ? AND p.hidden = ?
+            WHERE m2.url = ? AND i.language = ? AND i.hidden = ?
+            AND i.publish_on <= ? AND p.hidden = ?
             ORDER BY i.sequence',
-            array($URL, FRONTEND_LANGUAGE, 'N', FrontendModel::getUTCDate('Y-m-d H:i') . ':00','N'));
+            array($URL, FRONTEND_LANGUAGE, 'N', FrontendModel::getUTCDate('Y-m-d H:i') . ':00','N')
+        );
     }
 
     /**
@@ -92,7 +104,8 @@ class Model
             FROM slideshow_images AS i
             WHERE i.gallery_id = ? AND hidden = ? AND i.language = ?
             ORDER BY i.sequence',
-            array((int) $id, 'N', FRONTEND_LANGUAGE));
+            array((int) $id, 'N', FRONTEND_LANGUAGE)
+        );
     }
 
     /**
@@ -107,9 +120,17 @@ class Model
             'SELECT i.*, UNIX_TIMESTAMP(i.publish_on) AS publish_on
             FROM slideshow_galleries AS i
             INNER JOIN slideshow_images as p ON i.id = p.gallery_id
-            WHERE i.id = ? AND i.language = ? AND i.hidden = ? AND i.publish_on <= ? AND p.hidden = ?
+            WHERE i.id = ? AND i.language = ? AND i.hidden = ?
+            AND i.publish_on <= ? AND p.hidden = ?
             ORDER BY i.sequence',
-            array((int) $id, FRONTEND_LANGUAGE, 'N', FrontendModel::getUTCDate('Y-m-d H:i') . ':00', 'N'));
+            array(
+                (int) $id,
+                FRONTEND_LANGUAGE,
+                'N',
+                FrontendModel::getUTCDate('Y-m-d H:i') . ':00',
+                'N'
+            )
+        );
     }
 
     /**
@@ -124,7 +145,8 @@ class Model
             'SELECT i.*
             FROM slideshow_settings AS i
             WHERE i.gallery_id = ?',
-            array((int) $id));
+            array((int) $id)
+        );
     }
 
     /**
@@ -150,7 +172,9 @@ class Model
         );
 
         // validate
-        if($date == '') return array();
+        if ($date == '') {
+            return array();
+        }
 
         // init var
         $navigation = array();
@@ -178,8 +202,6 @@ class Model
              LIMIT 1',
             array($id, 'N', FRONTEND_LANGUAGE, $date, 'N')
         );
-
         return $navigation;
     }
-
 }
