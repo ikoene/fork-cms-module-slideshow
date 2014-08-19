@@ -16,7 +16,7 @@ class Category extends FrontendBaseBlock
     /**
      * Execute the extra
      *
-     * @return  void
+     * @return void
      */
     public function execute()
     {
@@ -33,7 +33,6 @@ class Category extends FrontendBaseBlock
         $this->parse();
     }
 
-
     /**
      * Get the data
      *
@@ -42,7 +41,9 @@ class Category extends FrontendBaseBlock
     private function getData()
     {
         // check for errors
-        if($this->URL->getParameter(1) === null) $this->redirect(FrontendNavigation::getURL(404));
+        if ($this->URL->getParameter(1) === null) {
+            $this->redirect(FrontendNavigation::getURL(404));
+        }
 
         // get the gallery meta based on the url
         $this->record = FrontendSlideshowModel::getGalleriesByURL($this->URL->getParameter(1));
@@ -55,7 +56,7 @@ class Category extends FrontendBaseBlock
     /**
      * Parse
      *
-     * @return  void
+     * @return void
      */
     private function parse()
     {
@@ -65,8 +66,17 @@ class Category extends FrontendBaseBlock
         $this->tpl->assign('galleries', $this->record);
 
         // set meta
-        $this->header->setPageTitle($this->record[0]['category_meta_title'], ($this->record[0]['category_title_overwrite'] == 'Y'));
-        $this->header->addMetaDescription($this->record[0]['category_meta_description'], ($this->record[0]['category_description_overwrite'] == 'Y'));
-        $this->header->addMetaKeywords($this->record[0]['category_meta_keywords'], ($this->record[0]['category_keywords_overwrite'] == 'Y'));
+        $this->header->setPageTitle(
+            $this->record[0]['category_meta_title'],
+            ($this->record[0]['category_title_overwrite'] == 'Y')
+        );
+        $this->header->addMetaDescription(
+            $this->record[0]['category_meta_description'],
+            ($this->record[0]['category_description_overwrite'] == 'Y')
+        );
+        $this->header->addMetaKeywords(
+            $this->record[0]['category_meta_keywords'],
+            ($this->record[0]['category_keywords_overwrite'] == 'Y')
+        );
     }
 }

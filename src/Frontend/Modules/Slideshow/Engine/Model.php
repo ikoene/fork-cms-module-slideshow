@@ -3,7 +3,6 @@
 namespace Frontend\Modules\Slideshow\Engine;
 
 use Frontend\Core\Engine\Model as FrontendModel;
-use Frontend\Core\Engine\Navigation as FrontendNavigation;
 
 /**
  * In this file we store all generic functions that we will be using in the slideshow module
@@ -16,7 +15,7 @@ class Model
     /**
      * Get all galleries
      *
-     * @return  array
+     * @return array
      */
     public static function getGalleries()
     {
@@ -35,7 +34,7 @@ class Model
     /**
      * Get the gallery based on the URL
      *
-     * @param array $URL The URL.
+     * @param  array $URL The URL.
      * @return array
      */
     public static function getGalleryByURL($URL)
@@ -52,11 +51,10 @@ class Model
             array((string) $URL, FRONTEND_LANGUAGE, 'N'));
     }
 
-
     /**
      * Get the galleries in a category based on the URL (+ get the meta of the category itself for overwrite)
      *
-     * @param array $URL The URL.
+     * @param  array $URL The URL.
      * @return array
      */
     public static function getGalleriesByURL($URL)
@@ -84,8 +82,8 @@ class Model
     /**
      * Get all images in a gallery
      *
-     * @return  array
-     * @param   int $categoryId         The id of the gallery.
+     * @return array
+     * @param  int   $categoryId The id of the gallery.
      */
     public static function getImages($id)
     {
@@ -97,12 +95,11 @@ class Model
             array((int) $id, 'N', FRONTEND_LANGUAGE));
     }
 
-
     /**
      * Get a gallery by id
      *
-     * @return  array
-     * @param   int $galleryId          The id of the gallery.
+     * @return array
+     * @param  int   $galleryId The id of the gallery.
      */
     public static function getGallery($id)
     {
@@ -118,8 +115,8 @@ class Model
     /**
      * Get a gallery settings by id
      *
-     * @return  array
-     * @param   int $galleryId          The id of the gallery.
+     * @return array
+     * @param  int   $galleryId The id of the gallery.
      */
     public static function getGallerySettings($id)
     {
@@ -133,7 +130,7 @@ class Model
     /**
      * Get an array with the previous and the next gallery
      *
-     * @param int $id The id of the current item.
+     * @param  int   $id The id of the current item.
      * @return array
      */
     public static function getNavigation($id)
@@ -181,6 +178,7 @@ class Model
              LIMIT 1',
             array($id, 'N', FRONTEND_LANGUAGE, $date, 'N')
         );
+
         return $navigation;
     }
 

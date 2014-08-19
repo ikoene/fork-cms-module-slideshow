@@ -3,9 +3,7 @@
 namespace Frontend\Modules\Slideshow\Widgets;
 
 use Frontend\Core\Engine\Base\Widget as FrontendBaseWidget;
-use Frontend\Core\Engine\Language as FL;
 use Frontend\Core\Engine\Model as FrontendModel;
-use Frontend\Core\Engine\Navigation as FrontendNavigation;
 use Frontend\Modules\Slideshow\Engine\Model as FrontendSlideshowModel;
 
 /**
@@ -18,7 +16,7 @@ class Slideshow extends FrontendBaseWidget
     /**
      * Execute the extra
      *
-     * @return  void
+     * @return void
      */
     public function execute()
     {
@@ -45,7 +43,6 @@ class Slideshow extends FrontendBaseWidget
         // get image data
         $this->slides = FrontendSlideshowModel::getImages($this->data['gallery_id']);
 
-
             // only if it contains images
             $this->gallery = FrontendSlideshowModel::getGallery($this->data['gallery_id']);
     }
@@ -53,7 +50,7 @@ class Slideshow extends FrontendBaseWidget
     /**
      * Parse
      *
-     * @return  void
+     * @return void
      */
     private function parse()
     {
@@ -68,11 +65,10 @@ class Slideshow extends FrontendBaseWidget
         $this->settings = FrontendModel::getModuleSettings('Slideshow');
 
         // should we use the settings per slide or the module settings
-        if ($this->settings['settings_per_slide']==='true')
-            {
+        if ($this->settings['settings_per_slide']==='true') {
                 // load slideshow settings
                 $this->tpl->assign('widgetSlideshowSettings', FrontendSlideshowModel::getGallerySettings($this->data['gallery_id']));
-            }else{
+            } else {
                 // load module settings
                 $this->tpl->assign('widgetSlideshowSettings', FrontendModel::getModuleSettings('Slideshow'));
             }

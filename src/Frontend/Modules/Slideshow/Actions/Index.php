@@ -3,7 +3,6 @@
 namespace Frontend\Modules\Slideshow\Actions;
 
 use Frontend\Core\Engine\Base\Block as FrontendBaseBlock;
-use Frontend\Core\Engine\Model as FrontendModel;
 use Frontend\Core\Engine\Navigation as FrontendNavigation;
 use Frontend\Modules\Slideshow\Engine\Model as FrontendSlideshowModel;
 
@@ -17,7 +16,7 @@ class Index extends FrontendBaseBlock
     /**
      * Execute the extra
      *
-     * @return  void
+     * @return void
      */
     public function execute()
     {
@@ -33,7 +32,6 @@ class Index extends FrontendBaseBlock
         // parse
         $this->parse();
     }
-
 
     /**
      * Get the data
@@ -53,7 +51,7 @@ class Index extends FrontendBaseBlock
     /**
      * Parse
      *
-     * @return  void
+     * @return void
      */
     private function parse()
     {

@@ -3,12 +3,9 @@
 namespace Frontend\Modules\Slideshow\Actions;
 
 use Frontend\Core\Engine\Base\Block as FrontendBaseBlock;
-use Frontend\Core\Engine\Form as FrontendForm;
-use Frontend\Core\Engine\Language as FL;
 use Frontend\Core\Engine\Model as FrontendModel;
 use Frontend\Core\Engine\Navigation as FrontendNavigation;
 use Frontend\Modules\Slideshow\Engine\Model as FrontendSlideshowModel;
-use Frontend\Modules\Tags\Engine\Model as FrontendTagsModel;
 
 /**
  * This is the detail-action
@@ -20,7 +17,7 @@ class Detail extends FrontendBaseBlock
     /**
      * Execute the extra
      *
-     * @return  void
+     * @return void
      */
     public function execute()
     {
@@ -36,7 +33,6 @@ class Detail extends FrontendBaseBlock
         // parse
         $this->parse();
     }
-
 
     /**
      * Get the data
@@ -62,7 +58,7 @@ class Detail extends FrontendBaseBlock
     /**
      * Parse
      *
-     * @return  void
+     * @return void
      */
     private function parse()
     {
@@ -85,8 +81,7 @@ class Detail extends FrontendBaseBlock
         $this->settings = FrontendModel::getModuleSettings('Slideshow');
 
         // should we use the settings per slide or the module settings
-        if ($this->settings['settings_per_slide']==='true')
-            {
+        if ($this->settings['settings_per_slide']==='true') {
                 // load slideshow settings
                 $this->tpl->assign('slideshowSettings', FrontendSlideshowModel::getGallerySettings($this->record['gallery_id']));
             } else {
