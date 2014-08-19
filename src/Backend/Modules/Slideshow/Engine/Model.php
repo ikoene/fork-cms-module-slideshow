@@ -561,7 +561,7 @@ class Model
      * @return  int
      * @param   int $id     The image id.
      */
-    public static function getMaximumSlideshowImageSequence($id)
+    public static function getMaximumImageSequence($id)
     {
         return (int) BackendModel::getContainer()->get('database')->getVar(
             'SELECT MAX(i.sequence)
