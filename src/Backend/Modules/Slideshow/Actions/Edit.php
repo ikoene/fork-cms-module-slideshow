@@ -306,7 +306,7 @@ class Edit extends BackendBaseActionEdit
             $this->frm->getField('publish_on_date')->isValid(BL::err('DateIsInvalid'));
             $this->frm->getField('publish_on_time')->isValid(BL::err('TimeIsInvalid'));
 
-            if ($this->frm->getField('filename')->isFilled(BL::err('FieldIsRequired'))) {
+            if ($this->frm->getField('filename')->isFilled()) {
                 // correct extension?
                 if ($this->frm->getField('filename')
                     ->isAllowedExtension(
