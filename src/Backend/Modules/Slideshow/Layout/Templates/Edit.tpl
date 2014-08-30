@@ -13,8 +13,8 @@
 {form:edit}
     {option:categories}
     <p>
-            <label for="title">{$lblTitle|ucfirst}</label>
-            {$txtTitle} {$txtTitleError}
+        <label for="title">{$lblTitle|ucfirst}<abbr title="{$lblRequiredField}">*</abbr></label>
+        {$txtTitle} {$txtTitleError}
     </p>
 
     <div id="pageUrl">
@@ -45,7 +45,7 @@
 
                             <div class="box">
                                 <div class="heading">
-                                    <h3>{$lblDescription|ucfirst}<abbr title="{$lblRequiredField}"></abbr></h3>
+                                    <h3>{$lblDescription|ucfirst}<abbr title="{$lblRequiredField}">*</abbr></h3>
                                 </div>
                                 <div class="optionsRTE">
                                     {$txtDescription} {$txtDescriptionError}
@@ -72,7 +72,7 @@
 
                             <div id="slideshowCategory" class="box">
                                 <div class="heading">
-                                    <h3>{$lblCategory|ucfirst}</h3>
+                                    <h3>{$lblCategory|ucfirst}<abbr title="{$lblRequiredField}">*</abbr></h3>
                                 </div>
 
                                 <div class="options">
@@ -119,13 +119,13 @@
                                         <h3>{$lblDimensions|ucfirst}</h3>
                                     </div>
                                     <div class="options">
-                                        {$lblWidth|ucfirst}
+                                        <label for="width">{$lblWidth|ucfirst}<abbr title="{$lblRequiredField}">*</abbr></label>
                                         <p>
-                                        {$txtWidth} {$txtWidthError}
+                                            {$txtWidth} {$txtWidthError}
                                         </p>
-                                        {$lblHeight|ucfirst}
+                                        <label for="height">{$lblHeight|ucfirst}</label>
                                         <p>
-                                        {$txtHeight} {$txtHeightError}
+                                            {$txtHeight} {$txtHeightError}
                                         </p>
                                     </div>
                                 </div>
