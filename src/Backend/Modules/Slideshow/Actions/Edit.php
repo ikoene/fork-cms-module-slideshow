@@ -365,6 +365,12 @@ class Edit extends BackendBaseActionEdit
                 $item['description'] = $this->frm->getField('description')->getValue(true);
                 $item['width'] = $this->frm->getField('width')->getValue();
                 $item['height'] = $this->frm->getField('height')->getValue();
+
+                // set height to null if empty
+                if (empty($item['height'])) {
+                    $item['height'] = null;
+                }
+
                 $item['publish_on'] = BackendModel::getUTCDate(
                     null,
                     BackendModel::getUTCTimestamp(

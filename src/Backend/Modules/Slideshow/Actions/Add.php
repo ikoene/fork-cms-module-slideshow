@@ -172,6 +172,12 @@ class Add extends BackendBaseActionAdd
                 $item['title'] = $this->frm->getField('title')->getValue();
                 $item['width'] = $this->frm->getField('width')->getValue();
                 $item['height'] = $this->frm->getField('height')->getValue();
+
+                // set height to null if empty
+                if (empty($item['height'])) {
+                    $item['height'] = null;
+                }
+
                 $item['description'] = $this->frm->getField('description')->getValue(true);
 
                 if ($this->frm->getField('filename')->isFilled()) {
