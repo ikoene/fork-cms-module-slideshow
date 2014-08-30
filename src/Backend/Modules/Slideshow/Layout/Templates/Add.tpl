@@ -8,7 +8,7 @@
 {form:add}
     {option:categories}
         <p>
-            {$lblTitle|ucfirst}<br/>
+            <label for="title">{$lblTitle|ucfirst}</label>
             {$txtTitle} {$txtTitleError}
         </p>
 

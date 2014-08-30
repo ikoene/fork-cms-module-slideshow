@@ -13,7 +13,7 @@
 {form:edit}
     {option:categories}
     <p>
-            {$lblSlideshow|ucfirst}<br/>
+            <label for="title">{$lblTitle|ucfirst}</label>
             {$txtTitle} {$txtTitleError}
     </p>
 
