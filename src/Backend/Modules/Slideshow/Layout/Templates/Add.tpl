@@ -53,7 +53,7 @@
                                         {$chkDeleteImageError}
                                     </p>
                                     {/option:item.filename}
-                                    <label for="filename">{$lblImage|ucfirst}<abbr title="{$lblRequiredField}">*</abbr></label>
+                                    <label for="filename">{$lblImage|ucfirst}</label>
                                     {$fileFilename} {$fileFilenameError}
                                     </p>
                                 </td>

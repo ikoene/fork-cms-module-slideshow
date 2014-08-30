@@ -142,7 +142,7 @@ class Add extends BackendBaseActionAdd
             $this->frm->getField('publish_on_date')->isValid(BL::getError('DateIsInvalid'));
             $this->frm->getField('publish_on_time')->isValid(BL::getError('TimeIsInvalid'));
 
-            if ($this->frm->getField('filename')->isFilled(BL::err('FieldIsRequired'))) {
+            if ($this->frm->getField('filename')->isFilled()) {
                 // correct extension?
                 if ($this->frm->getField('filename')
                     ->isAllowedExtension(
