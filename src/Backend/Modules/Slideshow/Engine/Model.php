@@ -99,7 +99,7 @@ class Model
         $extra = array('id' => $item['extra_id'],
                         'module' => 'Slideshow',
                         'type' => 'block',
-                        'action' => 'category');
+                        'action' => 'Category');
 
         // delete extra
         $db->delete(
