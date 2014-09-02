@@ -270,7 +270,7 @@ class Model
                         'module' => 'Slideshow',
                         'type' => 'widget',
                         'label' => 'Slideshow',
-                        'action' => 'slideshow',
+                        'action' => 'Slideshow',
                         'data' =>serialize(
                             array(
                                 'extra_label' => $item['title'],
