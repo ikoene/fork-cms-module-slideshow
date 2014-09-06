@@ -47,7 +47,6 @@
         // set custom slideshow options
         function flex{$widgetGallery.id}() {
             $('.flexsliderwrap{$widgetGallery.id}').flexslider({
-                controlsContainer: "#flex{$widgetGallery.id}",
                 animation: "{$widgetSlideshowSettings.animation_type}",
                 slideDirection: "{$widgetSlideshowSettings.slide_direction}",
                 slideshowSpeed: {$widgetSlideshowSettings.slideshow_speed}000,
