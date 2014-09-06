@@ -188,6 +188,16 @@ class Add extends BackendBaseActionAdd
 
                     $item['filename'] = $filename;
 
+                    // create thumbnail
+                    $this->frm->getField('filename')->createThumbnail(
+                        FRONTEND_FILES_PATH . '/userfiles/images/slideshow/thumbnails/' . $filename,
+                        100,
+                        100,
+                        false,
+                        false,
+                        100
+                    );
+
                     // upload the image
                     $this->frm->getField('filename')->moveFile(
                         FRONTEND_FILES_PATH .

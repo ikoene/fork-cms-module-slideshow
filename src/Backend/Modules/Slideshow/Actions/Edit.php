@@ -397,6 +397,13 @@ class Edit extends BackendBaseActionEdit
                     // delete the image
                     $fs->remove(
                         FRONTEND_FILES_PATH .
+                        '/userfiles/images/slideshow/' .
+                        $this->record['filename']
+                    );
+
+                    //delete thumbnail
+                    $fs->remove(
+                        FRONTEND_FILES_PATH .
                         '/userfiles/images/slideshow/thumbnails/' .
                         $this->record['filename']
                     );
@@ -410,6 +417,14 @@ class Edit extends BackendBaseActionEdit
                     if (!empty($this->record['filename'])) {
                         $fs = new Filesystem();
 
+                        // delete the image
+                        $fs->remove(
+                            FRONTEND_FILES_PATH .
+                            '/userfiles/images/slideshow/' .
+                            $this->record['filename']
+                        );
+
+                        //delete thumbnail
                         $fs->remove(
                             FRONTEND_FILES_PATH .
                             '/userfiles/images/slideshow/thumbnails/' .
@@ -426,6 +441,16 @@ class Edit extends BackendBaseActionEdit
 
                     // add filename to item
                     $item['filename'] = $filename;
+
+                    // create thumbnail
+                    $this->frm->getField('filename')->createThumbnail(
+                        FRONTEND_FILES_PATH . '/userfiles/images/slideshow/thumbnails/' . $filename,
+                        100,
+                        100,
+                        false,
+                        false,
+                        100
+                    );
 
                     // upload the image
                     $this->frm->getField('filename')->moveFile(
