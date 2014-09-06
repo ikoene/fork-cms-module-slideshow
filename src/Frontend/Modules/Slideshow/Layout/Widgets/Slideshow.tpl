@@ -16,11 +16,11 @@
                     <div class="flexsliderwrap{$widgetGallery.id}">
                         <ul class="slides">
                         {iteration:widgetSlideshow}
-                            <li>
-                            {option:widgetSlideshow.link}<a href="{$widgetSlideshow.link}">{/option:widgetSlideshow.link}
-                            <img src="/src/Frontend/Files/userfiles/images/slideshow/{$widgetSlideshow.filename}" alt="{$widgetSlideshow.title}" />
-                            {option:widgetSlideshow.link}</a>{/option:widgetSlideshow.link}
-                            {option:widgetSlideshow.title}<p class="flex-caption">{$widgetSlideshow.title}</p>{/option:widgetSlideshow.title}
+                            <li data-thumb="/src/Frontend/Files/userfiles/images/slideshow/thumbnails/{$widgetSlideshow.filename}">
+                                {option:widgetSlideshow.link}<a href="{$widgetSlideshow.link}">{/option:widgetSlideshow.link}
+                                    <img src="/src/Frontend/Files/userfiles/images/slideshow/{$widgetSlideshow.filename}" alt="{$widgetSlideshow.title}" />
+                                {option:widgetSlideshow.link}</a>{/option:widgetSlideshow.link}
+                                {option:widgetSlideshow.title}<p class="flex-caption">{$widgetSlideshow.title}</p>{/option:widgetSlideshow.title}
                             </li>
                         {/iteration:widgetSlideshow}
                         </ul>

@@ -26,11 +26,11 @@
                     <div class="flexsliderwrap{$gallery.id}">
                         <ul class="slides">
                             {iteration:slideshow}
-                            <li>
-                            {option:slideshow.link}<a href="{$slideshow.link}">{/option:slideshow.link}
-                            <img src="/src/Frontend/Files/userfiles/images/slideshow/{$slideshow.filename}" alt="{$slideshow.title}" />
-                            {option:slideshow.link}</a>{/option:slideshow.link}
-                            {option:slideshow.title}<p class="flex-caption">{$slideshow.title}</p>{/option:slideshow.title}
+                            <li data-thumb="/src/Frontend/Files/userfiles/images/slideshow/thumbnails/{$slideshow.filename}">
+                                {option:slideshow.link}<a href="{$slideshow.link}">{/option:slideshow.link}
+                                    <img src="/src/Frontend/Files/userfiles/images/slideshow/{$slideshow.filename}" alt="{$slideshow.title}" />
+                                {option:slideshow.link}</a>{/option:slideshow.link}
+                                {option:slideshow.title}<p class="flex-caption">{$slideshow.title}</p>{/option:slideshow.title}
                             </li>
                             {/iteration:slideshow}
                         </ul>
