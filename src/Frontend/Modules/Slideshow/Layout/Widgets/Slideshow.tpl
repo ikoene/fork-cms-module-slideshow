@@ -48,7 +48,7 @@
         function flex{$widgetGallery.id}() {
             $('.flexsliderwrap{$widgetGallery.id}').flexslider({
                 animation: "{$widgetSlideshowSettings.animation_type}",
-                slideDirection: "{$widgetSlideshowSettings.slide_direction}",
+                direction: "{$widgetSlideshowSettings.slide_direction}",
                 slideshowSpeed: {$widgetSlideshowSettings.slideshow_speed}000,
                 animationDuration:{$widgetSlideshowSettings.animation_duration}000,
                 directionNav:{$widgetSlideshowSettings.direct_navigation},
