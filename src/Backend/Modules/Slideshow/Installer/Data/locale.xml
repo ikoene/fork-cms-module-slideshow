@@ -282,7 +282,7 @@
     </Slideshow>
   </Backend>
   <Frontend>
-    <core>
+    <Core>
       <item type="message" name="NoSlideshowInCategory">
         <translation language="nl"><![CDATA[Er zijn geen slideshows in deze categorie.]]></translation>
         <translation language="en"><![CDATA[There are no slideshows in this category.]]></translation>
@@ -295,6 +295,6 @@
         <translation language="nl"><![CDATA[Vorige slideshow]]></translation>
         <translation language="en"><![CDATA[Previous Slideshow]]></translation>
       </item>
-    </core>
+    </Core>
   </Frontend>
 </locale>
