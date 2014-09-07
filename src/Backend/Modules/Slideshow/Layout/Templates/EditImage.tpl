@@ -31,7 +31,7 @@
                             </div>
                             <p>
                                 {option:item.filename}
-                                    <img src="/src/Frontend/Files/userfiles/images/slideshow/thumbnails/{$item.filename}" alt="" />
+                                    <img src="/src/Frontend/Files/slideshow/thumbnails/{$item.filename}" alt="" />
                                 {/option:item.filename}
                                 <label for="filename">Afbeelding</label>
                                 {$fileFilename} {$fileFilenameError}

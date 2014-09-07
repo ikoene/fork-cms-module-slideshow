@@ -397,14 +397,14 @@ class Edit extends BackendBaseActionEdit
                     // delete the image
                     $fs->remove(
                         FRONTEND_FILES_PATH .
-                        '/userfiles/images/slideshow/' .
+                        '/slideshow/' .
                         $this->record['filename']
                     );
 
                     //delete thumbnail
                     $fs->remove(
                         FRONTEND_FILES_PATH .
-                        '/userfiles/images/slideshow/thumbnails/' .
+                        '/slideshow/thumbnails/' .
                         $this->record['filename']
                     );
 
@@ -420,14 +420,14 @@ class Edit extends BackendBaseActionEdit
                         // delete the image
                         $fs->remove(
                             FRONTEND_FILES_PATH .
-                            '/userfiles/images/slideshow/' .
+                            '/slideshow/' .
                             $this->record['filename']
                         );
 
                         //delete thumbnail
                         $fs->remove(
                             FRONTEND_FILES_PATH .
-                            '/userfiles/images/slideshow/thumbnails/' .
+                            '/slideshow/thumbnails/' .
                             $this->record['filename']
                         );
                     }
@@ -444,7 +444,7 @@ class Edit extends BackendBaseActionEdit
 
                     // create thumbnail
                     $this->frm->getField('filename')->createThumbnail(
-                        FRONTEND_FILES_PATH . '/userfiles/images/slideshow/thumbnails/' . $filename,
+                        FRONTEND_FILES_PATH . '/slideshow/thumbnails/' . $filename,
                         100,
                         100,
                         false,
@@ -455,7 +455,7 @@ class Edit extends BackendBaseActionEdit
                     // upload the image
                     $this->frm->getField('filename')->moveFile(
                         FRONTEND_FILES_PATH .
-                        '/userfiles/images/slideshow/thumbnails/' .
+                        '/slideshow/thumbnails/' .
                         $filename
                     );
                 }
@@ -495,12 +495,12 @@ class Edit extends BackendBaseActionEdit
                             // delete the image and thumbnail
                             $fs->remove(
                                 FRONTEND_FILES_PATH .
-                                '/userfiles/images/slideshow/thumbnails/' .
+                                '/slideshow/thumbnails/' .
                                 $this->record['filename']
                             );
                             $fs->remove(
                                 FRONTEND_FILES_PATH .
-                                '/userfiles/images/slideshow/' .
+                                '/slideshow/' .
                                 $this->record['filename']
                             );
 

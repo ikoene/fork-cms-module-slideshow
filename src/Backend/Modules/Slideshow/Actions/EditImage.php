@@ -177,12 +177,12 @@ class EditImage extends BackendBaseActionEdit
 
                         $fs->remove(
                             FRONTEND_FILES_PATH .
-                            '/userfiles/images/slideshow/thumbnails/' .
+                            '/slideshow/thumbnails/' .
                             $this->record['filename']
                         );
                         $fs->remove(
                             FRONTEND_FILES_PATH .
-                            '/userfiles/images/slideshow/' .
+                            '/slideshow/' .
                             $this->record['filename']
                         );
                     }
@@ -195,9 +195,9 @@ class EditImage extends BackendBaseActionEdit
 
                     // If height is not set, scale the image proportionally to the given width
                     if ($this->record2['height'] <> 0) {
-                        // upload image width gallery dimensions (thumbnail always 100 x 100... for now)
+                        // upload image width gallery dimensions
                         $this->frm->getField('filename')->createThumbnail(
-                            FRONTEND_FILES_PATH . '/userfiles/images/slideshow/' . $filename,
+                            FRONTEND_FILES_PATH . '/slideshow/' . $filename,
                             $this->record2['width'],
                             $this->record2['height'],
                             true,
@@ -206,7 +206,7 @@ class EditImage extends BackendBaseActionEdit
                         );
                     } else {
                         $this->frm->getField('filename')->createThumbnail(
-                            FRONTEND_FILES_PATH . '/userfiles/images/slideshow/' . $filename,
+                            FRONTEND_FILES_PATH . '/slideshow/' . $filename,
                             $this->record2['width'],
                             null,
                             true,
@@ -217,7 +217,7 @@ class EditImage extends BackendBaseActionEdit
 
                     // create thumbnail
                     $this->frm->getField('filename')->createThumbnail(
-                        FRONTEND_FILES_PATH . '/userfiles/images/slideshow/thumbnails/' . $filename,
+                        FRONTEND_FILES_PATH . '/slideshow/thumbnails/' . $filename,
                         null,
                         100,
                         false,

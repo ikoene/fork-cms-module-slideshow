@@ -157,7 +157,7 @@ class AddImage extends BackendBaseActionAdd
                             // upload image width gallery dimensions (thumbnail 100 x 100)
                             $this->frm->getField('image'. $i)->createThumbnail(
                                 FRONTEND_FILES_PATH .
-                                '/userfiles/images/slideshow/' .
+                                '/slideshow/' .
                                 $filename,
                                 $this->record['width'],
                                 $this->record['height'],
@@ -168,7 +168,7 @@ class AddImage extends BackendBaseActionAdd
                         } else {
                             $this->frm->getField('image'. $i)->createThumbnail(
                                 FRONTEND_FILES_PATH .
-                                '/userfiles/images/slideshow/' .
+                                '/slideshow/' .
                                 $filename,
                                 $this->record['width'],
                                 null,
@@ -180,7 +180,7 @@ class AddImage extends BackendBaseActionAdd
                         // create thumbnail for later use
                         $this->frm->getField('image'. $i)->createThumbnail(
                             FRONTEND_FILES_PATH .
-                            '/userfiles/images/slideshow/thumbnails/' .
+                            '/slideshow/thumbnails/' .
                             $filename,
                             null,
                             100,

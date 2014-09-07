@@ -190,7 +190,7 @@ class Add extends BackendBaseActionAdd
 
                     // create thumbnail
                     $this->frm->getField('filename')->createThumbnail(
-                        FRONTEND_FILES_PATH . '/userfiles/images/slideshow/thumbnails/' . $filename,
+                        FRONTEND_FILES_PATH . '/slideshow/thumbnails/' . $filename,
                         100,
                         100,
                         false,
@@ -201,7 +201,7 @@ class Add extends BackendBaseActionAdd
                     // upload the image
                     $this->frm->getField('filename')->moveFile(
                         FRONTEND_FILES_PATH .
-                        '/userfiles/images/slideshow/thumbnails/' .
+                        '/slideshow/thumbnails/' .
                         $filename
                     );
                 }

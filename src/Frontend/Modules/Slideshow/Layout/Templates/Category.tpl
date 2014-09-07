@@ -28,7 +28,7 @@
 
             {option:galleries.filename}
                 <a href="{$full_url}/{$galleries.meta_url}">
-                    <img src="/src/Frontend/Files/userfiles/images/slideshow/thumbnails/{$galleries.filename}" alt="{$galleries.title}" />
+                    <img src="/src/Frontend/Files/slideshow/thumbnails/{$galleries.filename}" alt="{$galleries.title}" />
                 </a>
             {/option:galleries.filename}
 

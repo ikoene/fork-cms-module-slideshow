@@ -55,7 +55,7 @@
                                 <p>
                                     {option:item.filename}
                                     <p>
-                                        <img src="/src/Frontend/Files/userfiles/images/slideshow/{$item.filename}" width="200"/>
+                                        <img src="/src/Frontend/Files/slideshow/{$item.filename}" width="200"/>
                                     </p>
                                     <p>
                                         <label for="deleteImage">{$chkDeleteImage} {$lblDelete|ucfirst}</label>

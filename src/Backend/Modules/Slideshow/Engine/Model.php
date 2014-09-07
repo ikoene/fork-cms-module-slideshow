@@ -63,7 +63,7 @@ class Model
      */
     public static function getPreview($filename)
     {
-        $path = '/src/Frontend/Files/userfiles/images/slideshow/thumbnails/' . $filename;
+        $path = '/src/Frontend/Files/slideshow/thumbnails/' . $filename;
         return '<img src="' . $path . '" width="50" height="50" />';
     }
 
@@ -76,7 +76,7 @@ class Model
     {
         // the url allready exists
         if ($filename != null) {
-            $path = '/src/Frontend/Files/userfiles/images/slideshow/thumbnails/' . $filename;
+            $path = '/src/Frontend/Files/slideshow/thumbnails/' . $filename;
             return '<img src="' . $path . '" width="50" height="50" />';
         }
     }

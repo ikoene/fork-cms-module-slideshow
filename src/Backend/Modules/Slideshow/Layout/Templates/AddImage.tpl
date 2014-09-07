@@ -12,14 +12,14 @@
                 <table border="0" cellspacing="0" cellpadding="0" width="100%">
                     <tr>
                         <td id="leftColumn">
+                            <p>
+                                <label for="filename">{$lblImages|ucfirst}</label>
+                                {iteration:imageInput}
                                 <p>
-                                    <label for="filename">{$lblImages|ucfirst}</label>
-                                    {iteration:imageInput}
-                                    <p>
-                                    {$imageInput.Image} {$imageInput.ImageError}
-                                    </p>
-                                    {/iteration:imageInput}
-                        </td>
+                                {$imageInput.Image} {$imageInput.ImageError}
+                                </p>
+                                {/iteration:imageInput}
+                            </p>
                         </td>
                     </tr>
                 </table>
