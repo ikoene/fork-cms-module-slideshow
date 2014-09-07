@@ -75,7 +75,7 @@
                 animation: "{$slideshowSettings.animation_type}",
                 direction: "{$slideshowSettings.slide_direction}",
                 slideshowSpeed: {$slideshowSettings.slideshow_speed}000,
-                animationDuration:{$slideshowSettings.animation_duration}000,
+                animationSpeed:{$slideshowSettings.animation_duration}000,
                 directionNav:{$slideshowSettings.direct_navigation},
                 controlNav:{$slideshowSettings.control_navigation},
                 keyboardNav:{$slideshowSettings.keyboard_navigation},

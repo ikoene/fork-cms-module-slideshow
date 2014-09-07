@@ -50,7 +50,7 @@
                 animation: "{$widgetSlideshowSettings.animation_type}",
                 direction: "{$widgetSlideshowSettings.slide_direction}",
                 slideshowSpeed: {$widgetSlideshowSettings.slideshow_speed}000,
-                animationDuration:{$widgetSlideshowSettings.animation_duration}000,
+                animationSpeed:{$widgetSlideshowSettings.animation_duration}000,
                 directionNav:{$widgetSlideshowSettings.direct_navigation},
                 controlNav:{$widgetSlideshowSettings.control_navigation},
                 keyboardNav:{$widgetSlideshowSettings.keyboard_navigation},
