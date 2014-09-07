@@ -53,7 +53,7 @@
                 animationSpeed:{$widgetSlideshowSettings.animation_duration}000,
                 directionNav:{$widgetSlideshowSettings.direct_navigation},
                 controlNav:{$widgetSlideshowSettings.control_navigation},
-                keyboardNav:{$widgetSlideshowSettings.keyboard_navigation},
+                keyboard:{$widgetSlideshowSettings.keyboard_navigation},
                 mousewheel:{$widgetSlideshowSettings.mousewheel_navigation},
                 randomize:{$widgetSlideshowSettings.random_order},
                 slideshow:{$widgetSlideshowSettings.auto_animate},
