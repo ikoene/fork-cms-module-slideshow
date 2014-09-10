@@ -454,7 +454,7 @@ class Edit extends BackendBaseActionEdit
                     // upload the image
                     $this->frm->getField('filename')->moveFile(
                         FRONTEND_FILES_PATH .
-                        '/slideshow/thumbnails/' .
+                        '/slideshow/' .
                         $filename
                     );
                 }
