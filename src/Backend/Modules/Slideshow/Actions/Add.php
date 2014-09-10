@@ -182,9 +182,10 @@ class Add extends BackendBaseActionAdd
 
                 if ($this->frm->getField('filename')->isFilled()) {
                     // create new filename
-                    $filename = $this->meta->getURL() . '-' .
-                    BL::getWorkingLanguage() . '.' .
-                    $this->frm->getField('filename')->getExtension();
+                    $filename = $this->meta->getURL();
+                    $filename .= '-' . uniqid();
+                    $filename .= '-' . BL::getWorkingLanguage();
+                    $filename .= '.' . $this->frm->getField('filename')->getExtension();
 
                     $item['filename'] = $filename;
 
