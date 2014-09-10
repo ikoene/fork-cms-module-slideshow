@@ -36,12 +36,50 @@ class Settings extends BackendBaseActionEdit
         $this->frm = new BackendForm('settings');
 
         // add form elements
-        $this->frm->addCheckbox('settings_per_slide', (BackendModel::getModuleSetting($this->URL->getModule(), 'settings_per_slide', false)=== 'true' ? true : false));
-        $this->frm->addDropdown('animation_type', array('slide' => BL::lbl('SlideshowSlide', $this->getModule()), 'fade' => BL::lbl('SlideshowFade', $this->getModule())), BackendModel::getModuleSetting($this->URL->getModule(), 'animation_type', 'slide'));
-        $this->frm->addDropdown('slide_direction', array('horizontal' => BL::lbl('SlideshowHorizontal', $this->getModule()), 'vertical' => BL::lbl('SlideshowVertical', $this->getModule())), BackendModel::getModuleSetting($this->URL->getModule(), 'slide_direction', 'horizontal'));
-        $this->frm->addDropdown('slideshow_speed', array_combine(range(1, 30), range(1, 30)), BackendModel::getModuleSetting($this->URL->getModule(), 'slideshow_speed', 7));
-        $this->frm->addDropdown('animation_duration', array_combine(range(1, 5), range(1, 5)), BackendModel::getModuleSetting($this->URL->getModule(), 'animation_duration', 1));
-        $this->frm->addCheckbox('direct_navigation', (BackendModel::getModuleSetting($this->URL->getModule(), 'direct_navigation', false)=== 'true' ? true : false));
+        $this->frm->addCheckbox(
+            'settings_per_slide', (BackendModel::getModuleSetting($this->URL->getModule(), 'settings_per_slide', false) === 'true' ? true : false)
+        );
+        $this->frm->addDropdown(
+            'animation_type',
+            array(
+                'slide' => BL::lbl('SlideshowSlide', $this->getModule()),
+                'fade' => BL::lbl('SlideshowFade', $this->getModule())
+            ),
+            BackendModel::getModuleSetting(
+                $this->URL->getModule(),
+                'animation_type',
+                'slide'
+            )
+        );
+        $this->frm->addDropdown(
+            'slide_direction',
+            array(
+                'horizontal' => BL::lbl('SlideshowHorizontal', $this->getModule()),
+                'vertical' => BL::lbl('SlideshowVertical', $this->getModule())),
+            BackendModel::getModuleSetting(
+                $this->URL->getModule(),
+                'slide_direction',
+                'horizontal'
+            )
+        );
+        $this->frm->addDropdown(
+            'slideshow_speed',
+            array_combine(range(1, 30), range(1, 30)),
+            BackendModel::getModuleSetting(
+                $this->URL->getModule(),
+                'slideshow_speed',
+                7)
+        );
+        $this->frm->addDropdown(
+            'animation_duration',
+            array_combine(range(1, 5), range(1, 5)),
+            BackendModel::getModuleSetting(
+                $this->URL->getModule(),
+                'animation_duration',
+                1
+            )
+        );
+        $this->frm->addCheckbox('direct_navigation', (BackendModel::getModuleSetting($this->URL->getModule(), 'direct_navigation', false) === 'true' ? true : false));
         $this->frm->addCheckbox('control_navigation', (BackendModel::getModuleSetting($this->URL->getModule(), 'control_navigation', false)=== 'true' ? true : false));
         $this->frm->addCheckbox('keyboard_navigation', (BackendModel::getModuleSetting($this->URL->getModule(), 'keyboard_navigation', false)=== 'true' ? true : false));
         $this->frm->addCheckbox('mousewheel_navigation', (BackendModel::getModuleSetting($this->URL->getModule(), 'mousewheel_navigation', false)=== 'true' ? true : false));
