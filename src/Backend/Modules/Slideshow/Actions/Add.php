@@ -199,7 +199,7 @@ class Add extends BackendBaseActionAdd
                         100
                     );
 
-                    // upload the image
+                    // @todo fix this
                     $this->frm->getField('filename')->moveFile(
                         FRONTEND_FILES_PATH .
                         '/slideshow/' .
