@@ -43,19 +43,20 @@
                                             {$txtDescription} {$txtDescriptionError}
                                         </div>
                                     </div>
-                                    <p>
-                                    {option:item.filename}
-                                    <p>
-                                        <img src="{$FRONTEND_FILES_URL}/slideshow/thumbnails/{$item.filename}" width="200" alt="" />
-                                    </p>
-                                    <p>
-                                        <label for="deleteImage">{$chkDeleteImage} {$lblDelete|ucfirst}</label>
-                                        {$chkDeleteImageError}
-                                    </p>
-                                    {/option:item.filename}
-                                    <label for="filename">{$lblImage|ucfirst}</label>
-                                    {$fileFilename} {$fileFilenameError}
-                                    </p>
+
+                                    <div class="box">
+                                        <div class="heading">
+                                            <h3>
+                                                <label for="profile picture">{$lblImage|ucfirst}</label>
+                                            </h3>
+                                        </div>
+                                        <div class="options">
+                                            <p>
+                                                {$fileFilename} {$fileFilenameError}
+                                            </p>
+                                        </div>
+                                    </div>
+
                                 </td>
 
                                 <td id="sidebar">
