@@ -20,7 +20,6 @@
                 {option:dataGrids.content}
                     {$dataGrids.content}
                 {/option:dataGrids.content}
-
             </div>
         {/iteration:dataGrids}
     {/option:dataGrids}
