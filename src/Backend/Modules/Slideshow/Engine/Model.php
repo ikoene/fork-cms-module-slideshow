@@ -258,7 +258,7 @@ class Model
      * Update a widget
      *
      * @return  void
-     * @param   int $item The details of the category to be deleted.
+     * @param   int $item The details of the updated item.
      */
     public static function updateWidgetExtras($item)
     {

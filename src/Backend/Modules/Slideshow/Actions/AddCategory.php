@@ -98,7 +98,7 @@ class AddCategory extends BackendBaseActionAdd
                     BackendModel::createURLForAction('categories') .
                     '&report=added-category&var=' .
                     urlencode($item['title']) .
-                    '&highlight=row-' .
+                    '&highlight=' .
                     $item['id']
                 );
             }

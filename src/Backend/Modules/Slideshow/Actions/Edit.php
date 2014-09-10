@@ -544,7 +544,7 @@ class Edit extends BackendBaseActionEdit
                     BackendModel::createURLForAction('index') .
                     '&report=saved&var=' .
                     urlencode($item['title']) .
-                    '&highlight=row-' .
+                    '&highlight=' .
                     $item['id']
                 );
             }

@@ -154,7 +154,7 @@ class EditCategory extends BackendBaseActionEdit
                     BackendModel::createURLForAction('categories') .
                     '&report=edited-category&var=' .
                     urlencode($item['title']) .
-                    '&highlight=row-' .
+                    '&highlight=' .
                     $item['id']
                 );
             }
