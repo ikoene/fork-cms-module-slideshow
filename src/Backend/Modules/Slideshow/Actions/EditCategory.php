@@ -106,7 +106,10 @@ class EditCategory extends BackendBaseActionEdit
         $this->tpl->assign('title', $this->record['title']);
 
         // delete allowed?
-        $this->tpl->assign('showSlideshowDeleteCategory', BackendSlideshowModel::deleteCategoryAllowed($this->id));
+        $this->tpl->assign(
+            'showSlideshowDeleteCategory',
+            BackendSlideshowModel::deleteCategoryAllowed($this->id)
+        );
     }
 
 
