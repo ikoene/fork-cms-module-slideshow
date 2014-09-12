@@ -76,6 +76,12 @@ class Index extends BackendBaseActionIndex
 
             // set column functions
             $dataGrid->setColumnFunction(
+                array(new BackendDataGridFunctions(), 'getLongDate'),
+                array('[publish_on]'),
+                'publish_on',
+                true
+            );
+            $dataGrid->setColumnFunction(
                 array(new BackendDataGridFunctions(), 'getUser'),
                 array('[user_id]'),
                 'user_id',
