@@ -116,9 +116,7 @@ class Index extends BackendBaseActionIndex
                 'dragAndDropHandle',
                 'title',
                 'preview',
-                'width',
                 'images',
-                'height',
                 'publish_on',
                 'edit'
             );

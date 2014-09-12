@@ -19,7 +19,7 @@ class Model
      * @var string
      */
     const QRY_DATAGRID_BROWSE =
-        'SELECT i.id, i.category_id, i.filename, i.title, i.width, i.height, i.hidden, i.sequence, i.publish_on
+        'SELECT i.id, i.category_id, i.filename, i.title, i.hidden, i.sequence, i.publish_on
         FROM slideshow_galleries AS i
         WHERE i.language = ? AND i.category_id = ?
         ORDER BY i.sequence ASC';
