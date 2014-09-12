@@ -224,18 +224,6 @@ class Add extends BackendBaseActionAdd
                 // insert the item
                 $item['id'] = BackendSlideshowModel::insertGallery($item);
 
-                // add gallery_id to item
-                $item['gallery_id'] = $item['id'];
-
-                // insert widget in modules_extras
-                $item['extra_id'] = BackendSlideshowModel::insertWidgetExtras($item);
-
-                // delete gallery_id from array
-                unset($item['gallery_id']);
-
-                // update the gallery to insert extra_id
-                BackendSlideshowModel::updateGallery($item);
-
                 // get default settings
                 $settings = BackendModel::getModuleSettings('Slideshow');
 

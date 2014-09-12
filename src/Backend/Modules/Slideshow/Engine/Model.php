@@ -113,41 +113,6 @@ class Model
     }
 
     /**
-     * Create a widget
-     *
-     * @return  void
-     * @param   int $item The details of the category to be deleted.
-     */
-    public static function insertWidgetExtras($item)
-    {
-        // get db
-        $db = BackendModel::getContainer()->get('database');
-
-        // build extra
-        $extra = array( 'id' => null,
-                        'module' => 'Slideshow',
-                        'type' => 'widget',
-                        'label' => 'Slideshow',
-                        'action' => 'Slideshow',
-                        'data' =>serialize(
-                            array(
-                                'extra_label' => $item['title'],
-                                'gallery_id' => $item['gallery_id'],
-                                'language' => BL::getWorkingLanguage()
-                            )
-                        ),
-                        'hidden' =>'N',
-                        'sequence' =>10000);
-
-
-        // insert and return the new id
-        $item['id'] = $db->insert('modules_extras', $extra);
-
-        // return the new id
-        return $item['id'];
-    }
-
-    /**
      * Retrieve the unique URL for a gallery
      *
      * @param string $url
@@ -765,7 +730,24 @@ class Model
      */
     public static function insertGallery(array $item)
     {
-        return BackendModel::getContainer()->get('database')->insert('slideshow_galleries', $item);
+        $galleryId = BackendModel::getContainer()->get('database')->insert('slideshow_galleries', $item);
+
+        // build extra
+        BackendModel::insertExtra(
+            'widget',
+            'Slideshow',
+            'Slideshow',
+            'Slideshow',
+            array(
+                'extra_label' => $item['title'],
+                'gallery_id' => $galleryId,
+                'language' => BL::getWorkingLanguage()
+            ),
+            false,
+            '100' . $galleryId
+        );
+
+        return $galleryId;
     }
 
     /**
