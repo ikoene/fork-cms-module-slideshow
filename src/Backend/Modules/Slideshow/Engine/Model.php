@@ -832,7 +832,7 @@ class Model
      * @return  bool
      * @param   int $id The category id to check.
      */
-    public static function isCategoryAllowedToBeDeleted($id)
+    public static function deleteCategoryAllowed($id)
     {
         return ! (bool) BackendModel::getContainer()->get('database')->getVar(
             'SELECT COUNT(i.id)

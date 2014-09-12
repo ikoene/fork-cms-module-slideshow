@@ -32,7 +32,7 @@
     </div>
 
     <div class="fullwidthOptions">
-        {option:showDelete}
+        {option:showSlideshowDeleteCategory}
             <a href="{$var|geturl:'delete_category'}&amp;id={$id}" data-message-id="confirmDelete" class="askConfirmation button linkButton icon iconDelete">
                 <span>{$lblDelete|ucfirst}</span>
             </a>
@@ -41,7 +41,7 @@
                     {$msgConfirmDeleteCategory|sprintf:{$title}}
                 </p>
             </div>
-        {/option:showDelete}
+        {/option:showSlideshowDeleteCategory}
         <div class="buttonHolderRight">
             <input id="editButton" class="inputButton button mainButton" type="submit" name="edit" value="{$lblSave|ucfirst}" />
         </div>

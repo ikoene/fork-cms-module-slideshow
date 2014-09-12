@@ -100,17 +100,13 @@ class EditCategory extends BackendBaseActionEdit
      */
     protected function parse()
     {
-        // call parent
         parent::parse();
 
-        // assign id, name
         $this->tpl->assign('id', $this->record['id']);
         $this->tpl->assign('title', $this->record['title']);
 
-        // can the category be deleted?
-        if (BackendSlideshowModel::isCategoryAllowedToBeDeleted($this->id)) {
-            $this->tpl->assign('showDelete', true);
-        }
+        // delete allowed?
+        $this->tpl->assign('showSlideshowDeleteCategory', BackendSlideshowModel::deleteCategoryAllowed($this->id));
     }
 
 
