@@ -74,6 +74,22 @@ class Index extends BackendBaseActionIndex
                 BackendModel::createURLForAction('edit') . '&amp;id=[id]'
             );
 
+            // set column functions
+            $dataGrid->setColumnFunction(
+                array(new BackendDataGridFunctions(), 'getUser'),
+                array('[user_id]'),
+                'user_id',
+                true
+            );
+
+            // set headers
+            $dataGrid->setHeaderLabels(
+                array(
+                    'user_id' => \SpoonFilter::ucfirst(BL::lbl('Author')),
+                    'publish_on' => \SpoonFilter::ucfirst(BL::lbl('PublishedOn'))
+                )
+            );
+
             // enable drag and drop
             $dataGrid->enableSequenceByDragAndDrop();
 
@@ -90,16 +106,7 @@ class Index extends BackendBaseActionIndex
                 true
             );
 
-            // create a thumbnail preview (if it exists)
-            $dataGrid->addColumn('preview', BL::lbl('Preview'));
-            $dataGrid->setColumnFunction(
-                array('Backend\Modules\Slideshow\Engine\Model', 'getGalleryPreview'),
-                '[filename]',
-                'preview',
-                true
-            );
-
-            // set colums hidden
+            // hide columns
             $dataGrid->setColumnsHidden(array('category_id', 'sequence','filename'));
 
             // add edit column
@@ -115,9 +122,9 @@ class Index extends BackendBaseActionIndex
             $dataGrid->setColumnsSequence(
                 'dragAndDropHandle',
                 'title',
-                'preview',
-                'images',
                 'publish_on',
+                'user_id',
+                'images',
                 'edit'
             );
 
