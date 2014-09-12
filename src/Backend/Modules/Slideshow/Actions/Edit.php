@@ -192,7 +192,10 @@ class Edit extends BackendBaseActionEdit
     private function loadDataGrid()
     {
         // create datagrid
-        $this->dataGrid = new BackendDataGridDB(BackendSlideshowModel::QRY_DATAGRID_BROWSE_IMAGES, array($this->id));
+        $this->dataGrid = new BackendDataGridDB(
+            BackendSlideshowModel::QRY_DATAGRID_BROWSE_IMAGES,
+            array($this->id)
+        );
 
         // add mass checkboxes
         $this->dataGrid->setMassActionCheckboxes('checkbox', '[id]');
