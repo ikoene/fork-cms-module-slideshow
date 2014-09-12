@@ -16,4 +16,4 @@ jsBackend.slideshow =
     }
 }
 
-$(document).ready(function() {jsBackend.slideshow.init();});
+$(jsBackend.slideshow.init);

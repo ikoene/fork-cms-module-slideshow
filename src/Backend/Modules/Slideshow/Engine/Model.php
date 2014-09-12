@@ -620,8 +620,9 @@ class Model
     {
         return (array) BackendModel::getContainer()->get('database')->getRecord(
             'SELECT i.*, UNIX_TIMESTAMP(i.publish_on) AS publish_on, UNIX_TIMESTAMP(i.created_on) AS created_on,
-            UNIX_TIMESTAMP(i.edited_on) AS edited_on
+            UNIX_TIMESTAMP(i.edited_on) AS edited_on, m.url
             FROM slideshow_galleries AS i
+            INNER JOIN meta AS m ON m.id = i.meta_id
             WHERE i.id = ?',
             array((int) $id)
         );

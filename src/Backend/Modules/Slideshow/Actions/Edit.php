@@ -267,7 +267,7 @@ class Edit extends BackendBaseActionEdit
         // call parent
         parent::parse();
 
-        $url = BackendModel::getURLForBlock($this->URL->getModule(), 'detail');
+        $url = BackendModel::getURLForBlock($this->URL->getModule(), 'Detail');
         $url404 = BackendModel::getURL(404);
 
         // parse additional variables
