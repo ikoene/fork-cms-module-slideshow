@@ -1032,7 +1032,6 @@ class Model
         // get db
         $db = BackendModel::getContainer()->get('database');
 
-        // insert and return the extra_id
         return $db->update(
             'slideshow_galleries',
             $item,
