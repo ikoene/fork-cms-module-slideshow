@@ -225,9 +225,10 @@ class Add extends BackendBaseActionAdd
                 $id = BackendSlideshowModel::insertGallery($item);
 
                 // insert default settings
-                $settings = BackendModel::getModuleSettings('Slideshow');
-
-                BackendSlideshowModel::setSettings($id, $settings);
+                BackendSlideshowModel::setSettings(
+                    $id,
+                    BackendModel::getModuleSettings('Slideshow')
+                );
 
                 // trigger event
                 BackendModel::triggerEvent($this->getModule(), 'after_add', array('item' => $item));
