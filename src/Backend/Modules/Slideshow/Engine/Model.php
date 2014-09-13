@@ -761,6 +761,8 @@ class Model
      */
     public static function insertGallery(array $item)
     {
+        $item['id'] = BackendModel::getContainer()->get('database')->insert('slideshow_galleries', $item);
+
         // build extra
         $item['extra_id'] = BackendModel::insertExtra(
             'widget',
@@ -769,16 +771,17 @@ class Model
             'Slideshow',
             array(
                 'extra_label' => $item['title'],
-                'gallery_id' => $galleryId,
+                'gallery_id' => $item['id'],
                 'language' => BL::getWorkingLanguage()
             ),
             false,
-            '100' . $galleryId
+            '100' . $item['id']
         );
 
-        $id = BackendModel::getContainer()->get('database')->insert('slideshow_galleries', $item);
+        // update gallery with extra id
+        self::updateGallery($item);
 
-        return $id;
+        return $item['id'];
     }
 
     /**
