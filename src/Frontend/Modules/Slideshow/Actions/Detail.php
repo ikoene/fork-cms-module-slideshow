@@ -97,16 +97,15 @@ class Detail extends FrontendBaseBlock
 
         // get module settings
         $this->settings = FrontendModel::getModuleSettings('Slideshow');
+        $this->tpl->assign('widgetGallery', $this->gallery);
 
         // should we use the settings per slide or the module settings
-        if ($this->settings['settings_per_slide']==='true') {
-                // load slideshow settings
-                $this->tpl->assign(
-                    'slideshowSettings',
-                    FrontendSlideshowModel::getGallerySettings($this->record['gallery_id'])
-                );
+        if (FrontendModel::getModuleSetting('Slideshow', 'settings_per_slide')) {
+            $this->tpl->assign(
+                'slideshowSettings',
+                FrontendSlideshowModel::getAllSettings($this->record['gallery_id'])
+            );
         } else {
-            // load module settings
             $this->tpl->assign(
                 'slideshowSettings',
                 FrontendModel::getModuleSettings('Slideshow')

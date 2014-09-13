@@ -53,7 +53,7 @@ class Model
             m.description AS meta_description
             FROM slideshow_galleries AS i
             INNER JOIN meta AS m ON i.meta_id = m.id
-            WHERE m.url = ? AND i.language = ? AND hidden = ?
+            WHERE m.url = ? AND i.language = ? AND i.hidden = ?
             GROUP BY i.id',
             array((string) $URL, FRONTEND_LANGUAGE, 'N')
         );
@@ -134,19 +134,30 @@ class Model
     }
 
     /**
-     * Get a gallery settings by id
+     * Get all settings for a specific slideshow
      *
+     * @param  int $id The slideshow id
+     * @param  array $keys
      * @return array
-     * @param  int   $galleryId The id of the gallery.
      */
-    public static function getGallerySettings($id)
+    public static function getAllSettings($id)
     {
-        return (array) FrontendModel::getContainer()->get('database')->getRecord(
-            'SELECT i.*
-            FROM slideshow_settings AS i
-            WHERE i.gallery_id = ?',
+        $results = array();
+
+        $settings = (array) FrontendModel::getContainer()->get('database')->getRecords(
+            'SELECT ss.key, ss.value
+             FROM slideshow_settings AS ss
+             WHERE ss.slideshow_id = ?',
             array((int) $id)
         );
+
+        // unserialize settings
+        foreach($settings as $setting)
+        {
+            $results[$setting['key']] = unserialize($setting['value']);
+        }
+
+        return $results;
     }
 
     /**

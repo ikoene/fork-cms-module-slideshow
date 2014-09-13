@@ -41,10 +41,10 @@ class Slideshow extends FrontendBaseWidget
     private function getData()
     {
         // get image data
-        $this->slides = FrontendSlideshowModel::getImages($this->data['gallery_id']);
+        $this->slides = FrontendSlideshowModel::getImages($this->data['id']);
 
-            // only if it contains images
-            $this->gallery = FrontendSlideshowModel::getGallery($this->data['gallery_id']);
+        // only if it contains images
+        $this->gallery = FrontendSlideshowModel::getGallery($this->data['id']);
     }
 
     /**
@@ -65,18 +65,13 @@ class Slideshow extends FrontendBaseWidget
         $this->tpl->assign('widgetSlideshow', $this->slides);
         $this->tpl->assign('widgetGallery', $this->gallery);
 
-        // get module settings
-        $this->settings = FrontendModel::getModuleSettings('Slideshow');
-
         // should we use the settings per slide or the module settings
-        if ($this->settings['settings_per_slide']==='true') {
-                // load slideshow settings
-                $this->tpl->assign(
-                    'widgetSlideshowSettings',
-                    FrontendSlideshowModel::getGallerySettings($this->data['gallery_id'])
-                );
+        if (FrontendModel::getModuleSetting('Slideshow', 'settings_per_slide')) {
+            $this->tpl->assign(
+                'widgetSlideshowSettings',
+                FrontendSlideshowModel::getAllSettings($this->gallery['id'])
+            );
         } else {
-            // load module settings
             $this->tpl->assign(
                 'widgetSlideshowSettings',
                 FrontendModel::getModuleSettings('Slideshow')

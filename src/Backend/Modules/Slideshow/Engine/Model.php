@@ -658,22 +658,6 @@ class Model
     }
 
     /**
-     * Get a Settings by id
-     *
-     * @return  array
-     * @param   int $id The gallery id.
-     */
-    public static function getSettingsOld($id)
-    {
-        return (array) BackendModel::getContainer()->get('database')->getRecord(
-            'SELECT i.*
-            FROM slideshow_settings AS i
-            WHERE i.gallery_id = ?',
-            array((int) $id)
-        );
-    }
-
-    /**
      * Get a Image by id
      *
      * @return  array
@@ -805,7 +789,7 @@ class Model
     }
 
     /**
-     * Get the settings for the given keys
+     * Get all settings for a specific slideshow
      *
      * @param  int $id The slideshow id
      * @param  array $keys
