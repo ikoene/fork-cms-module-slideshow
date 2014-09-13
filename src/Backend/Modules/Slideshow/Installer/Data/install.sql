@@ -41,18 +41,9 @@ CREATE TABLE IF NOT EXISTS `slideshow_images` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `slideshow_settings` (
- `id` int(11) NOT NULL AUTO_INCREMENT,
- `gallery_id` int(11) NOT NULL,
- `animation_type` varchar(25) NOT NULL,
- `slide_direction` varchar(25) NOT NULL,
- `slideshow_speed` int(11) NOT NULL,
- `animation_duration` int(11) NOT NULL,
- `direct_navigation` enum('true', 'false') NOT NULL,
- `control_navigation` enum('true', 'false') NOT NULL,
- `keyboard_navigation` enum('true', 'false') NOT NULL,
- `mousewheel_navigation` enum('true', 'false') NOT NULL,
- `random_order` enum('true', 'false') NOT NULL,
- `auto_animate` enum('true', 'false') NOT NULL,
- `animation_loop` enum('true', 'false') NOT NULL,
- PRIMARY KEY (`id`)
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `slideshow_id` int(5) DEFAULT NULL,
+  `key` varchar(50) DEFAULT NULL,
+  `value` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;

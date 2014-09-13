@@ -310,12 +310,14 @@ class Model
             $fs->remove(FRONTEND_FILES_PATH . '/slideshow/' . $image['filename']);
         }
 
-        // delete the record
+        // delete item
         $db->delete('slideshow_galleries', 'id = ?', array((int) $id));
-
 
         // delete image data
         $db->delete('slideshow_images', 'gallery_id = ?', array((int) $id));
+
+        // delete settings
+        $db->delete('slideshow_settings', 'wslideshow_id = ?', array((int) $id));
     }
 
     /**
@@ -671,7 +673,7 @@ class Model
      * @return  array
      * @param   int $id The gallery id.
      */
-    public static function getSettings($id)
+    public static function getSettingsOld($id)
     {
         return (array) BackendModel::getContainer()->get('database')->getRecord(
             'SELECT i.*
@@ -790,24 +792,128 @@ class Model
     }
 
     /**
-     * Add default settings for a new gallery.
+     * Get the settings for the given keys
      *
-     * @return  int
-     * @param   int $id The id of the gallery.
+     * @param  int $id The slideshow id
+     * @param  array $keys
+     * @return array
      */
-    public static function insertGallerySettings($id)
+    public static function getSettings($id, array $keys)
     {
-        // get default settings
-        $settings = BackendModel::getModuleSettings('Slideshow');
+        $id = (int) $id;
+        $settings = array();
 
-        // remove settings_per_slide from array
-        $settings = array_slice($settings, 0, 11);
+        foreach($keys as $key)
+        {
+            $settings[$key] = self::getSetting($id, $key);
+        }
 
-        // add gallery_id to settings
-        $settings['gallery_id'] = $id;
-
-        return BackendModel::getContainer()->get('database')->insert('slideshow_settings', $settings);
+        return $settings;
     }
+
+    /**
+     * Get the settings for the given keys
+     *
+     * @param  int $id The slideshow id
+     * @param  array $keys
+     * @return array
+     */
+    public static function getAllSettings($id)
+    {
+        $results = array();
+
+        $settings = (array) BackendModel::getContainer()->get('database')->getRecords(
+            'SELECT ss.key, ss.value
+             FROM slideshow_settings AS ss
+             WHERE ss.slideshow_id = ?',
+            array((int) $id)
+        );
+
+        // unserialize settings
+        foreach($settings as $setting)
+        {
+            $results[$setting['key']] = unserialize($setting['value']);
+        }
+
+        return $results;
+    }
+
+    /**
+     * Get the value for a setting of a slideshow
+     *
+     * @param  int $id
+     * @param  string $key
+     * @return string
+     */
+    public static function getSetting($id, $key)
+    {
+        $setting = (string) BackendModel::getContainer()->get('database')->getVar(
+            'SELECT ss.value
+             FROM slideshow_settings AS ss
+             WHERE ss.slideshow_id = ? AND ss.key = ?',
+            array((int) $id, (string) $key)
+        );
+
+        return unserialize($setting);
+    }
+
+    /**
+     * Set a stack of settings for a slideshow
+     *
+     * @param  int $id The slideshow id
+     * @param  array $settings Custom settings to set for a slideshow
+     */
+    public static function setSettings($id, array $settings)
+    {
+        if(!empty($settings))
+        {
+            // insert all settings
+            foreach($settings as $key => $value)
+            {
+                self::setSetting($id, $key, $value);
+            }
+        }
+    }
+
+    /**
+     * Set a setting for a slideshow
+     *
+     * @param int $id Id of the slideshow
+     * @param string $key
+     * @param string $value
+     */
+    public static function setSetting($id, $key, $value)
+    {
+        $data = array();
+        $id = (int) $id;
+        $key = (string) $key;
+        $value = serialize((string) $value);
+
+        $data['value'] = $value;
+
+        if(self::getSetting($id, $key) !== false)
+        {
+            // update property if it already exists
+            BackendModel::getContainer()->get('database')->update(
+                'slideshow_settings',
+                $data,
+                'slideshow_id = ? AND `key` = ?',
+                array($id, $key)
+            );
+        }
+        else
+        {
+            // insert the property because it doesn't exist yet
+            $data['key'] = $key;
+            $data['slideshow_id'] = $id;
+
+            BackendModel::getContainer()->get('database')->insert(
+                'slideshow_settings',
+                $data
+            );
+        }
+    }
+
 
     /**
      * Add a new category.

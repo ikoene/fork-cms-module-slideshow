@@ -12,8 +12,7 @@ use Backend\Core\Engine\Form as BackendForm;
 use Backend\Core\Engine\Meta as BackendMeta;
 use Backend\Core\Engine\Language as BL;
 use Backend\Core\Engine\DataGridDB as BackendDataGridDB;
-use Backend\Core\Engine\DataGridFunctions as BackendDataGridFunctions;
-use Backend\Modules\Slideshow\Engine\Model as BackendSlideshowModel;
+use Backend\Core\Engine\DataGridFunctions as BackendDataGridFunctions; use Backend\Modules\Slideshow\Engine\Model as BackendSlideshowModel;
 use Backend\Modules\Search\Engine\Model as BackendSearchModel;
 use Backend\Modules\Tags\Engine\Model as BackendTagsModel;
 use Backend\Modules\Users\Engine\Model as BackendUsersModel;
@@ -81,7 +80,7 @@ class Edit extends BackendBaseActionEdit
     {
         // get the record
         $this->record = BackendSlideshowModel::getGallery($this->id);
-        $this->settings = BackendSlideshowModel::getSettings($this->id);
+        $this->settings = BackendSlideshowModel::getAllSettings($this->id);
 
         // get categories
         $this->categories = BackendSlideshowModel::getCategoriesForDropdown();
@@ -275,20 +274,13 @@ class Edit extends BackendBaseActionEdit
             $this->tpl->assign('detailURL', SITE_URL . $url);
         }
 
-        // assign the active record and additional variables
+        // assign
         $this->tpl->assign('item', $this->record);
-
         $this->tpl->assign('dataGrid', ($this->dataGrid->getNumResults() != 0) ? $this->dataGrid->getContent() : false);
-
-        // assign categories
         $this->tpl->assign('categories', $this->categories);
 
-        // get module settings
-        $this->settings = BackendModel::getModuleSettings('Slideshow');
-
-        if ($this->settings['settings_per_slide']==='true') {
-            $this->tpl->assign('settingsPerSlideshow', true);
-        }
+        // settings allowed?
+        $this->tpl->assign('settingsPerSlideshow', BackendModel::getModuleSetting('Slideshow', 'settings_per_slide'));
     }
 
     /**
@@ -332,7 +324,6 @@ class Edit extends BackendBaseActionEdit
             // no errors?
             if ($this->frm->isCorrect()) {
                 //build settings item
-                $settings['gallery_id'] = $this->id;
                 $settings['animation_type'] =
                 $this->frm->getField('animation_type')->getValue();
                 $settings['slide_direction'] =
@@ -356,8 +347,8 @@ class Edit extends BackendBaseActionEdit
                 $settings['animation_loop'] =
                 $this->frm->getField('animation_loop')->getChecked() ? 'true' : 'false';
 
-                // update gallery values in database
-                BackendSlideshowModel::updateGallerySettings($settings);
+                // update settings
+                BackendSlideshowModel::setSettings($this->id, $settings);
 
                 // build item
                 $item['id'] = $this->id;

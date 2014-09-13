@@ -33,9 +33,6 @@ class Delete extends BackendBaseActionDelete
             // delete widget
             BackendSlideshowModel::deleteWidget($this->id);
 
-            // delete settings
-            BackendSlideshowModel::deleteGallerySettings($this->id);
-
             // delete item
             BackendSlideshowModel::deleteGallery($this->id);
 
