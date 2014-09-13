@@ -234,36 +234,26 @@ class Model
 
         // build extra
         $extra = array('id' => $item['extra_id'],
-                        'module' => 'Slideshow',
-                        'type' => 'widget',
-                        'label' => 'Slideshow',
-                        'action' => 'Slideshow',
-                        'data' =>serialize(
+                        'data' => serialize(
                             array(
                                 'extra_label' => $item['title'],
                                 'gallery_id' => $item['id'],
                                 'language' => BL::getWorkingLanguage()
                             )
-                        ),
-                        'hidden' =>'N',
-                        'sequence' =>10000);
+                        ));
 
         // update extra
-        return $item['id'] = $db->update(
+        $item['id'] = $db->update(
             'modules_extras',
             $extra,
-            'id = ? AND module = ? AND type = ? AND action = ?',
+            'id = ?',
             array(
-                $extra['id'],
-                $extra['module'],
-                $extra['type'],
-                $extra['action']
+                $extra['id']
             )
         );
 
         // return the new id
         return $item['id'];
-
     }
 
     /**
@@ -771,10 +761,8 @@ class Model
      */
     public static function insertGallery(array $item)
     {
-        $galleryId = BackendModel::getContainer()->get('database')->insert('slideshow_galleries', $item);
-
         // build extra
-        BackendModel::insertExtra(
+        $item['extra_id'] = BackendModel::insertExtra(
             'widget',
             'Slideshow',
             'Slideshow',
@@ -788,7 +776,9 @@ class Model
             '100' . $galleryId
         );
 
-        return $galleryId;
+        $id = BackendModel::getContainer()->get('database')->insert('slideshow_galleries', $item);
+
+        return $id;
     }
 
     /**
