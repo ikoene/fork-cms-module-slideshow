@@ -307,7 +307,7 @@ class Model
         $db->delete('slideshow_images', 'gallery_id = ?', array((int) $id));
 
         // delete settings
-        $db->delete('slideshow_settings', 'wslideshow_id = ?', array((int) $id));
+        $db->delete('slideshow_settings', 'slideshow_id = ?', array((int) $id));
     }
 
     /**
@@ -775,7 +775,7 @@ class Model
                 'language' => BL::getWorkingLanguage()
             ),
             false,
-            '100' . $item['id']
+            '800' . $item['id']
         );
 
         // update gallery with extra id
@@ -1032,12 +1032,27 @@ class Model
         // get db
         $db = BackendModel::getContainer()->get('database');
 
-        return $db->update(
+        // build array
+        $extra['data'] = serialize(
+            array('language' => BL::getWorkingLanguage(), 'extra_label' => $item['title'], 'id' => $item['id'])
+        );
+
+        // update extra
+        $db->update(
+            'modules_extras',
+            $extra,
+            'module = ? AND type = ? AND sequence = ?',
+            array('Slideshow', 'widget', '800' . $item['id'])
+        );
+
+         $id = $db->update(
             'slideshow_galleries',
             $item,
             'id = ?',
             array((int) $item['id'])
         );
+
+         return $id;
     }
 
     /**
@@ -1057,26 +1072,6 @@ class Model
             $item,
             'gallery_id = ?',
             array((int) $item['gallery_id'])
-        );
-    }
-
-    /**
-     * Get a galleries extra
-     *
-     * @return  int
-     * @param   array $extra The gallery id.
-     */
-    public static function getGalleryExtraId($id)
-    {
-        // get db
-        $db = BackendModel::getContainer()->get('database');
-
-        // get meta id
-        return $db->getVar(
-            'SELECT i.extra_id
-             FROM slideshow_galleries AS i
-             WHERE i.id = ?',
-            array((int) $id)
         );
     }
 

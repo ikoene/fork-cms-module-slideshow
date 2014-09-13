@@ -457,11 +457,6 @@ class Edit extends BackendBaseActionEdit
                 // update gallery values in database
                 BackendSlideshowModel::updateGallery($item);
 
-                $item['extra_id'] = BackendSlideshowModel::getGalleryExtraId($this->id);
-
-                // update the extra
-                BackendSlideshowModel::updateWidgetExtras($item);
-
                 // trigger event
                 BackendModel::triggerEvent(
                     $this->getModule(),
