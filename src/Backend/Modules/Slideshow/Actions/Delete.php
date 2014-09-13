@@ -30,17 +30,14 @@ class Delete extends BackendBaseActionDelete
             // call parent, this will probably add some general CSS/JS or other required files
             parent::execute();
 
-            // get item
-            $this->record = BackendSlideshowModel::getGallery($this->id);
-
             // delete widget
             BackendSlideshowModel::deleteWidget($this->id);
 
-            // delete item
-            BackendSlideshowModel::deleteGallery($this->id);
-
             // delete settings
             BackendSlideshowModel::deleteGallerySettings($this->id);
+
+            // delete item
+            BackendSlideshowModel::deleteGallery($this->id);
 
             // trigger event
             BackendModel::triggerEvent($this->getModule(), 'after_delete', array('id' => $this->id));

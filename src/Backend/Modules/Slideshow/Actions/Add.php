@@ -222,25 +222,16 @@ class Add extends BackendBaseActionAdd
                 );
 
                 // insert the item
-                $item['id'] = BackendSlideshowModel::insertGallery($item);
-
-                // get default settings
-                $settings = BackendModel::getModuleSettings('Slideshow');
-
-                // remove settings_per_slide from array
-                $settings = array_slice($settings, 0, 11);
-
-                // add gallery_id to settings
-                $settings['gallery_id'] = $item['id'];
+                $id = BackendSlideshowModel::insertGallery($item);
 
                 // insert settings
-                BackendSlideshowModel::insertGallerySettings($settings);
+                BackendSlideshowModel::insertGallerySettings($id);
 
                 // trigger event
                 BackendModel::triggerEvent($this->getModule(), 'after_add', array('item' => $item));
 
                 // everything is saved, so redirect to the overview
-                $this->redirect(BackendModel::createURLForAction('add_image') . '&report=added&id=' . $item['id']);
+                $this->redirect(BackendModel::createURLForAction('add_image') . '&report=added&id=' . $id);
             }
         }
     }

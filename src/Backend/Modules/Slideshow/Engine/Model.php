@@ -5,6 +5,7 @@ namespace Backend\Modules\Slideshow\Engine;
 use Common\Uri as CommonUri;
 use Backend\Core\Engine\Model as BackendModel;
 use Backend\Core\Engine\Language as BL;
+use Symfony\Component\Filesystem\Filesystem;
 
 /**
  * In this file we store all generic functions that we will be using in the slideshow module
@@ -284,15 +285,36 @@ class Model
             array((int) $id)
         );
 
+        // get gallery
+        $item = self::getGallery($id);
+
+        // get images for gallery
+        $images = self::getImages($id);
+
         // delete meta
         if (!empty($metaId)) {
             $db->delete('meta', 'id = ?', (int) $metaId);
         }
 
+        // delete images from filesystem
+        $fs = new Filesystem();
+
+        if (!empty($item['filename'])) {
+            $fs->remove(FRONTEND_FILES_PATH . '/slideshow/thumbnails/' . $this->record['filename']);
+            $fs->remove(FRONTEND_FILES_PATH . '/slideshow/' . $this->record['filename']);
+        }
+
+        // delete images
+        foreach ($images as $image) {
+            $fs->remove(FRONTEND_FILES_PATH . '/slideshow/thumbnails/' . $image['filename']);
+            $fs->remove(FRONTEND_FILES_PATH . '/slideshow/' . $image['filename']);
+        }
+
         // delete the record
         $db->delete('slideshow_galleries', 'id = ?', array((int) $id));
 
-        //delete images in slideshow_images
+
+        // delete image data
         $db->delete('slideshow_images', 'gallery_id = ?', array((int) $id));
     }
 
@@ -318,6 +340,21 @@ class Model
      * @param   int $id The id of the image to be deleted.
      */
     public static function deleteImage($id)
+    {
+        // get db
+        $db = BackendModel::getContainer()->get('database');
+
+        // delete the record
+        $db->delete('slideshow_images', 'id = ?', array((int) $id));
+    }
+
+    /**
+     * Delete a specific image
+     *
+     * @return  void
+     * @param   int $id The id of the image to be deleted.
+     */
+    public static function deleteImages($id)
     {
         // get db
         $db = BackendModel::getContainer()->get('database');
@@ -753,14 +790,23 @@ class Model
     }
 
     /**
-     * Add default settings of a new gallery.
+     * Add default settings for a new gallery.
      *
      * @return  int
-     * @param   array $item The data to insert.
+     * @param   int $id The id of the gallery.
      */
-    public static function insertGallerySettings(array $item)
+    public static function insertGallerySettings($id)
     {
-        return BackendModel::getContainer()->get('database')->insert('slideshow_settings', $item);
+        // get default settings
+        $settings = BackendModel::getModuleSettings('Slideshow');
+
+        // remove settings_per_slide from array
+        $settings = array_slice($settings, 0, 11);
+
+        // add gallery_id to settings
+        $settings['gallery_id'] = $id;
+
+        return BackendModel::getContainer()->get('database')->insert('slideshow_settings', $settings);
     }
 
     /**
