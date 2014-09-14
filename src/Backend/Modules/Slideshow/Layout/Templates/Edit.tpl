@@ -4,6 +4,11 @@
 <div class="pageTitle">
     <h2>{$lblGallery|ucfirst}: {$item.title}</h2>
     <div class="buttonHolderRight">
+        {option:detailURL}
+            <a href="{$detailURL}/{$item.url}" class="button icon iconZoom previewButton targetBlank">
+                <span>{$lblView|ucfirst}</span>
+            </a>
+        {/option:detailURL}
         <a href="{$var|geturl:'add_image'}&amp;id={$item.id}" class="button icon iconAdd" title="{$lblAddImages|ucfirst}">
             <span>{$lblAddImages|ucfirst}</span>
         </a>
