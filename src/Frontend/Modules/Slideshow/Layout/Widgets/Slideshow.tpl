@@ -24,7 +24,7 @@
                                 {option:widgetSlideshow.data.link}
                                 </a>
                                 {/option:widgetSlideshow.data.link}
-                                {option:widgetSlideshow.title}<p class="flex-caption">{$widgetSlideshow.title}</p>{/option:widgetSlideshow.title}
+                                {option:widgetSlideshow.caption}<p class="flex-caption">{$widgetSlideshow.caption}</p>{/option:widgetSlideshow.caption}
                             </li>
                         {/iteration:widgetSlideshow}
                         </ul>

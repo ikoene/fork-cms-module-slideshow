@@ -238,7 +238,6 @@ class Edit extends BackendBaseActionEdit
             'preview',
             'image_hidden',
             'title',
-            'description',
             'edit'
         );
 

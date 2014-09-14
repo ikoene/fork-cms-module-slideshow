@@ -16,7 +16,6 @@
             <ul>
                 <li>
                 {$gallery.publish_on|date:{$dateFormatLong}:{$LANGUAGE}}
-                {option:gallery.description}{$gallery.description}{/option:gallery.description}
                 </li>
             </ul>
 
@@ -34,7 +33,7 @@
                                 {option:slideshow.data.link}
                                 </a>
                                 {/option:slideshow.data.link}
-                                {option:slideshow.title}<p class="flex-caption">{$slideshow.title}</p>{/option:slideshow.title}
+                                {option:slideshow.caption}<p class="flex-caption">{$slideshow.caption}</p>{/option:slideshow.caption}
                             </li>
                             {/iteration:slideshow}
                         </ul>

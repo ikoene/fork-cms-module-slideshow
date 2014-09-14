@@ -19,6 +19,21 @@
 
                             <div class="box">
                                 <div class="heading">
+                                    <h3>{$lblImage|ucfirst}</h3>
+                                </div>
+                                <div class="options">
+                                    <label for="image">{$lblImage|ucfirst}</label>
+                                    {$fileFilename} {$fileFilenameError}
+                                </div>
+                                <div class="options">
+                                    {option:item.filename}
+                                        <img src="/src/Frontend/Files/slideshow/thumbnails/{$item.filename}" alt="" />
+                                    {/option:item.filename}
+                                </div>
+                            </div>
+
+                            <div class="box">
+                                <div class="heading">
                                     <h3>{$lblLink|ucfirst}</h3>
                                 </div>
                                 <div class="options">
@@ -38,19 +53,18 @@
 
                             <div class="box">
                                 <div class="heading">
-                                    <h3>{$lblDescription|ucfirst}<abbr title="{$lblRequiredField}"></abbr></h3>
+                                    <div class="oneLiner">
+                                        <h3>{$lblCaption|ucfirst}</h3>
+                                        <abbr class="help">(?)</abbr>
+                                        <div class="tooltip" style="display: none;">
+                                            <p>{$msgHelpCaption}</p>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="optionsRTE">
-                                    {$txtDescription} {$txtDescriptionError}
+                                    {$txtCaption} {$txtCaptionError}
                                 </div>
                             </div>
-                            <p>
-                                {option:item.filename}
-                                    <img src="/src/Frontend/Files/slideshow/thumbnails/{$item.filename}" alt="" />
-                                {/option:item.filename}
-                                <label for="filename">Afbeelding</label>
-                                {$fileFilename} {$fileFilenameError}
-                            </p>
 
                         </td>
 

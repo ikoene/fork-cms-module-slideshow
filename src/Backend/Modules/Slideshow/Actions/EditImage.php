@@ -106,7 +106,7 @@ class EditImage extends BackendBaseActionEdit
             'title ' . $this->frm->getField('title')->getAttribute('class')
         );
         $this->frm->addImage('filename');
-        $this->frm->addEditor('description', $this->record['description']);
+        $this->frm->addEditor('caption', $this->record['caption']);
         $this->frm->addRadiobutton('hidden', $rbtHiddenValues, $this->record['hidden']);
         $this->frm->addCheckbox('external_link', ($this->record['link']['type'] == 'external'));
         $this->frm->addText('external_url', $externalLink);
@@ -169,7 +169,7 @@ class EditImage extends BackendBaseActionEdit
                 $item['id'] = $this->id;
                 $item['language'] = $this->record['language'];
                 $item['title'] = $this->frm->getField('title')->getValue();
-                $item['description'] = $this->frm->getField('description')->getValue(true);
+                $item['caption'] = $this->frm->getField('caption')->getValue(true);
                 $item['hidden'] = $this->frm->getField('hidden')->getValue();
 
                 //get module settings

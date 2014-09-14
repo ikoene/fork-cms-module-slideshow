@@ -246,6 +246,10 @@
          <translation language="nl"><![CDATA[Gallerij]]></translation>
          <translation language="en"><![CDATA[Gallery]]></translation>
       </item>
+      <item type="label" name="Caption">
+        <translation language="nl"><![CDATA[bijschrift]]></translation>
+        <translation language="en"><![CDATA[caption]]></translation>
+      </item>
       <item type="error" name="DescriptionIsRequired">
         <translation language="nl"><![CDATA[Omschrijving is verplicht.]]></translation>
         <translation language="en"><![CDATA[The description is required.]]></translation>
@@ -281,6 +285,10 @@
       <item type="message" name="NoCategories">
         <translation language="nl"><![CDATA[Er zijn nog geen categorieën.]]></translation>
         <translation language="en"><![CDATA[There are no categories yet.]]></translation>
+      </item>
+      <item type="message" name="HelpCaption">
+        <translation language="nl"><![CDATA[Het bijschrift is een stukje tekst dat bij de afbeelding hoort, zoals bv. een stukje beschrijvende tekst met een link.]]></translation>
+        <translation language="en"><![CDATA[The caption is a bit of text to go with the image, for example a basic description with an external link.]]></translation>
       </item>
 
     </Slideshow>
