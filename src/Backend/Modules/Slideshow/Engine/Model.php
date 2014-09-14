@@ -32,7 +32,7 @@ class Model
      * @var string
      */
     const QRY_DATAGRID_BROWSE_IMAGES =
-        'SELECT i.id, i.title, i.filename, i.hidden as image_hidden, i.sequence
+        'SELECT i.id, i.title, i.filename, i.hidden, i.sequence
         FROM slideshow_images AS i
         WHERE i.gallery_id = ?
         ORDER BY i.sequence ASC';

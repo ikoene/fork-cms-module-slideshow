@@ -236,7 +236,7 @@ class Edit extends BackendBaseActionEdit
             'dragAndDropHandle',
             'checkbox',
             'preview',
-            'image_hidden',
+            'hidden',
             'title',
             'edit'
         );
