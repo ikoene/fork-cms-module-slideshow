@@ -54,7 +54,6 @@ class Detail extends FrontendBaseBlock
 
         // get gallery data
         $this->gallery = FrontendSlideshowModel::getGallery($this->record['gallery_id']);
-
     }
 
     /**

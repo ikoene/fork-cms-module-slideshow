@@ -75,6 +75,9 @@ class EditImage extends BackendBaseActionEdit
         // get the gallery record
         $this->record = BackendSlideshowModel::getImage($this->id);
         $this->record2 = BackendSlideshowModel::getGallery($this->galleryId);
+
+        $this->record['data'] = unserialize($this->record['data']);
+        $this->record['link'] = $this->record['data']['link'];
     }
 
     /**
@@ -87,6 +90,11 @@ class EditImage extends BackendBaseActionEdit
         // create form
         $this->frm = new BackendForm('edit');
 
+        $internalLinks = BackendSlideshowModel::getInternalLinks();
+
+        $internalLink = ($this->record['link']['type'] == 'internal') ? $this->record['link']['id'] : '';
+        $externalLink = ($this->record['link']['type'] == 'external') ? $this->record['link']['url'] : '';
+
         // set hidden values
         $rbtHiddenValues[] = array('label' => BL::lbl('Hidden'), 'value' => 'Y');
         $rbtHiddenValues[] = array('label' => BL::lbl('Published'), 'value' => 'N');
@@ -97,17 +105,15 @@ class EditImage extends BackendBaseActionEdit
             'class',
             'title ' . $this->frm->getField('title')->getAttribute('class')
         );
-        $this->frm->addText('link', $this->record['link'])->setAttribute(
-            'id',
-            'link'
-        );
-        $this->frm->getField('link')->setAttribute(
-            'class',
-            'title ' . $this->frm->getField('link')->getAttribute('class')
-        );
         $this->frm->addImage('filename');
         $this->frm->addEditor('description', $this->record['description']);
         $this->frm->addRadiobutton('hidden', $rbtHiddenValues, $this->record['hidden']);
+        $this->frm->addCheckbox('external_link', ($this->record['link']['type'] == 'external'));
+        $this->frm->addText('external_url', $externalLink);
+        $this->frm->addDropdown('internal_url', $internalLinks, $internalLink,
+            false,
+            'chzn-select'
+        )->setAttribute('style', 'width:800px')->setDefaultElement('--');
     }
 
 
@@ -140,7 +146,7 @@ class EditImage extends BackendBaseActionEdit
             $this->frm->cleanupFields();
 
             // validate fields
-            if ($this->frm->getField('filename')->isFilled(BL::err('FieldIsRequired'))) {
+            if ($this->frm->getField('filename')->isFilled()) {
                 // correct extension?
                 if ($this->frm->getField('filename')
                     ->isAllowedExtension(
@@ -163,12 +169,31 @@ class EditImage extends BackendBaseActionEdit
                 $item['id'] = $this->id;
                 $item['language'] = $this->record['language'];
                 $item['title'] = $this->frm->getField('title')->getValue();
-                $item['link'] = $this->frm->getField('link')->getValue();
                 $item['description'] = $this->frm->getField('description')->getValue(true);
                 $item['hidden'] = $this->frm->getField('hidden')->getValue();
 
                 //get module settings
                 $dimensions = BackendModel::getModuleSettings('slideshow');
+
+                // links
+                if($this->frm->getField('internal_url')->isFilled())
+                {
+                    $data['link'] = array(
+                        'type' => 'internal',
+                        'id' => $this->frm->getField('internal_url')->getValue()
+                    );
+                }
+
+                // external links
+                if($this->frm->getField('external_link')->getChecked())
+                {
+                    $data['link'] = array(
+                        'type' => 'external',
+                        'url' => $this->frm->getField('external_url')->getValue()
+                    );
+                }
+
+                $item['data'] = serialize($data);
 
                 if ($this->frm->getField('filename')->isFilled()) {
                     // only delete the picture when there is one allready

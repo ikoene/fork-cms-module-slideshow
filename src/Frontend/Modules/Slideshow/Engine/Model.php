@@ -3,6 +3,7 @@
 namespace Frontend\Modules\Slideshow\Engine;
 
 use Frontend\Core\Engine\Model as FrontendModel;
+use Frontend\Core\Engine\Navigation as FrontendNavigation;
 
 /**
  * In this file we store all generic functions that we will be using in the slideshow module
@@ -99,13 +100,36 @@ class Model
      */
     public static function getImages($id)
     {
-        return (array) FrontendModel::getContainer()->get('database')->getRecords(
+        $records = (array) FrontendModel::getContainer()->get('database')->getRecords(
             'SELECT i.*
             FROM slideshow_images AS i
-            WHERE i.gallery_id = ? AND hidden = ? AND i.language = ?
+            WHERE i.gallery_id = ? AND i.hidden = ? AND i.language = ?
             ORDER BY i.sequence',
             array((int) $id, 'N', FRONTEND_LANGUAGE)
         );
+
+        foreach($records as $key => $record)
+        {
+
+            $records[$key]['data'] = unserialize($record['data']);
+
+            // is there a link given?
+            if($records[$key]['data']['link'] !== null)
+            {
+                // set the external option. This allows us to link to external sources
+                $external = ($records[$key]['data']['link']['type'] == 'external');
+                $records[$key]['data']['link']['external'] = $external;
+
+                // if this is an internal page, we need to build the url since we have the id
+                if(!$external)
+                {
+                    $extraId = $records[$key]['data']['link']['id'];
+                    $records[$key]['data']['link']['url'] = FrontendNavigation::getURL($extraId);
+                }
+            }
+        }
+
+        return $records;
     }
 
     /**

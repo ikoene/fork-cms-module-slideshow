@@ -10,16 +10,31 @@
             {$lblTitle|ucfirst}<br/>
             {$txtTitle} {$txtTitleError}
     </p>
-    <p>
-            {$lblLink|ucfirst}<br/>
-            {$txtLink} {$txtLinkError}
-    </p>
     <div class="ui-tabs">
         <div class="ui-tabs-panel">
             <div class="options">
                 <table border="0" cellspacing="0" cellpadding="0" width="100%">
                     <tr>
                         <td id="leftColumn">
+
+                            <div class="box">
+                                <div class="heading">
+                                    <h3>{$lblLink|ucfirst}</h3>
+                                </div>
+                                <div class="options">
+                                    <p>
+                                        <label for="externalLink">{$chkExternalLink|ucfirst} {$chkExternalLinkError}{$lblExternalLink|ucfirst}</label>
+                                    </p>
+                                    <p id="internalLinks">
+                                        <label for="internalLink">{$lblInternalLink|ucfirst}</label>
+                                        {$ddmInternalUrl} {$ddmInternalUrlError}
+                                    </p>
+                                    <p id="externalLinks">
+                                        <label for="externalUrl">{$lblExternalLink|ucfirst}<abbr title="{$lblRequiredField}">*</abbr></label>
+                                        {$txtExternalUrl} {$txtExternalUrlError}
+                                    </p>
+                                </div>
+                            </div>
 
                             <div class="box">
                                 <div class="heading">
@@ -36,6 +51,7 @@
                                 <label for="filename">Afbeelding</label>
                                 {$fileFilename} {$fileFilenameError}
                             </p>
+
                         </td>
 
                         <td id="sidebar">

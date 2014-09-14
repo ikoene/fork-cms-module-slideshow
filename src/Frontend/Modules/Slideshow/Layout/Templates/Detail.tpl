@@ -27,9 +27,13 @@
                         <ul class="slides">
                             {iteration:slideshow}
                             <li data-thumb="/src/Frontend/Files/slideshow/thumbnails/{$slideshow.filename}">
-                                {option:slideshow.link}<a href="{$slideshow.link}">{/option:slideshow.link}
+                                {option:slideshow.data.link}
+                                <a href="{$slideshow.data.link.url}"{option:slideshow.data.link.external} target="_blank" rel="nofollow"{/option:slideshow.data.link.external} title="{$slideshow.title}">
+                                {/option:slideshow.data.link}
                                     <img src="/src/Frontend/Files/slideshow/{$slideshow.filename}" alt="{$slideshow.title}" />
-                                {option:slideshow.link}</a>{/option:slideshow.link}
+                                {option:slideshow.data.link}
+                                </a>
+                                {/option:slideshow.data.link}
                                 {option:slideshow.title}<p class="flex-caption">{$slideshow.title}</p>{/option:slideshow.title}
                             </li>
                             {/iteration:slideshow}

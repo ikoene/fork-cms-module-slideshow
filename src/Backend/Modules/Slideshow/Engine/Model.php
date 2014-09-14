@@ -1040,26 +1040,6 @@ class Model
     }
 
     /**
-     * Update a gallery item
-     *
-     * @return  int
-     * @param   array $item The updated item.
-     */
-    public static function updateGallerySettings(array $item)
-    {
-        // get db
-        $db = BackendModel::getContainer()->get('database');
-
-        // insert and return the extra_id
-        return $db->update(
-            'slideshow_settings',
-            $item,
-            'gallery_id = ?',
-            array((int) $item['gallery_id'])
-        );
-    }
-
-    /**
      * Update an image item
      *
      * @return  int
@@ -1104,4 +1084,18 @@ class Model
         );
         return $ids;
     }
+
+    /**
+     * @return array
+     */
+    public static function getInternalLinks()
+    {
+        return (array) BackendModel::getContainer()->get('database')->getPairs(
+            'SELECT p.id AS value, p.title
+             FROM pages AS p
+             WHERE p.status = ? AND p.hidden = ? AND p.language = ?',
+            array('active', 'N', BL::getWorkingLanguage())
+        );
+    }
+
 }
