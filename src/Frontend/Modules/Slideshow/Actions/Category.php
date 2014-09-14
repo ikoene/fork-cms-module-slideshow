@@ -49,8 +49,8 @@ class Category extends FrontendBaseBlock
         $this->record = FrontendSlideshowModel::getGalleriesByURL($this->URL->getParameter(1));
 
         // full url asset
-        $this->full_url = FrontendNavigation::getURLForBlock('Slideshow', 'detail');
-        $this->full_url_category = FrontendNavigation::getURLForBlock('Slideshow', 'category');
+        $this->full_url = FrontendNavigation::getURLForBlock('Slideshow', 'Detail');
+        $this->full_url_category = FrontendNavigation::getURLForBlock('Slideshow', 'Category');
     }
 
     /**
