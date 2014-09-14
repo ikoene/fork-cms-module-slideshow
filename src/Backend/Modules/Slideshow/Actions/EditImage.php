@@ -109,7 +109,7 @@ class EditImage extends BackendBaseActionEdit
         $this->frm->addDropdown('internal_url', $internalLinks, $internalLink,
             false,
             'chzn-select'
-        )->setDefaultElement('--');
+        )->setDefaultElement('');
     }
 
 
@@ -170,6 +170,9 @@ class EditImage extends BackendBaseActionEdit
 
                 //get module settings
                 $dimensions = BackendModel::getModuleSettings('slideshow');
+
+                // the extra data
+                $data = array('link' => null);
 
                 // links
                 if($this->frm->getField('internal_url')->isFilled())
@@ -260,8 +263,8 @@ class EditImage extends BackendBaseActionEdit
                 // everything is saved, so redirect to the overview
                 $this->redirect(
                     BackendModel::createURLForAction('edit') .
-                    '&report=Saved&id=' .
-                    $this->galleryId .
+                    '&report=Saved&id=' . $this->galleryId .
+                    '&highlight=' . $this->id .
                     '#images'
                 );
             }
