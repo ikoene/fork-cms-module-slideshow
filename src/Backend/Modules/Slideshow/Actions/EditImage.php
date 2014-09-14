@@ -100,11 +100,7 @@ class EditImage extends BackendBaseActionEdit
         $rbtHiddenValues[] = array('label' => BL::lbl('Published'), 'value' => 'N');
 
         // create elements
-        $this->frm->addText('title', $this->record['title'])->setAttribute('id', 'title');
-        $this->frm->getField('title')->setAttribute(
-            'class',
-            'title ' . $this->frm->getField('title')->getAttribute('class')
-        );
+        $this->frm->addText('title', $this->record['title']);
         $this->frm->addImage('filename');
         $this->frm->addEditor('caption', $this->record['caption']);
         $this->frm->addRadiobutton('hidden', $rbtHiddenValues, $this->record['hidden']);
@@ -113,7 +109,7 @@ class EditImage extends BackendBaseActionEdit
         $this->frm->addDropdown('internal_url', $internalLinks, $internalLink,
             false,
             'chzn-select'
-        )->setAttribute('style', 'width:800px')->setDefaultElement('--');
+        )->setDefaultElement('--');
     }
 
 

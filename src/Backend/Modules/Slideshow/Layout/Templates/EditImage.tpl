@@ -6,16 +6,20 @@
 </div>
 
 {form:edit}
-    <p>
-            {$lblTitle|ucfirst}<br/>
-            {$txtTitle} {$txtTitleError}
-    </p>
     <div class="ui-tabs">
         <div class="ui-tabs-panel">
             <div class="options">
                 <table border="0" cellspacing="0" cellpadding="0" width="100%">
                     <tr>
                         <td id="leftColumn">
+                            <div class="box">
+                                <div class="heading">
+                                    <h3>{$lblTitle|ucfirst}<abbr title="{$lblRequiredField}">*</abbr></h3>
+                                </div>
+                                <div class="options">
+                                    {$txtTitle} {$txtTitleError}
+                                </div>
+                            </div>
 
                             <div class="box">
                                 <div class="heading">
