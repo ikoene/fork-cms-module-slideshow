@@ -26,7 +26,6 @@
                                     <h3>{$lblImage|ucfirst}</h3>
                                 </div>
                                 <div class="options">
-                                    <label for="image">{$lblImage|ucfirst}</label>
                                     {$fileFilename} {$fileFilenameError}
                                 </div>
                                 <div class="options">

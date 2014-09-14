@@ -59,21 +59,19 @@
                                     </h3>
                                 </div>
                                 <div class="options">
-                                    <p>
-                                        <label for="filename">{$lblImage|ucfirst}</label>
-                                        {$fileFilename} {$fileFilenameError}
-
-                                        {option:item.filename}
-                                            <p>
-                                                <img src="/src/Frontend/Files/slideshow/{$item.filename}" width="140" />
-                                            </p>
-                                            <p>
-                                                <label for="deleteImage">{$chkDeleteImage} {$lblDelete|ucfirst}</label>
-                                                {$chkDeleteImageError}
-                                            </p>
-                                        {/option:item.filename}
-                                    </p>
+                                    {$fileFilename} {$fileFilenameError}
                                 </div>
+                                {option:item.filename}
+                                    <div class="options">
+                                            <img src="/src/Frontend/Files/slideshow/{$item.filename}" width="140" />
+                                            <ul class="inputList">
+                                                <li>
+                                                    {$chkDeleteImage} <label for="deleteImage">{$lblDelete|ucfirst}</label>
+                                                </li>
+                                            </ul>
+                                    </div>
+                                {/option:item.filename}
+
                             </div>
 
                         </td>
