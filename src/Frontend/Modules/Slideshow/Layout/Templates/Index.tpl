@@ -1,6 +1,6 @@
 {*
     variables that are available:
-    - {$gallery}: contains an array with all galleries, each element contains data about the gallery
+    - {$galleries}: contains an array with all galleries, each element contains data about the gallery
 *}
 
 {option:galleries}
