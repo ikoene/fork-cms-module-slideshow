@@ -237,7 +237,7 @@ class Edit extends BackendBaseActionEdit
             'checkbox',
             'preview',
             'hidden',
-            'title',
+            'caption',
             'edit'
         );
 
