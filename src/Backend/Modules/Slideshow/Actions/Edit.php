@@ -298,9 +298,18 @@ class Edit extends BackendBaseActionEdit
 
             // validate fields
             $this->frm->getField('title')->isFilled(BL::err('TitleIsRequired'));
-            $this->frm->getField('width')->isFilled(BL::err('WidthIsRequired'));
             $this->frm->getField('publish_on_date')->isValid(BL::err('DateIsInvalid'));
             $this->frm->getField('publish_on_time')->isValid(BL::err('TimeIsInvalid'));
+
+            if ($this->frm->getField('width')->isFilled(BL::err('WidthIsRequired')))
+            {
+                $this->frm->getField('width')->isNumeric(BL::err('NumericCharactersOnly'));
+            }
+
+            if ($this->frm->getField('height')->isFilled())
+            {
+                $this->frm->getField('height')->isNumeric(BL::err('NumericCharactersOnly'));
+            }
 
             if ($this->frm->getField('filename')->isFilled()) {
                 // correct extension?

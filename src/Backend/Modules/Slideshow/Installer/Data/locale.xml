@@ -38,6 +38,10 @@
         <translation language="nl"><![CDATA[verberg]]></translation>
         <translation language="en"><![CDATA[hide]]></translation>
       </item>
+      <item type="error" name="NumericCharactersOnly">
+        <translation language="nl"><![CDATA[Enkel numerieke karakters toegelaten.]]></translation>
+        <translation language="en"><![CDATA[Only numeric characters allowed.]]></translation>
+      </item>
 
       <!--settings labels-->
       <item type="label" name="GeneralSlideshowSettings">

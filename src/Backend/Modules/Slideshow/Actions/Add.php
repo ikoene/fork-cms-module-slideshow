@@ -137,7 +137,15 @@ class Add extends BackendBaseActionAdd
 
             $this->frm->getField('categories')->isFilled(BL::err('CategoryIsRequired'));
 
-            $this->frm->getField('width')->isFilled(BL::err('WidthIsRequired'));
+            if ($this->frm->getField('width')->isFilled(BL::err('WidthIsRequired')))
+            {
+                $this->frm->getField('width')->isNumeric(BL::err('NumericCharactersOnly'));
+            }
+
+            if ($this->frm->getField('height')->isFilled())
+            {
+                $this->frm->getField('height')->isNumeric(BL::err('NumericCharactersOnly'));
+            }
 
             $this->frm->getField('publish_on_date')->isValid(BL::getError('DateIsInvalid'));
             $this->frm->getField('publish_on_time')->isValid(BL::getError('TimeIsInvalid'));
