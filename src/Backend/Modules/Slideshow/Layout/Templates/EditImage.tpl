@@ -105,7 +105,7 @@
 
         <div id="confirmDelete" title="{$lblDelete|ucfirst}?" style="display: none;">
             <p>
-                Verwijderen? {$item.title}
+                {$msgConfirmDelete|sprintf:{$item.title}}
             </p>
         </div>
 
