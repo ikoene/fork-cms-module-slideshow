@@ -30,7 +30,7 @@
                                 </div>
                                 <div class="options">
                                     {option:item.filename}
-                                        <img src="/src/Frontend/Files/slideshow/thumbnails/{$item.filename}" alt="" />
+                                        <img src="/src/Frontend/Files/slideshow/thumbnails/{$item.filename}" />
                                     {/option:item.filename}
                                 </div>
                             </div>
