@@ -115,6 +115,15 @@ class Index extends BackendBaseActionIndex
             // hide columns
             $dataGrid->setColumnsHidden(array('category_id', 'sequence','filename'));
 
+            // add manage images column
+            $dataGrid->addColumn('imagesLink', null, BL::lbl('imagesLink'));
+            $dataGrid->setColumnFunction(
+                array(__CLASS__, 'setImagesLink'),
+                array('[id]'),
+                'imagesLink'
+            );
+            $dataGrid->setColumnAttributes('imagesLink', array('style' => 'width: 1%;'));
+
             // add edit column
             $dataGrid->addColumn(
                 'edit',
@@ -131,6 +140,7 @@ class Index extends BackendBaseActionIndex
                 'publish_on',
                 'user_id',
                 'images',
+                'imagesLink',
                 'edit'
             );
 
@@ -155,4 +165,22 @@ class Index extends BackendBaseActionIndex
             $this->tpl->assign('dataGrids', $this->dataGrids);
         }
     }
+
+    /**
+     * Datagrid method, sets a link to the images overview for the slideshow if
+     * a module was not specified
+     *
+     * @param string $module The module string (which shouldn't be an empty one).
+     * @param int $id The slideshow ID used in the URL parameters.
+     * @return string
+     */
+    public static function setImagesLink($id)
+    {
+        $imagesLink = BackendModel::createURLForAction('edit') . '&amp;id=' . $id . '#images';
+
+        return '<a class="button icon iconEdit linkButton" href="' . $imagesLink . '">
+                    <span>' . BL::lbl('ManageImages') . '</span>
+                </a>';
+    }
+
 }

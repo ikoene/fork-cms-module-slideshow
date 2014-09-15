@@ -250,6 +250,10 @@
         <translation language="nl"><![CDATA[bijschrift]]></translation>
         <translation language="en"><![CDATA[caption]]></translation>
       </item>
+      <item type="label" name="ManageImages">
+        <translation language="nl"><![CDATA[beheer afbeeldingen]]></translation>
+        <translation language="en"><![CDATA[manage images]]></translation>
+      </item>
       <item type="error" name="DescriptionIsRequired">
         <translation language="nl"><![CDATA[Omschrijving is verplicht.]]></translation>
         <translation language="en"><![CDATA[The description is required.]]></translation>
