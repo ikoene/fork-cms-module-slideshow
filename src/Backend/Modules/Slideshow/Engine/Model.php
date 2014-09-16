@@ -440,15 +440,24 @@ class Model
      *
      * @return  bool
      * @param   int $id The id of the category to check for existence.
+     * @param   bool[optional] $link should we return with a link?
      */
-    public static function getImagesByGallery($id)
+    public static function getImagesByGallery($id, $link = false)
     {
-        return (int) BackendModel::getContainer()->get('database')->getVar(
+        $number = (int) BackendModel::getContainer()->get('database')->getVar(
             'SELECT COUNT(i.id)
             FROM slideshow_images AS i
             WHERE i.gallery_id = ? AND i.language = ?',
             array((int) $id, BL::getWorkingLanguage())
         );
+
+        // the url allready exists
+        if ($link == true) {
+            $imagesLink = BackendModel::createURLForAction('edit') . '&amp;id=' . $id . '#images';
+            $number = '<a href="' . $imagesLink . '">' . $number . '</a>';
+        }
+
+        return $number;
     }
 
     /**
