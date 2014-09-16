@@ -83,7 +83,7 @@
                 directionNav:{$slideshowSettings.direct_navigation},
                 controlNav:{$slideshowSettings.control_navigation},
                 keyboard:{$slideshowSettings.keyboard},
-                mousewheel:{$slideshowSettings.mousewheel_navigation},
+                mousewheel:{$slideshowSettings.mousewheel},
                 randomize:{$slideshowSettings.randomize},
                 slideshow:{$slideshowSettings.auto_animate},
                 animationLoop:{$slideshowSettings.animation_loop}

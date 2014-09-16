@@ -219,9 +219,9 @@
                     {$msgHelpKeyboard}
                     </span>
                 </li>
-                <li><label for="mousewheel_navigation">{$chkMousewheelNavigation} {$lblMousewheelNavigation|ucfirst}</label>
+                <li><label for="mousewheel">{$chkMousewheel} {$lblMousewheel|ucfirst}</label>
                     <span class="helpTxt">
-                    {$msgHelpMousewheelNavigation}
+                    {$msgHelpMousewheel}
                     </span>
                 </li>
             </ul>

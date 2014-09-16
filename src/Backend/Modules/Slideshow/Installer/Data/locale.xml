@@ -104,7 +104,7 @@
         <translation language="en"><![CDATA[Keyboard navigation]]></translation>
         <translation language="nl"><![CDATA[Keyboard navigatie]]></translation>
       </item>
-      <item type="label" name="MousewheelNavigation">
+      <item type="label" name="Mousewheel">
         <translation language="en"><![CDATA[Mousewheel navigation]]></translation>
         <translation language="nl"><![CDATA[Muiswiel navigatie]]></translation>
       </item>
@@ -154,8 +154,8 @@
         <translation language="en"><![CDATA[Allow slider navigation via keyboard left/right keys]]></translation>
         <translation language="nl"><![CDATA[Mogelijkheid om te navigeren met de links/rechts toetsen van een toetsenbord]]></translation>
       </item>
-      <item type="message" name="HelpMousewheelNavigation">
-        <translation language="en"><![CDATA[Allow slider navigating via mousewheel]]></translation>
+      <item type="message" name="HelpMousewheel">
+        <translation language="en"><![CDATA[Allow slider navigation via mousewheel]]></translation>
         <translation language="nl"><![CDATA[Mogelijkheid om te navigeren met de muiswiel]]></translation>
       </item>
       <item type="message" name="HelpRandomize">
