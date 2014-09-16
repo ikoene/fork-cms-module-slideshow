@@ -122,25 +122,27 @@ class Edit extends BackendBaseActionEdit
         // create settingsform elements
         $this->frm->addDropdown(
             'animation',
-            array('slide' => BL::lbl('SlideshowSlide', $this->getModule()),
-            'fade' => BL::lbl('SlideshowFade', $this->getModule())),
-            $this->settings['animation']
-        );
+            array(
+                'slide' => BL::lbl('SlideshowSlide', $this->getModule()),
+                'fade' => BL::lbl('SlideshowFade', $this->getModule())),
+                $this->settings['animation']
+            );
         $this->frm->addDropdown(
-            'slide_direction',
-            array('horizontal' => BL::lbl('SlideshowHorizontal', $this->getModule()),
-            'vertical' => BL::lbl('SlideshowVertical', $this->getModule())),
-            $this->settings['slide_direction']
-        );
+            'direction',
+            array(
+                'horizontal' => BL::lbl('SlideshowHorizontal', $this->getModule()),
+                'vertical' => BL::lbl('SlideshowVertical', $this->getModule())),
+                $this->settings['direction']
+            );
         $this->frm->addDropdown(
             'slideshow_speed',
             array_combine(range(1, 30), range(1, 30)),
             $this->settings['slideshow_speed']
         );
         $this->frm->addDropdown(
-            'animation_duration',
+            'animation_speed',
             array_combine(range(1, 5), range(1, 5)),
-            $this->settings['animation_duration']
+            $this->settings['animation_speed']
         );
         $this->frm->addCheckbox(
             'direct_navigation',
@@ -335,12 +337,12 @@ class Edit extends BackendBaseActionEdit
                 //build settings item
                 $settings['animation'] =
                 $this->frm->getField('animation')->getValue();
-                $settings['slide_direction'] =
-                $this->frm->getField('slide_direction')->getValue();
+                $settings['direction'] =
+                $this->frm->getField('direction')->getValue();
                 $settings['slideshow_speed'] =
                 $this->frm->getField('slideshow_speed')->getValue();
-                $settings['animation_duration'] =
-                $this->frm->getField('animation_duration')->getValue();
+                $settings['animation_speed'] =
+                $this->frm->getField('animation_speed')->getValue();
                 $settings['direct_navigation'] =
                 $this->frm->getField('direct_navigation')->getChecked()? 'true' : 'false';
                 $settings['control_navigation'] =

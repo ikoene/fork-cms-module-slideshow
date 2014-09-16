@@ -77,9 +77,9 @@
             $('.flexsliderwrap{$gallery.id}').flexslider({
                 controlsContainer: ".flexsliderwrap{$widgetGallery.id}",
                 animation: "{$slideshowSettings.animation}",
-                direction: "{$slideshowSettings.slide_direction}",
+                direction: "{$slideshowSettings.direction}",
                 slideshowSpeed: {$slideshowSettings.slideshow_speed}000,
-                animationSpeed:{$slideshowSettings.animation_duration}000,
+                animationSpeed:{$slideshowSettings.animation_speed}000,
                 directionNav:{$slideshowSettings.direct_navigation},
                 controlNav:{$slideshowSettings.control_navigation},
                 keyboard:{$slideshowSettings.keyboard_navigation},

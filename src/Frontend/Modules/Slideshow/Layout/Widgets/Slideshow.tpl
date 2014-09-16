@@ -53,9 +53,9 @@
             $('.flexsliderwrap{$widgetGallery.id}').flexslider({
                 controlsContainer: ".flexsliderwrap{$widgetGallery.id}",
                 animation: "{$widgetSlideshowSettings.animation}",
-                direction: "{$widgetSlideshowSettings.slide_direction}",
+                direction: "{$widgetSlideshowSettings.direction}",
                 slideshowSpeed: {$widgetSlideshowSettings.slideshow_speed}000,
-                animationSpeed:{$widgetSlideshowSettings.animation_duration}000,
+                animationSpeed:{$widgetSlideshowSettings.animation_speed}000,
                 directionNav:{$widgetSlideshowSettings.direct_navigation},
                 controlNav:{$widgetSlideshowSettings.control_navigation},
                 keyboard:{$widgetSlideshowSettings.keyboard_navigation},

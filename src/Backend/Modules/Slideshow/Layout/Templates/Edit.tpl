@@ -174,8 +174,8 @@
         </div>
         <div class="options">
             <p>
-                <label for="slide_direction">{$lblSlideDirection|ucfirst}</label>
-                {$ddmSlideDirection} {$ddmSlideDirectionError}
+                <label for="direction">{$lblDirection|ucfirst}</label>
+                {$ddmDirection} {$ddmDirectionError}
             </p>
         </div>
         <div class="options">
@@ -189,10 +189,10 @@
         </div>
         <div class="options">
             <p>
-                <label for="animation_duration">{$lblAnimationDuration|ucfirst}</label>
-                {$ddmAnimationDuration} {$ddmAnimationDurationError}
+                <label for="animation_speed">{$lblAnimationSpeed|ucfirst}</label>
+                {$ddmAnimationSpeed} {$ddmAnimationSpeedError}
                 <span class="helpTxt">
-                {$msgHelpAnimationDuration}
+                {$msgHelpAnimationSpeed}
                 </span>
             </p>
         </div>

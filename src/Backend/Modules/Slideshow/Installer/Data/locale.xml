@@ -68,9 +68,9 @@
         <translation language="en"><![CDATA[fade]]></translation>
         <translation language="nl"><![CDATA[vervagen]]></translation>
       </item>
-      <item type="label" name="SlideDirection">
-        <translation language="en"><![CDATA[Slide direction]]></translation>
-        <translation language="nl"><![CDATA[Schuifrichting]]></translation>
+      <item type="label" name="Direction">
+        <translation language="en"><![CDATA[direction]]></translation>
+        <translation language="nl"><![CDATA[richting]]></translation>
       </item>
       <item type="label" name="SlideshowHorizontal">
         <translation language="en"><![CDATA[horizontal]]></translation>
@@ -84,9 +84,9 @@
         <translation language="en"><![CDATA[Slideshow speed]]></translation>
         <translation language="nl"><![CDATA[slideshow snelheid]]></translation>
       </item>
-      <item type="label" name="AnimationDuration">
-        <translation language="en"><![CDATA[Animation time]]></translation>
-        <translation language="nl"><![CDATA[Animatieduur]]></translation>
+      <item type="label" name="AnimationSpeed">
+        <translation language="en"><![CDATA[Animation speed]]></translation>
+        <translation language="nl"><![CDATA[Animatiesnelheid]]></translation>
       </item>
       <item type="label" name="NavigationSlideshowSettings">
         <translation language="en"><![CDATA[Navigation settings]]></translation>
@@ -138,7 +138,7 @@
         <translation language="en"><![CDATA[Set the speed of the slideshow cycling, in seconds]]></translation>
         <translation language="nl"><![CDATA[De snelheid waarmee de slideshow afspeelt, in seconden]]></translation>
       </item>
-      <item type="message" name="HelpAnimationDuration">
+      <item type="message" name="HelpAnimationSpeed">
         <translation language="en"><![CDATA[Set the speed of animations, in seconds]]></translation>
         <translation language="nl"><![CDATA[De snelheid van de animaties, in seconden]]></translation>
       </item>
