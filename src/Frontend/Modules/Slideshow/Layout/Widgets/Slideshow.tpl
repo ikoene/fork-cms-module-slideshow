@@ -60,7 +60,7 @@
                 controlNav:{$widgetSlideshowSettings.control_navigation},
                 keyboard:{$widgetSlideshowSettings.keyboard},
                 mousewheel:{$widgetSlideshowSettings.mousewheel_navigation},
-                randomize:{$widgetSlideshowSettings.random_order},
+                randomize:{$widgetSlideshowSettings.randomize},
                 slideshow:{$widgetSlideshowSettings.auto_animate},
                 animationLoop:{$widgetSlideshowSettings.animation_loop}
             });

@@ -84,7 +84,7 @@
                 controlNav:{$slideshowSettings.control_navigation},
                 keyboard:{$slideshowSettings.keyboard},
                 mousewheel:{$slideshowSettings.mousewheel_navigation},
-                randomize:{$slideshowSettings.random_order},
+                randomize:{$slideshowSettings.randomize},
                 slideshow:{$slideshowSettings.auto_animate},
                 animationLoop:{$slideshowSettings.animation_loop}
             });

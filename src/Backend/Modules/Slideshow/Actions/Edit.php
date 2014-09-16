@@ -161,8 +161,8 @@ class Edit extends BackendBaseActionEdit
             ($this->settings['mousewheel_navigation'] === 'true' ? true : false)
         );
         $this->frm->addCheckbox(
-            'random_order',
-            ($this->settings['random_order'] === 'true' ? true : false)
+            'randomize',
+            ($this->settings['randomize'] === 'true' ? true : false)
         );
         $this->frm->addCheckbox(
             'auto_animate',
@@ -351,8 +351,8 @@ class Edit extends BackendBaseActionEdit
                 $this->frm->getField('keyboard')->getChecked() ? 'true' : 'false';
                 $settings['mousewheel_navigation'] =
                 $this->frm->getField('mousewheel_navigation')->getChecked() ? 'true' : 'false';
-                $settings['random_order'] =
-                $this->frm->getField('random_order')->getChecked() ? 'true' : 'false';
+                $settings['randomize'] =
+                $this->frm->getField('randomize')->getChecked() ? 'true' : 'false';
                 $settings['auto_animate'] =
                 $this->frm->getField('auto_animate')->getChecked() ? 'true' : 'false';
                 $settings['animation_loop'] =

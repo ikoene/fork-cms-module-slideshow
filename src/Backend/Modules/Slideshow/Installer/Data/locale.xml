@@ -112,7 +112,7 @@
         <translation language="en"><![CDATA[Optional settings]]></translation>
         <translation language="nl"><![CDATA[Optionele instellingen]]></translation>
       </item>
-      <item type="label" name="RandomOrder">
+      <item type="label" name="Randomize">
         <translation language="en"><![CDATA[Random order]]></translation>
         <translation language="nl"><![CDATA[Willekeurige volgorde]]></translation>
       </item>
@@ -158,7 +158,7 @@
         <translation language="en"><![CDATA[Allow slider navigating via mousewheel]]></translation>
         <translation language="nl"><![CDATA[Mogelijkheid om te navigeren met de muiswiel]]></translation>
       </item>
-      <item type="message" name="HelpRandomOrder">
+      <item type="message" name="HelpRandomize">
         <translation language="en"><![CDATA[Randomize slide order]]></translation>
         <translation language="nl"><![CDATA[Willekeurige slide volgorde]]></translation>
       </item>

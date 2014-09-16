@@ -234,9 +234,9 @@
         </div>
         <div class="options">
             <ul class="inputList">
-                <li><label for="random_order">{$chkRandomOrder} {$lblRandomOrder|ucfirst}</label>
+                <li><label for="randomize">{$chkRandomize} {$lblRandomize|ucfirst}</label>
                     <span class="helpTxt">
-                    {$msgHelpRandomOrder}
+                    {$msgHelpRandomize}
                     </span>
                 </li>
                 <li><label for="auto_animate">{$chkAutoAnimate} {$lblAutoAnimate|ucfirst}</label>
