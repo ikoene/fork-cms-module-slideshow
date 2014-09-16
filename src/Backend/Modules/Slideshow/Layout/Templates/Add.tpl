@@ -36,7 +36,7 @@
                                     <div class="box">
                                         <div class="heading">
                                             <h3>
-                                                <label for="text">{$lblDescription|ucfirst}<abbr title="{$lblRequiredField}">*</abbr></label>
+                                                <label for="text">{$lblDescription|ucfirst}</label>
                                             </h3>
                                         </div>
                                         <div class="optionsRTE">

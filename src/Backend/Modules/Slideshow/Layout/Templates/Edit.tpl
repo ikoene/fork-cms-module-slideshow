@@ -50,7 +50,7 @@
 
                             <div class="box">
                                 <div class="heading">
-                                    <h3>{$lblDescription|ucfirst}<abbr title="{$lblRequiredField}">*</abbr></h3>
+                                    <h3>{$lblDescription|ucfirst}</h3>
                                 </div>
                                 <div class="optionsRTE">
                                     {$txtDescription} {$txtDescriptionError}
