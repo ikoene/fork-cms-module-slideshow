@@ -451,7 +451,7 @@ class Model
             array((int) $id, BL::getWorkingLanguage())
         );
 
-        // the url allready exists
+        // should a link be returned?
         if ($link == true) {
             $imagesLink = BackendModel::createURLForAction('edit') . '&amp;id=' . $id . '#images';
             $number = '<a href="' . $imagesLink . '">' . $number . '</a>';
