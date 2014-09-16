@@ -100,7 +100,7 @@
         <translation language="en"><![CDATA[Control navigation]]></translation>
         <translation language="nl"><![CDATA[Controle navigatie]]></translation>
       </item>
-      <item type="label" name="KeyboardNavigation">
+      <item type="label" name="Keyboard">
         <translation language="en"><![CDATA[Keyboard navigation]]></translation>
         <translation language="nl"><![CDATA[Keyboard navigatie]]></translation>
       </item>
@@ -150,7 +150,7 @@
         <translation language="en"><![CDATA[Create navigation for paging control of each clide?]]></translation>
         <translation language="nl"><![CDATA[Creëer directe navigatie voor elke slide?]]></translation>
       </item>
-      <item type="message" name="HelpKeyboardNavigation">
+      <item type="message" name="HelpKeyboard">
         <translation language="en"><![CDATA[Allow slider navigation via keyboard left/right keys]]></translation>
         <translation language="nl"><![CDATA[Mogelijkheid om te navigeren met de links/rechts toetsen van een toetsenbord]]></translation>
       </item>

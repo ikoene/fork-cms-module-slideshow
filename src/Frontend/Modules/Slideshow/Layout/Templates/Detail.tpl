@@ -82,7 +82,7 @@
                 animationSpeed:{$slideshowSettings.animation_speed}000,
                 directionNav:{$slideshowSettings.direct_navigation},
                 controlNav:{$slideshowSettings.control_navigation},
-                keyboard:{$slideshowSettings.keyboard_navigation},
+                keyboard:{$slideshowSettings.keyboard},
                 mousewheel:{$slideshowSettings.mousewheel_navigation},
                 randomize:{$slideshowSettings.random_order},
                 slideshow:{$slideshowSettings.auto_animate},
