@@ -52,7 +52,7 @@
         function flex{$widgetGallery.id}() {
             $('.flexsliderwrap{$widgetGallery.id}').flexslider({
                 controlsContainer: ".flexsliderwrap{$widgetGallery.id}",
-                animation: "{$widgetSlideshowSettings.animation_type}",
+                animation: "{$widgetSlideshowSettings.animation}",
                 direction: "{$widgetSlideshowSettings.slide_direction}",
                 slideshowSpeed: {$widgetSlideshowSettings.slideshow_speed}000,
                 animationSpeed:{$widgetSlideshowSettings.animation_duration}000,

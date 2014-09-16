@@ -168,8 +168,8 @@
         </div>
         <div class="options">
             <p>
-                <label for="animation_type">{$lblAnimationType|ucfirst}</label>
-                {$ddmAnimationType} {$ddmAnimationTypeError}
+                <label for="animation">{$lblAnimation|ucfirst}</label>
+                {$ddmAnimation} {$ddmAnimationError}
             </p>
         </div>
         <div class="options">

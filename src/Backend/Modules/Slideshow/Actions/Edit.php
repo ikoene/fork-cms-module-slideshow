@@ -121,10 +121,10 @@ class Edit extends BackendBaseActionEdit
 
         // create settingsform elements
         $this->frm->addDropdown(
-            'animation_type',
+            'animation',
             array('slide' => BL::lbl('SlideshowSlide', $this->getModule()),
             'fade' => BL::lbl('SlideshowFade', $this->getModule())),
-            $this->settings['animation_type']
+            $this->settings['animation']
         );
         $this->frm->addDropdown(
             'slide_direction',
@@ -333,8 +333,8 @@ class Edit extends BackendBaseActionEdit
             // no errors?
             if ($this->frm->isCorrect()) {
                 //build settings item
-                $settings['animation_type'] =
-                $this->frm->getField('animation_type')->getValue();
+                $settings['animation'] =
+                $this->frm->getField('animation')->getValue();
                 $settings['slide_direction'] =
                 $this->frm->getField('slide_direction')->getValue();
                 $settings['slideshow_speed'] =

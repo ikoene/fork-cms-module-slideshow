@@ -56,9 +56,9 @@
         <translation language="en"><![CDATA[General settings]]></translation>
         <translation language="nl"><![CDATA[Algemene instellingen]]></translation>
       </item>
-      <item type="label" name="AnimationType">
-        <translation language="en"><![CDATA[Animation type]]></translation>
-        <translation language="nl"><![CDATA[Animatie type]]></translation>
+      <item type="label" name="Animation">
+        <translation language="en"><![CDATA[Animation]]></translation>
+        <translation language="nl"><![CDATA[Animatie]]></translation>
       </item>
       <item type="label" name="SlideshowSlide">
         <translation language="en"><![CDATA[slide]]></translation>

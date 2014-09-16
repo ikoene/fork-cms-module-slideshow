@@ -76,7 +76,7 @@
         function flex{$gallery.id}() {
             $('.flexsliderwrap{$gallery.id}').flexslider({
                 controlsContainer: ".flexsliderwrap{$widgetGallery.id}",
-                animation: "{$slideshowSettings.animation_type}",
+                animation: "{$slideshowSettings.animation}",
                 direction: "{$slideshowSettings.slide_direction}",
                 slideshowSpeed: {$slideshowSettings.slideshow_speed}000,
                 animationSpeed:{$slideshowSettings.animation_duration}000,
