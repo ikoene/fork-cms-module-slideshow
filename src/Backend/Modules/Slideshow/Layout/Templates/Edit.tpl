@@ -204,24 +204,36 @@
         </div>
         <div class="options">
             <ul class="inputList">
-                <li><label for="direct_navigation">{$chkDirectNavigation} {$lblDirectNavigation|ucfirst}</label>
+                <li>
+                    <label for="direct_navigation">
+                        {$chkDirectNavigation} {$lblDirectNavigation|ucfirst}
+                    </label>
                     <span class="helpTxt">
-                    {$msgHelpDirectNavigation}
+                        {$msgHelpDirectNavigation}
                     </span>
                 </li>
-                <li><label for="control_navigation">{$chkControlNavigation} {$lblControlNavigation|ucfirst}</label>
+                <li>
+                    <label for="control_navigation">
+                        {$chkControlNavigation} {$lblControlNavigation|ucfirst}
+                    </label>
                     <span class="helpTxt">
                     {$msgHelpControlNavigation}
                     </span>
                 </li>
-                <li><label for="keyboard">{$chkKeyboard} {$lblKeyboard|ucfirst}</label>
+                <li>
+                    <label for="keyboard">
+                        {$chkKeyboard} {$lblKeyboard|ucfirst}
+                    </label>
                     <span class="helpTxt">
-                    {$msgHelpKeyboard}
+                        {$msgHelpKeyboard}
                     </span>
                 </li>
-                <li><label for="mousewheel">{$chkMousewheel} {$lblMousewheel|ucfirst}</label>
+                <li>
+                    <label for="mousewheel">
+                        {$chkMousewheel} {$lblMousewheel|ucfirst}
+                    </label>
                     <span class="helpTxt">
-                    {$msgHelpMousewheel}
+                        {$msgHelpMousewheel}
                     </span>
                 </li>
             </ul>
@@ -234,19 +246,28 @@
         </div>
         <div class="options">
             <ul class="inputList">
-                <li><label for="randomize">{$chkRandomize} {$lblRandomize|ucfirst}</label>
+                <li>
+                    <label for="randomize">
+                        {$chkRandomize} {$lblRandomize|ucfirst}
+                    </label>
                     <span class="helpTxt">
-                    {$msgHelpRandomize}
+                        {$msgHelpRandomize}
                     </span>
                 </li>
-                <li><label for="auto_animate">{$chkAutoAnimate} {$lblAutoAnimate|ucfirst}</label>
+                <li>
+                    <label for="auto_animate">
+                        {$chkAutoAnimate} {$lblAutoAnimate|ucfirst}
+                    </label>
                     <span class="helpTxt">
-                    {$msgHelpAutoAnimate}
+                        {$msgHelpAutoAnimate}
                     </span>
                 </li>
-                <li><label for="animation_loop">{$chkAnimationLoop} {$lblAnimationLoop|ucfirst}</label>
+                <li>
+                    <label for="animation_loop">
+                        {$chkAnimationLoop} {$lblAnimationLoop|ucfirst}
+                    </label>
                     <span class="helpTxt">
-                    {$msgHelpAnimationLoop}
+                        {$msgHelpAnimationLoop}
                     </span>
                 </li>
             </ul>
