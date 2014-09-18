@@ -81,7 +81,14 @@
                 slideshowSpeed: {$slideshowSettings.slideshow_speed}000,
                 animationSpeed:{$slideshowSettings.animation_speed}000,
                 directionNav:{$slideshowSettings.direct_navigation},
-                controlNav:{$slideshowSettings.control_navigation},
+
+                {option:!slideshowSettings.thumbnail_navigation}
+                    controlNav:{$slideshowSettings.control_navigation},
+                {/option:!slideshowSettings.thumbnail_navigation}
+                {option:slideshowSettings.thumbnail_navigation}
+                    controlNav: "thumbnails",
+                {/option:slideshowSettings.thumbnail_navigation}
+
                 keyboard:{$slideshowSettings.keyboard},
                 mousewheel:{$slideshowSettings.mousewheel},
                 randomize:{$slideshowSettings.randomize},

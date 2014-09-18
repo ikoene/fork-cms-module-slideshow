@@ -82,6 +82,14 @@
                         {$msgHelpControlNavigation}
                     </span>
                 </li>
+                <li id="thumbnailNavigationBox">
+                    <label for="thumbnail_navigation">
+                        {$chkThumbnailNavigation} {$lblThumbnailNavigation|ucfirst}
+                    </label>
+                    <span class="helpTxt">
+                        {$msgHelpThumbnailNavigation}
+                    </span>
+                </li>
                 <li>
                     <label for="keyboard_navigation">
                         {$chkKeyboardNavigation} {$lblKeyboardNavigation|ucfirst}

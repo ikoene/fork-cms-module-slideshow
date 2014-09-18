@@ -51,6 +51,7 @@ class Installer extends ModuleInstaller
         $this->setSetting('Slideshow', 'animation_speec', 1);
         $this->setSetting('Slideshow', 'direct_navigation', 'true');
         $this->setSetting('Slideshow', 'control_navigation', 'true');
+        $this->setSetting('Slideshow', 'thumbnail_navigation', '');
         $this->setSetting('Slideshow', 'keyboard', 'true');
         $this->setSetting('Slideshow', 'mousewheel', 'false');
         $this->setSetting('Slideshow', 'randomize', 'false');

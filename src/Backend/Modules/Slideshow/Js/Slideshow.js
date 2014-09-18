@@ -9,6 +9,7 @@ jsBackend.slideshow =
     init: function()
     {
         jsBackend.slideshow.toggleLinks();
+        jsBackend.slideshow.toggleThumbnail();
 
         // variables
         $title = $('#title');
@@ -37,6 +38,28 @@ jsBackend.slideshow =
             $('#externalLink').click(function(){
                 $('#externalLinks').toggle();
                 $('#internalLinks').toggle();
+            });
+        }
+    },
+
+    toggleThumbnail: function()
+    {
+        // checkbox checked?
+        if(!$('#controlNavigation').is(':checked'))
+        {
+            $('#thumbnailNavigationBox').toggle();
+
+            $('#controlNavigation').click(function(){
+                $('#thumbnailNavigationBox').toggle();
+                $('#thumbnailNavigation').attr('checked', false);
+            });
+        }
+        // nope
+        else
+        {
+            $('#controlNavigation').click(function(){
+                $('#thumbnailNavigationBox').toggle();
+                $('#thumbnailNavigation').attr('checked', false);
             });
         }
     }

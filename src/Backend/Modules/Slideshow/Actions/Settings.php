@@ -81,6 +81,7 @@ class Settings extends BackendBaseActionEdit
         );
         $this->frm->addCheckbox('direct_navigation', (BackendModel::getModuleSetting($this->URL->getModule(), 'direct_navigation', false) === 'true' ? true : false));
         $this->frm->addCheckbox('control_navigation', (BackendModel::getModuleSetting($this->URL->getModule(), 'control_navigation', false)=== 'true' ? true : false));
+        $this->frm->addCheckbox('thumbnail_navigation', (BackendModel::getModuleSetting($this->URL->getModule(), 'thumbnail_navigation', false)=== 'true' ? true : false));
         $this->frm->addCheckbox('keyboard_navigation', (BackendModel::getModuleSetting($this->URL->getModule(), 'keyboard_navigation', false)=== 'true' ? true : false));
         $this->frm->addCheckbox('mousewheel_navigation', (BackendModel::getModuleSetting($this->URL->getModule(), 'mousewheel_navigation', false)=== 'true' ? true : false));
         $this->frm->addCheckbox('random_order', (BackendModel::getModuleSetting($this->URL->getModule(), 'random_order', false)=== 'true' ? true : false));
@@ -98,20 +99,21 @@ class Settings extends BackendBaseActionEdit
 
             if ($this->frm->isCorrect()) {
                 // set mode setting
-                BackendModel::setModuleSetting($this->URL->getModule(), 'settings_per_slide', (string) ($this->frm->getField('settings_per_slide')->getChecked()) ? 'true' : 'false');
+                BackendModel::setModuleSetting($this->URL->getModule(), 'settings_per_slide', (string) ($this->frm->getField('settings_per_slide')->getChecked()) ? 'true' : '');
 
                 // set main settings
-                BackendModel::setModuleSetting($this->URL->getModule(), 'animation_type', (string) $this->frm->getField('animation_type')->getValue());
-                BackendModel::setModuleSetting($this->URL->getModule(), 'slide_direction', (string) $this->frm->getField('slide_direction')->getValue());
+                BackendModel::setModuleSetting($this->URL->getModule(), 'animation', (string) $this->frm->getField('animation_type')->getValue());
+                BackendModel::setModuleSetting($this->URL->getModule(), 'direction', (string) $this->frm->getField('slide_direction')->getValue());
                 BackendModel::setModuleSetting($this->URL->getModule(), 'slideshow_speed', (int) $this->frm->getField('slideshow_speed')->getValue());
-                BackendModel::setModuleSetting($this->URL->getModule(), 'animation_duration', (int) $this->frm->getField('animation_duration')->getValue());
+                BackendModel::setModuleSetting($this->URL->getModule(), 'animation_speed', (int) $this->frm->getField('animation_duration')->getValue());
 
                 // set optional settings
                 BackendModel::setModuleSetting($this->URL->getModule(), 'direct_navigation', (string) ($this->frm->getField('direct_navigation')->getChecked()) ? 'true' : 'false');
                 BackendModel::setModuleSetting($this->URL->getModule(), 'control_navigation', (string) ($this->frm->getField('control_navigation')->getChecked()) ? 'true' : 'false');
-                BackendModel::setModuleSetting($this->URL->getModule(), 'keyboard_navigation', (string) ($this->frm->getField('keyboard_navigation')->getChecked()) ? 'true' : 'false');
-                BackendModel::setModuleSetting($this->URL->getModule(), 'mousewheel_navigation', (string) ($this->frm->getField('mousewheel_navigation')->getChecked()) ? 'true' : 'false');
-                BackendModel::setModuleSetting($this->URL->getModule(), 'random_order', (string) ($this->frm->getField('random_order')->getChecked()) ? 'true' : 'false');
+                BackendModel::setModuleSetting($this->URL->getModule(), 'thumbnail_navigation', (string) ($this->frm->getField('thumbnail_navigation')->getChecked()) ? 'true' : '');
+                BackendModel::setModuleSetting($this->URL->getModule(), 'keyboard', (string) ($this->frm->getField('keyboard_navigation')->getChecked()) ? 'true' : 'false');
+                BackendModel::setModuleSetting($this->URL->getModule(), 'mousewheel', (string) ($this->frm->getField('mousewheel_navigation')->getChecked()) ? 'true' : 'false');
+                BackendModel::setModuleSetting($this->URL->getModule(), 'randomize', (string) ($this->frm->getField('random_order')->getChecked()) ? 'true' : 'false');
                 BackendModel::setModuleSetting($this->URL->getModule(), 'auto_animate', (string) ($this->frm->getField('auto_animate')->getChecked()) ? 'true' : 'false');
                 BackendModel::setModuleSetting($this->URL->getModule(), 'animation_loop', (string) ($this->frm->getField('animation_loop')->getChecked()) ? 'true' : 'false');
 

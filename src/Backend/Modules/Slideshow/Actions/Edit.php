@@ -153,6 +153,10 @@ class Edit extends BackendBaseActionEdit
             ($this->settings['control_navigation'] === 'true' ? true : false)
         );
         $this->frm->addCheckbox(
+            'thumbnail_navigation',
+            ($this->settings['thumbnail_navigation'] === 'true' ? true : false)
+        );
+        $this->frm->addCheckbox(
             'keyboard',
             ($this->settings['keyboard'] === 'true' ? true : false)
         );
@@ -347,6 +351,8 @@ class Edit extends BackendBaseActionEdit
                 $this->frm->getField('direct_navigation')->getChecked()? 'true' : 'false';
                 $settings['control_navigation'] =
                 $this->frm->getField('control_navigation')->getChecked() ? 'true' : 'false';
+                $settings['thumbnail_navigation'] =
+                $this->frm->getField('thumbnail_navigation')->getChecked() ? 'true' : '';
                 $settings['keyboard'] =
                 $this->frm->getField('keyboard')->getChecked() ? 'true' : 'false';
                 $settings['mousewheel'] =

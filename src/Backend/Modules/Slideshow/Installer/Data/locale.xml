@@ -100,6 +100,10 @@
         <translation language="en"><![CDATA[Control navigation]]></translation>
         <translation language="nl"><![CDATA[Controle navigatie]]></translation>
       </item>
+      <item type="label" name="ThumbnailNavigation">
+        <translation language="en"><![CDATA[Thumbnail navigation]]></translation>
+        <translation language="nl"><![CDATA[Thumbnail navigatie]]></translation>
+      </item>
       <item type="label" name="Keyboard">
         <translation language="en"><![CDATA[Keyboard navigation]]></translation>
         <translation language="nl"><![CDATA[Keyboard navigatie]]></translation>
@@ -149,6 +153,10 @@
       <item type="message" name="HelpControlNavigation">
         <translation language="en"><![CDATA[Create navigation for paging control of each clide?]]></translation>
         <translation language="nl"><![CDATA[Creëer directe navigatie voor elke slide?]]></translation>
+      </item>
+      <item type="message" name="HelpThumbnailNavigation">
+        <translation language="en"><![CDATA[Use thumbnails to navigate]]></translation>
+        <translation language="nl"><![CDATA[Gebruik thumbnails om te navigeren]]></translation>
       </item>
       <item type="message" name="HelpKeyboard">
         <translation language="en"><![CDATA[Allow slider navigation via keyboard left/right keys]]></translation>
