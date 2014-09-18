@@ -12,9 +12,12 @@
         </div>
         <div class="options">
             <ul class="inputList">
-                <li><label for="direct_navigation">{$chkSettingsPerSlide} {$lblSettingsPerSlide|ucfirst}</label>
+                <li>
+                    <label for="direct_navigation">
+                        {$chkSettingsPerSlide} {$lblSettingsPerSlide|ucfirst}
+                    </label>
                     <span class="helpTxt">
-                    {$msgHelpSettingsPerSlide}
+                        {$msgHelpSettingsPerSlide}
                     </span>
                 </li>
             </ul>
@@ -63,24 +66,36 @@
         </div>
         <div class="options">
             <ul class="inputList">
-                <li><label for="direct_navigation">{$chkDirectNavigation} {$lblDirectNavigation|ucfirst}</label>
+                <li>
+                    <label for="direct_navigation">
+                        {$chkDirectNavigation} {$lblDirectNavigation|ucfirst}
+                    </label>
                     <span class="helpTxt">
-                    {$msgHelpDirectNavigation}
+                        {$msgHelpDirectNavigation}
                     </span>
                 </li>
-                <li><label for="control_navigation">{$chkControlNavigation} {$lblControlNavigation|ucfirst}</label>
+                <li>
+                    <label for="control_navigation">
+                        {$chkControlNavigation} {$lblControlNavigation|ucfirst}
+                    </label>
                     <span class="helpTxt">
-                    {$msgHelpControlNavigation}
+                        {$msgHelpControlNavigation}
                     </span>
                 </li>
-                <li><label for="keyboard_navigation">{$chkKeyboardNavigation} {$lblKeyboardNavigation|ucfirst}</label>
+                <li>
+                    <label for="keyboard_navigation">
+                        {$chkKeyboardNavigation} {$lblKeyboardNavigation|ucfirst}
+                    </label>
                     <span class="helpTxt">
-                    {$msgHelpKeyboardNavigation}
+                        {$msgHelpKeyboardNavigation}
                     </span>
                 </li>
-                <li><label for="mousewheel_navigation">{$chkMousewheelNavigation} {$lblMousewheelNavigation|ucfirst}</label>
+                <li>
+                    <label for="mousewheel_navigation">
+                        {$chkMousewheelNavigation} {$lblMousewheelNavigation|ucfirst}
+                    </label>
                     <span class="helpTxt">
-                    {$msgHelpMousewheelNavigation}
+                        {$msgHelpMousewheelNavigation}
                     </span>
                 </li>
             </ul>
@@ -93,19 +108,28 @@
         </div>
         <div class="options">
             <ul class="inputList">
-                <li><label for="random_order">{$chkRandomOrder} {$lblRandomOrder|ucfirst}</label>
+                <li>
+                    <label for="random_order">
+                        {$chkRandomOrder} {$lblRandomOrder|ucfirst}
+                    </label>
                     <span class="helpTxt">
-                    {$msgHelpRandomOrder}
+                        {$msgHelpRandomOrder}
                     </span>
                 </li>
-                <li><label for="auto_animate">{$chkAutoAnimate} {$lblAutoAnimate|ucfirst}</label>
+                <li>
+                    <label for="auto_animate">
+                        {$chkAutoAnimate} {$lblAutoAnimate|ucfirst}
+                    </label>
                     <span class="helpTxt">
-                    {$msgHelpAutoAnimate}
+                        {$msgHelpAutoAnimate}
                     </span>
                 </li>
-                <li><label for="animation_loop">{$chkAnimationLoop} {$lblAnimationLoop|ucfirst}</label>
+                <li>
+                    <label for="animation_loop">
+                        {$chkAnimationLoop} {$lblAnimationLoop|ucfirst}
+                    </label>
                     <span class="helpTxt">
-                    {$msgHelpAnimationLoop}
+                        {$msgHelpAnimationLoop}
                     </span>
                 </li>
             </ul>
