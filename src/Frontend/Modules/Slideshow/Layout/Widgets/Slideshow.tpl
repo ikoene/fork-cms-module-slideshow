@@ -57,7 +57,14 @@
                 slideshowSpeed: {$widgetSlideshowSettings.slideshow_speed}000,
                 animationSpeed:{$widgetSlideshowSettings.animation_speed}000,
                 directionNav:{$widgetSlideshowSettings.direct_navigation},
-                controlNav:{$widgetSlideshowSettings.control_navigation},
+
+                {option:!widgetSlideshowSettings.thumbnail_navigation}
+                    controlNav:{$widgetSlideshowSettings.control_navigation},
+                {/option:!widgetSlideshowSettings.thumbnail_navigation}
+                {option:widgetSlideshowSettings.thumbnail_navigation}
+                    controlNav: "thumbnails",
+                {/option:widgetSlideshowSettings.thumbnail_navigation}
+
                 keyboard:{$widgetSlideshowSettings.keyboard},
                 mousewheel:{$widgetSlideshowSettings.mousewheel},
                 randomize:{$widgetSlideshowSettings.randomize},
