@@ -9,9 +9,6 @@
                 <span>{$lblView|ucfirst}</span>
             </a>
         {/option:detailURL}
-        <a href="{$var|geturl:'add_image'}&amp;id={$item.id}" class="button icon iconAdd" title="{$lblAddImages|ucfirst}">
-            <span>{$lblAddImages|ucfirst}</span>
-        </a>
     </div>
 </div>
 
@@ -149,6 +146,11 @@
         </div>
 
         <div id="images">
+            <p>
+                <a href="{$var|geturl:'add_image'}&amp;id={$item.id}" class="button icon iconAdd" title="{$lblAddImages|ucfirst}">
+                    <span>{$lblAddImages|ucfirst}</span>
+                </a>
+            </p>
             {option:dataGrid}
             <div class="dataGridHolder">
             {$dataGrid}
