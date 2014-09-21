@@ -295,7 +295,7 @@
                 <span>{$lblDelete|ucfirst}</span>
             </a>
             <div class="buttonHolderRight">
-                <input id="editButton" class="inputButton button mainButton" type="submit" name="edit" value="{$lblPublish|ucfirst}" />
+                <input id="editButton" class="inputButton button mainButton" type="submit" name="edit" value="{$lblSave|ucfirst}" />
             </div>
         </div>
 
