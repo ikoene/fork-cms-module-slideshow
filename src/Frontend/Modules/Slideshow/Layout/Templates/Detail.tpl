@@ -55,49 +55,4 @@
                 {/option:navigation.next}
             </ul>
 
-
-        <script type="text/javascript">
-        // loading multiple onload functions when using multiple widgets on one page
-        function addLoadEvent(func) {
-            var oldonload = window.onload;
-                if (typeof window.onload != 'function') {
-                    window.onload = func;
-                } else {
-                    window.onload = function() {
-                    if (oldonload) {
-                        oldonload();
-                    }
-                func();
-                }
-            }
-        }
-
-        // set custom slideshow options
-        function flex{$gallery.id}() {
-            $('.flexsliderwrap{$gallery.id}').flexslider({
-                controlsContainer: ".flexsliderwrap{$widgetGallery.id}",
-                animation: "{$slideshowSettings.animation}",
-                direction: "{$slideshowSettings.direction}",
-                slideshowSpeed: {$slideshowSettings.slideshow_speed}000,
-                animationSpeed:{$slideshowSettings.animation_speed}000,
-                directionNav:{$slideshowSettings.direct_navigation},
-
-                {option:!slideshowSettings.thumbnail_navigation}
-                    controlNav:{$slideshowSettings.control_navigation},
-                {/option:!slideshowSettings.thumbnail_navigation}
-                {option:slideshowSettings.thumbnail_navigation}
-                    controlNav: "thumbnails",
-                {/option:slideshowSettings.thumbnail_navigation}
-
-                keyboard:{$slideshowSettings.keyboard},
-                mousewheel:{$slideshowSettings.mousewheel},
-                randomize:{$slideshowSettings.randomize},
-                slideshow:{$slideshowSettings.auto_animate},
-                animationLoop:{$slideshowSettings.animation_loop}
-            });
-        };
-
-        addLoadEvent(flex{$gallery.id});
-        </script>
-
 {/option:gallery}

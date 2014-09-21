@@ -70,6 +70,9 @@ class Detail extends FrontendBaseBlock
             '/Layout/Css/slideshow.css'
         );
 
+        // add JS
+        $this->addJS('Settings.js');
+
         // set meta
         $this->header->setPageTitle(
             $this->record['meta_title'],
@@ -98,15 +101,18 @@ class Detail extends FrontendBaseBlock
 
         // should we use the settings per slide or the module settings
         if (FrontendModel::getModuleSetting('Slideshow', 'settings_per_slide')) {
-            $this->tpl->assign(
-                'slideshowSettings',
-                FrontendSlideshowModel::getAllSettings($this->record['gallery_id'])
-            );
+            $settings = FrontendSlideshowModel::getAllSettings($this->record['gallery_id']);
+            $settings['id'] = $this->record['gallery_id'];
         } else {
-            $this->tpl->assign(
-                'slideshowSettings',
-                FrontendModel::getModuleSettings('Slideshow')
-            );
+            $settings = FrontendModel::getModuleSettings('Slideshow');
+            $settings['id'] = $this->record['gallery_id'];
         }
+
+        // pass settings to JS
+        $this->addJSData(
+            'slideshowSettings',
+            $settings
+        );
+
     }
 }

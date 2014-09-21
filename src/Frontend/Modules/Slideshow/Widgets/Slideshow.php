@@ -61,21 +61,26 @@ class Slideshow extends FrontendBaseWidget
             '/Layout/Css/slideshow.css'
         );
 
+        // add JS
+        $this->addJS('Settings.js');
+
         // assign
         $this->tpl->assign('widgetSlideshow', $this->slides);
         $this->tpl->assign('widgetGallery', $this->gallery);
 
         // should we use the settings per slide or the module settings
         if (FrontendModel::getModuleSetting('Slideshow', 'settings_per_slide')) {
-            $this->tpl->assign(
-                'widgetSlideshowSettings',
-                FrontendSlideshowModel::getAllSettings($this->gallery['id'])
-            );
+            $settings = FrontendSlideshowModel::getAllSettings($this->gallery['id']);
+            $settings['id'] = $this->gallery['id'];
         } else {
-            $this->tpl->assign(
-                'widgetSlideshowSettings',
-                FrontendModel::getModuleSettings('Slideshow')
-            );
+            $settings = FrontendModel::getModuleSettings('Slideshow');
+            $settings['id'] = $this->gallery['id'];
         }
+
+        // pass settings to JS
+        $this->addJSData(
+            'slideshowSettings',
+            $settings
+        );
     }
 }

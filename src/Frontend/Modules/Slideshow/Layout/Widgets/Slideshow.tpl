@@ -32,48 +32,4 @@
                 </div>
             </div>
 
-        <script type="text/javascript">
-        // loading multiple onload functions when using multiple widgets on one page
-        function addLoadEvent(func) {
-            var oldonload = window.onload;
-                if (typeof window.onload != 'function') {
-                    window.onload = func;
-                } else {
-                    window.onload = function() {
-                    if (oldonload) {
-                        oldonload();
-                    }
-                func();
-                }
-            }
-        }
-
-        // set custom slideshow options
-        function flex{$widgetGallery.id}() {
-            $('.flexsliderwrap{$widgetGallery.id}').flexslider({
-                controlsContainer: ".flexsliderwrap{$widgetGallery.id}",
-                animation: "{$widgetSlideshowSettings.animation}",
-                direction: "{$widgetSlideshowSettings.direction}",
-                slideshowSpeed: {$widgetSlideshowSettings.slideshow_speed}000,
-                animationSpeed:{$widgetSlideshowSettings.animation_speed}000,
-                directionNav:{$widgetSlideshowSettings.direct_navigation},
-
-                {option:!widgetSlideshowSettings.thumbnail_navigation}
-                    controlNav:{$widgetSlideshowSettings.control_navigation},
-                {/option:!widgetSlideshowSettings.thumbnail_navigation}
-                {option:widgetSlideshowSettings.thumbnail_navigation}
-                    controlNav: "thumbnails",
-                {/option:widgetSlideshowSettings.thumbnail_navigation}
-
-                keyboard:{$widgetSlideshowSettings.keyboard},
-                mousewheel:{$widgetSlideshowSettings.mousewheel},
-                randomize:{$widgetSlideshowSettings.randomize},
-                slideshow:{$widgetSlideshowSettings.auto_animate},
-                animationLoop:{$widgetSlideshowSettings.animation_loop}
-            });
-        };
-
-        addLoadEvent(flex{$widgetGallery.id});
-    </script>
-
     {/option:widgetGallery}
