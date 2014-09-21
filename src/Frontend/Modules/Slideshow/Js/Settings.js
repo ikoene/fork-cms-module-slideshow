@@ -6,15 +6,16 @@ var settings =
     direction: jsFrontend.data.get('Slideshow.slideshowSettings.direction'),
     slideshowSpeed: jsFrontend.data.get('Slideshow.slideshowSettings.slideshow_speed') + '000',
     animationSpeed: jsFrontend.data.get('Slideshow.slideshowSettings.animation_speed') + '000',
-    thumbnailNavigation: jsFrontend.data.get('Slideshow.slideshowSettings.thumbnail_navigation'),
-    controlNav: jsFrontend.data.get('Slideshow.slideshowSettings.control_navigation'),
-    directionNav: jsFrontend.data.get('Slideshow.slideshowSettings.direction_navigation'),
-    randomize: jsFrontend.data.get('Slideshow.slideshowSettings.randomize'),
-    keyboard: jsFrontend.data.get('Slideshow.slideshowSettings.keyboard'),
-    mousewheel: jsFrontend.data.get('Slideshow.slideshowSettings.mousewheel'),
-    slideshow: jsFrontend.data.get('Slideshow.slideshowSettings.slideshow'),
-    animationLoop: jsFrontend.data.get('Slideshow.slideshowSettings.animation_loop')
+    thumbnailNavigation: (jsFrontend.data.get('Slideshow.slideshowSettings.thumbnail_navigation') == "true") ? true : false,
+    directionNav: (jsFrontend.data.get('Slideshow.slideshowSettings.direction_navigation') == "true") ? true : false,
+    controlNav: (jsFrontend.data.get('Slideshow.slideshowSettings.control_navigation') == "true") ? true : false,
+    randomize: (jsFrontend.data.get('Slideshow.slideshowSettings.randomize') == "true") ? true : false,
+    keyboard: (jsFrontend.data.get('Slideshow.slideshowSettings.keyboard') == "true") ? true : false,
+    mousewheel: (jsFrontend.data.get('Slideshow.slideshowSettings.mousewheel') == "true") ? true : false,
+    slideshow: (jsFrontend.data.get('Slideshow.slideshowSettings.slideshow') == "true") ? true : false,
+    animationLoop: (jsFrontend.data.get('Slideshow.slideshowSettings.animation_loop') == "true") ? true : false
 };
+
 
 // loading multiple onload functions when using multiple widgets on one page
 function addLoadEvent(func) {
