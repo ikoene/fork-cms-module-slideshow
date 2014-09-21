@@ -145,8 +145,8 @@ class Edit extends BackendBaseActionEdit
             $this->settings['animation_speed']
         );
         $this->frm->addCheckbox(
-            'direct_navigation',
-            ($this->settings['direct_navigation'] === 'true' ? true : false)
+            'direction_navigation',
+            ($this->settings['direction_navigation'] === 'true' ? true : false)
         );
         $this->frm->addCheckbox(
             'control_navigation',
@@ -347,8 +347,8 @@ class Edit extends BackendBaseActionEdit
                 $this->frm->getField('slideshow_speed')->getValue();
                 $settings['animation_speed'] =
                 $this->frm->getField('animation_speed')->getValue();
-                $settings['direct_navigation'] =
-                $this->frm->getField('direct_navigation')->getChecked()? 'true' : 'false';
+                $settings['direction_navigation'] =
+                $this->frm->getField('direction_navigation')->getChecked()? 'true' : 'false';
                 $settings['control_navigation'] =
                 $this->frm->getField('control_navigation')->getChecked() ? 'true' : 'false';
                 $settings['thumbnail_navigation'] =

@@ -205,11 +205,11 @@
         <div class="options">
             <ul class="inputList">
                 <li>
-                    <label for="direct_navigation">
-                        {$chkDirectNavigation} {$lblDirectNavigation|ucfirst}
+                    <label for="direction_navigation">
+                        {$chkDirectionNavigation} {$lblDirectionNavigation|ucfirst}
                     </label>
                     <span class="helpTxt">
-                        {$msgHelpDirectNavigation}
+                        {$msgHelpDirectionNavigation}
                     </span>
                 </li>
                 <li>

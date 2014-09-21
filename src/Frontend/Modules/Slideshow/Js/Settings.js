@@ -8,7 +8,7 @@ var settings =
     animationSpeed: jsFrontend.data.get('Slideshow.slideshowSettings.animation_speed') + '000',
     thumbnailNavigation: jsFrontend.data.get('Slideshow.slideshowSettings.thumbnail_navigation'),
     controlNav: jsFrontend.data.get('Slideshow.slideshowSettings.control_navigation'),
-    directionNav: jsFrontend.data.get('Slideshow.slideshowSettings.direct_navigation'),
+    directionNav: jsFrontend.data.get('Slideshow.slideshowSettings.direction_navigation'),
     randomize: jsFrontend.data.get('Slideshow.slideshowSettings.randomize'),
     keyboard: jsFrontend.data.get('Slideshow.slideshowSettings.keyboard'),
     mousewheel: jsFrontend.data.get('Slideshow.slideshowSettings.mousewheel'),

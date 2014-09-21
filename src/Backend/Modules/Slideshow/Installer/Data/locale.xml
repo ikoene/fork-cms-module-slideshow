@@ -92,8 +92,8 @@
         <translation language="en"><![CDATA[Navigation settings]]></translation>
         <translation language="nl"><![CDATA[Navigatie instellingen]]></translation>
       </item>
-      <item type="label" name="DirectNavigation">
-        <translation language="en"><![CDATA[Direct navigation]]></translation>
+      <item type="label" name="DirectionNavigation">
+        <translation language="en"><![CDATA[Direction navigation]]></translation>
         <translation language="nl"><![CDATA[Directe navigatie]]></translation>
       </item>
       <item type="label" name="ControlNavigation">
@@ -146,7 +146,7 @@
         <translation language="en"><![CDATA[Set the speed of animations, in seconds]]></translation>
         <translation language="nl"><![CDATA[De snelheid van de animaties, in seconden]]></translation>
       </item>
-      <item type="message" name="HelpDirectNavigation">
+      <item type="message" name="HelpDirectionNavigation">
         <translation language="en"><![CDATA[Create navigation for previous/next navigation?]]></translation>
         <translation language="nl"><![CDATA[Creëer vorige/volgende navigatie?]]></translation>
       </item>
