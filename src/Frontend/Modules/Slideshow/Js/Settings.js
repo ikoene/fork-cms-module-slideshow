@@ -16,7 +16,6 @@ var settings =
     animationLoop: (jsFrontend.data.get('Slideshow.slideshowSettings.animation_loop') == "true") ? true : false
 };
 
-
 // loading multiple onload functions when using multiple widgets on one page
 function addLoadEvent(func) {
     var oldonload = window.onload;

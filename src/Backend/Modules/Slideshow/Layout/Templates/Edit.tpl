@@ -13,7 +13,6 @@
 </div>
 
 {form:edit}
-    {option:categories}
     <p>
         <label for="title">{$lblTitle|ucfirst}<abbr title="{$lblRequiredField}">*</abbr></label>
         {$txtTitle} {$txtTitleError}
@@ -305,7 +304,6 @@
                 {$msgConfirmDeleteCategory|sprintf:{$item.title}}
             </p>
         </div>
-    {/option:categories}
 
 {/form:edit}
 
