@@ -166,7 +166,7 @@ class Edit extends BackendBaseActionEdit
         );
         $this->frm->addCheckbox(
             'touch',
-            ($this->settings['touch_navigation'] === 'true' ? true : false)
+            ($this->settings['touch'] === 'true' ? true : false)
         );
         $this->frm->addCheckbox(
             'randomize',
@@ -361,7 +361,7 @@ class Edit extends BackendBaseActionEdit
                 $this->frm->getField('keyboard')->getChecked() ? 'true' : 'false';
                 $settings['mousewheel'] =
                 $this->frm->getField('mousewheel')->getChecked() ? 'true' : 'false';
-                $settings['touch_navigation'] =
+                $settings['touch'] =
                 $this->frm->getField('touch')->getChecked() ? 'true' : 'false';
                 $settings['randomize'] =
                 $this->frm->getField('randomize')->getChecked() ? 'true' : 'false';

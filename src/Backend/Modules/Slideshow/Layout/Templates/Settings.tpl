@@ -91,19 +91,19 @@
                     </span>
                 </li>
                 <li>
-                    <label for="keyboard_navigation">
-                        {$chkKeyboardNavigation} {$lblKeyboardNavigation|ucfirst}
+                    <label for="keyboard">
+                        {$chkKeyboard} {$lblKeyboard|ucfirst}
                     </label>
                     <span class="helpTxt">
-                        {$msgHelpKeyboardNavigation}
+                        {$msgHelpKeyboard}
                     </span>
                 </li>
                 <li>
-                    <label for="mousewheel_navigation">
-                        {$chkMousewheelNavigation} {$lblMousewheelNavigation|ucfirst}
+                    <label for="mousewheel">
+                        {$chkMousewheel} {$lblMousewheel|ucfirst}
                     </label>
                     <span class="helpTxt">
-                        {$msgHelpMousewheelNavigation}
+                        {$msgHelpMousewheel}
                     </span>
                 </li>
                 <li>
