@@ -12,7 +12,7 @@ var settings =
     randomize: (jsFrontend.data.get('Slideshow.slideshowSettings.randomize') == "true") ? true : false,
     keyboard: (jsFrontend.data.get('Slideshow.slideshowSettings.keyboard') == "true") ? true : false,
     mousewheel: (jsFrontend.data.get('Slideshow.slideshowSettings.mousewheel') == "true") ? true : false,
-    touch: (jsFrontend.data.get('Slideshow.slideshowSettings.touch_navigation') == "true") ? true : false,
+    touch: (jsFrontend.data.get('Slideshow.slideshowSettings.touch') == "true") ? true : false,
     slideshow: (jsFrontend.data.get('Slideshow.slideshowSettings.slideshow') == "true") ? true : false,
     animationLoop: (jsFrontend.data.get('Slideshow.slideshowSettings.animation_loop') == "true") ? true : false
 };

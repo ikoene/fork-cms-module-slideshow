@@ -107,7 +107,7 @@
                     </span>
                 </li>
                 <li>
-                    <label for="touch_navigation">
+                    <label for="touch">
                         {$chkTouch} {$lblTouch|ucfirst}
                     </label>
                     <span class="helpTxt">
