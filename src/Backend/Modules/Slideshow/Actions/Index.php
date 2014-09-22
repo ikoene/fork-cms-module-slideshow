@@ -104,7 +104,7 @@ class Index extends BackendBaseActionIndex
             $dataGrid->setAttributes(array('data-action' => "GallerySequence"));
 
             // create a column #images
-            $dataGrid->addColumn('images', BL::lbl('Images'));
+            $dataGrid->addColumn('images', ucfirst(BL::lbl('Images')));
             $dataGrid->setColumnFunction(
                 array('Backend\Modules\Slideshow\Engine\Model', 'getImagesByGallery'),
                 array('[id]', true),
