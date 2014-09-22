@@ -40,10 +40,10 @@ class Index extends FrontendBaseBlock
      */
     private function getData()
     {
-        //get all galleries
+        // get all galleries
         $this->item = FrontendSlideshowModel::getGalleries();
 
-        //full url asset
+        // full url asset
         $this->full_url = FrontendNavigation::getURLForBlock('Slideshow', 'detail');
         $this->full_url_category = FrontendNavigation::getURLForBlock('Slideshow', 'category');
     }
