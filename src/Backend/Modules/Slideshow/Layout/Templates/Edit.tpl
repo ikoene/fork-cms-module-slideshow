@@ -245,6 +245,14 @@
                         {$msgHelpMousewheel}
                     </span>
                 </li>
+                <li>
+                    <label for="touch">
+                        {$chkTouch} {$lblTouch|ucfirst}
+                    </label>
+                    <span class="helpTxt">
+                        {$msgHelpTouch}
+                    </span>
+                </li>
             </ul>
         </div>
     </div>

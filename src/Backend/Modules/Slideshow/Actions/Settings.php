@@ -80,12 +80,13 @@ class Settings extends BackendBaseActionEdit
             )
         );
         $this->frm->addCheckbox('direct_navigation', (BackendModel::getModuleSetting($this->URL->getModule(), 'direct_navigation', false) === 'true' ? true : false));
-        $this->frm->addCheckbox('control_navigation', (BackendModel::getModuleSetting($this->URL->getModule(), 'control_navigation', false)=== 'true' ? true : false));
-        $this->frm->addCheckbox('thumbnail_navigation', (BackendModel::getModuleSetting($this->URL->getModule(), 'thumbnail_navigation', false)=== 'true' ? true : false));
-        $this->frm->addCheckbox('keyboard_navigation', (BackendModel::getModuleSetting($this->URL->getModule(), 'keyboard_navigation', false)=== 'true' ? true : false));
-        $this->frm->addCheckbox('mousewheel_navigation', (BackendModel::getModuleSetting($this->URL->getModule(), 'mousewheel_navigation', false)=== 'true' ? true : false));
-        $this->frm->addCheckbox('random_order', (BackendModel::getModuleSetting($this->URL->getModule(), 'random_order', false)=== 'true' ? true : false));
-        $this->frm->addCheckbox('auto_animate', (BackendModel::getModuleSetting($this->URL->getModule(), 'auto_animate', false)=== 'true' ? true : false));
+        $this->frm->addCheckbox('control_navigation', (BackendModel::getModuleSetting($this->URL->getModule(), 'control_navigation', false) === 'true' ? true : false));
+        $this->frm->addCheckbox('thumbnail_navigation', (BackendModel::getModuleSetting($this->URL->getModule(), 'thumbnail_navigation', false) === 'true' ? true : false));
+        $this->frm->addCheckbox('keyboard_navigation', (BackendModel::getModuleSetting($this->URL->getModule(), 'keyboard_navigation', false) === 'true' ? true : false));
+        $this->frm->addCheckbox('mousewheel_navigation', (BackendModel::getModuleSetting($this->URL->getModule(), 'mousewheel_navigation', false) === 'true' ? true : false));
+        $this->frm->addCheckbox('touch_navigation', (BackendModel::getModuleSetting($this->URL->getModule(), 'touch_navigation', false) === 'true' ? true : false));
+        $this->frm->addCheckbox('random_order', (BackendModel::getModuleSetting($this->URL->getModule(), 'random_order', false) === 'true' ? true : false));
+        $this->frm->addCheckbox('auto_animate', (BackendModel::getModuleSetting($this->URL->getModule(), 'auto_animate', false) === 'true' ? true : false));
         $this->frm->addCheckbox('animation_loop', (BackendModel::getModuleSetting($this->URL->getModule(), 'animation_loop', false)=== 'true' ? true : false));
     }
 
@@ -113,6 +114,7 @@ class Settings extends BackendBaseActionEdit
                 BackendModel::setModuleSetting($this->URL->getModule(), 'thumbnail_navigation', (string) ($this->frm->getField('thumbnail_navigation')->getChecked()) ? 'true' : '');
                 BackendModel::setModuleSetting($this->URL->getModule(), 'keyboard', (string) ($this->frm->getField('keyboard_navigation')->getChecked()) ? 'true' : 'false');
                 BackendModel::setModuleSetting($this->URL->getModule(), 'mousewheel', (string) ($this->frm->getField('mousewheel_navigation')->getChecked()) ? 'true' : 'false');
+                BackendModel::setModuleSetting($this->URL->getModule(), 'touch_navigation', (string) ($this->frm->getField('touch_navigation')->getChecked()) ? 'true' : 'false');
                 BackendModel::setModuleSetting($this->URL->getModule(), 'randomize', (string) ($this->frm->getField('random_order')->getChecked()) ? 'true' : 'false');
                 BackendModel::setModuleSetting($this->URL->getModule(), 'auto_animate', (string) ($this->frm->getField('auto_animate')->getChecked()) ? 'true' : 'false');
                 BackendModel::setModuleSetting($this->URL->getModule(), 'animation_loop', (string) ($this->frm->getField('animation_loop')->getChecked()) ? 'true' : 'false');

@@ -106,6 +106,14 @@
                         {$msgHelpMousewheelNavigation}
                     </span>
                 </li>
+                <li>
+                    <label for="touch_navigation">
+                        {$chkTouchNavigation} {$lblTouchNavigation|ucfirst}
+                    </label>
+                    <span class="helpTxt">
+                        {$msgHelpTouchNavigation}
+                    </span>
+                </li>
             </ul>
         </div>
     </div>
