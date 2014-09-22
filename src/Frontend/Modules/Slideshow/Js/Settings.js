@@ -13,7 +13,7 @@ var settings =
     keyboard: (jsFrontend.data.get('Slideshow.slideshowSettings.keyboard') == "true") ? true : false,
     mousewheel: (jsFrontend.data.get('Slideshow.slideshowSettings.mousewheel') == "true") ? true : false,
     touch: (jsFrontend.data.get('Slideshow.slideshowSettings.touch') == "true") ? true : false,
-    slideshow: (jsFrontend.data.get('Slideshow.slideshowSettings.slideshow') == "true") ? true : false,
+    auto_animate: (jsFrontend.data.get('Slideshow.slideshowSettings.auto_animate') == "true") ? true : false,
     animationLoop: (jsFrontend.data.get('Slideshow.slideshowSettings.animation_loop') == "true") ? true : false
 };
 
@@ -51,7 +51,7 @@ function flexslider () {
         mousewheel: settings.mousewheel,
         touch: settings.touch,
         randomize: settings.randomize,
-        slideshow: settings.slideshow,
+        slideshow: settings.auto_animate,
         animationLoop: settings.animationLoop
     });
 };
