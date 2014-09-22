@@ -13,7 +13,7 @@
         <div class="options">
             <ul class="inputList">
                 <li>
-                    <label for="direct_navigation">
+                    <label for="settings_per_slide">
                         {$chkSettingsPerSlide} {$lblSettingsPerSlide|ucfirst}
                     </label>
                     <span class="helpTxt">
@@ -68,7 +68,7 @@
             <ul class="inputList">
                 <li>
                     <label for="direct_navigation">
-                        {$chkDirectNavigation} {$lblDirectNavigation|ucfirst}
+                        {$chkDirectionNavigation} {$lblDirectionNavigation|ucfirst}
                     </label>
                     <span class="helpTxt">
                         {$msgHelpDirectNavigation}
@@ -108,10 +108,10 @@
                 </li>
                 <li>
                     <label for="touch_navigation">
-                        {$chkTouchNavigation} {$lblTouchNavigation|ucfirst}
+                        {$chkTouch} {$lblTouch|ucfirst}
                     </label>
                     <span class="helpTxt">
-                        {$msgHelpTouchNavigation}
+                        {$msgHelpTouch}
                     </span>
                 </li>
             </ul>
