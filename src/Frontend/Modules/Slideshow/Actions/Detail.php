@@ -97,8 +97,6 @@ class Detail extends FrontendBaseBlock
             FrontendSlideshowModel::getNavigation($this->record['gallery_id'])
         );
 
-        $this->tpl->assign('widgetGallery', $this->gallery);
-
         // should we use the settings per slide or the module settings
         if (FrontendModel::getModuleSetting('Slideshow', 'settings_per_slide')) {
             $settings = FrontendSlideshowModel::getAllSettings($this->record['gallery_id']);
