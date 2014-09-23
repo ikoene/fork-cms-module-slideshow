@@ -182,10 +182,10 @@ class AddImage extends BackendBaseActionAdd
                             FRONTEND_FILES_PATH .
                             '/slideshow/thumbnails/' .
                             $filename,
-                            null,
+                            100,
                             100,
                             false,
-                            true,
+                            false,
                             100
                         );
                         // insert image values in database
