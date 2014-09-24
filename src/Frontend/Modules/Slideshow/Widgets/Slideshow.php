@@ -40,11 +40,11 @@ class Slideshow extends FrontendBaseWidget
      */
     private function getData()
     {
+        // get gallery data
+        $this->gallery = FrontendSlideshowModel::getGallery($this->data['id']);
+
         // get image data
         $this->slides = FrontendSlideshowModel::getImages($this->data['id']);
-
-        // only if it contains images
-        $this->gallery = FrontendSlideshowModel::getGallery($this->data['id']);
     }
 
     /**
@@ -68,19 +68,20 @@ class Slideshow extends FrontendBaseWidget
         $this->tpl->assign('widgetSlideshow', $this->slides);
         $this->tpl->assign('widgetGallery', $this->gallery);
 
-        // should we use the settings per slide or the module settings
-        if (FrontendModel::getModuleSetting('Slideshow', 'settings_per_slide')) {
-            $settings = FrontendSlideshowModel::getAllSettings($this->gallery['id']);
-            $settings['id'] = $this->gallery['id'];
-        } else {
-            $settings = FrontendModel::getModuleSettings('Slideshow');
-            $settings['id'] = $this->gallery['id'];
+        if (!empty($this->gallery)) {
+            // should we use the settings per slide or the module settings
+            if (FrontendModel::getModuleSetting('Slideshow', 'settings_per_slide')) {
+                $settings = FrontendSlideshowModel::getAllSettings($this->gallery['id']);
+                $settings['id'] = $this->gallery['id'];
+            } else {
+                $settings = FrontendModel::getModuleSettings('Slideshow');
+                $settings['id'] = $this->gallery['id'];
+            }
+            // pass settings to JS
+            $this->addJSData(
+                'slideshowSettings',
+                $settings
+            );
         }
-
-        // pass settings to JS
-        $this->addJSData(
-            'slideshowSettings',
-            $settings
-        );
     }
 }
