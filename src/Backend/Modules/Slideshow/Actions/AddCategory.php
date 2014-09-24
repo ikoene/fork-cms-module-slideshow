@@ -85,7 +85,7 @@ class AddCategory extends BackendBaseActionAdd
                 $item['title'] = $this->frm->getField('title')->getValue();
                 $item['language'] = BL::getWorkingLanguage();
                 $item['meta_id'] = $this->meta->save();
-                $item['sequence'] = BackendSlideshowModel::getMaximumSlideshowCategorySequence() + 1;
+                $item['sequence'] = BackendSlideshowModel::getMaximumCategorySequence() + 1;
 
                 // insert the item
                 $item['id'] = BackendSlideshowModel::insertCategory($item);

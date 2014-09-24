@@ -401,7 +401,7 @@ class Edit extends BackendBaseActionEdit
                 // check if the category was changed
                 if (!BackendSlideshowModel::getChangeCategory($this->id, $item['category_id'])) {
                     // if so, adjust the sequence to the new category
-                    $item['sequence'] = BackendSlideshowModel::getMaximumSlideshowGallerySequence(
+                    $item['sequence'] = BackendSlideshowModel::getMaximumGallerySequence(
                         $this->frm->getField('categories')->getValue()
                     )
                     + 1;
