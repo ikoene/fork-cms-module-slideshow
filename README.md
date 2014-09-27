@@ -32,7 +32,7 @@ Visit the [Fork CMS knowledge base](http://fork-cms.com/knowledge-base) to learn
 	<li>Sort galleries with drag&drop</li>
 	<li>(optional) SEO settings for every gallery</li>
 	<li>All galleries have a publishing time and date</li>
-	<li>You can upload multiple images at once</li>
+	<li>Upload multiple images at once</li>
 	<li>Publish, delete or hide individual images</li>
 	<li>Set several options for slideshows like animation type, animation time, slideshow speed and navigation type. While you can set these settings for <b>all</b> slideshows (via module settings), you can also define <b>individual</b> settings for every slideshow separately. </li>
 </ul>
