@@ -6,6 +6,8 @@ Slideshow is a module for Fork CMS. This module manages responsive slideshows. I
 
 Visit the [Fork CMS knowledge base](http://fork-cms.com/knowledge-base) to learn how to install a module.
 
+## Updates
+
 ** Version 2.0.0 **
 
 - Update to Flexslider v2.2.2
