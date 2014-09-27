@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS `slideshow_galleries` (
  `width` int(4) NOT NULL,
  `height` int(4),
  `hidden` enum('N', 'Y') NOT NULL DEFAULT 'N',
- `sequence` int(11) NOT NULL,
+ `sequence` int(11),
  `created_on` datetime NOT NULL,
  `publish_on` datetime NOT NULL,
  `edited_on` datetime,
