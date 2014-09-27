@@ -44,7 +44,7 @@ class Installer extends ModuleInstaller
         $this->setActionRights(1, 'Slideshow', 'EditImage');
         $this->setActionRights(1, 'Slideshow', 'DeleteImage');
 
-        // Slideshow settings
+        // default settings
         $this->setSetting('Slideshow', 'animation', 'slide');
         $this->setSetting('Slideshow', 'direction', 'horizontal');
         $this->setSetting('Slideshow', 'slideshow_speed', 7);
