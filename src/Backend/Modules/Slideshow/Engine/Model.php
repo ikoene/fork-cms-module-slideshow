@@ -323,6 +323,15 @@ class Model
         // get db
         $db = BackendModel::getContainer()->get('database');
 
+        // get image data
+        $image = self::getImage($id);
+
+        // delete images from filesystem
+        $fs = new Filesystem();
+
+        $fs->remove(FRONTEND_FILES_PATH . '/slideshow/thumbnails/' . $image['filename']);
+        $fs->remove(FRONTEND_FILES_PATH . '/slideshow/' . $image['filename']);
+
         // delete the record
         $db->delete('slideshow_images', 'id = ?', array((int) $id));
     }
