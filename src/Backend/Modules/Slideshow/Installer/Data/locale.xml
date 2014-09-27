@@ -317,7 +317,7 @@
     <Core>
       <item type="message" name="NoSlideshowInCategory">
         <translation language="nl"><![CDATA[Er zijn geen slideshows in deze categorie.]]></translation>
-        <translation language="en"><![CDATA[There are no slideshows in this category.]]></translation>
+        <translation language="en"><![CDATA[There are no slideshows for this category.]]></translation>
       </item>
       <item type="label" name="NextSlideshow">
         <translation language="nl"><![CDATA[Volgende slideshow]]></translation>
