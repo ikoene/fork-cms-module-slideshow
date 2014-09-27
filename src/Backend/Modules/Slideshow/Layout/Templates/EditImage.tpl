@@ -18,7 +18,7 @@
                         <td id="leftColumn">
                             <div class="box">
                                 <div class="heading">
-                                    <h3>{$lblTitle|ucfirst}<abbr title="{$lblRequiredField}">*</abbr></h3>
+                                    <h3>{$lblTitle|ucfirst}</h3>
                                 </div>
                                 <div class="options">
                                     {$txtTitle} {$txtTitleError}
