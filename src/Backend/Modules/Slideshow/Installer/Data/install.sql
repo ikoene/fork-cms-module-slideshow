@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS `slideshow_images` (
  `language` varchar(5) NOT NULL,
  `title` varchar(255),
  `data` text,
+ `caption` text,
  `description` text,
  `filename` varchar(255) NULL,
  `hidden` enum('N', 'Y') NOT NULL DEFAULT 'N',
