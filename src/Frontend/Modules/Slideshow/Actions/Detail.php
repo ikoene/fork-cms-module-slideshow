@@ -46,7 +46,7 @@ class Detail extends FrontendBaseBlock
             $this->redirect(FrontendNavigation::getURL(404));
         }
 
-        // get the gallery meta based on the url
+        // get the gallery
         $this->record = FrontendSlideshowModel::getGalleryByURL($this->URL->getParameter(1));
 
         if (empty($this->record)) {
