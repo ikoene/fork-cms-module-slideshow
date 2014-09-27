@@ -2,7 +2,7 @@
 {include:{$BACKEND_CORE_PATH}/Layout/Templates/StructureStartModule.tpl}
 
 <div class="pageTitle">
-    <h2>{$lblSlideshow|ucfirst}: {$item.title} ({$item.width} x {$item.height})</h2>
+    <h2>{$lblSlideshow|ucfirst}: {$item.title} ({$item.width} x {$item.height}{option:!item.height}?{/option:!item.height})</h2>
 </div>
 
 {form:add}
