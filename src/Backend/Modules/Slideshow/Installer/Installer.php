@@ -49,7 +49,7 @@ class Installer extends ModuleInstaller
         $this->setSetting('Slideshow', 'direction', 'horizontal');
         $this->setSetting('Slideshow', 'slideshow_speed', 7);
         $this->setSetting('Slideshow', 'animation_speed', 1);
-        $this->setSetting('Slideshow', 'direct_navigation', 'true');
+        $this->setSetting('Slideshow', 'direction_navigation', 'true');
         $this->setSetting('Slideshow', 'control_navigation', 'true');
         $this->setSetting('Slideshow', 'thumbnail_navigation', '');
         $this->setSetting('Slideshow', 'keyboard', 'true');
