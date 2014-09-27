@@ -242,10 +242,10 @@ class EditImage extends BackendBaseActionEdit
                     // create thumbnail
                     $this->frm->getField('filename')->createThumbnail(
                         FRONTEND_FILES_PATH . '/slideshow/thumbnails/' . $filename,
-                        null,
+                        100,
                         100,
                         false,
-                        true,
+                        false,
                         100
                     );
                 }
