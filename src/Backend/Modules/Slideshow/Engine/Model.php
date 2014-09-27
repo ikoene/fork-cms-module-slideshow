@@ -290,8 +290,8 @@ class Model
         $fs = new Filesystem();
 
         if (!empty($item['filename'])) {
-            $fs->remove(FRONTEND_FILES_PATH . '/slideshow/thumbnails/' . $this->record['filename']);
-            $fs->remove(FRONTEND_FILES_PATH . '/slideshow/' . $this->record['filename']);
+            $fs->remove(FRONTEND_FILES_PATH . '/slideshow/thumbnails/' . $item['filename']);
+            $fs->remove(FRONTEND_FILES_PATH . '/slideshow/' . $item['filename']);
         }
 
         // delete images
