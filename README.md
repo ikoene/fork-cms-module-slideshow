@@ -16,9 +16,8 @@ Visit the [Fork CMS knowledge base](http://fork-cms.com/knowledge-base) to learn
 - Serialize slideshow settings
 - Add author to a slideshow
 - Slideshow settings are parsed to a separate javascript file
-- Add better form validation overall
+- Better form validation overall
 - Add view button (only visible when module is added as block)
-- Highlight dataGrid row on save
 - Add DeleteImage action
 - Add direct image link on dataGrid overview
 - Bugfix - dynamic link building based on title
