@@ -266,7 +266,7 @@ class Model
         $item = self::getGallery($id);
 
         // get images for gallery
-        $images = self::getImages($id);
+        $images = self::getImagesForGallery($id);
 
         // delete meta
         if (!empty($metaId)) {
@@ -534,10 +534,26 @@ class Model
     {
         return (array) BackendModel::getContainer()->get('database')->getRecords(
             'SELECT i.*
-            FROM slideshow_galleries AS i
+            FROM slideshow_images AS i
             WHERE i.language = ?
             ORDER BY i.sequence ASC',
             array(BL::getWorkingLanguage())
+        );
+    }
+
+    /**
+     * Get all images for a gallery
+     *
+     * @return  array
+     * @param   int $id The id of the gallery
+     */
+    public static function getImagesForGallery($id)
+    {
+        return (array) BackendModel::getContainer()->get('database')->getRecords(
+            'SELECT i.*
+            FROM slideshow_images AS i
+            WHERE i.language = ? AND i.gallery_id = ?',
+            array(BL::getWorkingLanguage(), $id)
         );
     }
 
