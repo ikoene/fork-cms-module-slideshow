@@ -310,6 +310,10 @@
         <translation language="nl"><![CDATA[Het bijschrift is een stukje tekst dat bij de afbeelding hoort, zoals bv. een stukje beschrijvende tekst met een link.]]></translation>
         <translation language="en"><![CDATA[The caption is a bit of text to go with the image, for example a basic description with an external link.]]></translation>
       </item>
+      <item type="message" name="ConfirmDeleteImage">
+        <translation language="nl"><![CDATA[Bent u zeker dat u deze afbeelding wil verwijderen?]]></translation>
+        <translation language="en"><![CDATA[Are you sure you want to delete this image?]]></translation>
+      </item>
 
     </Slideshow>
   </Backend>

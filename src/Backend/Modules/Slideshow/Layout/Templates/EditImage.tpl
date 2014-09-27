@@ -109,7 +109,7 @@
 
         <div id="confirmDelete" title="{$lblDelete|ucfirst}?" style="display: none;">
             <p>
-                {$msgConfirmDelete|sprintf:{$item.title}}
+                {$msgConfirmDeleteImage}
             </p>
         </div>
 
