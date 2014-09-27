@@ -34,7 +34,6 @@ CREATE TABLE IF NOT EXISTS `slideshow_images` (
  `title` varchar(255),
  `data` text,
  `caption` text,
- `description` text,
  `filename` varchar(255) NULL,
  `hidden` enum('N', 'Y') NOT NULL DEFAULT 'N',
  `sequence` int(11),
