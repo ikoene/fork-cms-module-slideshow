@@ -128,9 +128,9 @@ class Index extends BackendBaseActionIndex
             $dataGrid->setColumnsSequence(
                 'dragAndDropHandle',
                 'title',
-                'publish_on',
-                'user_id',
                 'images',
+                'user_id',
+                'publish_on',
                 'edit'
             );
 
