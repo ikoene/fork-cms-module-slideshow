@@ -97,19 +97,6 @@ class Model
         // get item
         $item = self::getCategory($id);
 
-        // build extra
-        $extra = array('id' => $item['extra_id'],
-                        'module' => 'Slideshow',
-                        'type' => 'block',
-                        'action' => 'Category');
-
-        // delete extra
-        $db->delete(
-            'modules_extras',
-            'id = ? AND module = ? AND type = ? AND action = ?',
-            array($extra['id'], $extra['module'], $extra['type'], $extra['action'])
-        );
-
         // delete the record
         $db->delete('slideshow_categories', 'id = ?', array((int) $id));
     }
