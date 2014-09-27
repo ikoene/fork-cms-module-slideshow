@@ -71,7 +71,7 @@ class Index extends BackendBaseActionIndex
             // set colum URLs
             $dataGrid->setColumnURL(
                 'title',
-                BackendModel::createURLForAction('edit') . '&amp;id=[id]'
+                BackendModel::createURLForAction('Edit') . '&amp;id=[id]'
             );
 
             // set column functions
@@ -120,7 +120,7 @@ class Index extends BackendBaseActionIndex
                 'edit',
                 null,
                 BL::lbl('Edit'),
-                BackendModel::createURLForAction('edit') . '&amp;id=[id]',
+                BackendModel::createURLForAction('Edit') . '&amp;id=[id]',
                 BL::lbl('Edit')
             );
 

@@ -50,7 +50,7 @@ class AddImage extends BackendBaseActionAdd
             $this->display();
         } else {
             // no item found, throw an exception, because somebody is fucking with our URL
-             $this->redirect(BackendModel::createURLForAction('index') . '&error=non-existing');
+             $this->redirect(BackendModel::createURLForAction('Index') . '&error=non-existing');
         }
     }
 
@@ -198,7 +198,7 @@ class AddImage extends BackendBaseActionAdd
 
                 // everything is saved, so redirect to the overview
                 $this->redirect(
-                    BackendModel::createURLForAction('edit') .
+                    BackendModel::createURLForAction('Edit') .
                     '&report=saved&var=' .
                     '&id=' .
                     $this->id .

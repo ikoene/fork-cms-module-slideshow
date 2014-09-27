@@ -61,7 +61,7 @@ class Add extends BackendBaseActionAdd
         $this->categories = BackendSlideshowModel::getCategoriesForDropdown();
 
         if (empty($this->categories)) {
-            $this->redirect(BackendModel::createURLForAction('add_category'));
+            $this->redirect(BackendModel::createURLForAction('AddCategory'));
         }
     }
 
@@ -242,7 +242,7 @@ class Add extends BackendBaseActionAdd
                 BackendModel::triggerEvent($this->getModule(), 'after_add', array('item' => $item));
 
                 // everything is saved, so redirect to the overview
-                $this->redirect(BackendModel::createURLForAction('add_image') . '&report=added&id=' . $id);
+                $this->redirect(BackendModel::createURLForAction('AddImage') . '&report=added&id=' . $id);
             }
         }
     }

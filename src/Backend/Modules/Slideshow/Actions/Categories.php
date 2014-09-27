@@ -57,7 +57,7 @@ class Categories extends BackendBaseActionIndex
         // set column URLs
         $this->dataGrid->setColumnURL(
             'title',
-            BackendModel::createURLForAction('edit_category') . '&amp;id=[id]'
+            BackendModel::createURLForAction('EditCategory') . '&amp;id=[id]'
         );
 
         // create a column #galleries
@@ -83,7 +83,7 @@ class Categories extends BackendBaseActionIndex
             'edit',
             null,
             BL::lbl('Edit'),
-            BackendModel::createURLForAction('edit_category') . '&amp;id=[id]',
+            BackendModel::createURLForAction('EditCategory') . '&amp;id=[id]',
             BL::lbl('Edit')
         );
     }

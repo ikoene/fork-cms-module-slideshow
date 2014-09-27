@@ -44,10 +44,10 @@ class Delete extends BackendBaseActionDelete
             );
 
             // item was deleted, so redirect
-            $this->redirect(BackendModel::createURLForAction('index') . '&report=deleted');
+            $this->redirect(BackendModel::createURLForAction('Index') . '&report=deleted');
         } else {
             // something went wrong
-            $this->redirect(BackendModel::createURLForAction('index') . '&error=non-existing');
+            $this->redirect(BackendModel::createURLForAction('Index') . '&error=non-existing');
         }
     }
 }

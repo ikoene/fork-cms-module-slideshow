@@ -67,7 +67,7 @@ class Edit extends BackendBaseActionEdit
             $this->display();
         } else {
             // no item found, throw an exception, because somebody is fucking with our URL
-            $this->redirect(BackendModel::createURLForAction('index') . '&error=non-existing');
+            $this->redirect(BackendModel::createURLForAction('Index') . '&error=non-existing');
         }
     }
 
@@ -237,7 +237,7 @@ class Edit extends BackendBaseActionEdit
             'edit',
             null,
             BL::lbl('Edit'),
-            BackendModel::createURLForAction('edit_image') .'&amp;id=[id]&amp;galleryid='. $this->id,
+            BackendModel::createURLForAction('EditImage') .'&amp;id=[id]&amp;galleryid='. $this->id,
             BL::lbl('Edit')
         );
 
@@ -522,7 +522,7 @@ class Edit extends BackendBaseActionEdit
                     }
                     // redirect to edit, tab "images
                     $this->redirect(
-                        BackendModel::createURLForAction('edit') .
+                        BackendModel::createURLForAction('Edit') .
                         '&report=deleted&id=' .
                         $this->id .
                         '#images'
@@ -533,7 +533,7 @@ class Edit extends BackendBaseActionEdit
 
                     // redirect to edit, tab #images
                     $this->redirect(
-                        BackendModel::createURLForAction('edit') .
+                        BackendModel::createURLForAction('Edit') .
                         '&report=saved&id=' .
                         $this->id .
                         '#images'
@@ -544,7 +544,7 @@ class Edit extends BackendBaseActionEdit
 
                     // redirect to edit, tab #images
                     $this->redirect(
-                        BackendModel::createURLForAction('edit') .
+                        BackendModel::createURLForAction('Edit') .
                         '&report=saved&id=' .
                         $this->id .
                         '#images'
@@ -553,7 +553,7 @@ class Edit extends BackendBaseActionEdit
 
                 // everything is saved, so redirect to the overview
                 $this->redirect(
-                    BackendModel::createURLForAction('index') .
+                    BackendModel::createURLForAction('Index') .
                     '&report=saved&var=' .
                     urlencode($item['title']) .
                     '&highlight=' .

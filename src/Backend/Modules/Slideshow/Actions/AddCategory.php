@@ -95,7 +95,7 @@ class AddCategory extends BackendBaseActionAdd
 
                 // everything is saved, so redirect to the overview
                 $this->redirect(
-                    BackendModel::createURLForAction('categories') .
+                    BackendModel::createURLForAction('Categories') .
                     '&report=added-category&var=' .
                     urlencode($item['title']) .
                     '&highlight=' .

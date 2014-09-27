@@ -51,7 +51,7 @@ class EditCategory extends BackendBaseActionEdit
         } else {
             // no item found, throw an exceptions, because somebody is fucking with our URL
             $this->redirect(
-                BackendModel::createURLForAction('categories') .
+                BackendModel::createURLForAction('Categories') .
                 '&error=non-existing'
             );
         }
@@ -150,7 +150,7 @@ class EditCategory extends BackendBaseActionEdit
 
                 // everything is saved, so redirect to the overview
                 $this->redirect(
-                    BackendModel::createURLForAction('categories') .
+                    BackendModel::createURLForAction('Categories') .
                     '&report=edited-category&var=' .
                     urlencode($item['title']) .
                     '&highlight=' .
