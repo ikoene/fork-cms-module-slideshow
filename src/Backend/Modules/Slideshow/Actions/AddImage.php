@@ -154,7 +154,7 @@ class AddImage extends BackendBaseActionAdd
 
                         // If height is not set, scale the image proportionally to the given width
                         if ($this->record['height'] != 0) {
-                            // upload image width gallery dimensions (thumbnail 100 x 100)
+                            // upload image width gallery dimensions
                             $this->frm->getField('image'. $i)->createThumbnail(
                                 FRONTEND_FILES_PATH .
                                 '/slideshow/' .
