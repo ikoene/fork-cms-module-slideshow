@@ -28,7 +28,7 @@
     <div class="tabs">
         <ul>
             <li><a href="#tabContent">{$lblContent|ucfirst}</a></li>
-            <li><a href="#images">{$lblImages|ucfirst}</a></li>
+            <li><a href="#images">{$lblImages|ucfirst} ({$imageCount})</a></li>
             {option:settingsPerSlideshow}
             <li><a href="#settings">{$lblSettings|ucfirst}</a></li>
             {/option:settingsPerSlideshow}

@@ -288,6 +288,7 @@ class Edit extends BackendBaseActionEdit
         $this->tpl->assign('item', $this->record);
         $this->tpl->assign('dataGrid', ($this->dataGrid->getNumResults() != 0) ? $this->dataGrid->getContent() : false);
         $this->tpl->assign('categories', $this->categories);
+        $this->tpl->assign('imageCount', BackendSlideshowModel::getImagesByGallery($this->id));
 
         // settings allowed?
         $this->tpl->assign('settingsPerSlideshow', BackendModel::getModuleSetting('Slideshow', 'settings_per_slide'));
