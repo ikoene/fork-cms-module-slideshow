@@ -11,8 +11,20 @@ Visit the [Fork CMS knowledge base](http://fork-cms.com/knowledge-base) to learn
 ** Version 2.0.0 **
 
 - Update to Flexslider v2.2.2
+- Add thumbnail navigation
+- Add internal/external slide linking
+- Serialize slideshow settings
+- Add author to a slideshow
+- Slideshow settings are parsed to a separate javascript file
+- Add better form validation overall
+- Add view button (only visible when module is added as block)
+- Highlight dataGrid row on save
+- Add DeleteImage action
+- Add direct image link on dataGrid overview
+- Bugfix - dynamic link building based on title
+- Bugfix - delete all images from filesystem when deleting a gallery
 
-*This is a major release, meaning you shouldn't just upgrade by replacing the files. A complete reinstall is required*
+*This is a major release, meaning you shouldn't just upgrade by replacing the files. A complete reinstall is required.*
 
 ## Features
 
