@@ -99,7 +99,7 @@
         </div>
 
         <div class="fullwidthOptions">
-            <a href="{$var|geturl:'delete_image'}&amp;id={$item.id}&amp;gallery_id={$item.gallery_id}" data-message-id="confirmDelete" class="askConfirmation button linkButton icon iconDelete">
+            <a href="{$var|geturl:'DeleteImage'}&amp;id={$item.id}&amp;gallery_id={$item.gallery_id}" data-message-id="confirmDelete" class="askConfirmation button linkButton icon iconDelete">
                 <span>{$lblDelete|ucfirst}</span>
             </a>
             <div class="buttonHolderRight">

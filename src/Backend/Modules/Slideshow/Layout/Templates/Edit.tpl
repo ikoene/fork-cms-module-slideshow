@@ -146,7 +146,7 @@
 
         <div id="images">
             <p>
-                <a href="{$var|geturl:'add_image'}&amp;id={$item.id}" class="button icon iconAdd" title="{$lblAddImages|ucfirst}">
+                <a href="{$var|geturl:'AddImage'}&amp;id={$item.id}" class="button icon iconAdd" title="{$lblAddImages|ucfirst}">
                     <span>{$lblAddImages|ucfirst}</span>
                 </a>
             </p>
@@ -299,7 +299,7 @@
 
         </div>
         <div class="fullwidthOptions">
-            <a href="{$var|geturl:'delete'}&amp;id={$item.id}" data-message-id="confirmDelete" class="askConfirmation button linkButton icon iconDelete">
+            <a href="{$var|geturl:'Delete'}&amp;id={$item.id}" data-message-id="confirmDelete" class="askConfirmation button linkButton icon iconDelete">
                 <span>{$lblDelete|ucfirst}</span>
             </a>
             <div class="buttonHolderRight">

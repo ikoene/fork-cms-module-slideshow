@@ -4,7 +4,7 @@
 <div class="pageTitle">
     <h2>{$lblSlideshow|ucfirst}: {$lblGalleries}</h2>
     <div class="buttonHolderRight">
-        <a href="{$var|geturl:'add'}" class="button icon iconAdd" title="{$lblAdd|ucfirst}">
+        <a href="{$var|geturl:'Add'}" class="button icon iconAdd" title="{$lblAdd|ucfirst}">
             <span>{$lblAddGallery|ucfirst}</span>
         </a>
     </div>
