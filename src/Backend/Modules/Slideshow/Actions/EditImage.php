@@ -218,7 +218,7 @@ class EditImage extends BackendBaseActionEdit
                     $item['filename'] = $filename;
 
                     // If height is not set, scale the image proportionally to the given width
-                    if ($this->gallery['height'] <> 0) {
+                    if ($this->gallery['height'] != 0) {
                         // upload image width gallery dimensions
                         $this->frm->getField('filename')->createThumbnail(
                             FRONTEND_FILES_PATH . '/slideshow/' . $filename,
