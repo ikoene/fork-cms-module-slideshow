@@ -84,7 +84,7 @@ class Settings extends BackendBaseActionEdit
         $this->frm->addCheckbox('thumbnail_navigation', (BackendModel::getModuleSetting($this->URL->getModule(), 'thumbnail_navigation', false) === 'true' ? true : false));
         $this->frm->addCheckbox('keyboard', (BackendModel::getModuleSetting($this->URL->getModule(), 'keyboard', false) === 'true' ? true : false));
         $this->frm->addCheckbox('mousewheel', (BackendModel::getModuleSetting($this->URL->getModule(), 'mousewheel', false) === 'true' ? true : false));
-        $this->frm->addCheckbox('touch', (BackendModel::getModuleSetting($this->URL->getModule(), 'touch_navigation', false) === 'true' ? true : false));
+        $this->frm->addCheckbox('touch', (BackendModel::getModuleSetting($this->URL->getModule(), 'touch', false) === 'true' ? true : false));
         $this->frm->addCheckbox('random_order', (BackendModel::getModuleSetting($this->URL->getModule(), 'random_order', false) === 'true' ? true : false));
         $this->frm->addCheckbox('auto_animate', (BackendModel::getModuleSetting($this->URL->getModule(), 'auto_animate', false) === 'true' ? true : false));
         $this->frm->addCheckbox('animation_loop', (BackendModel::getModuleSetting($this->URL->getModule(), 'animation_loop', false)=== 'true' ? true : false));
