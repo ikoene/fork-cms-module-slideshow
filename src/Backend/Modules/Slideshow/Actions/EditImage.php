@@ -74,7 +74,7 @@ class EditImage extends BackendBaseActionEdit
     {
         // get the gallery record
         $this->record = BackendSlideshowModel::getImage($this->id);
-        $this->record2 = BackendSlideshowModel::getGallery($this->galleryId);
+        $this->gallery = BackendSlideshowModel::getGallery($this->galleryId);
 
         $this->record['data'] = unserialize($this->record['data']);
         $this->record['link'] = $this->record['data']['link'];
@@ -125,7 +125,7 @@ class EditImage extends BackendBaseActionEdit
 
         // assign the active record and additional variables
         $this->tpl->assign('item', $this->record);
-        $this->tpl->assign('gallery', $this->record2);
+        $this->tpl->assign('gallery', $this->gallery);
     }
 
 
@@ -218,12 +218,12 @@ class EditImage extends BackendBaseActionEdit
                     $item['filename'] = $filename;
 
                     // If height is not set, scale the image proportionally to the given width
-                    if ($this->record2['height'] <> 0) {
+                    if ($this->gallery['height'] <> 0) {
                         // upload image width gallery dimensions
                         $this->frm->getField('filename')->createThumbnail(
                             FRONTEND_FILES_PATH . '/slideshow/' . $filename,
-                            $this->record2['width'],
-                            $this->record2['height'],
+                            $this->gallery['width'],
+                            $this->gallery['height'],
                             true,
                             false,
                             100
@@ -231,7 +231,7 @@ class EditImage extends BackendBaseActionEdit
                     } else {
                         $this->frm->getField('filename')->createThumbnail(
                             FRONTEND_FILES_PATH . '/slideshow/' . $filename,
-                            $this->record2['width'],
+                            $this->gallery['width'],
                             null,
                             true,
                             true,
