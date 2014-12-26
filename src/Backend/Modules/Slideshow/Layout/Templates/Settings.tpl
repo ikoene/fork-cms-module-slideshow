@@ -6,7 +6,7 @@
 </div>
 
 {form:settings}
-<div class="box">
+    <div class="box">
         <div class="heading">
             <h3>{$lblModeSlideshowSettings|ucfirst}</h3>
         </div>
@@ -22,7 +22,7 @@
                 </li>
             </ul>
         </div>
-</div>
+    </div>
 
     <div class="box horizontal">
         <div class="heading">
@@ -30,14 +30,14 @@
         </div>
         <div class="options">
             <p>
-                <label for="animation_type">{$lblAnimationType|ucfirst}</label>
+                <label for="animation">{$lblAnimation|ucfirst}</label>
                 {$ddmAnimationType} {$ddmAnimationTypeError}
             </p>
         </div>
         <div class="options">
             <p>
-                <label for="slide_direction">{$lblSlideDirection|ucfirst}</label>
-                {$ddmSlideDirection} {$ddmSlideDirectionError}
+                <label for="direction">{$lblDirection|ucfirst}</label>
+                {$ddmDirection} {$ddmDirectionError}
             </p>
         </div>
         <div class="options">
@@ -51,10 +51,10 @@
         </div>
         <div class="options">
             <p>
-                <label for="animation_duration">{$lblAnimationDuration|ucfirst}</label>
-                {$ddmAnimationDuration} {$ddmAnimationDurationError}
+                <label for="animation_speed">{$lblAnimationSpeed|ucfirst}</label>
+                {$ddmAnimationSpeed} {$ddmAnimationSpeedError}
                 <span class="helpTxt">
-                {$msgHelpAnimationDuration}
+                {$msgHelpAnimationSpeed}
                 </span>
             </p>
         </div>
@@ -67,11 +67,11 @@
         <div class="options">
             <ul class="inputList">
                 <li>
-                    <label for="direct_navigation">
+                    <label for="direction_navigation">
                         {$chkDirectionNavigation} {$lblDirectionNavigation|ucfirst}
                     </label>
                     <span class="helpTxt">
-                        {$msgHelpDirectNavigation}
+                        {$msgHelpDirectionNavigation}
                     </span>
                 </li>
                 <li>
@@ -125,11 +125,11 @@
         <div class="options">
             <ul class="inputList">
                 <li>
-                    <label for="random_order">
-                        {$chkRandomOrder} {$lblRandomOrder|ucfirst}
+                    <label for="randomize">
+                        {$chkRandomize} {$lblRandomize|ucfirst}
                     </label>
                     <span class="helpTxt">
-                        {$msgHelpRandomOrder}
+                        {$msgHelpRandomize}
                     </span>
                 </li>
                 <li>
