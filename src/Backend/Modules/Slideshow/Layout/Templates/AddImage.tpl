@@ -3,6 +3,11 @@
 
 <div class="pageTitle">
     <h2>{$lblSlideshow|ucfirst}: {$item.title} ({$item.width} x {$item.height}{option:!item.height}?{/option:!item.height})</h2>
+    <div class="buttonHolderRight">
+      <a href="{$var|geturl:'edit'}&amp;id={$item.id}#images" class="button icon iconBack" title="{$lblBack|ucfirst}">
+        <span>{$lblBack|ucfirst}</span>
+      </a>
+    </div>
 </div>
 
 {form:add}
