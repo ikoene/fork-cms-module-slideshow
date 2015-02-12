@@ -44,6 +44,6 @@ jsFrontend.slideshow =
             animationLoop: settings.animationLoop
         });
     }
-}
+};
 
 $(jsFrontend.slideshow.init);
