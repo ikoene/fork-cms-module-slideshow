@@ -42,6 +42,26 @@ Visit the [Fork CMS knowledge base](http://fork-cms.com/knowledge-base) to learn
 
 When creating a gallery, you'll be asked to give a width and height. You can fill in both or only the width. If you choose the latter, images will scale proportionally based upon the width. Give in both width and height, and images will be cropped to the desired dimensions.
 
+## Tests
+
+With the introduction of tests in Fork CMS, some functional tests are now added to the module. More info [here](http://www.fork-cms.com/blog/detail/forkathon-introducing-tests).
+
+I've yet to find a way to easily add the Slideshow module tables to the test database. For now, I'm using a copy of the database on which I've installed the module. Follow these steps:
+
+* Install Fork CMS
+* Install the Slideshow module
+* Take an export of the database and place it in /tools/copy_db.sql
+* Edit /src/Common/WebTestCase.php and use copy_db.sql instead of test_db.sql
+
+        $client->getContainer()->get('database'),
+          file_get_contents($kernelDir . '/../tools/copy_db.sql')
+        ); 
+* Use this command to run the tests
+
+        bin/phpunit -c app --filter=Slideshow
+* Profit!
+ 
+
 ## Support
 
 <ul>
