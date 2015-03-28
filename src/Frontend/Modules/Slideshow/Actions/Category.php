@@ -48,6 +48,11 @@ class Category extends FrontendBaseBlock
         // get the gallery meta based on the url
         $this->record = FrontendSlideshowModel::getGalleriesByURL($this->URL->getParameter(1));
 
+        // redirect if nothing is found
+        if (empty($this->record)) {
+            $this->redirect(FrontendNavigation::getURL(404));
+        }
+
         // full url asset
         $this->full_url = FrontendNavigation::getURLForBlock('Slideshow', 'detail');
         $this->full_url_category = FrontendNavigation::getURLForBlock('Slideshow', 'category');
