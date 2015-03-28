@@ -21,7 +21,7 @@ class Installer extends ModuleInstaller
         // load install.sql
         $this->importSQL(dirname(__FILE__) . '/Data/install.sql');
 
-        // add 'slideshow' as a module
+        // add 'Slideshow' as a module
         $this->addModule('Slideshow');
 
         // import locale
