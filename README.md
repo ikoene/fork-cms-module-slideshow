@@ -48,19 +48,20 @@ With the introduction of tests in Fork CMS, some functional tests are now added 
 
 I've yet to find a way to easily add the Slideshow module tables to the test database. For now, I'm using a copy of the database on which I've installed the module. Follow these steps:
 
-* Install Fork CMS
+* Install Fork CMS (english required)
 * Install the Slideshow module
+* Add the module to a new page and name it 'Slideshow'
 * Take an export of the database and place it in /tools/copy_db.sql
 * Edit /src/Common/WebTestCase.php and use copy_db.sql instead of test_db.sql
 
         $client->getContainer()->get('database'),
           file_get_contents($kernelDir . '/../tools/copy_db.sql')
-        ); 
+        );
 * Use this command to run the tests
 
         bin/phpunit -c app --filter=Slideshow
 * Profit!
- 
+
 
 ## Support
 
