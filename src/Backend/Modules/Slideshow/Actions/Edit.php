@@ -291,7 +291,7 @@ class Edit extends BackendBaseActionEdit
         $this->tpl->assign('imageCount', BackendSlideshowModel::getImagesByGallery($this->id));
 
         // settings allowed?
-        $this->tpl->assign('settingsPerSlideshow', BackendModel::getModuleSetting('Slideshow', 'settings_per_slide'));
+        $this->tpl->assign('settingsPerSlideshow', $this->get('fork.settings')->get('Slideshow', 'settings_per_slide'));
     }
 
     /**

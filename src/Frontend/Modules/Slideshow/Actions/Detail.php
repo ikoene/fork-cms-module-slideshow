@@ -102,11 +102,11 @@ class Detail extends FrontendBaseBlock
         );
 
         // should we use the settings per slide or the module settings
-        if (FrontendModel::getModuleSetting('Slideshow', 'settings_per_slide')) {
+        if ($this->get('fork.settings')->get('Slideshow', 'settings_per_slide')) {
             $settings = FrontendSlideshowModel::getAllSettings($this->record['gallery_id']);
             $settings['id'] = $this->record['gallery_id'];
         } else {
-            $settings = FrontendModel::getModuleSettings('Slideshow');
+            $settings = $this->get('fork.settings')->getForModule('Slideshow');
             $settings['id'] = $this->record['gallery_id'];
         }
 

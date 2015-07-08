@@ -168,8 +168,8 @@ class EditImage extends BackendBaseActionEdit
                 $item['caption'] = $this->frm->getField('caption')->getValue(true);
                 $item['hidden'] = $this->frm->getField('hidden')->getValue();
 
-                //get module settings
-                $dimensions = BackendModel::getModuleSettings('slideshow');
+                // get module settings
+                $dimensions = $this->get('fork.settings')->getForModule('Slideshow');
 
                 // the extra data
                 $data = array('link' => null);

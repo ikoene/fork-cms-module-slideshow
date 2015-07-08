@@ -37,7 +37,7 @@ class Settings extends BackendBaseActionEdit
 
         // add form elements
         $this->frm->addCheckbox(
-            'settings_per_slide', (BackendModel::getModuleSetting($this->URL->getModule(), 'settings_per_slide', false) === 'true' ? true : false)
+            'settings_per_slide', ($this->get('fork.settings')->get($this->URL->getModule(), 'settings_per_slide', false) === 'true' ? true : false)
         );
         $this->frm->addDropdown(
             'animation_type',
@@ -45,7 +45,7 @@ class Settings extends BackendBaseActionEdit
                 'slide' => BL::lbl('SlideshowSlide', $this->getModule()),
                 'fade' => BL::lbl('SlideshowFade', $this->getModule())
             ),
-            BackendModel::getModuleSetting(
+            $this->get('fork.settings')->get(
                 $this->URL->getModule(),
                 'animation_type',
                 'slide'
@@ -56,7 +56,7 @@ class Settings extends BackendBaseActionEdit
             array(
                 'horizontal' => BL::lbl('SlideshowHorizontal', $this->getModule()),
                 'vertical' => BL::lbl('SlideshowVertical', $this->getModule())),
-            BackendModel::getModuleSetting(
+            $this->get('fork.settings')->get(
                 $this->URL->getModule(),
                 'direction',
                 'horizontal'
@@ -65,7 +65,7 @@ class Settings extends BackendBaseActionEdit
         $this->frm->addDropdown(
             'slideshow_speed',
             array_combine(range(1, 30), range(1, 30)),
-            BackendModel::getModuleSetting(
+            $this->get('fork.settings')->get(
                 $this->URL->getModule(),
                 'slideshow_speed',
                 7)
@@ -73,21 +73,21 @@ class Settings extends BackendBaseActionEdit
         $this->frm->addDropdown(
             'animation_speed',
             array_combine(range(1, 5), range(1, 5)),
-            BackendModel::getModuleSetting(
+            $this->get('fork.settings')->get(
                 $this->URL->getModule(),
                 'animation_speed',
                 1
             )
         );
-        $this->frm->addCheckbox('direction_navigation', (BackendModel::getModuleSetting($this->URL->getModule(), 'direction_navigation', false) === 'true' ? true : false));
-        $this->frm->addCheckbox('control_navigation', (BackendModel::getModuleSetting($this->URL->getModule(), 'control_navigation', false) === 'true' ? true : false));
-        $this->frm->addCheckbox('thumbnail_navigation', (BackendModel::getModuleSetting($this->URL->getModule(), 'thumbnail_navigation', false) === 'true' ? true : false));
-        $this->frm->addCheckbox('keyboard', (BackendModel::getModuleSetting($this->URL->getModule(), 'keyboard', false) === 'true' ? true : false));
-        $this->frm->addCheckbox('mousewheel', (BackendModel::getModuleSetting($this->URL->getModule(), 'mousewheel', false) === 'true' ? true : false));
-        $this->frm->addCheckbox('touch', (BackendModel::getModuleSetting($this->URL->getModule(), 'touch', false) === 'true' ? true : false));
-        $this->frm->addCheckbox('randomize', (BackendModel::getModuleSetting($this->URL->getModule(), 'randomize', false) === 'true' ? true : false));
-        $this->frm->addCheckbox('auto_animate', (BackendModel::getModuleSetting($this->URL->getModule(), 'auto_animate', false) === 'true' ? true : false));
-        $this->frm->addCheckbox('animation_loop', (BackendModel::getModuleSetting($this->URL->getModule(), 'animation_loop', false)=== 'true' ? true : false));
+        $this->frm->addCheckbox('direction_navigation', ($this->get('fork.settings')->get($this->URL->getModule(), 'direction_navigation', false) === 'true' ? true : false));
+        $this->frm->addCheckbox('control_navigation', ($this->get('fork.settings')->get($this->URL->getModule(), 'control_navigation', false) === 'true' ? true : false));
+        $this->frm->addCheckbox('thumbnail_navigation', ($this->get('fork.settings')->get($this->URL->getModule(), 'thumbnail_navigation', false) === 'true' ? true : false));
+        $this->frm->addCheckbox('keyboard', ($this->get('fork.settings')->get($this->URL->getModule(), 'keyboard', false) === 'true' ? true : false));
+        $this->frm->addCheckbox('mousewheel', ($this->get('fork.settings')->get($this->URL->getModule(), 'mousewheel', false) === 'true' ? true : false));
+        $this->frm->addCheckbox('touch', ($this->get('fork.settings')->get($this->URL->getModule(), 'touch', false) === 'true' ? true : false));
+        $this->frm->addCheckbox('randomize', ($this->get('fork.settings')->get($this->URL->getModule(), 'randomize', false) === 'true' ? true : false));
+        $this->frm->addCheckbox('auto_animate', ($this->get('fork.settings')->get($this->URL->getModule(), 'auto_animate', false) === 'true' ? true : false));
+        $this->frm->addCheckbox('animation_loop', ($this->get('fork.settings')->get($this->URL->getModule(), 'animation_loop', false)=== 'true' ? true : false));
     }
 
     /**
@@ -100,24 +100,24 @@ class Settings extends BackendBaseActionEdit
 
             if ($this->frm->isCorrect()) {
                 // set mode setting
-                BackendModel::setModuleSetting($this->URL->getModule(), 'settings_per_slide', (string) ($this->frm->getField('settings_per_slide')->getChecked()) ? 'true' : '');
+                $this->get('fork.settings')->set($this->URL->getModule(), 'settings_per_slide', (string) ($this->frm->getField('settings_per_slide')->getChecked()) ? 'true' : '');
 
                 // set main settings
-                BackendModel::setModuleSetting($this->URL->getModule(), 'animation', (string) $this->frm->getField('animation_type')->getValue());
-                BackendModel::setModuleSetting($this->URL->getModule(), 'direction', (string) $this->frm->getField('direction')->getValue());
-                BackendModel::setModuleSetting($this->URL->getModule(), 'slideshow_speed', (int) $this->frm->getField('slideshow_speed')->getValue());
-                BackendModel::setModuleSetting($this->URL->getModule(), 'animation_speed', (int) $this->frm->getField('animation_speed')->getValue());
+                $this->get('fork.settings')->set($this->URL->getModule(), 'animation', (string) $this->frm->getField('animation_type')->getValue());
+                $this->get('fork.settings')->set($this->URL->getModule(), 'direction', (string) $this->frm->getField('direction')->getValue());
+                $this->get('fork.settings')->set($this->URL->getModule(), 'slideshow_speed', (int) $this->frm->getField('slideshow_speed')->getValue());
+                $this->get('fork.settings')->set($this->URL->getModule(), 'animation_speed', (int) $this->frm->getField('animation_speed')->getValue());
 
                 // set optional settings
-                BackendModel::setModuleSetting($this->URL->getModule(), 'direction_navigation', (string) ($this->frm->getField('direction_navigation')->getChecked()) ? 'true' : 'false');
-                BackendModel::setModuleSetting($this->URL->getModule(), 'control_navigation', (string) ($this->frm->getField('control_navigation')->getChecked()) ? 'true' : 'false');
-                BackendModel::setModuleSetting($this->URL->getModule(), 'thumbnail_navigation', (string) ($this->frm->getField('thumbnail_navigation')->getChecked()) ? 'true' : '');
-                BackendModel::setModuleSetting($this->URL->getModule(), 'keyboard', (string) ($this->frm->getField('keyboard')->getChecked()) ? 'true' : 'false');
-                BackendModel::setModuleSetting($this->URL->getModule(), 'mousewheel', (string) ($this->frm->getField('mousewheel')->getChecked()) ? 'true' : 'false');
-                BackendModel::setModuleSetting($this->URL->getModule(), 'touch', (string) ($this->frm->getField('touch')->getChecked()) ? 'true' : 'false');
-                BackendModel::setModuleSetting($this->URL->getModule(), 'randomize', (string) ($this->frm->getField('randomize')->getChecked()) ? 'true' : 'false');
-                BackendModel::setModuleSetting($this->URL->getModule(), 'auto_animate', (string) ($this->frm->getField('auto_animate')->getChecked()) ? 'true' : 'false');
-                BackendModel::setModuleSetting($this->URL->getModule(), 'animation_loop', (string) ($this->frm->getField('animation_loop')->getChecked()) ? 'true' : 'false');
+                $this->get('fork.settings')->set($this->URL->getModule(), 'direction_navigation', (string) ($this->frm->getField('direction_navigation')->getChecked()) ? 'true' : 'false');
+                $this->get('fork.settings')->set($this->URL->getModule(), 'control_navigation', (string) ($this->frm->getField('control_navigation')->getChecked()) ? 'true' : 'false');
+                $this->get('fork.settings')->set($this->URL->getModule(), 'thumbnail_navigation', (string) ($this->frm->getField('thumbnail_navigation')->getChecked()) ? 'true' : '');
+                $this->get('fork.settings')->set($this->URL->getModule(), 'keyboard', (string) ($this->frm->getField('keyboard')->getChecked()) ? 'true' : 'false');
+                $this->get('fork.settings')->set($this->URL->getModule(), 'mousewheel', (string) ($this->frm->getField('mousewheel')->getChecked()) ? 'true' : 'false');
+                $this->get('fork.settings')->set($this->URL->getModule(), 'touch', (string) ($this->frm->getField('touch')->getChecked()) ? 'true' : 'false');
+                $this->get('fork.settings')->set($this->URL->getModule(), 'randomize', (string) ($this->frm->getField('randomize')->getChecked()) ? 'true' : 'false');
+                $this->get('fork.settings')->set($this->URL->getModule(), 'auto_animate', (string) ($this->frm->getField('auto_animate')->getChecked()) ? 'true' : 'false');
+                $this->get('fork.settings')->set($this->URL->getModule(), 'animation_loop', (string) ($this->frm->getField('animation_loop')->getChecked()) ? 'true' : 'false');
 
                 // trigger event
                 BackendModel::triggerEvent($this->getModule(), 'after_saved_settings');

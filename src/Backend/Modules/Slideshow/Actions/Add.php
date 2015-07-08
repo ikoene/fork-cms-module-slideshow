@@ -235,7 +235,7 @@ class Add extends BackendBaseActionAdd
                 // insert default settings
                 BackendSlideshowModel::setSettings(
                     $id,
-                    BackendModel::getModuleSettings('Slideshow')
+                    $this->get('fork.settings')->getForModule('Slideshow')
                 );
 
                 // trigger event
