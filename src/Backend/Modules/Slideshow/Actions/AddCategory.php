@@ -45,6 +45,10 @@ class AddCategory extends BackendBaseActionAdd
      *
      * @return  void
      */
+    private function loadForm()
+    {
+        // create form
+        $this->frm = new BackendForm('add_category');
 
         // create elements
         $this->frm->addText('title', null, 255, 'inputText title', 'inputTextError title');
