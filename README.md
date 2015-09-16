@@ -62,7 +62,6 @@ I've yet to find a way to easily add the Slideshow module tables to the test dat
         bin/phpunit -c app --filter=Slideshow
 * Profit!
 
-
 ## Support
 
 <ul>
