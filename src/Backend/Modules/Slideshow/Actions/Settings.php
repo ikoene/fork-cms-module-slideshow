@@ -103,7 +103,7 @@ class Settings extends BackendBaseActionEdit
                 $this->get('fork.settings')->set($this->URL->getModule(), 'settings_per_slide', (string) ($this->frm->getField('settings_per_slide')->getChecked()) ? 'true' : '');
 
                 // set main settings
-                $this->get('fork.settings')->set($this->URL->getModule(), 'animation', (string) $this->frm->getField('animation_type')->getValue());
+                $this->get('fork.settings')->set($this->URL->getModule(), 'animation_type', (string) $this->frm->getField('animation_type')->getValue());
                 $this->get('fork.settings')->set($this->URL->getModule(), 'direction', (string) $this->frm->getField('direction')->getValue());
                 $this->get('fork.settings')->set($this->URL->getModule(), 'slideshow_speed', (int) $this->frm->getField('slideshow_speed')->getValue());
                 $this->get('fork.settings')->set($this->URL->getModule(), 'animation_speed', (int) $this->frm->getField('animation_speed')->getValue());

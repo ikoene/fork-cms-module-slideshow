@@ -265,7 +265,7 @@ class EditImage extends BackendBaseActionEdit
                     BackendModel::createURLForAction('Edit') .
                     '&report=Saved&id=' . $this->galleryId .
                     '&highlight=' . $this->id .
-                    '#images'
+                    '#tabImages'
                 );
             }
         }

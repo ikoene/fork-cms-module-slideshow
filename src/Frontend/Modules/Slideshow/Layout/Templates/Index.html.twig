@@ -1,0 +1,37 @@
+{#
+  variables that are available:
+  - {{ galleries }}: contains an array with all galleries, each element contains data about the gallery
+#}
+
+{% if galleries %}
+
+  {% for galleri in galleries %}
+
+    {# Title #}
+      <h3>
+        <a href="{{ full_url }}/{{ galleri.url }}">{{ galleri.title }}</a>
+      </h3>
+
+      <ul>
+        <li>
+        {# Meta #}
+        {{ galleri.publish_on|spoon_date(dateFormatLong,LANGUAGE ) }}
+
+        {# Category#}
+        {{ 'lbl.In'|trans }} {{ 'lbl.The'|trans }} {{ 'lbl.Category'|trans }} <a href="{{ full_url_category }}/{{ galleri.category_url }}" title="{{ galleri.category_title }}">{{ galleri.category_title }}</a>
+
+        {# Description #}
+        {% if galleri.description %}{{ galleri.description }}{% endif %}
+        </li>
+      </ul>
+
+      {% if galleri.filename %}
+        <a href="{{ full_url }}/{{ galleri.url }}">
+          <img src="/src/Frontend/Files/slideshow/{{ galleri.filename }}" alt="{{ galleri.title }}" />
+        </a>
+      {% endif %}
+
+  {% endfor %}
+
+{% endif %}
+

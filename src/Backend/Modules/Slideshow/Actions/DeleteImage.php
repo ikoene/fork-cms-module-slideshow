@@ -41,7 +41,7 @@ class DeleteImage extends BackendBaseActionDelete
                 '&report=deleted&var=' .
                 '&id=' .
                 $this->gallery_id .
-                '#images'
+                '#tabImages'
             );
         } else {
             // something went wrong

@@ -1,0 +1,27 @@
+{% extends '/Layout/Templates/base.html.twig' %}
+
+{% block actionbar %}
+  <div class="btn-toolbar pull-right">
+    <div class="btn-group" role="group">
+      {% if showSlideshowAdd %}
+        {{ macro.buttonIcon( geturl('add'), 'plus-square', 'lbl.AddSlideshow'|trans|capitalize) }}
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}
+
+{% block content %}
+
+  {% if dataGrids %}
+    {% for dataGrid in dataGrids %}
+      <div class="table-responsive">
+          {{ dataGrid.content|raw }}
+      </div>
+    {% endfor %}
+  {% endif %}
+
+  {% if not dataGrids %}
+    <p>{{ 'msg.NoItems'|trans }}</p>
+  {% endif %}
+
+{% endblock %}
