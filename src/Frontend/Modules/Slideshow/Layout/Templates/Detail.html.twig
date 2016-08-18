@@ -15,7 +15,7 @@
     {# Meta #}
       <ul>
         <li>
-        {{ gallery.publish_on|spoon_date(dateFormatLong,LANGUAGE ) }}
+        {{ gallery.publish_on|spoondate(dateFormatLong,LANGUAGE ) }}
         </li>
       </ul>
 
@@ -25,11 +25,11 @@
           <div class="flexsliderwrap{{ gallery.id }}">
             <ul class="slides">
               {% for _itr_0 in slideshow %}
-              <li data-thumb="/src/Frontend/Files/_itr_0/thumbnails/{{ _itr_0.filename }}">
+              <li data-thumb="/src/Frontend/Files/slideshow/thumbnails/{{ _itr_0.filename }}">
                 {% if _itr_0.data.link %}
                 <a href="{{ _itr_0.data.link.url }}"{% if _itr_0.data.link.external %} target="_blank" rel="nofollow"{% endif %} title="{{ _itr_0.title }}">
                 {% endif %}
-                  <img src="/src/Frontend/Files/_itr_0/{{ _itr_0.filename }}" alt="{{ _itr_0.title }}" />
+                  <img src="/src/Frontend/Files/slideshow/{{ _itr_0.filename }}" alt="{{ _itr_0.title }}" />
                 {% if _itr_0.data.link %}
                 </a>
                 {% endif %}
