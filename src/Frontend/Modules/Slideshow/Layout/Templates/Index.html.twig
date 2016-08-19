@@ -5,29 +5,29 @@
 
 {% if galleries %}
 
-  {% for galleri in galleries %}
+  {% for gallery in galleries %}
 
     {# Title #}
       <h3>
-        <a href="{{ full_url }}/{{ galleri.url }}">{{ galleri.title }}</a>
+        <a href="{{ full_url }}/{{ gallery.url }}">{{ gallery.title }}</a>
       </h3>
 
       <ul>
         <li>
         {# Meta #}
-        {{ galleri.publish_on|spoondate(dateFormatLong,LANGUAGE ) }}
+        {{ gallery.publish_on|spoondate(dateFormatLong,LANGUAGE ) }}
 
         {# Category#}
-        {{ 'lbl.In'|trans }} {{ 'lbl.The'|trans }} {{ 'lbl.Category'|trans }} <a href="{{ full_url_category }}/{{ galleri.category_url }}" title="{{ galleri.category_title }}">{{ galleri.category_title }}</a>
+        {{ 'lbl.In'|trans }} {{ 'lbl.The'|trans }} {{ 'lbl.Category'|trans }} <a href="{{ full_url_category }}/{{ gallery.category_url }}" title="{{ gallery.category_title }}">{{ gallery.category_title }}</a>
 
         {# Description #}
-        {% if galleri.description %}{{ galleri.description }}{% endif %}
+        {% if gallery.description %}{{ gallery.description }}{% endif %}
         </li>
       </ul>
 
-      {% if galleri.filename %}
-        <a href="{{ full_url }}/{{ galleri.url }}">
-          <img src="/src/Frontend/Files/slideshow/{{ galleri.filename }}" alt="{{ galleri.title }}" />
+      {% if gallery.filename %}
+        <a href="{{ full_url }}/{{ gallery.url }}">
+          <img src="/src/Frontend/Files/slideshow/{{ gallery.filename }}" alt="{{ gallery.title }}" />
         </a>
       {% endif %}
 

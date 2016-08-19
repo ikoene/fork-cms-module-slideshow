@@ -24,16 +24,16 @@
         <div class="flexslider">
           <div class="flexsliderwrap{{ gallery.id }}">
             <ul class="slides">
-              {% for _itr_0 in slideshow %}
-              <li data-thumb="/src/Frontend/Files/slideshow/thumbnails/{{ _itr_0.filename }}">
-                {% if _itr_0.data.link %}
-                <a href="{{ _itr_0.data.link.url }}"{% if _itr_0.data.link.external %} target="_blank" rel="nofollow"{% endif %} title="{{ _itr_0.title }}">
+              {% for slide in slideshow %}
+              <li data-thumb="/src/Frontend/Files/slideshow/thumbnails/{{ slide.filename }}">
+                {% if slide.data.link %}
+                <a href="{{ slide.data.link.url }}"{% if slide.data.link.external %} target="_blank" rel="nofollow"{% endif %} title="{{ slide.title }}">
                 {% endif %}
-                  <img src="/src/Frontend/Files/slideshow/{{ _itr_0.filename }}" alt="{{ _itr_0.title }}" />
-                {% if _itr_0.data.link %}
+                  <img src="/src/Frontend/Files/slideshow/{{ slide.filename }}" alt="{{ slide.title }}" />
+                {% if slide.data.link %}
                 </a>
                 {% endif %}
-                {% if _itr_0.caption %}<p class="flex-caption">{{ _itr_0.caption }}</p>{% endif %}
+                {% if slide.caption %}<p class="flex-caption">{{ slide.caption }}</p>{% endif %}
               </li>
               {% endfor %}
             </ul>
