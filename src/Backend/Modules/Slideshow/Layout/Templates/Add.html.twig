@@ -62,9 +62,9 @@
                   <div class="panel-body">
                     <div class="form-group">
                       <ul class="list-unstyled">
-                        {% for _itr_4 in hidden %}
+                        {% for option in hidden %}
                           <li class="radio">
-                            <label for="{{ _itr_4.id }}">{{ _itr_4.rbtHidden|raw }} {{ _itr_4.label }}</label>
+                            <label for="{{ option.id }}">{{ option.rbtHidden|raw }} {{ option.label }}</label>
                           </li>
                         {% endfor %}
                       </ul>
