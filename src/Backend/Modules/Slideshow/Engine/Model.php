@@ -449,7 +449,7 @@ class Model
 
         // should a link be returned?
         if ($link == true) {
-            $imagesLink = BackendModel::createURLForAction('edit') . '&amp;id=' . $id . '#images';
+            $imagesLink = BackendModel::createURLForAction('edit') . '&amp;id=' . $id . '#tabImages';
             $number = '<a href="' . $imagesLink . '">' . $number . '</a>';
         }
 
