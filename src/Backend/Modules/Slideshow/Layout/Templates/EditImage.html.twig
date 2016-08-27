@@ -59,14 +59,18 @@
                   </div>
                   <div class="panel-body">
                     <div class="form-group">
-                      <label for="externalLink">{% form_field_error external_link %} {% form_field external_link %}{{ 'lbl.ExternalLink'|trans|capitalize }}</label>
+                      <ul class="list-unstyled">
+                        <li class="checkbox">
+                          <label for="externalLink" class="control-label">{% form_field_error external_link %} {% form_field external_link %}{{ 'lbl.ExternalLink'|trans|capitalize }}</label>
+                        </li>
+                      </ul>
                     </div>
                     <div class="form-group">
-                      <label for="internalLink">{{ 'lbl.InternalLink'|trans|capitalize }}</label>
+                      <label for="internalUrl" class="control-label">{{ 'lbl.InternalLink'|trans|capitalize }}</label>
                       {% form_field_error internal_url %} {% form_field internal_url %}
                     </div>
                     <div class="form-group">
-                      <label for="externalUrl">{{ 'lbl.ExternalLink'|trans|capitalize }}<abbr title="{{ 'lbl.RequiredField'|trans }}">*</abbr></label>
+                      <label for="externalUrl" class="control-label">{{ 'lbl.ExternalLink'|trans|capitalize }}<abbr title="{{ 'lbl.RequiredField'|trans }}">*</abbr></label>
                       {% form_field_error external_url %} {% form_field external_url %}
                     </div>
                   </div>
