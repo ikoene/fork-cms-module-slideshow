@@ -65,13 +65,13 @@
                         </li>
                       </ul>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="internalLinks">
                       <label for="internalUrl" class="control-label">{{ 'lbl.InternalLink'|trans|capitalize }}</label>
-                      {% form_field_error internal_url %} {% form_field internal_url %}
+                      {% form_field internal_url %} {% form_field_error internal_url %}
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="externalLinks">
                       <label for="externalUrl" class="control-label">{{ 'lbl.ExternalLink'|trans|capitalize }}<abbr title="{{ 'lbl.RequiredField'|trans }}">*</abbr></label>
-                      {% form_field_error external_url %} {% form_field external_url %}
+                      {% form_field external_url %} {% form_field_error external_url %}
                     </div>
                   </div>
                 </div>

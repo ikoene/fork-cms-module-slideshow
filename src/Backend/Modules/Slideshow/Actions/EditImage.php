@@ -159,6 +159,13 @@ class EditImage extends BackendBaseActionEdit
                 }
             }
 
+            // validate external url
+            if ($this->frm->getField('external_link')->isChecked()) {
+                if ($this->frm->getField('external_url')->isFilled(BL::err('FieldIsRequired'))) {
+                    if ($this->frm->getField('external_url')->isURL(BL::err('InvalidURL')));
+                }
+            }
+
             // no errors?
             if ($this->frm->isCorrect()) {
                 // build item
