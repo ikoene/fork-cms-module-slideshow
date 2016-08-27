@@ -24,7 +24,7 @@
                 {% if slideshow.data.link %}
                 </a>
                 {% endif %}
-                {% if slideshow.caption %}<div class="flex-caption">{{ slideshow.caption }}</div>{% endif %}
+                {% if slideshow.caption %}<div class="flex-caption">{{ slideshow.caption|raw }}</div>{% endif %}
               </li>
             {% endfor %}
             </ul>
