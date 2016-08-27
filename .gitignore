@@ -1,0 +1,8 @@
+# Generated files
+.project
+.cache
+.sass-cache
+.buildpath
+.settings
+.*.swp
+.DS_Store
