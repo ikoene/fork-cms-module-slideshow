@@ -39,9 +39,11 @@
           <li class="pull-right" role="presentation">
             <a href="#tabSEO" aria-controls="seo" role="tab" data-toggle="tab">{{ 'lbl.SEO'|trans|capitalize }}</a>
           </li>
+          {% if settingsPerSlideshow %}
           <li class="pull-right" role="presentation">
             <a href="#tabSettings" aria-controls="settings" role="tab" data-toggle="tab">{{ 'lbl.Settings'|trans|capitalize }}</a>
           </li>
+          {% endif %}
           <li class="pull-right" role="presentation">
             <a href="#tabImages" aria-controls="images" role="tab" data-toggle="tab">{{ 'lbl.Images'|trans|capitalize }}</a>
           </li>
