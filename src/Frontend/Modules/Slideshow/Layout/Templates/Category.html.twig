@@ -15,7 +15,7 @@
       <ul>
         <li>
         {# Meta #}
-        {{ gallery.publish_on|spoondate(dateFormatLong,LANGUAGE ) }}
+        {{ gallery.publish_on|spoondate(dateFormatLong,LANGUAGE) }}
 
         {# Category#}
         {{ 'lbl.In'|trans }} {{ 'lbl.The'|trans }} {{ 'lbl.Category'|trans }} <a href="{{ full_url_category }}/{{ gallery.category_meta_url }}" title="{{ gallery.category_meta_title }}">

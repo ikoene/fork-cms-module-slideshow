@@ -37,7 +37,8 @@
                 <div class="panel panel-default panel-editor">
                   <div class="panel-heading">
                     <p>{{ 'lbl.MainContent'|trans|capitalize }}
-                      <abbr data-toggle="tooltip" title="{{ 'lbl.RequiredField'|trans|capitalize }}">*</abbr></p>
+                      <abbr data-toggle="tooltip" title="{{ 'lbl.RequiredField'|trans|capitalize }}">*</abbr>
+                    </p>
                     {% form_field_error description %}
                   </div>
                   <div class="panel-body">
@@ -63,9 +64,9 @@
                     <div class="form-group">
                       <ul class="list-unstyled">
                         {% for option in hidden %}
-                          <li class="radio">
-                            <label for="{{ option.id }}">{{ option.rbtHidden|raw }} {{ option.label }}</label>
-                          </li>
+                        <li class="radio">
+                          <label for="{{ option.id }}">{{ option.rbtHidden|raw }} {{ option.label }}</label>
+                        </li>
                         {% endfor %}
                       </ul>
                     </div>
@@ -94,14 +95,14 @@
                   </div>
                   <div class="panel-body">
                     <div class="form-group">
-                        <label for="height" class="control-label">{{ 'lbl.Width'|trans|capitalize }}<abbr title="{{ 'lbl.RequiredField'|trans }}">*</abbr></label>
-                        <p>
+                      <label for="width" class="control-label">{{ 'lbl.Width'|trans|capitalize }}<abbr title="{{ 'lbl.RequiredField'|trans }}">*</abbr></label>
+                      <p>
                         {% form_field_error width %} {% form_field width %}
-                        </p>
-                        <label for="height" class="control-label">{{ 'lbl.Height'|trans|capitalize }}</label>
-                        <p>
+                      </p>
+                      <label for="height" class="control-label">{{ 'lbl.Height'|trans|capitalize }}</label>
+                      <p>
                         {% form_field_error height %} {% form_field height %}
-                        </p>
+                      </p>
                     </div>
                   </div>
                 </div>

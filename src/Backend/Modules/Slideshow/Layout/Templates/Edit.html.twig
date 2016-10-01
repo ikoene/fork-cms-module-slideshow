@@ -122,7 +122,7 @@
                   </div>
                   <div class="panel-body">
                     <div class="form-group">
-                        <label for="height" class="control-label">{{ 'lbl.Width'|trans|capitalize }}<abbr title="{{ 'lbl.RequiredField'|trans }}">*</abbr></label>
+                        <label for="width" class="control-label">{{ 'lbl.Width'|trans|capitalize }}<abbr title="{{ 'lbl.RequiredField'|trans }}">*</abbr></label>
                         <p>
                         {% form_field_error width %} {% form_field width %}
                         </p>
@@ -159,7 +159,7 @@
             {% if showSlideshowAddImage %}
             <div class="row">
               <div class="col-md-12">
-                <a href="{{ geturl('add_image' ) }}&amp;id={{ item.id }}" class="btn btn-primary">
+                <a href="{{ geturl('add_image') }}&amp;id={{ item.id }}" class="btn btn-primary">
                   <span class="fa fa-plus"></span>{{ 'lbl.AddImages'|trans|capitalize }}
                 </a>
               </div>
@@ -294,7 +294,7 @@
   <div class="row fork-module-actions">
     <div class="col-md-12">
       <div class="btn-toolbar">
-        {% if showSlideshowDelete %}
+        {% if deleteCategoryAllowed %}
         <div class="btn-group pull-left" role="group">
           <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmDelete">
             <span class="fa fa-trash-o"></span>
@@ -311,7 +311,7 @@
     </div>
   </div>
 
-  {% if showSlideshowDelete %}
+  {% if deleteCategoryAllowed %}
   <div class="modal fade" id="confirmDelete" tabindex="-1" role="dialog" aria-labelledby="{{ 'lbl.Delete'|trans|capitalize }}" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
