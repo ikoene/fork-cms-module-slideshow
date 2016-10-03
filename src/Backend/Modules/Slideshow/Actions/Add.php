@@ -79,7 +79,7 @@ class Add extends BackendBaseActionAdd
         $rbtHiddenValues[] = array('label' => BL::lbl('Hidden', $this->URL->getModule()), 'value' => 'Y');
         $rbtHiddenValues[] = array('label' => BL::lbl('Published'), 'value' => 'N');
 
-        $this->frm->addText('title', null, null, 'inputText title', 'inputTextError title');
+        $this->frm->addText('title', null, null, 'form-control title', 'form-control danger title');
         $this->frm->addEditor('description');
         $this->frm->addImage('filename');
         $this->frm->addDropdown('categories', $this->categories);

@@ -79,7 +79,7 @@ class AddImage extends BackendBaseActionAdd
 
         // add multiple image input fields
         for ($i = 0; $i< $this->imageUploadFields; $i++) {
-            $this->ImageInput[]['formElements']['Image'] = $this->frm->addImage('image' . $i);
+            $this->ImageInput[]['formElements']['Image'] = $this->frm->addImage('image' . $i)->parse();
         }
 
     }
@@ -202,7 +202,7 @@ class AddImage extends BackendBaseActionAdd
                     '&report=saved&var=' .
                     '&id=' .
                     $this->id .
-                    '#images'
+                    '#tabImages'
                 );
             }
         }

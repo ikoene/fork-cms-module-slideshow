@@ -1,0 +1,158 @@
+{% extends '/Layout/Templates/base.html.twig' %}
+
+{% block actionbar %}
+  <div class="btn-toolbar pull-right">
+    <div class="btn-group" role="group">
+      {% if detailURL %}
+        {% set url = (detailURL ~ '/' ~ item.url) %}
+        {{ macro.buttonIcon( url, 'eye', 'lbl.View'|trans|capitalize) }}
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}
+
+{% block content %}
+
+  {% form edit %}
+
+  <div class="row fork-module-content">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="title" class="control-label">{{ 'lbl.Title'|trans|capitalize }}</label>
+        {% form_field_error title %} {% form_field title %}
+      </div>
+    </div>
+  </div>
+
+  <div class="row fork-module-content">
+    <div class="col-md-12">
+      <div role="tabpanel">
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active">
+            <a href="#tabContent" aria-controls="content" role="tab" data-toggle="tab">{{ 'lbl.Content'|trans|capitalize }}</a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="tabContent">
+            <div class="row">
+              <div class="col-md-8">
+
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <p>{{ 'lbl.Image'|trans|capitalize }}</p>
+                  </div>
+                  <div class="panel-body">
+                    {% if item.filename %}
+                      <div>
+                        <img src="/src/Frontend/Files/slideshow/thumbnails/{{ item.filename }}" class="img-thumbnail" />
+                      </div>
+                    {% endif %}
+                  </div>
+                  <div class="panel-body">
+                    {% form_field_error filename %} {% form_field filename %}
+                  </div>
+                </div>
+
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <p>{{ 'lbl.Link'|trans|capitalize }}</p>
+                  </div>
+                  <div class="panel-body">
+                    <div class="form-group">
+                      <ul class="list-unstyled">
+                        <li class="checkbox">
+                          <label for="externalLink" class="control-label">{% form_field_error external_link %} {% form_field external_link %}{{ 'lbl.ExternalLink'|trans|capitalize }}</label>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="form-group" id="internalLinks">
+                      <label for="internalUrl" class="control-label">{{ 'lbl.InternalLink'|trans|capitalize }}</label>
+                      {% form_field internal_url %} {% form_field_error internal_url %}
+                    </div>
+                    <div class="form-group" id="externalLinks">
+                      <label for="externalUrl" class="control-label">{{ 'lbl.ExternalLink'|trans|capitalize }}<abbr title="{{ 'lbl.RequiredField'|trans }}">*</abbr></label>
+                      {% form_field external_url %} {% form_field_error external_url %}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="panel panel-default panel-editor">
+                  <div class="panel-heading">
+                    <p>{{ 'lbl.Caption'|trans|capitalize }}
+                      <abbr data-toggle="tooltip" title="{{ 'lbl.RequiredField'|trans|capitalize }}">*</abbr></p>
+                      {% form_field_error caption %}
+                  </div>
+                  <div class="panel-body">
+                    {% form_field caption %}
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <p>{{ 'lbl.Status'|trans|capitalize }}</p>
+                  </div>
+                  <div class="panel-body">
+                    <div class="form-group">
+                      <ul class="list-unstyled">
+                        {% for option in hidden %}
+                          <li class="radio">
+                            <label for="{{ option.id }}">{{ option.rbtHidden|raw }} {{ option.label }}</label>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row fork-module-actions">
+    <div class="col-md-12">
+      <div class="btn-toolbar">
+        {% if showSlideshowDeleteImage %}
+        <div class="btn-group pull-left" role="group">
+          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmDelete">
+            <span class="fa fa-trash-o"></span>
+            {{ 'lbl.Delete'|trans|capitalize }}
+          </button>
+        </div>
+        {% endif %}
+        <div class="btn-group pull-right" role="group">
+          <button id="editButton" type="submit" name="edit" class="btn btn-primary">
+            <span class="fa fa-check"></span>{{ 'lbl.Save'|trans|capitalize }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% if showSlideshowDeleteImage %}
+  <div class="modal fade" id="confirmDelete" tabindex="-1" role="dialog" aria-labelledby="{{ 'lbl.Delete'|trans|capitalize }}" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="modal-title h4">{{ 'lbl.Delete'|trans|capitalize }}</span>
+        </div>
+        <div class="modal-body">
+          <p>{{ 'msg.ConfirmDelete'|trans|sprintf(item.title) }}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">
+            <span class="fa fa-times"></span>{{ 'lbl.Cancel'|trans|capitalize }}
+          </button>
+          <a href="{{ geturl('DeleteImage') }}&amp;id={{ item.id }}&amp;gallery_id={{ item.gallery_id }}" class="btn btn-danger">
+            <span class="fa fa-trash"></span>{{ 'lbl.Delete'|trans|capitalize }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  {% endform %}
+{% endblock %}

@@ -1,0 +1,38 @@
+{#
+  variables that are available:
+  - {{ gallery }}: contains an array with all galleries, each element contains data about the gallery
+#}
+
+{% if galleries %}
+
+  {% for gallery in galleries %}
+
+    {# Title #}
+      <h3>
+        <a href="{{ full_url }}/{{ gallery.meta_url }}">{{ gallery.title }}</a>
+      </h3>
+
+      <ul>
+        <li>
+        {# Meta #}
+        {{ gallery.publish_on|spoondate(dateFormatLong,LANGUAGE) }}
+
+        {# Category#}
+        {{ 'lbl.In'|trans }} {{ 'lbl.The'|trans }} {{ 'lbl.Category'|trans }} <a href="{{ full_url_category }}/{{ gallery.category_meta_url }}" title="{{ gallery.category_meta_title }}">
+        {{ gallery.category_title }}</a>
+
+        {# Description #}
+        {% if gallery.description %}{{ gallery.description }}{% endif %}
+        </li>
+      </ul>
+
+      {% if gallery.filename %}
+        <a href="{{ full_url }}/{{ gallery.meta_url }}">
+          <img src="/src/Frontend/Files/userfiles/images/slideshow/thumbnails/{{ gallery.filename }}" alt="{{ gallery.title }}" />
+        </a>
+      {% endif %}
+
+  {% endfor %}
+
+{% endif %}
+

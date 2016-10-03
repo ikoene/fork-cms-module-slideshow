@@ -1,0 +1,36 @@
+{#
+  variables that are available:
+  - {{ gallery }}: contains data about the gallery
+  - {{ slideshow }}: contains an array with the images of the gallery, each element contains data about the image.
+#}
+
+  {% if widgetGallery %}
+    {# Title #}
+      <h3>
+        {{ widgetGallery.title }}
+      </h3>
+
+    {# Slideshow #}
+      <div class="flex-container" id="flex{{ widgetGallery.id }}" style="max-width:{{ widgetGallery.width }}px">
+        <div class="flexslider">
+          <div class="flexsliderwrap{{ widgetGallery.id }}">
+            <ul class="slides">
+            {% for slideshow in widgetSlideshow %}
+              <li data-thumb="/src/Frontend/Files/slideshow/thumbnails/{{ slideshow.filename }}">
+                {% if slideshow.data.link %}
+                <a href="{{ slideshow.data.link.url }}"{% if slideshow.data.link.external %} target="_blank" rel="nofollow"{% endif %} title="{{ slideshow.title }}">
+                {% endif %}
+                  <img src="/src/Frontend/Files/slideshow/{{ slideshow.filename }}" alt="{{ slideshow.title }}" />
+                {% if slideshow.data.link %}
+                </a>
+                {% endif %}
+                {% if slideshow.caption %}<div class="flex-caption">{{ slideshow.caption|raw }}</div>{% endif %}
+              </li>
+            {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+  {% endif %}
+

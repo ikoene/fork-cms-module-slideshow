@@ -1,0 +1,181 @@
+{% extends '/Layout/Templates/base.html.twig' %}
+
+{% block actionbar %}
+
+{% endblock %}
+
+{% block content %}
+  {% form settings %}
+  <div class="row fork-module-content">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            {{ 'lbl.ModeSlideshowSettings'|trans|capitalize }}
+          </h3>
+        </div>
+        <div class="panel-body">
+          <div class="form-group">
+            <ul class="list-unstyled">
+              <li class="checkbox">
+                <label for="settingsPerSlide" class="control-label">
+                  {% form_field settings_per_slide %} {{ 'lbl.SettingsPerSlide'|trans|capitalize }}
+                </label>
+                <p class="help-block">
+                  {{ 'msg.HelpSettingsPerSlide'|trans }}
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row fork-module-content">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            {{ 'lbl.GeneralSlideshowSettings'|trans|capitalize }}
+          </h3>
+        </div>
+        <div class="panel-body">
+          <div class="form-group">
+            <label for="animationType" class="control-label">{{ 'lbl.Animation'|trans|capitalize }}</label>
+            {% form_field_error animation_type %} {% form_field animation_type %}
+          </div>
+          <div class="form-group">
+            <label for="slideshowSpeed" class="control-label">{{ 'lbl.SlideshowSpeed'|trans|capitalize }}</label>
+            {% form_field_error slideshow_speed %} {% form_field slideshow_speed %}
+            <p class="help-block">
+            {{ 'msg.HelpSlideshowSpeed'|trans }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row fork-module-content">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            {{ 'lbl.NavigationSlideshowSettings'|trans|capitalize }}
+          </h3>
+        </div>
+        <div class="panel-body">
+          <div class="form-group">
+            <ul class="list-unstyled">
+              <li class="checkbox">
+                <label for="directionNavigation" class="control-label">
+                  {% form_field direction_navigation %} {{ 'lbl.DirectionNavigation'|trans|capitalize }}
+                </label>
+                <p class="help-block">
+                  {{ 'msg.HelpDirectionNavigation'|trans }}
+                </p>
+              </li>
+              <li class="checkbox">
+                <label for="controlNavigation" class="control-label">
+                  {% form_field control_navigation %} {{ 'lbl.ControlNavigation'|trans|capitalize }}
+                </label>
+                <p class="help-block">
+                  {{ 'msg.HelpControlNavigation'|trans }}
+                </p>
+              </li>
+              <li class="checkbox">
+                <label for="thumbnailNavigation" class="control-label">
+                  {% form_field thumbnail_navigation %} {{ 'lbl.ThumbnailNavigation'|trans|capitalize }}
+                </label>
+                <p class="help-block">
+                  {{ 'msg.HelpThumbnailNavigation'|trans }}
+                </p>
+              </li>
+              <li class="checkbox">
+                <label for="keyboard" class="control-label">
+                  {% form_field keyboard %} {{ 'lbl.Keyboard'|trans|capitalize }}
+                </label>
+                <p class="help-block">
+                  {{ 'msg.HelpKeyboard'|trans }}
+                </p>
+              </li>
+              <li class="checkbox">
+                <label for="mousewheel" class="control-label">
+                  {% form_field mousewheel %} {{ 'lbl.Mousewheel'|trans|capitalize }}
+                </label>
+                <p class="help-block">
+                  {{ 'msg.HelpMousewheel'|trans }}
+                </p>
+              </li>
+              <li class="checkbox">
+                <label for="touch" class="control-label">
+                  {% form_field touch %} {{ 'lbl.Touch'|trans|capitalize }}
+                </label>
+                <p class="help-block">
+                  {{ 'msg.HelpTouch'|trans }}
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row fork-module-content">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            {{ 'lbl.OptionalSlideshowSettings'|trans|capitalize }}
+          </h3>
+        </div>
+        <div class="panel-body">
+          <div class="form-group">
+            <ul class="list-unstyled">
+              <li class="checkbox">
+                <label for="randomize" class="control-label">
+                  {% form_field randomize %} {{ 'lbl.Randomize'|trans|capitalize }}
+                </label>
+                <p class="help-block">
+                  {{ 'msg.HelpRandomize'|trans }}
+                </p>
+              </li>
+              <li class="checkbox">
+                <label for="autoAnimate" class="control-label">
+                  {% form_field auto_animate %} {{ 'lbl.AutoAnimate'|trans|capitalize }}
+                </label>
+                <p class="help-block">
+                  {{ 'msg.HelpAutoAnimate'|trans }}
+                </p>
+              </li>
+              <li class="checkbox">
+                <label for="animationLoop" class="control-label">
+                  {% form_field animation_loop %} {{ 'lbl.AnimationLoop'|trans|capitalize }}
+                </label>
+                <p class="help-block">
+                  {{ 'msg.HelpAnimationLoop'|trans }}
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row fork-module-actions">
+    <div class="col-md-12">
+      <div class="btn-toolbar">
+        <div class="btn-group pull-right" role="group">
+          <button id="save" type="submit" name="save" class="btn btn-primary">
+            <span class="fa fa-floppy-o"></span>{{ 'lbl.Save'|trans|ucfirst }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endform %}
+{% endblock %}
+

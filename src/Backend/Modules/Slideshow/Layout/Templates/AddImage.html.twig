@@ -1,0 +1,52 @@
+{% extends '/Layout/Templates/base.html.twig' %}
+
+{% block actionbar %}
+  <div class="btn-toolbar pull-right">
+    <div class="btn-group" role="group">
+      {% if showSlideshowAdd %}
+        {{ macro.buttonIcon( geturl('edit'), 'plus-square', 'lbl.Back'|trans|capitalize) }}
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}
+
+{% block content %}
+
+<div class="content-title">
+  <h3 class="panel-title">{{ 'lbl.Slideshow'|trans|capitalize }}: {{ item.title }} ({{ item.width }} x {{ item.height }}{% if not item.height %}?{% endif %})</h3>
+</div>
+
+{% form add %}
+  <div class="row fork-module-content">
+    <div class="col-md-12">
+      <div role="tabpanel">
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active">
+            <a href="#tabContent" aria-controls="content" role="tab" data-toggle="tab">{{ 'lbl.Images'|trans|capitalize }}</a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          {% for images in imageInput %}
+          <div class="form-group">
+            {{ images.formElements.Image|raw }}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row fork-module-actions">
+    <div class="col-md-12">
+      <div class="btn-toolbar">
+        <div class="btn-group pull-right" role="group">
+          <button id="editButton" type="submit" name="edit" class="btn btn-primary">
+            <span class="fa fa-check"></span>{{ 'lbl.Add'|trans|capitalize }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% endform %}
+{% endblock %}
