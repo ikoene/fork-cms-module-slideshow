@@ -1,0 +1,59 @@
+{#
+  variables that are available:
+  - {{ gallery }}: contains data about the gallery
+  - {{ slideshow }}: contains an array with the images of the gallery, each element contains data about the image.
+  - {{ navigation }}: contains an array with data for previous and next post
+#}
+
+{% if gallery %}
+
+    {# Title #}
+      <h3>
+        {{ gallery.title }}
+      </h3>
+
+    {# Meta #}
+      <ul>
+        <li>
+        {{ gallery.publish_on|spoondate(dateFormatLong,LANGUAGE ) }}
+        </li>
+      </ul>
+
+    {# Slideshow #}
+      <div class="flex-container" style="max-width:gallery.widthpx">
+        <div class="flexslider">
+          <div class="flexsliderwrap{{ gallery.id }}">
+            <ul class="slides">
+              {% for slide in slideshow %}
+              <li data-thumb="/src/Frontend/Files/slideshow/thumbnails/{{ slide.filename }}">
+                {% if slide.data.link %}
+                <a href="{{ slide.data.link.url }}"{% if slide.data.link.external %} target="_blank" rel="nofollow"{% endif %} title="{{ slide.title }}">
+                {% endif %}
+                  <img src="/src/Frontend/Files/slideshow/{{ slide.filename }}" alt="{{ slide.title }}" />
+                {% if slide.data.link %}
+                </a>
+                {% endif %}
+                {% if slide.caption %}<p class="flex-caption">{{ slide.caption|raw }}</p>{% endif %}
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    {# Navigation #}
+      <ul class="slideshowPageNavigation">
+        {% if navigation.previous %}
+          <li class="previousLink">
+            <a href="{{ navigation.previous.url }}" rel="prev">{{ 'lbl.PreviousSlideshow'|trans|capitalize }}: {{ navigation.previous.title }}</a>
+          </li>
+        {% endif %}
+        {% if navigation.next %}
+          <li class="nextLink">
+            <a href="{{ navigation.next.url }}" rel="next">{{ 'lbl.NextSlideshow'|trans|capitalize }}: {{ navigation.next.title }}</a>
+          </li>
+        {% endif %}
+      </ul>
+
+{% endif %}
+

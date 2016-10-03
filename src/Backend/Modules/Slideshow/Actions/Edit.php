@@ -208,7 +208,7 @@ class Edit extends BackendBaseActionEdit
         );
 
         // add mass checkboxes
-        $this->dataGrid->setMassActionCheckboxes('checkbox', '[id]');
+        $this->dataGrid->setMassActionCheckboxes('check', '[id]');
 
         // disable paging
         $this->dataGrid->setPaging(false);
@@ -244,7 +244,7 @@ class Edit extends BackendBaseActionEdit
         // set column order
         $this->dataGrid->setColumnsSequence(
             'dragAndDropHandle',
-            'checkbox',
+            'check',
             'preview',
             'hidden',
             'caption',
@@ -258,7 +258,10 @@ class Edit extends BackendBaseActionEdit
                 'hide' => BL::getLabel('Hide'),
                 'publish' => BL::getLabel('Publish')
             ),
-            'delete'
+            'delete',
+            false,
+            'form-control',
+            'form-control danger'
         );
         $ddmMassAction->setAttribute('id', 'actionDeleted');
         $this->dataGrid->setMassAction($ddmMassAction);
@@ -525,7 +528,7 @@ class Edit extends BackendBaseActionEdit
                         BackendModel::createURLForAction('Edit') .
                         '&report=deleted&id=' .
                         $this->id .
-                        '#images'
+                        '#tabImages'
                     );
                 } elseif ($action == 'publish') {
                     // set new status
@@ -536,7 +539,7 @@ class Edit extends BackendBaseActionEdit
                         BackendModel::createURLForAction('Edit') .
                         '&report=saved&id=' .
                         $this->id .
-                        '#images'
+                        '#tabImages'
                     );
                 } elseif ($action == 'hide') {
                     // set new status
@@ -547,7 +550,7 @@ class Edit extends BackendBaseActionEdit
                         BackendModel::createURLForAction('Edit') .
                         '&report=saved&id=' .
                         $this->id .
-                        '#images'
+                        '#tabImages'
                     );
                 }
 

@@ -1,0 +1,338 @@
+{% extends '/Layout/Templates/base.html.twig' %}
+
+{% block actionbar %}
+  <div class="btn-toolbar pull-right">
+    <div class="btn-group" role="group">
+      {% if detailURL %}
+        {% set url = (detailURL ~ '/' ~ item.url) %}
+        {{ macro.buttonIcon( url, 'eye', 'lbl.View'|trans|capitalize) }}
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}
+
+{% block content %}
+  {% form edit %}
+  <div class="row fork-module-content">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="title" class="control-label">{{ 'lbl.Title'|trans|capitalize }} <abbr title="{{ 'lbl.RequiredField'|trans }}">*</abbr></label>
+        {% form_field_error title %} {% form_field title %}
+        {% if detailURL %}
+          <a class="site-url" href="{{ detailURL }}/{{ item.url }}">{{ detailURL }}/<span id="generatedUrl">{{ item.url }}</span></a>
+        {% endif %}
+        {% if not detailURL %}
+          <p class="alert alert-warning alert-xs">
+            <span class="fa fa-exclamation-triangle"></span>{{ 'err.NoModuleLinked'|trans|capitalize }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="row fork-module-content">
+    <div class="col-md-12">
+      <div role="tabpanel">
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active">
+            <a href="#tabContent" aria-controls="content" role="tab" data-toggle="tab">{{ 'lbl.Content'|trans|capitalize }}</a>
+          </li>
+          <li class="pull-right" role="presentation">
+            <a href="#tabSEO" aria-controls="seo" role="tab" data-toggle="tab">{{ 'lbl.SEO'|trans|capitalize }}</a>
+          </li>
+          {% if settingsPerSlideshow %}
+          <li class="pull-right" role="presentation">
+            <a href="#tabSettings" aria-controls="settings" role="tab" data-toggle="tab">{{ 'lbl.Settings'|trans|capitalize }}</a>
+          </li>
+          {% endif %}
+          <li class="pull-right" role="presentation">
+            <a href="#tabImages" aria-controls="images" role="tab" data-toggle="tab">{{ 'lbl.Images'|trans|capitalize }}</a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="tabContent">
+            <div class="row">
+              <div class="col-md-8">
+                <div class="panel panel-default panel-editor">
+                  <div class="panel-heading">
+                    <p>{{ 'lbl.MainContent'|trans|capitalize }}
+                      <abbr data-toggle="tooltip" title="{{ 'lbl.RequiredField'|trans|capitalize }}">*</abbr></p>
+                    {% form_field_error description %}
+                  </div>
+                  <div class="panel-body">
+                    {% form_field description %}
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <p>{{ 'lbl.Image'|trans|capitalize }}</p>
+                  </div>
+                  <div class="panel-body">
+                    {% if item.filename %}
+                      <div>
+                        <img src="{{ FRONTEND_FILES_URL }}/slideshow/{{ item.filename }}" class="img-thumbnail" width="128" height="128" alt="{{ 'lbl.Image'|trans|capitalize }}" />
+                      </div>
+                      <ul class="list-unstyled">
+                        <li class="checkbox">
+                          <label for="deleteImage" class="control-label">{% form_field delete_image %} {{ 'lbl.Delete'|trans|capitalize }}</label>
+                          {% form_field_error delete_image %}
+                        </li>
+                      </ul>
+                    {% endif %}
+                    {% form_field_error filename %} {% form_field filename %}
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <p>{{ 'lbl.Status'|trans|capitalize }}</p>
+                  </div>
+                  <div class="panel-body">
+                    <div class="form-group">
+                      <ul class="list-unstyled">
+                        {% for option in hidden %}
+                          <li class="radio">
+                            <label for="{{ option.id }}">{{ option.rbtHidden|raw }} {{ option.label }}</label>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+                    <div class="form-group last">
+                      <label for="publishOnDate" class="control-label">{{ 'lbl.PublishOn'|trans|capitalize }}</label>
+                      {% form_field_error publish_on_date %} {% form_field publish_on_date %}
+                      <label for="publishOnTime" class="control-label">{{ lbl.At }}</label>
+                      {% form_field_error publish_on_time %} {% form_field publish_on_time %}
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <p>{{ 'lbl.MetaData'|trans|capitalize }}</p>
+                  </div>
+                  <div class="panel-body">
+                    <div class="form-group">
+                      <label for="categoryId" class="control-label">{{ 'lbl.Category'|trans|capitalize }}</label>
+                      {% form_field_error categories %} {% form_field categories %}
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <p>{{ 'lbl.Dimensions'|trans|capitalize }}</p>
+                  </div>
+                  <div class="panel-body">
+                    <div class="form-group">
+                        <label for="width" class="control-label">{{ 'lbl.Width'|trans|capitalize }}<abbr title="{{ 'lbl.RequiredField'|trans }}">*</abbr></label>
+                        <p>
+                        {% form_field_error width %} {% form_field width %}
+                        </p>
+                        <label for="height" class="control-label">{{ 'lbl.Height'|trans|capitalize }}</label>
+                        <p>
+                        {% form_field_error height %} {% form_field height %}
+                        </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div role="tabpanel" class="tab-pane" id="tabSEO">
+            {% seo %}
+          </div>
+
+          <div role="tabpanel" class="tab-pane" id="tabImages">
+            <div class="row fork-module-actions">
+              <div class="col-md-12">
+                {% if dataGrid %}
+                  <div class="table-responsive">
+                    {{ dataGrid|raw }}
+                  </div>
+                {% endif %}
+
+                {% if not dataGrid %}
+                  {{ 'msg.NoItems'|trans }}
+                {% endif %}
+              </div>
+            </div>
+
+            {% if showSlideshowAddImage %}
+            <div class="row">
+              <div class="col-md-12">
+                <a href="{{ geturl('add_image') }}&amp;id={{ item.id }}" class="btn btn-primary">
+                  <span class="fa fa-plus"></span>{{ 'lbl.AddImages'|trans|capitalize }}
+                </a>
+              </div>
+            </div>
+            {% endif %}
+          </div>
+
+          {% if settingsPerSlideshow %}
+          <div role="tabpanel" class="tab-pane" id="tabSettings">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">{{ 'lbl.GeneralSlideshowSettings'|trans|capitalize }}</h3>
+              </div>
+              <div class="panel-body">
+                <div class="form-group">
+                  <label for="animation">{{ 'lbl.Animation'|trans|capitalize }}</label>
+                  {% form_field_error animation %} {% form_field animation %}
+                </div>
+                <div class="form-group">
+                  <label for="direction">{{ 'lbl.Direction'|trans|capitalize }}</label>
+                  {% form_field_error direction %} {% form_field direction %}
+                </div>
+                <div class="form-group">
+                  <label for="slideshow_speed">{{ 'lbl.SlideshowSpeed'|trans|capitalize }}</label>
+                  {% form_field_error slideshow_speed %} {% form_field slideshow_speed %}
+                  <span class="help-block">
+                  {{ 'msg.HelpSlideshowSpeed'|trans }}
+                  </span>
+                </div>
+                <div class="form-group">
+                  <label for="animation_speed">{{ 'lbl.AnimationSpeed'|trans|capitalize }}</label>
+                  {% form_field_error animation_speed %} {% form_field animation_speed %}
+                  <span class="help-block">
+                  {{ 'msg.HelpAnimationSpeed'|trans }}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">{{ 'lbl.NavigationSlideshowSettings'|trans|capitalize }}</h3>
+              </div>
+              <div class="panel-body">
+                <div class="form-group">
+                  <label for="direction_navigation">
+                    {% form_field direction_navigation %} {{ 'lbl.DirectionNavigation'|trans|capitalize }}
+                  </label>
+                  <span class="help-block">
+                    {{ 'msg.HelpDirectionNavigation'|trans }}
+                  </span>
+                </div>
+                <div class="form-group">
+                  <label for="control_navigation">
+                    {% form_field control_navigation %} {{ 'lbl.ControlNavigation'|trans|capitalize }}
+                  </label>
+                  <span class="help-block">
+                    {{ 'msg.HelpControlNavigation'|trans }}
+                  </span>
+                </div>
+                <div class="form-group">
+                  <label for="thumbnail_navigation">
+                    {% form_field thumbnail_navigation %} {{ 'lbl.ThumbnailNavigation'|trans|capitalize }}
+                  </label>
+                  <span class="help-block">
+                    {{ 'msg.HelpThumbnailNavigation'|trans }}
+                  </span>
+                </div>
+                <div class="form-group">
+                  <label for="keyboard">
+                    {% form_field keyboard %} {{ 'lbl.Keyboard'|trans|capitalize }}
+                  </label>
+                  <span class="help-block">
+                    {{ 'msg.HelpKeyboard'|trans }}
+                  </span>
+                </div>
+                <div class="form-group">
+                  <label for="mousewheel">
+                    {% form_field mousewheel %} {{ 'lbl.Mousewheel'|trans|capitalize }}
+                  </label>
+                  <span class="help-block">
+                    {{ 'msg.HelpMousewheel'|trans }}
+                  </span>
+                </div>
+                <div class="form-group">
+                  <label for="touch">
+                    {% form_field touch %} {{ 'lbl.Touch'|trans|capitalize }}
+                  </label>
+                  <span class="help-block">
+                    {{ 'msg.HelpTouch'|trans }}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">{{ 'lbl.OptionalSlideshowSettings'|trans|capitalize }}</h3>
+              </div>
+              <div class="panel-body">
+                <div class="form-group">
+                  <label for="randomize">
+                    {% form_field randomize %} {{ 'lbl.Randomize'|trans|capitalize }}
+                  </label>
+                  <span class="help-block">
+                    {{ 'msg.HelpRandomize'|trans }}
+                  </span>
+                </div>
+                <div class="form-group">
+                  <label for="auto_animate">
+                    {% form_field auto_animate %} {{ 'lbl.AutoAnimate'|trans|capitalize }}
+                  </label>
+                  <span class="help-block">
+                    {{ 'msg.HelpAutoAnimate'|trans }}
+                  </span>
+                </div>
+                <div class="form-group">
+                  <label for="animation_loop">
+                    {% form_field animation_loop %} {{ 'lbl.AnimationLoop'|trans|capitalize }}
+                  </label>
+                  <span class="help-block">
+                    {{ 'msg.HelpAnimationLoop'|trans }}
+                  </span>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row fork-module-actions">
+    <div class="col-md-12">
+      <div class="btn-toolbar">
+        {% if deleteCategoryAllowed %}
+        <div class="btn-group pull-left" role="group">
+          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmDelete">
+            <span class="fa fa-trash-o"></span>
+            {{ 'lbl.Delete'|trans|capitalize }}
+          </button>
+        </div>
+        {% endif %}
+        <div class="btn-group pull-right" role="group">
+          <button id="editButton" type="submit" name="edit" class="btn btn-primary">
+            <span class="fa fa-check"></span>{{ 'lbl.Save'|trans|capitalize }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% if deleteCategoryAllowed %}
+  <div class="modal fade" id="confirmDelete" tabindex="-1" role="dialog" aria-labelledby="{{ 'lbl.Delete'|trans|capitalize }}" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="modal-title h4">{{ 'lbl.Delete'|trans|capitalize }}</span>
+        </div>
+        <div class="modal-body">
+          <p>{{ 'msg.ConfirmDelete'|trans|sprintf(item.title) }}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">
+            <span class="fa fa-times"></span>{{ 'lbl.Cancel'|trans|capitalize }}
+          </button>
+          <a href="{{ geturl('Delete' ) }}&amp;id={{ item.id }}" class="btn btn-danger">
+            <span class="fa fa-trash"></span>{{ 'lbl.Delete'|trans|capitalize }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  {% endform %}
+{% endblock %}
