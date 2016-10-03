@@ -8,11 +8,11 @@ Visit the [Fork CMS knowledge base](http://fork-cms.com/knowledge-base) to learn
 
 ## Updates
 
-** Version 2.1.0 **
+**Version 2.1.0**
 
 - Added support for Fork CMS 4.x
 
-** Version 2.0.0 **
+**Version 2.0.0**
 
 *This is a major release, meaning you shouldn't just upgrade by replacing the files. A complete reinstall is required.*
 
